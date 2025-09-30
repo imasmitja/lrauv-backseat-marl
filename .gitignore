@@ -1,0 +1,17 @@
+.idea/
+*.egg-info/
+__pycache__
+scratch_pad.py
+*lcmlog*
+*.nc
+.python-version
+*.pyc
+*.java
+*.class
+*.jar
+build
+dist
+*.egg-info/
+*.bak
+*.save
+*.swp
