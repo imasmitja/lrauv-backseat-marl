@@ -1,0 +1,32 @@
+#############################################################################
+# Copyright (c) 2002-2024 MBARI
+# Monterey Bay Aquarium Research Institute, all rights reserved.
+#############################################################################
+
+# * LCM configuration * #
+lcm_url: 'udpm://239.255.76.67:7667?ttl=1'
+# log_channel_regex : '(tethys_slate|tethys_syslog|tethys_data_request|bsd_command|BackseatComponent).*'
+lcm_log_channel_regex: '.*'  # set to 'null' to eliminate LCM logging
+
+# * LRAUV LCM channels * #
+lcm_bsd_command_channel: 'bsd_command'
+lcm_data_request_channel: 'tethys_data_request'
+lcm_heartbeat_channel: 'tethys_heartbeat'
+lcm_data_pub_channel: 'tethys_slate'
+lcm_syslog_channel: 'tethys_syslog'
+
+# * LRAUV LCM data request configuration * #
+lrauv_data_timout: 60.0  # seconds
+lrauv_data:  # request data from:
+      - 'WetLabsUBAT.enableBroadcast'
+      - 'WetLabsBB2FL.enableBroadcast'
+
+# * Supervisor configuration * #
+app_name: 'backseat_app'  # set to your app name
+designated_host: 'jetson' # must match the backseat computer hostname for shutdown sequence to be issued
+publish_heartbeat: ON
+rsync_target: 'lrauv:/mnt/mmc/Backseat' # attempt to sync logs to the following target at shutdown
+shutdown_cmd: 'sudo shutdown -P now' # system shutdown command (only issued when designated_host == hostname)
+
+# * User-defined configuration * #
+# add more configs
