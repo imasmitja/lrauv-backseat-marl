@@ -1,0 +1,36 @@
+2025-10-03 17:58:10,685 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-10-03 17:58:10,689 [Supervisor](INFO): Creating Supervisor.
+2025-10-03 17:58:10,689 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251003T175810.
+2025-10-03 17:58:10,689 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251003T175810/lcmlog
+2025-10-03 17:58:10,692 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-03 17:58:10,693 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-03 17:58:10,693 [Supervisor](INFO): Adding data request for: depth
+2025-10-03 17:58:10,693 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-03 17:58:10,693 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-03 17:58:10,693 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-03 17:58:10,694 [Supervisor](INFO): Adding data request for: latitude
+2025-10-03 17:58:10,694 [Supervisor](INFO): Adding data request for: longitude
+2025-10-03 17:58:10,694 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-03 17:58:10,715 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "backseat_app/main.py", line 103, in <module>
+    main()
+  File "backseat_app/main.py", line 97, in main
+    backseat_app = BackseatApp(lc, cfg)
+  File "backseat_app/main.py", line 36, in __init__
+    self.marl_processor = MarlProcessor(lcm_instance, self.cfg)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 29, in __init__
+    self.rl_tracking = TargetTracking()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 794, in __init__
+    self.trained_rl_agent = np_rnn_rl_agent() # A H-LSTM-SAC agent trained with configuration: MASACQMIX_lstm_emofish
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 662, in __init__
+    self.w1rnn = np.loadtxt('./app/pretrined_agents/w1rnn.txt',delimiter=' ').T
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/lib/npyio.py", line 1356, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/lib/npyio.py", line 975, in _read
+    fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/lib/_datasource.py", line 193, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/lib/_datasource.py", line 533, in open
+    raise FileNotFoundError(f"{path} not found.")
+FileNotFoundError: ./app/pretrined_agents/w1rnn.txt not found.

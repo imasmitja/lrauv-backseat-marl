@@ -1,0 +1,15 @@
+2025-10-02 16:17:55,884 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-10-02 16:17:55,886 [Supervisor](INFO): Creating Supervisor.
+2025-10-02 16:17:55,886 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T161755.
+2025-10-02 16:17:55,886 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T161755/lcmlog
+2025-10-02 16:17:55,889 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-02 16:17:55,890 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-02 16:17:55,890 [Supervisor](INFO): Adding data request for: depth
+2025-10-02 16:17:55,890 [processing](INFO): ivasidfjaisodfjaslkdfj alksdjfaklsjf 
+2025-10-02 16:17:55,890 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-02 16:17:55,890 [Listener](INFO): Listening on LCM channel: WetLabsBB2FL
+2025-10-02 16:17:55,890 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-02 16:17:55,890 [Listener](INFO): Listening on LCM channel: depth
+2025-10-02 16:17:57,082 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-02 16:17:57,082 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-02 16:17:57,082 [main](INFO): Terminating.

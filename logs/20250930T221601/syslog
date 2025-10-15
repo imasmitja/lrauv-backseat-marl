@@ -1,0 +1,32 @@
+2025-09-30 22:16:01,685 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-09-30 22:16:01,687 [Supervisor](INFO): Creating Supervisor.
+2025-09-30 22:16:01,687 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20250930T221601.
+2025-09-30 22:16:01,687 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20250930T221601/lcmlog
+2025-09-30 22:16:01,690 [Publisher](ERROR): Failed to publish LCM msg 1. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/TethysLcmTypes/LrauvLcmMessage.py", line 42, in encode
+    buf.write(LrauvLcmMessage._get_packed_fingerprint())
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/TethysLcmTypes/LrauvLcmMessage.py", line 117, in _get_packed_fingerprint
+    LrauvLcmMessage._packed_fingerprint = struct.pack(">Q", LrauvLcmMessage._get_hash_recursive([]))
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/TethysLcmTypes/LrauvLcmMessage.py", line 109, in _get_hash_recursive
+    tmphash = (0xdcace89cb5d145dc+ TethysLcmTypes.ByteArray._get_hash_recursive(newparents)+ TethysLcmTypes.IntArray._get_hash_recursive(newparents)+ TethysLcmTypes.FloatArray._get_hash_recursive(newparents)+ TethysLcmTypes.DoubleArray._get_hash_recursive(newparents)+ TethysLcmTypes.StringArray._get_hash_recursive(newparents)) & 0xffffffffffffffff
+NameError: name 'TethysLcmTypes' is not defined
+2025-09-30 22:16:01,691 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-09-30 22:16:04,193 [Listener](DEBUG): LCM listener timed out...
+2025-09-30 22:16:04,193 [Supervisor](DEBUG): Publishing heartbeat.
+2025-09-30 22:16:04,193 [Publisher](ERROR): Failed to publish LCM msg 1. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/TethysLcmTypes/LrauvLcmMessage.py", line 42, in encode
+    buf.write(LrauvLcmMessage._get_packed_fingerprint())
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/TethysLcmTypes/LrauvLcmMessage.py", line 117, in _get_packed_fingerprint
+    LrauvLcmMessage._packed_fingerprint = struct.pack(">Q", LrauvLcmMessage._get_hash_recursive([]))
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/TethysLcmTypes/LrauvLcmMessage.py", line 109, in _get_hash_recursive
+    tmphash = (0xdcace89cb5d145dc+ TethysLcmTypes.ByteArray._get_hash_recursive(newparents)+ TethysLcmTypes.IntArray._get_hash_recursive(newparents)+ TethysLcmTypes.FloatArray._get_hash_recursive(newparents)+ TethysLcmTypes.DoubleArray._get_hash_recursive(newparents)+ TethysLcmTypes.StringArray._get_hash_recursive(newparents)) & 0xffffffffffffffff
+NameError: name 'TethysLcmTypes' is not defined
+2025-09-30 22:16:05,626 [main](ERROR): KeyboardInterrupt: aborting.
+2025-09-30 22:16:05,626 [Listener](INFO): Unsubscribing from LCM channels.
+2025-09-30 22:16:05,627 [main](INFO): Terminating.

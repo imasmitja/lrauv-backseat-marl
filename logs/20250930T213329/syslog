@@ -1,0 +1,8 @@
+2025-09-30 21:33:29,137 [AppConfig](ERROR): Failed to read configuration from: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml. File not found.
+2025-09-30 21:33:29,138 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "backseat_app/main.py", line 96, in <module>
+    main()
+  File "backseat_app/main.py", line 88, in main
+    lc = lcm.LCM(cfg['lcm_url'])
+TypeError: 'NoneType' object is not subscriptable

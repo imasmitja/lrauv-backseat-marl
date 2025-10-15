@@ -1,0 +1,39 @@
+2025-10-13 15:57:45,530 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_pontus.yml
+2025-10-13 15:57:45,534 [Supervisor](INFO): Creating Supervisor.
+2025-10-13 15:57:45,534 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T155745.
+2025-10-13 15:57:45,534 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T155745/lcmlog
+2025-10-13 15:57:45,538 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-13 15:57:45,538 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-13 15:57:45,539 [Supervisor](INFO): Adding data request for: depth
+2025-10-13 15:57:45,539 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-13 15:57:45,539 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-13 15:57:45,539 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-13 15:57:45,539 [Supervisor](INFO): Adding data request for: latitude
+2025-10-13 15:57:45,539 [Supervisor](INFO): Adding data request for: longitude
+2025-10-13 15:57:45,539 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-13 15:57:45,539 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-13 15:57:45,570 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-13 15:57:45,570 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-13 15:57:45,570 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-13 15:57:45,570 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-13 15:57:45,570 [Listener](INFO): Listening on LCM channel: _
+2025-10-13 15:57:48,073 [Listener](DEBUG): LCM listener timed out...
+2025-10-13 15:57:48,073 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 15:57:48,073 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-13 15:57:48,444 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 135, in compute_new_heading
+    new_heading = self.rl_tracking.newAction(self.target_address,self.target_range,self.lrauv_pose,self.lrauv_depth,self.target_timestamp)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 863, in newAction
+    self.locpfls.updatePF(dt=elapsed_time, new_range=new_range, z=planarRange, myobserver=self.lrauv_position, update=new_range)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 532, in updatePF
+    self.pf.init_particles(position=self.pf.previous_observer, slantrange=self.pf.previous_z)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 138, in init_particles
+    self.x[i][0] = r*np.cos(t)+position[0]
+IndexError: list index out of range

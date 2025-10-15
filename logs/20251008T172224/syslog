@@ -1,0 +1,63 @@
+2025-10-08 17:22:24,169 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-08 17:22:24,173 [Supervisor](INFO): Creating Supervisor.
+2025-10-08 17:22:24,173 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251008T172224.
+2025-10-08 17:22:24,173 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251008T172224/lcmlog
+2025-10-08 17:22:24,177 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-08 17:22:24,178 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-08 17:22:24,178 [Supervisor](INFO): Adding data request for: depth
+2025-10-08 17:22:24,178 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-08 17:22:24,178 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-08 17:22:24,179 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-08 17:22:24,179 [Supervisor](INFO): Adding data request for: latitude
+2025-10-08 17:22:24,179 [Supervisor](INFO): Adding data request for: longitude
+2025-10-08 17:22:24,179 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-08 17:22:24,217 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-08 17:22:24,217 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-08 17:22:24,217 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-08 17:22:26,719 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:26,719 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:22:26,720 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-08 17:22:26,721 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:29,223 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:29,224 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:31,726 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:31,726 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:22:31,727 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:34,229 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:34,230 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:36,732 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:36,732 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:22:36,734 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:39,236 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:39,237 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:41,739 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:41,739 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:22:41,740 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:44,242 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:44,243 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:46,745 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:46,745 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:22:46,746 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:49,249 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:49,249 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:51,752 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:51,752 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:22:51,753 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:54,255 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:54,256 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:56,758 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:56,758 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:22:56,760 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:22:59,263 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:22:59,264 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:23:01,766 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:23:01,766 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:23:01,767 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:23:04,269 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:23:04,270 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:23:06,773 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 17:23:06,773 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 17:23:06,774 [processing](INFO): IVAN. Published Observation State into Slate: 3ff000000000000040000000000000004008000000000000401000000000000040140000000000004018000000000000
+2025-10-08 17:23:07,790 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-08 17:23:07,790 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-08 17:23:07,791 [main](INFO): Terminating.

@@ -1,0 +1,9 @@
+2025-10-13 21:10:29,704 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "main.py", line 22, in <module>
+    from backseat_app.processing import MarlProcessor
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 6, in <module>
+    from backseat_app.utils import TargetTracking
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 15, in <module>
+    from ..jaxagent.production_agent import load
+ValueError: attempted relative import beyond top-level package

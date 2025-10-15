@@ -1,0 +1,27 @@
+2025-10-15 14:43:02,071 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-15 14:43:16,778 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 135, in compute_new_heading
+    self.new_action= self.rl_tracking.newAction(self.target_address,self.target_range,self.lrauv_pose,self.lrauv_depth,self.target_timestamp)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 948, in newAction
+    self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 76, in get_action_and_predictions
+    pred = tracker.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/tracker.py", line 63, in update_and_predict
+    pred_xy = self.model.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/particle_filter.py", line 471, in update_and_predict
+    self.evaluation(observer=pos,z=z,max_error=self.max_error)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/particle_filter.py", line 415, in evaluation
+    vals, vecs = np.linalg.eig(cov)
+  File "<__array_function__ internals>", line 180, in eig
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/linalg/linalg.py", line 1305, in eig
+    _assert_finite(a)
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/linalg/linalg.py", line 208, in _assert_finite
+    raise LinAlgError("Array must not contain infs or NaNs")
+numpy.linalg.LinAlgError: Array must not contain infs or NaNs

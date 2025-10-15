@@ -1,0 +1,55 @@
+2025-10-12 05:56:46,468 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-12 05:56:46,472 [Supervisor](INFO): Creating Supervisor.
+2025-10-12 05:56:46,472 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251012T055646.
+2025-10-12 05:56:46,472 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251012T055646/lcmlog
+2025-10-12 05:56:46,475 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-12 05:56:46,475 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-12 05:56:46,475 [Supervisor](INFO): Adding data request for: depth
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: latitude
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: longitude
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: observation_state
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: _
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: _.
+2025-10-12 05:56:46,476 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-12 05:56:46,476 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-12 05:56:46,503 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-12 05:56:46,503 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-12 05:56:46,503 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-12 05:56:46,503 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-12 05:56:46,503 [Listener](INFO): Listening on LCM channel: _
+2025-10-12 05:56:46,503 [Listener](INFO): Listening on LCM channel: _.
+2025-10-12 05:56:46,503 [Listener](INFO): Listening on LCM channel: _.observation_state
+2025-10-12 05:56:49,006 [Listener](DEBUG): LCM listener timed out...
+2025-10-12 05:56:49,006 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:56:49,006 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-12 05:56:54,044 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:56:59,054 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:04,062 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:09,062 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:14,075 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:19,085 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:24,101 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:29,134 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:34,160 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:39,179 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:44,180 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:49,013 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-12 05:57:49,196 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-12 05:57:51,859 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 109, in <module>
+    main()
+  File "./backseat_app/main.py", line 105, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 67, in spin
+    self.listen()
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Listener.py", line 63, in listen
+    self.lc.handle()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 95, in handle_universal_msg
+    other_obs_value = hex_to_array(self.get_variable(name,msg).data[0])
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 20, in hex_to_array
+    data = bytes.fromhex(hex_str)
+TypeError: fromhex() argument must be str, not float

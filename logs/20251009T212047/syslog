@@ -1,0 +1,196 @@
+2025-10-09 21:20:47,423 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-09 21:20:47,427 [Supervisor](INFO): Creating Supervisor.
+2025-10-09 21:20:47,427 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251009T212047.
+2025-10-09 21:20:47,427 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251009T212047/lcmlog
+2025-10-09 21:20:47,430 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-09 21:20:47,431 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-09 21:20:47,431 [Supervisor](INFO): Adding data request for: depth
+2025-10-09 21:20:47,431 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-09 21:20:47,431 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-09 21:20:47,431 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-09 21:20:47,431 [Supervisor](INFO): Adding data request for: latitude
+2025-10-09 21:20:47,431 [Supervisor](INFO): Adding data request for: longitude
+2025-10-09 21:20:47,431 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-09 21:20:47,458 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-09 21:20:47,459 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-09 21:20:47,459 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-09 21:20:47,459 [Listener](INFO): Listening on LCM channel: observation_state
+2025-10-09 21:20:49,961 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:20:49,961 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:20:49,962 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-09 21:20:49,965 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:49,973 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:49,974 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:49,974 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:49,975 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:49,975 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:49,990 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:49,991 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:49,991 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:49,992 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:49,992 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,017 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,018 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,018 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,019 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,019 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,033 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,034 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,034 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,035 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,035 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,058 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,059 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,059 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,060 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,060 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,074 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,075 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,076 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,076 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,077 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,092 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,093 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,094 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,094 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,094 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,119 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,120 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,121 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,121 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,122 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,136 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,136 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,137 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,137 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,137 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,160 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,160 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,161 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,161 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,161 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,167 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,169 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,178 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,178 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,179 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,179 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,180 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,195 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,195 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,196 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,196 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,196 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,222 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,223 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,223 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,224 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,224 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,237 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,237 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,238 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,238 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,239 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,261 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,262 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,263 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,263 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,264 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,278 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,280 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,280 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,281 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,281 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,302 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,303 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,304 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,304 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,304 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,319 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,320 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,321 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,321 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,322 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,338 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,339 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,339 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:50,340 [HandlerBase](ERROR): Failed to get array. Variable name 'latitude' is unknown.
+2025-10-09 21:20:50,340 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:52,842 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:20:52,844 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:55,346 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:20:55,346 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:20:55,348 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:20:57,851 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:20:57,852 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:00,354 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:00,354 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:00,355 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:02,858 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:02,859 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:05,361 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:05,361 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:05,362 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:07,864 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:07,865 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:10,367 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:10,367 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:10,368 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:12,870 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:12,871 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:15,373 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:15,373 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:15,374 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:17,876 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:17,877 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:20,379 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:20,379 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:20,380 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:22,883 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:22,884 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:25,386 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:25,386 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:25,387 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:27,889 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:27,890 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:30,392 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:30,392 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:30,393 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:32,895 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:32,896 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:35,398 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:35,398 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:35,399 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:37,901 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:37,902 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:40,404 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:40,404 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-09 21:21:40,405 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-09 21:21:42,907 [Listener](DEBUG): LCM listener timed out...
+2025-10-09 21:21:42,908 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a

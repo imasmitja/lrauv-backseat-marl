@@ -1,0 +1,18 @@
+2025-10-13 22:08:06,054 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-13 22:08:10,090 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 134, in compute_new_heading
+    new_heading = self.rl_tracking.newAction(self.target_address,self.target_range,self.lrauv_pose,self.lrauv_depth,self.target_timestamp)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 919, in newAction
+    action, target_predictions = self.agent_controller.get_action_and_predictions(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 43, in get_action_and_predictions
+    pred = tracker.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/tracker.py", line 42, in update_and_predict
+    for i, (r, pos) in enumerate(zip(ranges, positions)):
+TypeError: 'numpy.float64' object is not iterable
