@@ -1,0 +1,3 @@
+2025-10-15 17:09:36,242 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-15 17:10:42,379 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-15 17:10:42,380 [main](INFO): Terminating.

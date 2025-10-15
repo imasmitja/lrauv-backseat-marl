@@ -1,0 +1,25 @@
+2025-10-02 16:17:37,118 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-10-02 16:17:37,121 [Supervisor](INFO): Creating Supervisor.
+2025-10-02 16:17:37,121 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T161737.
+2025-10-02 16:17:37,121 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T161737/lcmlog
+2025-10-02 16:17:37,123 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-02 16:17:37,124 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-02 16:17:37,124 [Supervisor](INFO): Adding data request for: depth
+2025-10-02 16:17:37,124 [processing](INFO): ivasidfjaisodfjaslkdfj alksdjfaklsjf 
+2025-10-02 16:17:37,124 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-02 16:17:37,124 [Listener](INFO): Listening on LCM channel: WetLabsBB2FL
+2025-10-02 16:17:37,124 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-02 16:17:37,124 [Listener](INFO): Listening on LCM channel: depth
+2025-10-02 16:17:39,626 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:17:39,626 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-02 16:17:39,626 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-02 16:17:42,128 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:17:44,630 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:17:44,630 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-02 16:17:47,132 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:17:49,634 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:17:49,634 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-02 16:17:52,136 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:17:52,448 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-02 16:17:52,448 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-02 16:17:52,448 [main](INFO): Terminating.

@@ -1,0 +1,18 @@
+2025-10-02 16:16:56,493 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-10-02 16:16:56,495 [Supervisor](INFO): Creating Supervisor.
+2025-10-02 16:16:56,495 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T161656.
+2025-10-02 16:16:56,495 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T161656/lcmlog
+2025-10-02 16:16:56,498 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-02 16:16:56,498 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-02 16:16:56,498 [Supervisor](INFO): Adding data request for: depth
+2025-10-02 16:16:56,498 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-02 16:16:56,499 [Listener](INFO): Listening on LCM channel: WetLabsBB2FL
+2025-10-02 16:16:56,499 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-02 16:16:56,499 [Listener](INFO): Listening on LCM channel: depth
+2025-10-02 16:16:59,001 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:16:59,001 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-02 16:16:59,001 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-02 16:17:01,504 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:17:03,691 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-02 16:17:03,692 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-02 16:17:03,692 [main](INFO): Terminating.

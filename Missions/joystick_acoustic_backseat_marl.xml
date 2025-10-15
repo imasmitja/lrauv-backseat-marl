@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mission xmlns="Tethys"
+       xmlns:Control="Tethys/Control"
+       xmlns:Derivation="Tethys/Derivation"
+       xmlns:Estimation="Tethys/Estimation"
+       xmlns:Guidance="Tethys/Guidance" 
+       xmlns:Sensor="Tethys/Sensor"
+       xmlns:Units="Tethys/Units"
+       xmlns:Universal="Tethys/Universal"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Tethys http://okeanids.mbari.org/tethys/Xml/Tethys.xsd
+                           Tethys/Control http://okeanids.mbari.org/tethys/Xml/Control.xsd
+                           Tethys/Derivation http://okeanids.mbari.org/tethys/Xml/Derivation.xsd
+                           Tethys/Estimation http://okeanids.mbari.org/tethys/Xml/Estimation.xsd
+                           Tethys/Guidance http://okeanids.mbari.org/tethys/Xml/Guidance.xsd
+                           Tethys/Sensor http://okeanids.mbari.org/tethys/Xml/Sensor.xsd
+                           Tethys/Units http://okeanids.mbari.org/tethys/Xml/Units.xsd
+                           Tethys/Universal http://okeanids.mbari.org/tethys/Xml/Universal.xsd"
+       Id="joystick_acoustic_backseat">
+
+    <Description>
+        This mission is a test to deploy MARL in the Gazebo sim for multi-agent target traccking using range-only.
+    </Description>
+
+<!-- Mission-wide settings -->
+
+    <DefineArg Name="MissionTimeout"><Description>
+        Maximum duration of mission
+    </Description><Units:hour/><Value>4</Value></DefineArg>
+
+    <DefineArg Name="NeedCommsTime"><Description>
+        Elapsed time after previous surface communications when vehicle will
+        begin to ascend for additional surface communications
+    </Description><Units:hour/><Value>4</Value></DefineArg>
+
+    <DefineArg Name="AcousticContactTimeout"><Description>
+        If the vehicle does not receive an acoustic signal for more than this
+        length of time, it will surface for communications with shore.
+    </Description><Units:hour/><Value>4</Value></DefineArg>
+
+<!-- You probably need to change these. -->
+
+    <DefineArg Name="ContactLabel"><Description>
+        The acoustic address of the asset to be tracked
+    </Description><Units:count/><Value>9</Value></DefineArg>
+
+    <DefineArg Name="ContactDepth"><Description>
+        The asset's depth to be tracked
+    </Description><Units:meter/><Value>NaN</Value></DefineArg>
+
+    <DefineArg Name="CenterLatitude"><Description>
+        The latitude of the center of the circle. Fill this in to specify a
+        start position, it will be overwritten once the vehicle receives an
+        acoustic signal from the contact.
+    </Description><Units:degree/><Value>36.81544</Value></DefineArg>
+
+    <DefineArg Name="CenterLongitude"><Description>
+        The longitude of the center of the circle. Fill this in to specify a
+        start position, it will be overwritten once the vehicle receives an
+        acoustic signal from the contact.
+    </Description><Units:degree/><Value>-121.82506</Value></DefineArg>
+
+    <DefineArg Name="CenterNorthingsDelta"><Description>
+        Desired change in latitude to achieve, expressed as a distance.
+    </Description><Units:meter/><Value>0</Value></DefineArg>
+
+    <DefineArg Name="CenterEastingsDelta"><Description>
+        Desired change in longitude to achieve, expressed as a distance.
+    </Description><Units:meter/><Value>0</Value></DefineArg>
+
+    <DefineArg Name="CircleRadius"><Description>
+        Radius of circle around acoustic contact during wait time
+    </Description><Units:meter/><Value>50</Value></DefineArg>
+	
+	<DefineArg Name="SpeedUpdateTimeout"><Description>
+        Max time allowed between speed command updates.
+    </Description><Units:second/><Value>15</Value></DefineArg>
+
+    <DefineArg Name="HorizontalCommandMode"><Description>
+        Mission horizontal command mode. 0 = Heading command (default). 1 = Rudder angle command.
+    </Description><Units:count/><Value>0</Value></DefineArg>
+
+<!-- You probably do not need to change these. -->
+
+    <DefineArg Name="TrackingUpdatePeriod"><Description>
+        How long to wait between acoustic queries
+    </Description><Units:second/><Value>15</Value></DefineArg>
+
+    <DefineArg Name="NumberOfPings"><Description>
+        Number of return pings to request with each acoustic query (more than 1
+        will activate oneway mode)
+    </Description><Units:count/><Value>1</Value></DefineArg>
+
+    <DefineArg Name="CircleMaxError"><Description>
+        If this distance away from the circle, drive straight towards (or away
+        from the center). Otherwise, try to reduce distance from the ideal
+        circle.
+    </Description><Units:meter/><Value>10</Value></DefineArg>
+
+    <DefineArg Name="CircleTurnToPort"><Description>
+        If true, vehicle turns to the left around the center point. If false,
+        vehicle turns to the right.
+    </Description><False/></DefineArg>
+
+    <DefineArg Name="YoYoMinDepth"><Description>
+        Minimum depth during yo-yo's.
+    </Description><Units:meter/><Value>20</Value></DefineArg>
+
+    <DefineArg Name="YoYoMaxDepth"><Description>
+        Maximum depth during yo-yo's.
+    </Description><Units:meter/><Value>30</Value></DefineArg>
+
+    <DefineArg Name="YoYoMinAltitude"><Description>
+        Min altitude while in yo-yo mode.
+    </Description><Units:meter/><Value>10</Value></DefineArg>
+
+    <DefineArg Name="YoYoPitch"><Description>
+        Pitch (plus and minus) for yo-yo behavior.
+    </Description><Units:degree/><Value>20</Value></DefineArg>
+
+    <DefineArg Name="Speed"><Description>
+        Vehicle speed.
+    </Description><Units:meter_per_second/><Value>0</Value></DefineArg>
+
+<!-- You are even less likely to need to change these. -->
+
+    <DefineArg Name="KwpHeading"><Description>
+        Used to relax waypoint cross-track error constant that is adjusted for
+        docking. (You can override this setting by passing an argument.)
+    </Description><Units:radian_per_meter/><Value>0.010</Value></DefineArg>
+
+    <DefineArg Name="MinAltitude"><Description>
+        Minimum height above the sea floor for the entire mission.
+    </Description><Units:meter/><Value>7</Value></DefineArg>
+
+    <DefineArg Name="MaxDepth"><Description>
+        Maximum depth for the entire mission.
+    </Description><Units:meter/><Value>105</Value></DefineArg>
+
+    <DefineArg Name="MinOffshore"><Description>
+        Minimum offshore distance for the entire mission.
+    </Description><Units:kilometer/><Value>1.5</Value></DefineArg>
+	
+    <DefineOutput Name="HeadingMode"><Description>
+        Heading angle command mode enumaration.
+    </Description><Units:count/><Value>0</Value></DefineOutput>
+
+    <DefineOutput Name="RudderMode"><Description>
+        Rudder angle command mode enumaration.
+    </Description><Units:count/><Value>1</Value></DefineOutput>
+	
+    <DefineOutput Name="Heading"><Description>
+        Commanded vehicle heading. Mission will init Heading to current vehicle heading.
+    </Description><Units:degree/><Value>0</Value></DefineOutput>
+
+    <DefineOutput Name="RudderAngle"><Description>
+        Commanded vehicle RudderAngle. Only acitve when mission is in rudder commands mode.
+    </Description><Units:degree/><Value>0</Value></DefineOutput>
+
+<!-- Missions should always start with a timeout. -->
+
+    <Timeout Duration="MissionTimeout"/>
+
+<!-- Add tracking directive high in the stack (above NeedComms to enable tracking from surface). -->
+
+    <Insert Filename="Insert/AbortDrift.xml">
+        <RedefineArg Name="AcousticTimeout"><Arg Name="AcousticContactTimeout"/></RedefineArg>
+    </Insert>
+
+    <Estimation:Tracking>
+        <Parallel/>
+        <Setting><Estimation:Tracking.contactDepthSetting/><Arg Name="ContactDepth"/></Setting>
+        <Setting><Estimation:Tracking.contactLabelSetting/><Arg Name="ContactLabel"/></Setting>
+        <Setting><Estimation:Tracking.numberOfSamplesSetting/><Arg Name="NumberOfPings"/></Setting>
+        <Setting><Estimation:Tracking.updatePeriodSetting/><Arg Name="TrackingUpdatePeriod"/></Setting>
+    </Estimation:Tracking>
+
+    <!--<Aggregate Id="UpdateCenter">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.northingsDelta"/></Elapsed>
+            <Lt><Elapsed><Arg Name="CenterNorthingsDelta"/></Elapsed></Lt>
+            <Or><Elapsed><CustomUri Uri="_.eastingsDelta"/></Elapsed><Lt><Elapsed><Arg Name="CenterEastingsDelta"/></Elapsed></Lt></Or>
+        </When>
+
+        <Assign><Sequence/><Arg Name="CenterNorthingsDelta"/><CustomUri Uri="_.northingsDelta"/></Assign>
+
+        <Assign><Sequence/><Arg Name="CenterEastingsDelta"/><CustomUri Uri="_.eastingsDelta"/></Assign>
+
+        <Assign><Sequence/><Arg Name="CenterLatitude"/><Universal:latitude/></Assign>
+
+        <Assign><Sequence/><Arg Name="CenterLongitude"/><Universal:longitude/></Assign>
+
+        <Syslog Severity="Info">Upadating circle center <Arg Name="CenterLatitude"/><Units:arcdeg/>+<Arg Name="CenterNorthingsDelta"/><Units:meter/>/<Arg Name="CenterLongitude"/><Units:arcdeg/>+<Arg Name="CenterEastingsDelta"/><Units:meter/></Syslog>
+
+    </Aggregate>  -->
+
+    <Aggregate Id="UpdateYoYoMaxDepth">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.YoYoMaxDepth"/></Elapsed>
+            <Lt><Elapsed><Arg Name="YoYoMaxDepth"/></Elapsed></Lt>
+            <And><CustomUri Uri="_.YoYoMaxDepth"/><Lt><Arg Name="MaxDepth"/></Lt></And>
+        </When>
+
+        <Assign><Sequence/><Arg Name="YoYoMaxDepth"/><CustomUri Uri="_.YoYoMaxDepth"/></Assign>
+
+        <Syslog Severity="Info">Upadating YoYoMaxDepth <CustomUri Uri="_.YoYoMaxDepth"/><Units:meter/></Syslog>
+
+    </Aggregate>
+
+    <Aggregate Id="UpdateYoYoMinDepth">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.YoYoMinDepth"/></Elapsed>
+            <Lt><Elapsed><Arg Name="YoYoMinDepth"/></Elapsed></Lt>
+            <And><CustomUri Uri="_.YoYoMinDepth"/><Lt><Arg Name="MaxDepth"/></Lt></And>
+        </When>
+
+        <Assign><Sequence/><Arg Name="YoYoMinDepth"/><CustomUri Uri="_.YoYoMinDepth"/></Assign>
+
+        <Syslog Severity="Info">Upadating YoYoMinDepth <CustomUri Uri="_.YoYoMinDepth"/><Units:meter/></Syslog>
+
+    </Aggregate>
+
+    <Aggregate Id="UpdateContactLabel">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.contactLabelSetting"/></Elapsed>
+            <Lt><Elapsed><Arg Name="ContactLabel"/></Elapsed></Lt>
+        </When>
+
+        <Assign><Sequence/><Arg Name="ContactLabel"/><Abs><CustomUri Uri="_.contactLabelSetting"/></Abs></Assign>
+
+        <Syslog Severity="Info">Upadating ContactLabel <CustomUri Uri="_.contactLabelSetting"/><Units:count/></Syslog>
+
+    </Aggregate>
+
+<!-- Most missions have the NeedComms aggregate at high priority. -->
+
+    <Insert Filename="Insert/NeedComms.xml" Id="NeedComms"/>
+
+    <Assign><Sequence/><Arg Name="NeedComms:DiveInterval"/><Arg Name="NeedCommsTime"/></Assign>
+
+<!-- Missions should almost always start with standard safety envelopes; most missions should not expose the parameters of these envelopes. -->
+
+    <Insert Filename="Insert/StandardEnvelopes.xml"/>
+
+    <Assign><Sequence/><Arg Name="StandardEnvelopes:MinAltitude"/><Arg Name="MinAltitude"/></Assign>
+
+    <Assign><Sequence/><Arg Name="StandardEnvelopes:MaxDepth"/><Arg Name="MaxDepth"/></Assign>
+
+    <Assign><Sequence/><Arg Name="StandardEnvelopes:MinOffshore"/><Arg Name="MinOffshore"/></Assign>
+
+<!-- Power the science payload. 
+
+    <Insert Filename="Insert/Science.xml" Id="Science">
+        <Description>
+            Get science data, including PeakDetectChl
+        </Description>
+        <RedefineArg Name="PeakDetectChlActive"><True/></RedefineArg>
+    </Insert>
+	
+	-->
+
+<!-- Add guidance update directives high in the stack. -->
+
+    <Aggregate Id="SpeedTimeout">
+
+        <When>
+            <Elapsed><Arg Name="Speed"/></Elapsed>
+            <Ge><Arg Name="SpeedUpdateTimeout"/></Ge>
+        </When>
+
+        <Assign><Sequence/><Arg Name="Speed"/><Units:meter_per_second/><Value>0</Value></Assign>
+
+        <Syslog Severity="Fault">Speed timeout reached. Stopping vehicle (speed <Arg Name="Speed"/><Units:meter_per_second/>).</Syslog>
+
+    </Aggregate>
+
+    <Aggregate Id="UpdateSpeed">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.speedCmd"/></Elapsed>
+            <Lt><Elapsed><Arg Name="Speed"/></Elapsed></Lt>
+        </When>
+
+        <Assign><Sequence/><Arg Name="Speed"/><CustomUri Uri="_.speedCmd"/></Assign>
+
+        <Syslog Severity="Info">Updating vehicle speed <Arg Name="Speed"/><Units:meter_per_second/></Syslog>
+
+    </Aggregate>
+
+    <Aggregate Id="UpdateCommandMode">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.horizontalCmdMode"/></Elapsed>
+            <Lt><Elapsed><Arg Name="HorizontalCommandMode"/></Elapsed></Lt>
+            <And>
+                <CustomUri Uri="_.horizontalCmdMode"/><Eq><Arg Name="HeadingMode"/></Eq>
+                <Or><CustomUri Uri="_.horizontalCmdMode"/><Eq><Arg Name="RudderMode"/></Eq></Or>
+            </And>
+        </When>
+
+        <Assign><Sequence/><Arg Name="HorizontalCommandMode"/><CustomUri Uri="_.horizontalCmdMode"/></Assign>
+
+        <Syslog Severity="Info">Updating horizontal command mode <Arg Name="HorizontalCommandMode"/><Units:count/></Syslog>
+
+    </Aggregate>
+
+    <Aggregate Id="UpdateHeading">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.headingCmd"/></Elapsed>
+            <Lt><Elapsed><Arg Name="Heading"/></Elapsed></Lt>
+        </When>
+
+        <Assign><Sequence/><Arg Name="Heading"/><CustomUri Uri="_.headingCmd"/></Assign>
+
+        <Syslog Severity="Info">Updating heading <Arg Name="Heading"/><Units:degree/></Syslog>
+
+    </Aggregate>
+
+    <Aggregate Id="UpdateRudder">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.rudderAngleCmd"/></Elapsed>
+            <Lt><Elapsed><Arg Name="RudderAngle"/></Elapsed></Lt>
+        </When>
+
+        <Assign><Sequence/><Arg Name="RudderAngle"/><CustomUri Uri="_.rudderAngleCmd"/></Assign>
+
+        <Syslog Severity="Info">Updating rudder angle <Arg Name="RudderAngle"/><Units:degree/></Syslog>
+
+    </Aggregate>
+
+    <!--<Aggregate Id="UpdateMassPosition">
+
+        <When>
+            <Elapsed><CustomUri Uri="_.massPositionCmd"/></Elapsed>
+            <Lt><Elapsed><Arg Name="MassPosition"/></Elapsed></Lt>
+        </When>
+
+        <Assign><Sequence/><Arg Name="MassPosition"/><CustomUri Uri="_.massPositionCmd"/></Assign>
+
+        <Syslog Severity="Info">Updating mass position <Arg Name="MassPosition"/><Units:millimeter/></Syslog>
+
+    </Aggregate> -->
+
+<!-- Power the Backseat payload. -->
+
+    <Guidance:BackseatDriver>
+        <Parallel/>
+    </Guidance:BackseatDriver>
+
+    <ReadData>
+        <Sensor:AHRS_M2.enableBroadcast/>
+    </ReadData>
+
+    <ReadData>
+        <Sensor:DAT.enableBroadcast/>
+    </ReadData>
+
+<!-- Check for additional instructions first. -->
+
+    <Call Id="StartingMission" RefId="NeedComms"/>
+
+<!-- Start mission sequence. -->
+
+    <!--<Guidance:Pitch>
+        <Parallel/>
+        <Setting><Guidance:Pitch.massPosition/><Control:VerticalControl.massDefault/></Setting>
+    </Guidance:Pitch> -->
+
+    <Guidance:Buoyancy>
+        <Parallel/>
+        <Setting><Guidance:Buoyancy.position/><Control:VerticalControl.buoyancyNeutral/></Setting>
+    </Guidance:Buoyancy>
+
+    <Guidance:SetSpeed>
+        <Parallel/>
+        <Setting><Guidance:SetSpeed.speed/><Arg Name="Speed"/></Setting>
+    </Guidance:SetSpeed>
+
+    <Aggregate Id="YoYos">
+
+        <Parallel/>
+
+        <Guidance:DepthEnvelope>
+            <Parallel/>
+            <Setting><Guidance:DepthEnvelope.minDepth/><Arg Name="YoYoMinDepth"/></Setting>
+            <Setting><Guidance:DepthEnvelope.maxDepth/><Arg Name="YoYoMaxDepth"/></Setting>
+            <Setting><Guidance:DepthEnvelope.pitch/><Arg Name="YoYoPitch"/></Setting>
+        </Guidance:DepthEnvelope>
+
+        <Guidance:AltitudeEnvelope>
+            <Parallel/>
+            <Setting><Guidance:AltitudeEnvelope.minAltitude/><Arg Name="YoYoMinAltitude"/></Setting>
+            <Setting><Guidance:AltitudeEnvelope.pitch/><Arg Name="YoYoPitch"/></Setting>
+        </Guidance:AltitudeEnvelope>
+
+        <Guidance:YoYo>
+            <Parallel/>
+            <Setting><Guidance:YoYo.pitch/><Arg Name="YoYoPitch"/></Setting>
+        </Guidance:YoYo>
+
+    </Aggregate>
+
+    <!--<Aggregate Id="CircleWrapper">
+
+        <Description>
+            Circle the contact while updating its position using the backseat
+            commands.
+        </Description>
+
+        <Sequence/>
+
+        <Assign><Parallel/><Control:HorizontalControl.kwpHeading/><Arg Name="KwpHeading"/></Assign>
+
+        <Guidance:Circle>
+            <Parallel/>
+            <Setting><Guidance:Circle.latitude/><Arg Name="CenterLatitude"/></Setting>
+            <Setting><Guidance:Circle.longitude/><Arg Name="CenterLongitude"/></Setting>
+            <Setting><Guidance:Circle.northingsDelta/><Arg Name="CenterNorthingsDelta"/></Setting>
+            <Setting><Guidance:Circle.eastingsDelta/><Arg Name="CenterEastingsDelta"/></Setting>
+            <Setting><Guidance:Circle.radius/><Arg Name="CircleRadius"/></Setting>
+            <Setting><Guidance:Circle.maxError/><Arg Name="CircleMaxError"/></Setting>
+            <Setting><Guidance:Circle.turnToPort/><Arg Name="CircleTurnToPort"/></Setting>
+        </Guidance:Circle>
+
+        <Guidance:Wait>
+            <Sequence/>
+            <Setting><Guidance:Wait.duration/><Arg Name="MissionTimeout"/></Setting>
+        </Guidance:Wait>
+
+    </Aggregate> -->
+	
+    <Aggregate Id="JoystickControl">
+
+        <Sequence/>
+
+        <Guidance:Buoyancy>
+            <Parallel/>
+            <Setting><Guidance:Buoyancy.position/><Control:VerticalControl.buoyancyDefault/></Setting>
+        </Guidance:Buoyancy>
+
+        <Guidance:SetSpeed>
+            <Parallel/>
+            <Setting><Guidance:SetSpeed.speed/><Arg Name="Speed"/></Setting>
+        </Guidance:SetSpeed>
+
+        <!--<Guidance:Mass>
+            <Parallel/>
+            <Setting><Guidance:Mass.position/><Arg Name="MassPosition"/></Setting>
+        </Guidance:Mass> 
+
+        <Guidance:Pitch>
+            <Parallel/>
+            <Setting><Guidance:Pitch.elevatorAngle/><Arg Name="ElevatorAngle"/></Setting>
+        </Guidance:Pitch> -->
+
+        <Aggregate Id="CmdHeading">
+
+            <While>
+                <Arg Name="HorizontalCommandMode"/><Eq><Arg Name="HeadingMode"/></Eq>
+            </While>
+
+            <Guidance:Point>
+                <Parallel/>
+                <Setting><Guidance:Point.forceUpdate/><True/></Setting>
+                <Setting><Guidance:Point.heading/><Arg Name="Heading"/></Setting>
+            </Guidance:Point>
+
+        </Aggregate>
+
+        <Aggregate Id="CmdRudder">
+
+            <While>
+                <Arg Name="HorizontalCommandMode"/><Eq><Arg Name="RudderMode"/></Eq>
+            </While>
+
+            <Guidance:Point>
+                <Parallel/>
+                <Setting><Guidance:Point.forceUpdate/><True/></Setting>
+                <Setting><Guidance:Point.rudderAngle/><Arg Name="RudderAngle"/></Setting>
+            </Guidance:Point>
+
+        </Aggregate>
+
+    </Aggregate>
+
+</Mission>
+

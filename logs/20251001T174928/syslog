@@ -1,0 +1,18 @@
+2025-10-01 17:49:28,253 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-10-01 17:49:28,256 [Supervisor](INFO): Creating Supervisor.
+2025-10-01 17:49:28,256 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251001T174928.
+2025-10-01 17:49:28,256 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251001T174928/lcmlog
+2025-10-01 17:49:28,259 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-01 17:49:28,260 [Supervisor](INFO): Adding data request for: depth
+2025-10-01 17:49:28,260 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-01 17:49:28,260 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "backseat_app/main.py", line 99, in <module>
+    main()
+  File "backseat_app/main.py", line 93, in main
+    backseat_app = BackseatApp(lc, cfg)
+  File "backseat_app/main.py", line 36, in __init__
+    self.sensor_processor = SensorProcessor(lcm_instance, self.cfg)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 11, in __init__
+    super().__init__(lcm_instance, cfg)
+TypeError: object.__init__() takes exactly one argument (the instance to initialize)

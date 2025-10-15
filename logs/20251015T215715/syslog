@@ -1,0 +1,9 @@
+2025-10-15 21:57:15,146 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-15 21:58:18,041 [processing](INFO): MARL: Received Other Vehicles Observation State: 106
+2025-10-15 21:58:23,212 [processing](INFO): MARL: Received Other Vehicles Observation State: 106
+2025-10-15 21:58:23,332 [processing](INFO): MARL: Received Other Vehicles Observation State: 106
+2025-10-15 21:58:23,439 [processing](INFO): MARL: Received Other Vehicles Observation State: 106
+2025-10-15 21:58:28,743 [processing](INFO): MARL: Received Other Vehicles Observation State: 106
+2025-10-15 21:58:28,846 [processing](INFO): MARL: Received Other Vehicles Observation State: 106
+2025-10-15 21:58:28,945 [processing](INFO): MARL: Received Other Vehicles Observation State: 106
+2025-10-15 21:58:41,638 [processing](INFO): MARL: Received Other Vehicles Observation State: 106

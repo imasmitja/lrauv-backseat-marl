@@ -1,0 +1,8 @@
+2025-10-15 15:55:51,815 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 22, in <module>
+    from backseat_app.processing import MarlProcessor
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 229
+    elif self.command == "$SH":
+    ^
+SyntaxError: invalid syntax

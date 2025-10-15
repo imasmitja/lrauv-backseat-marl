@@ -1,0 +1,23 @@
+2025-10-15 14:43:02,058 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-15 14:43:02,063 [Supervisor](INFO): Creating Supervisor.
+2025-10-15 14:43:02,063 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T144301.
+2025-10-15 14:43:02,063 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T144301/lcmlog
+2025-10-15 14:43:02,069 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: depth
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: latitude
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: longitude
+2025-10-15 14:43:02,071 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-15 14:43:02,249 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-15 14:43:02,249 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-15 14:43:02,250 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-15 14:43:02,250 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-15 14:43:02,250 [Listener](INFO): Listening on LCM channel: _
+2025-10-15 14:43:04,752 [Listener](DEBUG): LCM listener timed out...
+2025-10-15 14:43:04,752 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 14:43:04,756 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 14:43:09,759 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 14:43:14,761 [Supervisor](DEBUG): Publishing heartbeat.

@@ -1,0 +1,193 @@
+2025-10-08 20:03:38,084 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-08 20:03:38,088 [Supervisor](INFO): Creating Supervisor.
+2025-10-08 20:03:38,088 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251008T200338.
+2025-10-08 20:03:38,088 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251008T200338/lcmlog
+2025-10-08 20:03:38,091 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-08 20:03:38,091 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-08 20:03:38,092 [Supervisor](INFO): Adding data request for: depth
+2025-10-08 20:03:38,092 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-08 20:03:38,092 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-08 20:03:38,092 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-08 20:03:38,092 [Supervisor](INFO): Adding data request for: latitude
+2025-10-08 20:03:38,092 [Supervisor](INFO): Adding data request for: longitude
+2025-10-08 20:03:38,092 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-08 20:03:38,124 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-08 20:03:38,125 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-08 20:03:38,125 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-08 20:03:40,627 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 20:03:40,627 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 20:03:40,628 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-08 20:03:40,628 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,648 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,648 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,649 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,668 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,669 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,669 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,676 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,707 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,708 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,709 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,733 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,733 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,733 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,756 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,757 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,757 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,791 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,791 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,792 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,811 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,812 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,812 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,844 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,844 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,845 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,866 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,866 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,867 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,900 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,900 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,901 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,921 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,922 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,922 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,943 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,944 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,945 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,978 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,979 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,980 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,998 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,998 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:40,999 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,032 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,033 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,034 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,058 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,058 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,059 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,094 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,094 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,095 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,119 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,119 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,120 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,142 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,143 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,143 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,178 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,178 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,179 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,200 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,201 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,201 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,237 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,238 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,239 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,263 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,264 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,265 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,285 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,286 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,286 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,322 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,323 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,324 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,343 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,343 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,344 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,377 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,377 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,378 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,402 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,402 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,403 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,439 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,440 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,441 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,467 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,467 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,468 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,492 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,493 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,493 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,513 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,525 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,526 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,526 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,548 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,549 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,549 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,587 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,587 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,587 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,594 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,607 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,607 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,608 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,626 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,627 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,627 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,662 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,663 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,664 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,671 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,683 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,684 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,684 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,705 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,717 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,718 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,718 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,739 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,740 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,740 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,771 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,771 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,771 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,790 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,791 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,791 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,811 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,811 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,812 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,843 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,844 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,844 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,863 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,864 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,864 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,895 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,896 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,896 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,919 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,919 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,920 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,956 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,956 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,957 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,982 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,983 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:41,983 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,003 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,003 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,004 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,036 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,037 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,037 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,060 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,060 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,061 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,093 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,093 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,094 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,115 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,116 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,116 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,139 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,139 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,140 [processing](INFO): IVAN. Published Observation State into Slate: 010203040506
+2025-10-08 20:03:42,164 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-08 20:03:42,165 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-08 20:03:42,165 [main](INFO): Terminating.

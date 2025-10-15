@@ -7,6 +7,20 @@ for your own LRAUV backseat application which uses the LRAUV Backseat LCM Interf
 
 NOTE: Apps using the interface must be compatible with Python 3.8
 
+## Quick Start
+
+The template repository is ready to run immediately upon checkout. It will:
+- Listen for backseat commands from the vehicle
+- Publish a heartbeat every 5 seconds
+- Handle shutdown commands
+
+This provides a minimal working backseat application that you can extend with your own data processing.
+
+To run the app after installation:
+```bash
+$ backseat_app
+```
+
 ## Install App Package
 
 Scripts have been included for conveniently installing the python app package.
@@ -39,130 +53,109 @@ Perform cleanup/build/install:
 $ ./cycle.sh
 ```
 
-## Use Interface In Your Own Package
+## Adding Custom Data Processing
 
-This template repository implements the structure and example code outlined below.
+The `backseat_app/main.py` file is provided as a working sample. You can:
+- Use it as-is and add a processing class to handle specific data
+- Use it as an example and modify it for your needs
 
-You may use the lrauv backseat LCM interface as shown in
-the example code below. This would be your entry_point
-console_script located in your app package as `main.py`
-structured like so:
+To add custom data processing to handle specific LCM messages:
+
+1. Create a processing module (e.g., `backseat_app/processing.py`) with handler methods
+2. Import your processing class at the top of `backseat_app/main.py`
+3. Instantiate your processing class in `BackseatApp.__init__()`
+4. Add your handlers to the `subscribe()` dict
+
+See the comments in `backseat_app/main.py` and the example below.
+
+## Package Structure
+
+This template repository implements the following structure:
 
 ```
-your_app_package
+backseat_app_package
 |__ pyproject.toml
 |__ setup.cfg
-|__ + your_app
+|__ + backseat_app
     |__ __init__.py
-    |__ your_processing.py
     |__ main.py
+    |__ processing.py (you create this for custom processing)
     |__ + config
         |__ __init__.py
         |__ app_cfg.yaml
 ```
 
-### Example Code Implementation
+### Example Custom Processing Implementation
 
-As stated above, this would be in the `main.py` for your
-package which would implement the LRAUV backseat LCM interface.
+Here's a simple example of a processing module that handles sensor data:
 
 ```python
-try:
-    import importlib.resources as ilr
-    ilr.files
-except AttributeError:
-    import importlib_resources as ilr
-
+# backseat_app/processing.py
 import logging
+from lrauv.LCM.HandlerBase import LcmHandlerBase
+from lrauv.LCM.Publisher import LcmPublisher
 
-import lcm
+logger = logging.getLogger('backseat_app')
 
-from lrauv.LCM.Listener import LcmListener
-from lrauv.supervisor.Supervisor import Supervisor
+class SensorProcessor(LcmHandlerBase):
+    def __init__(self, lcm_instance, cfg):
+        super().__init__(lcm_instance, cfg)
+        self.publisher = LcmPublisher(lcm_instance)
+        self.chlorophyll_threshold = 2.5
+    
+    def handle_fluo(self, channel, data):
+        """Process chlorophyll fluorescence data from WetLabsBB2FL sensor"""
+        logger.debug(f"Handling LCM msg on channel {channel}")
+        msg = self.decode(data)
+        
+        if 'mass_concentration_of_chlorophyll_in_sea_water' not in self.get_item_names(msg):
+            return
+        
+        chl_var = self.get_variable('mass_concentration_of_chlorophyll_in_sea_water', msg)
+        if not chl_var or len(chl_var.data) == 0:
+            logger.warning("No chlorophyll data in message")
+            return
+        
+        chl_value = chl_var.data[0]
+        logger.info(f"Chlorophyll reading: {chl_value:.2f} ug/L")
+        
+        if chl_value > self.chlorophyll_threshold:
+            logger.warning(f"High chlorophyll detected: {chl_value:.2f} ug/L")
+            self.publish_alert(msg.epochMillisec, chl_value)
+    
+    def publish_alert(self, timestamp, value):
+        """Publish a detection alert to the vehicle's slate"""
+        self.publisher.clear_msg()
+        self.publisher.timestamp(timestamp)
+        self.publisher.add_variable(
+            name='_.high_chlorophyll_detected',
+            val=value,
+            unit='ug/L'
+        )
+        self.publisher.publish('tethys_slate')
+        logger.info("Published chlorophyll alert")
+```
 
-from lrauv.supervisor import Logger
-logger = None
+Then update `backseat_app/main.py`:
 
-
-# TODO change this to use your code
-from backseat_app.processing import ProcessingClass
-
+```python
+# Import your processing class
+from backseat_app.processing import SensorProcessor
 
 class BackseatApp(Supervisor, LcmListener):
-
     def __init__(self, lcm_instance, app_cfg):
-        Supervisor.__init__(self, lcm_instance, app_cfg)
-        LcmListener.__init__(self, lcm_instance)
-        global logger
-        logger, _ = Logger.configure_logger(name=app_cfg['app_name'])
-
-        # TODO change this to use your code
-        self.processing_class = ProcessingClass(lcm_instance, self.cfg)
-
-        # request LCM data from LRAUV
-        self.request_slate(self.cfg['lrauv_data'])
-
-        # subscribe LCM handlers
-        self.set_timeout(timeout_sec=2.5)
-        # TODO add your handlers for data requested in config file
+        # ... initialization code ...
+        
+        # Instantiate your processor
+        self.sensor_processor = SensorProcessor(lcm_instance, self.cfg)
+        
+        # Subscribe to channels with your handlers
         self.subscribe(
             {
                 self.cfg['lcm_bsd_command_channel']: self.lrauv_command_handler,
-                'WetLabsUBAT': self.your_processing_class.handle_ubat,
-                'WetLabsBB2FL': self.your_processing_class.handle_fluo
+                'WetLabsBB2FL': self.sensor_processor.handle_fluo,
             }
         )
-
-
-    def spin(self):
-        """
-        Main loop. Handle subscriber callbacks until instructed to shutdown.
-
-        :return: 1 upon exit
-        """
-        while self.run:
-            try:
-                # listen to incoming LCM messages with a timeout
-                self.listen()
-                self.strobe_heartbeat(heart_rate_sec=5.0)
-                self.request_data.request()
-            except KeyboardInterrupt:
-                logger.error("KeyboardInterrupt: aborting.")
-                break
-        # power down
-        self.unsubscribe()
-        self.shutdown()
-        logger.info("Terminating.")
-        exit(1)
-
-
-def main():
-    import argparse
-    from lrauv.config.AppConfig import read_config
-
-    default_cfg = ilr.files('backseat_app.config').joinpath('app_config.yaml')
-
-    # parse command-line arguments
-    parser = argparse.ArgumentParser(description='Runs the backseat app.')
-    parser.add_argument("-c", "--config", default=default_cfg,
-                        type=str, help="set path to app config file")
-
-    args = parser.parse_args()
-
-    # read in app configuration
-    cfg = read_config(args.config)
-
-    # init LCM object
-    lc = lcm.LCM(cfg['lcm_url'])
-    # init BackseatApp
-    backseat_app = BackseatApp(lc, cfg)
-    # run
-    backseat_app.spin()
-
-
-if __name__ == "__main__":
-    main()
-
 ```
 
 ### Config

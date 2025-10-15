@@ -1,0 +1,25 @@
+2025-10-08 20:11:06,506 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-08 20:11:06,510 [Supervisor](INFO): Creating Supervisor.
+2025-10-08 20:11:06,510 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251008T201106.
+2025-10-08 20:11:06,510 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251008T201106/lcmlog
+2025-10-08 20:11:06,513 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-08 20:11:06,514 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-08 20:11:06,514 [Supervisor](INFO): Adding data request for: depth
+2025-10-08 20:11:06,514 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-08 20:11:06,514 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-08 20:11:06,514 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-08 20:11:06,514 [Supervisor](INFO): Adding data request for: latitude
+2025-10-08 20:11:06,514 [Supervisor](INFO): Adding data request for: longitude
+2025-10-08 20:11:06,514 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-08 20:11:06,547 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-08 20:11:06,547 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-08 20:11:06,547 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-08 20:11:09,049 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 20:11:09,049 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-08 20:11:09,050 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-08 20:11:09,050 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-08 20:11:11,552 [Listener](DEBUG): LCM listener timed out...
+2025-10-08 20:11:11,553 [processing](INFO): IVAN. Published Observation State into Slate: 012b0304052a
+2025-10-08 20:11:12,107 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-08 20:11:12,107 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-08 20:11:12,107 [main](INFO): Terminating.

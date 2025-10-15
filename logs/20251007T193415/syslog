@@ -1,0 +1,133 @@
+2025-10-07 19:34:15,298 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-10-07 19:34:15,302 [Supervisor](INFO): Creating Supervisor.
+2025-10-07 19:34:15,302 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251007T193415.
+2025-10-07 19:34:15,302 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251007T193415/lcmlog
+2025-10-07 19:34:15,305 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-07 19:34:15,306 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-07 19:34:15,306 [Supervisor](INFO): Adding data request for: depth
+2025-10-07 19:34:15,307 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-07 19:34:15,307 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-07 19:34:15,307 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-07 19:34:15,307 [Supervisor](INFO): Adding data request for: latitude
+2025-10-07 19:34:15,307 [Supervisor](INFO): Adding data request for: longitude
+2025-10-07 19:34:15,307 [Supervisor](INFO): Adding data request for: time
+2025-10-07 19:34:15,307 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-07 19:34:15,342 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-07 19:34:15,343 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-07 19:34:15,343 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-07 19:34:15,343 [Listener](INFO): Listening on LCM channel: Time
+2025-10-07 19:34:15,343 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:15,343 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-07 19:34:17,345 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:19,347 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:21,349 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:21,349 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:23,351 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:25,353 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:27,355 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:27,355 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:29,357 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:31,360 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:33,362 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:33,362 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:35,364 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:37,366 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:39,368 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:39,368 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:41,370 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:43,372 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:45,374 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:45,374 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:47,376 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:49,378 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:51,380 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:51,380 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:53,382 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:55,384 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:57,386 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:34:57,386 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:34:59,388 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:01,390 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:03,392 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:03,392 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:05,394 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:07,396 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:09,398 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:09,398 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:11,400 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:13,402 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:15,404 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:15,404 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:15,405 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-07 19:35:17,407 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:19,410 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:21,412 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:21,412 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:23,414 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:25,417 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:27,420 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:27,420 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:29,422 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:31,424 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:33,426 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:33,427 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:35,429 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:37,431 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:39,433 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:39,433 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:41,435 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:43,438 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:45,440 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:45,440 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:47,443 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:49,445 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:51,447 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:51,447 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:53,449 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:55,451 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:35:57,454 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:35:57,650 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:35:59,652 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:01,655 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:03,657 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:03,658 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:05,660 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:07,662 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:09,664 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:09,664 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:11,666 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:13,668 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:15,670 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:15,670 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:15,671 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-07 19:36:17,673 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:17,674 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-07 19:36:19,676 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:21,678 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:21,678 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:21,679 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-07 19:36:23,680 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:25,682 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:27,684 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:27,684 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:29,686 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:31,688 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:33,690 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:33,690 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:35,693 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:37,695 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:37,696 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-07 19:36:39,698 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:39,698 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:41,701 [processing](DEBUG): Handling LCM msg on channel DAT
+2025-10-07 19:36:43,703 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:45,706 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:45,706 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:47,708 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:49,710 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:51,714 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:51,714 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-07 19:36:53,718 [processing](DEBUG): Handling LCM msg on channel Universal
+2025-10-07 19:36:55,000 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-07 19:36:55,000 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-07 19:36:55,000 [main](INFO): Terminating.

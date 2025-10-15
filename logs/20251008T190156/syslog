@@ -1,0 +1,8 @@
+2025-10-08 19:01:56,568 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 22, in <module>
+    from backseat_app.processing import MarlProcessor
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 163
+    val=array_to_hex(self.obs_value),
+    ^
+SyntaxError: invalid syntax

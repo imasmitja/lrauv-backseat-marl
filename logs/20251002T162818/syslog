@@ -1,0 +1,18 @@
+2025-10-02 16:28:18,798 [AppConfig](INFO): Reading configuration file: /home/maiv/.local/lib/python3.8/site-packages/backseat_app/config/app_cfg.yml
+2025-10-02 16:28:18,800 [Supervisor](INFO): Creating Supervisor.
+2025-10-02 16:28:18,801 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T162818.
+2025-10-02 16:28:18,801 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251002T162818/lcmlog
+2025-10-02 16:28:18,803 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-02 16:28:18,804 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-02 16:28:18,804 [Supervisor](INFO): Adding data request for: depth
+2025-10-02 16:28:18,804 [processing](INFO): ivan. sensorprocessor init done
+2025-10-02 16:28:18,804 [Listener](INFO): Listening on LCM channel: bsd_command. handler: <bound method Supervisor.lrauv_command_handler of <__main__.BackseatApp object at 0x7fad809882e0>>
+2025-10-02 16:28:18,804 [Listener](INFO): Listening on LCM channel: WetLabsBB2FL. handler: <bound method SensorProcessor.handle_fluo of <backseat_app.processing.SensorProcessor object at 0x7fad8c8f8400>>
+2025-10-02 16:28:18,804 [Listener](INFO): Listening on LCM channel: NAL9602. handler: <bound method SensorProcessor.handle_nal of <backseat_app.processing.SensorProcessor object at 0x7fad8c8f8400>>
+2025-10-02 16:28:18,804 [Listener](INFO): Listening on LCM channel: depth. handler: <bound method SensorProcessor.handle_depth of <backseat_app.processing.SensorProcessor object at 0x7fad8c8f8400>>
+2025-10-02 16:28:21,306 [Listener](DEBUG): LCM listener timed out...
+2025-10-02 16:28:21,306 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-02 16:28:21,306 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-02 16:28:22,103 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-02 16:28:22,103 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-02 16:28:22,103 [main](INFO): Terminating.
