@@ -1,0 +1,15 @@
+2025-10-17 06:46:01,396 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 06:46:07,128 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760689536.0, 6.0, 36.69360004032786, -121.93648074823744, -0.40342360734939575, 61.040199279785156]
+2025-10-17 06:46:07,128 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 187, in compute_new_heading
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 187, in <listcomp>
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+TypeError: 'float' object is not subscriptable

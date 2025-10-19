@@ -1,0 +1,37 @@
+2025-10-17 05:56:34,713 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_pontus.yml
+2025-10-17 05:56:34,718 [Supervisor](INFO): Creating Supervisor.
+2025-10-17 05:56:34,718 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T055634.
+2025-10-17 05:56:34,718 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T055634/lcmlog
+2025-10-17 05:56:34,724 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-17 05:56:34,725 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-17 05:56:34,725 [Supervisor](INFO): Adding data request for: depth
+2025-10-17 05:56:34,725 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-17 05:56:34,726 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-17 05:56:34,726 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-17 05:56:34,726 [Supervisor](INFO): Adding data request for: latitude
+2025-10-17 05:56:34,726 [Supervisor](INFO): Adding data request for: longitude
+2025-10-17 05:56:34,726 [Supervisor](INFO): Adding data request for: _.others_observations
+2025-10-17 05:56:34,726 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 05:56:35,005 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-17 05:56:35,005 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-17 05:56:35,005 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-17 05:56:35,005 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-17 05:56:35,005 [Listener](INFO): Listening on LCM channel: _
+2025-10-17 05:56:37,507 [Listener](DEBUG): LCM listener timed out...
+2025-10-17 05:56:37,507 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:37,507 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 05:56:40,947 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760686720.0, 6.0, 36.693600342373706, -121.93640855624975, -0.40305525064468384, 65.23046112060547]
+2025-10-17 05:56:41,202 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760686848.0, 6.0, 36.69359400663678, -121.9366935788147, 10.548251152038574, 50.655460357666016]
+2025-10-17 05:56:42,130 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 187, in compute_new_heading
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 187, in <listcomp>
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+TypeError: 'float' object is not subscriptable

@@ -285,7 +285,7 @@ class ParticleFilter(object):
         if self._x[0] == 0 and self._x[2] == 0:
             method = 2
         else:
-            method = 2 #compound method presented in OCEANS'18 Kobe
+            method = 3 #compound method presented in OCEANS'18 Kobe
         
         if method == 1:   
             # 4- resampling with a sample probability proportional
@@ -497,9 +497,9 @@ class Target(object):
         # self.pf.set_noise(forward_noise = 0.01, turn_noise = 0.1, sense_noise=.005, velocity_noise = 0.01)
         
         #as BSC RL tests in Python
-        self.pf = ParticleFilter(std_range=20.,init_velocity=0.4,dimx=4,particle_number=5000,method=method,max_pf_range=max_pf_range)
+        self.pf = ParticleFilter(std_range=20.,init_velocity=0.4,dimx=4,particle_number=10000,method=method,max_pf_range=max_pf_range)
         # self.pf.set_noise(forward_noise = 0.01, turn_noise = .5, sense_noise=2., velocity_noise = 0.01)
-        self.pf.set_noise(forward_noise = 0.1, turn_noise = .9, sense_noise=5., velocity_noise = 0.01)
+        self.pf.set_noise(forward_noise = 0.01, turn_noise = .9, sense_noise=5., velocity_noise = 0.01)
             
         self.position = 0
         
@@ -794,6 +794,8 @@ class np_rnn_rl_agent(object):
 class TargetTracking(object):
     def __init__(self, marl_method = 'Ivan2022'):
 
+        self.num_agents = 2
+        self.num_targets = 1
         
         #First we load the RL agent
         if marl_method == 'Ivan2022':
@@ -803,13 +805,15 @@ class TargetTracking(object):
         elif marl_method == 'Matteo2025':
             import jax
             jax.config.update('jax_platform_name', 'cpu')
+            model_name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent
+            #model_name = "mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents
             project_root = os.path.dirname(os.path.abspath(__file__))
             project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
             project_root = os.path.abspath(project_root) 
-            model_path = os.path.join(project_root, "jaxagent", "IROS_MODELS", "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors")
+            model_path = os.path.join(project_root, "jaxagent", "IROS_MODELS", model_name)
             self.agent_controller = load(
-                    num_agents=1,
-                    num_landmarks=1,
+                    num_agents=self.num_agents,
+                    num_landmarks=self.num_targets,
                     model_path=model_path,
                     dt=30 # seconds per step
                 )
@@ -823,6 +827,8 @@ class TargetTracking(object):
         self.marl_method = marl_method
         self.last_measureTimestamp = 0 #we need to initialize this variable
         self.lrauv_position = np.array([0.,0.,0.,0.])
+        self.agents_pos = np.zeros([self.num_agents,3])
+        self.agents_range = np.zeros([self.num_targets,self.num_agents])
         self.lrauv_position_origin = np.array([0.,0.,0.,0.])
         self.lrauv_target_origin = np.array([0.,0.,0.,0.])
         self.initialized = False
@@ -845,10 +851,22 @@ class TargetTracking(object):
         print('Log file name: ',self.fileDirName)
         
     
-    def newAction(self,targetAddr,slantRange,lrauvLatLon,lrauvDepth,measureTimestamp,new_range=True):
+    def newAction(self,targetAddr,agents_slantRange,agents_lrauvLatLon,agents_lrauvDepth,agents_measureTimestamp,new_range=True):
         ''' Track specified targets
         TODO
         ''' 
+        #initialize variables to 0s
+        self.agents_pos = np.zeros([self.num_agents,3])
+        self.agents_range = np.zeros([self.num_targets,self.num_agents])
+
+        #take current lrauv vehicle from all data
+        slantRange = np.array(agents_slantRange).item(0)
+        lrauvLatLon = agents_lrauvLatLon[0]
+        lrauvDepth = agents_lrauvDepth[0]
+        measureTimestamp = np.array(agents_measureTimestamp).item(0)
+        for i in range(len(agents_slantRange[0])): #TODO: we assume that we have only one target, if more, we need to change the script
+            self.agents_range[0][i] = agents_slantRange[0][i] 
+
         #Compute the planar range based on LRAUV depth and target depth
         #TODO
         planarRange = slantRange + 0.
@@ -856,7 +874,7 @@ class TargetTracking(object):
         #If this is the first time since initializon, we save the current LRAUV position
         #as origin
         if self.initialized == False:
-            #WG current position in UTM format
+            #LRAUV current position in UTM format
             try:
                 tuple = utm.from_latlon(lrauvLatLon[0], lrauvLatLon[1])
                 lrauv_x, lrauv_y, self.zonenumber, self.zoneletter = tuple
@@ -871,14 +889,13 @@ class TargetTracking(object):
             except:
                 print('ERROR: Cannot convert LRAUV Lat/Lon to UTM. Check that the LRAUV Lat/Lon is correct')
                 return(-1)
-            
-        #compute the position of the LRAUV in UTM
+        
+        #compute the position of the current LRAUV in UTM (using the format for Ivan)
         tuple = utm.from_latlon(lrauvLatLon[0], lrauvLatLon[1])
         lrauv_x, lrauv_y, zonenumber, zoneletter = tuple
         lrauv_x -= self.lrauv_position_origin.item(0)
         lrauv_y -= self.lrauv_position_origin.item(2)
-        
-        # save the current wg postion and velocity
+        # save the current lrauv postion and velocity
         elapsed_time = measureTimestamp-self.last_measureTimestamp
         if elapsed_time <= 0:
             elapsed_time = 1.
@@ -887,6 +904,16 @@ class TargetTracking(object):
         # self.lrauv_position = np.array([lrauv_x, lrauv_vx, lrauv_y, lrauv_vy])
         self.lrauv_position = np.array([lrauv_x, lrauv_vx, lrauv_y, lrauv_vy]) 
         self.last_measureTimestamp = measureTimestamp + 0.
+
+        #compute the position of the others LRAUVs in UTM (using the format for Matteo)
+        for i in range(len(agents_lrauvLatLon)):
+            if agents_lrauvLatLon[i][0] == 0:
+                  continue
+            tuple = utm.from_latlon(agents_lrauvLatLon[i][0], agents_lrauvLatLon[i][1])
+            lrauv_x, lrauv_y, zonenumber, zoneletter = tuple
+            lrauv_x -= self.lrauv_position_origin.item(0)
+            lrauv_y -= self.lrauv_position_origin.item(2)
+            self.agents_pos[i] = np.array([lrauv_x, lrauv_y, agents_lrauvDepth[i]]) 
         
         #if this is the first iteration, we don't go further and it's used only to update the lrauv position
         if self.ping_count == 0:
@@ -922,10 +949,10 @@ class TargetTracking(object):
             #positions = np.array([[0.0, 0.0, 0.0]]) # (agents, 3), first is always the current agent
             #targets_depth = np.array([10]) # (targets,)'''
 
-            if planarRange == -1:
-                planarRange = int(0) #In Matteo's method a 0 means no measurement.
+            #In Matteo's method a 0 means no measurement.
+            self.agents_range = np.where(self.agents_range == -1, 0, self.agents_range)
             #lrauv heading angle (yaw) +-180 degrees, East reference
-            angle = np.arctan2(self.lrauv_position [3],self.lrauv_position [1])
+            angle = np.arctan2(self.lrauv_position[3],self.lrauv_position[1])
             #print('angle arctan=',angle*180./np.pi)
             #Convert yaw to 0-360 degrees, East reference
             if angle <= 0.:
@@ -944,19 +971,21 @@ class TargetTracking(object):
             #Now back to 360 N but with clockwise positive angles
             angle = angle%(2.*np.pi)
             #print('angle 360Ncl=',angle*180./np.pi)
-            ranges = np.array([[planarRange]]) # (targets, agents), first is always the current agent
-            positions = np.array([[self.lrauv_position [0], self.lrauv_position [2], 0.]]) # (agents, 3), first is always the current agent
+            #ranges = np.array([[planarRange]]) # (targets, agents), first is always the current agent
+            #positions = np.array([[self.lrauv_position [0], self.lrauv_position [2], 0.]]) # (agents, 3), first is always the current agent
             targets_depth = np.array([10.]) # (targets,), a constant, not used
             
             print('INFO: Running Matteo2025 MARL method')
-            print('INFO: LRAUV pos (x,y,depth,yaw)= %.2fm, %.2fm, %.2fm, %.2fdegrees'%(self.lrauv_position[0],self.lrauv_position[2],lrauvDepth,angle*180./np.pi))
-            print('INFO: Target range= %.2fm'%planarRange)
-            print('INFO: MYOBSERVER (x,vx,y,vy)', self.lrauv_position)
+            #print('INFO: LRAUV pos (x,y,depth,yaw)= %.2fm, %.2fm, %.2fm, %.2fdegrees'%(self.lrauv_position[0],self.lrauv_position[2],lrauvDepth,angle*180./np.pi))
+            #print('INFO: Target range= %.2fm'%planarRange)
+            #print('INFO: MYOBSERVER (x,vx,y,vy) ', self.lrauv_position)
+            print('INFO: AGENTS_POS (x,y,z) ', self.agents_pos)
+            print('INFO: AGENTS_RANGE', self.agents_range)
 
             self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
                         angle=angle,
-                        ranges=ranges, # (targets, agents), first is always the current agent
-                        positions=positions,
+                        ranges=self.agents_range, # (targets, agents), first is always the current agent
+                        positions=self.agents_pos,
                         targets_depth=targets_depth,
                         dt=30 # seconds per step
                     )

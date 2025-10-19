@@ -1,0 +1,19 @@
+2025-10-17 07:45:59,318 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 07:46:02,581 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760705536.0, 10.0, 36.69592309946357, -121.9277159403101, 21.19908905029297, 806.8281860351562]
+2025-10-17 07:46:02,589 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 198, in compute_new_heading
+    self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 983, in newAction
+    self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 84, in get_action_and_predictions
+    pred = tracker.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/tracker.py", line 69, in update_and_predict
+    if np.isnan(pred_xy).any():
+UnboundLocalError: local variable 'pred_xy' referenced before assignment

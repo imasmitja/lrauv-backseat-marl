@@ -43,12 +43,8 @@ class Tracker_ivan:
         # bring the ranges to 2d if the landmarks depth is known
         if depth is not None:
             for i, (r, pos) in enumerate(zip(ranges, positions)):
-                if r != 0:
-                    try:
-                        ranges[i] = np.sqrt(r**2 - (pos[2] - depth)**2)
-                    except:
-                        #the trigonometry distance is not correct due to depth and range measurements (possibly an issue only on sim)
-                        pass
+                if r != 0 and ((pos[2] - depth)**2)<=r**2 :
+                    ranges[i] = np.sqrt(r**2 - (pos[2] - depth)**2)
 
         # Least Squares method
         if self.method == 'ls':
@@ -58,14 +54,15 @@ class Tracker_ivan:
         
         # Particle Filter method
         else:
-            if self.pf_state is None:
-                # initialize the particle filter if it's the first time
-                self.model.init_particles(position=positions[0], slantrange=ranges[0])
-                self.pf_state = True
-            pos = np.array(positions)[:,:2] # only x, y
-            r = np.array(ranges)
-            pred_xy = self.model.update_and_predict(
-                                        dt=dt, z=r, pos=pos[0])
+            for r, pos in zip(ranges,positions):
+                if self.pf_state is None:
+                    # initialize the particle filter if it's the first time
+                    self.model.init_particles(position=pos, slantrange=r)
+                    self.pf_state = True
+                pos = np.array(pos)[:2] # only x, y
+                r = np.array(r)
+                pred_xy = self.model.update_and_predict(
+                                            dt=dt, z=r, pos=pos)
 
         # if the prediction is not available, use the first position
         if np.isnan(pred_xy).any():

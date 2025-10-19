@@ -7,7 +7,7 @@ import sys
 class ParticleFilter:
     """ Class for the Particle Filter """
     
-    def __init__(self,std_range=20.,init_velocity=.4,dimx=4,particle_number = 10000, method = 'range', max_pf_range = 250, max_error=100):
+    def __init__(self,std_range=20.,init_velocity=4.,dimx=4,particle_number = 10000, method = 'range', max_pf_range = 250, max_error=200):
  
         self.std_range = std_range
         self.init_velocity = init_velocity 
@@ -30,7 +30,7 @@ class ParticleFilter:
         self._orientation = 0
         
         #Weights
-        self.w = np.ones(particle_number)
+        self.w = np.ones(particle_number)/self.particle_number
         
         #Covariance of the result
         self.covariance_vals = [0.02,0.02]
@@ -59,7 +59,7 @@ class ParticleFilter:
         self.previous_z = 0
         
         # default noise
-        self.set_noise(forward_noise = 0.1, turn_noise = 0.9, sense_noise=5., velocity_noise = 0.01)
+        self.set_noise(forward_noise = 0.1, turn_noise = 0.9, sense_noise=5., velocity_noise = 0.1)
         
     def target_estimation(self):
         """ Calculate the mean error of the system
@@ -89,7 +89,10 @@ class ParticleFilter:
                 sumy += self.x[i][2]*self.w[i]
                 sumvx += self.x[i][1]*self.w[i]
                 sumvy += self.x[i][3]*self.w[i]
-            self._x = np.array([sumx, sumvx, sumy, sumvy])/np.sum(self.w)
+            if np.sum(self.w) == 0.:
+                self._x = np.array([sumx, sumvx, sumy, sumvy])/1e10
+            else:
+                self._x = np.array([sumx, sumvx, sumy, sumvy])/np.sum(self.w)
             
             # #new approach to find the colosest particle to the mean
             # x_pos = np.where(abs(self.x.T[0]-self._x[0]) == np.amin(abs(self.x.T[0]-self._x[0])))[0][0]
@@ -125,9 +128,14 @@ class ParticleFilter:
             #target's orientation
             orientation = np.random.rand() * 2.0 * np.pi   # target's orientation
             # target's velocity 
-            v = random.gauss(self.init_velocity, self.init_velocity/2)  
+            gaussvel=False
+            if gaussvel == True:
+                v = random.gauss(self.init_velocity, self.init_velocity/2)  
+            else:
+                v = np.random.rand()*self.init_velocity*2 - self.init_velocity
             self.x[i][1] = np.cos(orientation)*v
             self.x[i][3] = np.sin(orientation)*v
+        self.w = np.ones(self.particle_number)/self.particle_number
         self.target_estimation()
         self.initialized = True
         # print('WARNING: Particles initialized')
@@ -262,7 +270,7 @@ class ParticleFilter:
         if self._x[0] == 0 and self._x[2] == 0:
             method = 2
         else:
-            method = 2 #compound method presented in OCEANS'18 Kobe
+            method = 3 #compound method presented in OCEANS'18 Kobe
         
         if method == 1:   
             # 4- resampling with a sample probability proportional
@@ -422,7 +430,7 @@ class ParticleFilter:
             self.covariance_theta = np.arctan2(vec_y,vec_x)
             # print('Evaluation -> covariance (CI of 98): %.2f m(x) %.2f m(y) %.2f deg'%(self.covariance_vals[0],self.covariance_vals[1],np.degrees(self.covariance_theta)))
             print('Evaluation -> covariance (CI of 98): %.2f '%(np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2)))
-            print('errorPF=',abs(sum2/self.particle_number - z))
+            print('ErrorPF=',abs(sum2/self.particle_number - z))
             print('Evaluaiton -> max(self.w)=%.4f sum(self.w)=%.4f'%(np.max(self.w),np.sum(self.w)))
             if abs(sum2/self.particle_number - z) > max_error:
                 self.initialized = False
@@ -439,7 +447,6 @@ class ParticleFilter:
 
         # add dummy vel in 2nd and 3rd position
         pos = np.array([pos[0], 0, pos[1], 0])
-        print('PF: updateandpredict', dt, 'range=',z, 'pos=',pos)
         
         # Initialize the particles if needed
         if self.initialized == False:

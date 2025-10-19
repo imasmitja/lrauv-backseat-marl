@@ -42,37 +42,27 @@ class AgentProductionController:
         
         # use the positions and ranges received by communications and ignore 0s
         # prepare ranges
-        ranges_good=[]
-        positions_good= []    
-        for i in range(len(positions)):
-            for j in range(len(ranges)):
-                if ranges[j][i] == 0.:
-                    continue
-                ranges_good.append(list([ranges[j][i]]))
-            try:
-                if ranges_good[i] != []:
-                    positions_good.append(positions[i].tolist())
-            except:
-                pass
-        try:
-            ranges_good = np.matrix(ranges_good).reshape(len(ranges),len(ranges[0])).tolist()
-        except:
-            try:
-                ranges_good = np.matrix(ranges_good).reshape(len(ranges[0])).tolist()
-            except:
-                pass
-
         #print('###########################################')
         #print('INFO: ranges     =',ranges)
-        #print('INFO: Good ranges=',ranges_good)
         #print('INFO: positions     =',positions)
+
+        #Create a mask to eliminate the ranges and associated position with 0s, as they don't need to be used for trget position estimation
+        mask = ranges[0] != 0
+        ranges_good = ranges[:,mask]
+        positions_good = positions[mask,:] 
+        #Create a mask to eliminate the psitions equal to 0s, as they don't need to be used to update the agent
+        #mask = np.any(positions != 0, axis=1)  # Check if any element in row is non-zero
+        #positions_obs = positions[mask]
+
+        
+        #print('INFO: Good ranges=',ranges_good)
         #print('INFO: Good positions=',positions_good)
         #print('###########################################')
         
         # update tracking for each target 
         preds = {}
         for i, tracker in enumerate(self.trackers):
-            if ranges_good != []:
+            if len(ranges_good[0]) != 0:
                 #print('INFO: Target prediction True')
                 pred = tracker.update_and_predict(
                     ranges=ranges_good[i],
@@ -107,11 +97,18 @@ class AgentProductionController:
         
         # logic is that the first agent is the one using the controller
         for j in range(1, len(positions)):
-            obs.update({
-                f'agent_{j}_dx': positions[j][0] - positions[0][0],
-                f'agent_{j}_dy': positions[j][1] - positions[0][1],
-                f'agent_{j}_dz': positions[j][2] - positions[0][2],
-            })
+            if positions[j].sum()!=0:
+                obs.update({
+                    f'agent_{j}_dx': positions[j][0] - positions[0][0],
+                    f'agent_{j}_dy': positions[j][1] - positions[0][1],
+                    f'agent_{j}_dz': positions[j][2] - positions[0][2],
+                })
+            else: # if we don't have others agents, we put 0s
+                obs.update({
+                    f'agent_{j}_dx': 0.,
+                    f'agent_{j}_dy': 0.,
+                    f'agent_{j}_dz': 0.,
+                })
 
         for i in range(len(self.trackers)):
              # if range is 0 we fake one using the last target prediction and the current lrauv position

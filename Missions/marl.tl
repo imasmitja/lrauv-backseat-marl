@@ -71,7 +71,7 @@ mission marl {
       Radius of circle around acoustic contact during wait time
       """
 
-    SpeedUpdateTimeout = 120 second
+    SpeedUpdateTimeout = 240 second
       """
       Max time allowed between speed command updates.
       """
@@ -96,7 +96,7 @@ mission marl {
       How often to send back some a-comms data
       """
 
-    TrackingUpdatePeriod = 15 second
+    TrackingUpdatePeriod = 30 second
       """
       How long to wait between acoustic queries
       """
@@ -155,7 +155,7 @@ mission marl {
       Vehicle speed.
       """
 
-    MyTempVar = 0 count
+    MyTempVar = "init"
 
       """
       A custom variable  from the backseat driver interface.
@@ -166,16 +166,6 @@ mission marl {
       """
       Used to relax waypoint cross-track error constant that is adjusted for
       docking. (You can override this setting by passing an argument.)
-      """
-
-    MinAltitude = 7 meter
-      """
-      Minimum height above the sea floor for the entire mission.
-      """
-
-    MaxDepth = 105 meter
-      """
-      Maximum depth for the entire mission.
       """
 
     MinOffshore = 1.5 kilometer
@@ -232,38 +222,30 @@ mission marl {
     set updatePeriodSetting = TrackingUpdatePeriod
   }
 
-  #assign in sequence customUri "_.test_good" = "999"
+  #assign in sequence customUri "_.others_observations" = "999"
 
   aggregate SendObservationData {
 
      run when ( elapsed (MyTempVar) >= SendObservationDataInterval )
 
-     #syslog info "******************SENDDATA: running SendObservationData to nearby vehicles*************" 
-       #syslog important "running SendTrnPing : " + Sensor:TrnDataBridge.updatetime~epoch_second + " > " + latest_trn_update_time~epoch_second
-
-     #sendData service=direct destination="modem:10:_.observation_state" (
-     #  Sensor:_.ObservationState~none_str
-     #)
+     syslog info "Got test_good : " + customUri "_.send_observations"~none_str + " and temp var is " + MyTempVar~none_str
      assign in sequence ElapsedSinceLastSendData = elapsed (MyTempVar) 
 
-     assign in sequence MyTempVar = customUri "_.test_good"
-
-     #syslog info "Got test_good : " + customUri "_.test_good"~none_str + " and temp var is " + MyTempVar~none_str
+     assign in sequence MyTempVar = customUri "_.send_observations"
 
      behavior Sensor:SendDirect {
         run in parallel
 
         set destType = "modem"
         set destId = SendDataLabel
-        set destName = "_.observation_state_xx"
+        set destName = "_.others_observations"
         set value = MyTempVar
-        set unit = "count"
+        set unit = "none_str"
 
      }
-     syslog info "SendData: sent observation_state : " + MyTempVar~count + " to nearby vehicles. Elapsed time " + ElapsedSinceLastSendData~minute
+     syslog info "SendData: sent send_observations : " + MyTempVar~none_str + " to nearby vehicles. Elapsed time " + ElapsedSinceLastSendData~minute
 
   }
-
 
 
   aggregate UpdateContactLabel {
@@ -281,6 +263,7 @@ mission marl {
   insert id="NeedComms" Insert/NeedComms.tl
 
   assign in sequence NeedComms:DiveInterval = NeedCommsTime
+
 
   # Missions should almost always start with standard safety envelopes; most missions should not expose the parameters of these envelopes.
 
@@ -388,7 +371,7 @@ mission marl {
 
   # Check for additional instructions first.
 
-  call id="StartingMission" refId="NeedComms"
+  call id="StartingMission" priorityHere=false refId="NeedComms"
 
   #syslog important "SQS: initial value"+ MyTempVar~none_str
 

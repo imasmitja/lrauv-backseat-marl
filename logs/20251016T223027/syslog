@@ -1,0 +1,865 @@
+2025-10-16 22:30:27,416 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-16 22:30:27,418 [Supervisor](INFO): Creating Supervisor.
+2025-10-16 22:30:27,418 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251016T223027.
+2025-10-16 22:30:27,418 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251016T223027/lcmlog
+2025-10-16 22:30:27,422 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: depth
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: latitude
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: longitude
+2025-10-16 22:30:27,423 [Supervisor](INFO): Adding data request for: _.others_observations
+2025-10-16 22:30:27,424 [Supervisor](INFO): Adding data request for: _.ivan
+2025-10-16 22:30:27,424 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-16 22:30:27,612 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-16 22:30:27,612 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-16 22:30:27,612 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-16 22:30:27,612 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-16 22:30:27,612 [Listener](INFO): Listening on LCM channel: _
+2025-10-16 22:30:30,114 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:30:30,114 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:30:30,115 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:30:35,117 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:30:40,140 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:30:45,147 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:30:50,152 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:30:55,152 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:00,167 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:05,168 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:10,169 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:15,175 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:20,212 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:25,243 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:30,117 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:31:30,261 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:35,274 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:40,274 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:45,289 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:50,305 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:31:55,317 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:00,011 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:00,012 [Publisher](ERROR): Failed to publish LCM msg 10047. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:02,514 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:02,514 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:02,514 [Publisher](ERROR): Failed to publish LCM msg 19. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:02,515 [Publisher](ERROR): Failed to publish LCM msg 10048. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:05,017 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:05,018 [Publisher](ERROR): Failed to publish LCM msg 10049. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:07,520 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:07,520 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:07,521 [Publisher](ERROR): Failed to publish LCM msg 20. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:07,521 [Publisher](ERROR): Failed to publish LCM msg 10050. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:10,023 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:10,024 [Publisher](ERROR): Failed to publish LCM msg 10051. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:12,526 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:12,526 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:12,526 [Publisher](ERROR): Failed to publish LCM msg 21. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:12,527 [Publisher](ERROR): Failed to publish LCM msg 10052. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:15,029 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:15,030 [Publisher](ERROR): Failed to publish LCM msg 10053. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:17,532 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:17,532 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:17,532 [Publisher](ERROR): Failed to publish LCM msg 22. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:17,533 [Publisher](ERROR): Failed to publish LCM msg 10054. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:20,035 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:20,035 [Publisher](ERROR): Failed to publish LCM msg 10055. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:22,537 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:22,538 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:22,538 [Publisher](ERROR): Failed to publish LCM msg 23. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:22,538 [Publisher](ERROR): Failed to publish LCM msg 10056. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:25,040 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:25,040 [Publisher](ERROR): Failed to publish LCM msg 10057. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:27,542 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:27,542 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:27,543 [Publisher](ERROR): Failed to publish LCM msg 24. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:27,543 [Publisher](ERROR): Failed to publish LCM msg 10058. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:30,045 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:30,045 [Publisher](ERROR): Failed to publish LCM msg 10059. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:32,547 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:32,547 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:32,547 [Publisher](ERROR): Failed to publish LCM msg 25. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:32,548 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:32:32,548 [Publisher](ERROR): Failed to publish LCM msg 3. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:32,548 [Publisher](ERROR): Failed to publish LCM msg 10060. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:35,050 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:35,050 [Publisher](ERROR): Failed to publish LCM msg 10061. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:37,552 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:37,552 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:37,552 [Publisher](ERROR): Failed to publish LCM msg 26. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:37,553 [Publisher](ERROR): Failed to publish LCM msg 10062. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:40,055 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:40,055 [Publisher](ERROR): Failed to publish LCM msg 10063. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:42,557 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:42,557 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:42,557 [Publisher](ERROR): Failed to publish LCM msg 27. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:42,558 [Publisher](ERROR): Failed to publish LCM msg 10064. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:45,060 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:45,060 [Publisher](ERROR): Failed to publish LCM msg 10065. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:47,562 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:47,562 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:47,563 [Publisher](ERROR): Failed to publish LCM msg 28. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:47,563 [Publisher](ERROR): Failed to publish LCM msg 10066. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:50,065 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:50,065 [Publisher](ERROR): Failed to publish LCM msg 10067. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:52,567 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:52,567 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:52,567 [Publisher](ERROR): Failed to publish LCM msg 29. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:52,568 [Publisher](ERROR): Failed to publish LCM msg 10068. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:55,070 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:55,070 [Publisher](ERROR): Failed to publish LCM msg 10069. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:57,573 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:32:57,573 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:32:57,573 [Publisher](ERROR): Failed to publish LCM msg 30. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:57,574 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:32:57,574 [Publisher](ERROR): Failed to publish LCM msg 4. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:32:57,574 [Publisher](ERROR): Failed to publish LCM msg 10070. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:00,076 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:00,076 [Publisher](ERROR): Failed to publish LCM msg 10071. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:02,578 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:02,578 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:02,579 [Publisher](ERROR): Failed to publish LCM msg 31. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:02,579 [Publisher](ERROR): Failed to publish LCM msg 10072. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:05,081 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:05,082 [Publisher](ERROR): Failed to publish LCM msg 10073. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:07,584 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:07,584 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:07,585 [Publisher](ERROR): Failed to publish LCM msg 32. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:07,585 [Publisher](ERROR): Failed to publish LCM msg 10074. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:10,087 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:10,088 [Publisher](ERROR): Failed to publish LCM msg 10075. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:12,590 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:12,590 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:12,590 [Publisher](ERROR): Failed to publish LCM msg 33. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:12,591 [Publisher](ERROR): Failed to publish LCM msg 10076. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:15,093 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:15,094 [Publisher](ERROR): Failed to publish LCM msg 10077. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:17,596 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:17,596 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:17,596 [Publisher](ERROR): Failed to publish LCM msg 34. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:17,597 [Publisher](ERROR): Failed to publish LCM msg 10078. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:20,099 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:20,100 [Publisher](ERROR): Failed to publish LCM msg 10079. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:22,602 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:22,603 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:22,603 [Publisher](ERROR): Failed to publish LCM msg 35. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:22,603 [Publisher](ERROR): Failed to publish LCM msg 10080. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:25,105 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:25,106 [Publisher](ERROR): Failed to publish LCM msg 10081. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:27,608 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:27,608 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:27,608 [Publisher](ERROR): Failed to publish LCM msg 36. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:27,609 [Publisher](ERROR): Failed to publish LCM msg 10082. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:30,111 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:30,111 [Publisher](ERROR): Failed to publish LCM msg 10083. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:32,614 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:32,614 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:32,614 [Publisher](ERROR): Failed to publish LCM msg 37. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:32,614 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:33:32,614 [Publisher](ERROR): Failed to publish LCM msg 5. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:32,615 [Publisher](ERROR): Failed to publish LCM msg 10084. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:35,117 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:35,117 [Publisher](ERROR): Failed to publish LCM msg 10085. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:37,619 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:37,620 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:37,620 [Publisher](ERROR): Failed to publish LCM msg 38. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:37,620 [Publisher](ERROR): Failed to publish LCM msg 10086. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:40,122 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:40,122 [Publisher](ERROR): Failed to publish LCM msg 10087. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:42,624 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:42,625 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:42,625 [Publisher](ERROR): Failed to publish LCM msg 39. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:42,625 [Publisher](ERROR): Failed to publish LCM msg 10088. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:45,127 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:45,128 [Publisher](ERROR): Failed to publish LCM msg 10089. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:47,630 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:47,630 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:47,631 [Publisher](ERROR): Failed to publish LCM msg 40. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:47,631 [Publisher](ERROR): Failed to publish LCM msg 10090. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:50,133 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:50,133 [Publisher](ERROR): Failed to publish LCM msg 10091. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:52,635 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:52,635 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:52,635 [Publisher](ERROR): Failed to publish LCM msg 41. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:52,636 [Publisher](ERROR): Failed to publish LCM msg 10092. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:55,138 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:55,139 [Publisher](ERROR): Failed to publish LCM msg 10093. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:57,641 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:33:57,641 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:33:57,641 [Publisher](ERROR): Failed to publish LCM msg 42. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:57,642 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:33:57,642 [Publisher](ERROR): Failed to publish LCM msg 6. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:33:57,642 [Publisher](ERROR): Failed to publish LCM msg 10094. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:00,144 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:00,145 [Publisher](ERROR): Failed to publish LCM msg 10095. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:02,647 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:02,647 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:02,647 [Publisher](ERROR): Failed to publish LCM msg 43. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:02,648 [Publisher](ERROR): Failed to publish LCM msg 10096. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:05,150 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:05,151 [Publisher](ERROR): Failed to publish LCM msg 10097. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:07,653 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:07,653 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:07,654 [Publisher](ERROR): Failed to publish LCM msg 44. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:07,654 [Publisher](ERROR): Failed to publish LCM msg 10098. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:10,156 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:10,157 [Publisher](ERROR): Failed to publish LCM msg 10099. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:12,659 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:12,659 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:12,659 [Publisher](ERROR): Failed to publish LCM msg 45. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:12,660 [Publisher](ERROR): Failed to publish LCM msg 10100. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:15,162 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:15,162 [Publisher](ERROR): Failed to publish LCM msg 10101. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:17,664 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:17,664 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:17,664 [Publisher](ERROR): Failed to publish LCM msg 46. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:17,665 [Publisher](ERROR): Failed to publish LCM msg 10102. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:20,167 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:20,168 [Publisher](ERROR): Failed to publish LCM msg 10103. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:22,670 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:22,670 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:22,670 [Publisher](ERROR): Failed to publish LCM msg 47. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:22,671 [Publisher](ERROR): Failed to publish LCM msg 10104. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:25,173 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:25,174 [Publisher](ERROR): Failed to publish LCM msg 10105. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:27,676 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:27,676 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:27,676 [Publisher](ERROR): Failed to publish LCM msg 48. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:27,677 [Publisher](ERROR): Failed to publish LCM msg 10106. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:30,179 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:30,179 [Publisher](ERROR): Failed to publish LCM msg 10107. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:32,681 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:32,681 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:32,682 [Publisher](ERROR): Failed to publish LCM msg 49. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:32,682 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:34:32,682 [Publisher](ERROR): Failed to publish LCM msg 7. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:32,682 [Publisher](ERROR): Failed to publish LCM msg 10108. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:35,184 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:35,185 [Publisher](ERROR): Failed to publish LCM msg 10109. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:37,687 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:37,687 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:37,687 [Publisher](ERROR): Failed to publish LCM msg 50. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:37,688 [Publisher](ERROR): Failed to publish LCM msg 10110. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:40,190 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:40,191 [Publisher](ERROR): Failed to publish LCM msg 10111. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:42,693 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:42,693 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:42,694 [Publisher](ERROR): Failed to publish LCM msg 51. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:42,694 [Publisher](ERROR): Failed to publish LCM msg 10112. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:45,196 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:45,197 [Publisher](ERROR): Failed to publish LCM msg 10113. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:47,699 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:47,700 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:47,700 [Publisher](ERROR): Failed to publish LCM msg 52. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:47,700 [Publisher](ERROR): Failed to publish LCM msg 10114. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:50,202 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:50,203 [Publisher](ERROR): Failed to publish LCM msg 10115. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+OSError: [Errno 101] Network is unreachable
+2025-10-16 22:34:52,705 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:52,705 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:55,208 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:57,710 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:34:57,710 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:34:57,710 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:35:00,212 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:02,714 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:02,714 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:05,217 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:07,719 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:07,719 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:10,222 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:12,724 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:12,724 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:15,227 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:17,730 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:17,730 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:20,232 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:22,735 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:22,735 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:25,237 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:27,740 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:27,740 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:30,242 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:32,744 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:32,744 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:32,744 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:35:35,247 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:37,750 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:37,750 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:40,252 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:42,754 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:42,754 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:45,257 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:47,759 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:47,759 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:50,261 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:52,763 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:52,763 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:55,265 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:57,768 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:35:57,768 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:35:57,769 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:36:00,271 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:02,773 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:02,773 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:05,275 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:07,777 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:07,777 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:10,279 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:12,782 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:12,782 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:15,285 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:17,787 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:17,787 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:20,289 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:22,791 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:22,791 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:25,293 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:27,795 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:27,795 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:30,297 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:32,800 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:32,800 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:32,800 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:36:35,302 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:37,804 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:37,804 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:40,306 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:42,809 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:42,809 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:45,312 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:47,815 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:47,815 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:50,317 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:52,819 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:52,819 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:55,321 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:57,823 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:36:57,824 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:36:57,824 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:37:00,326 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:02,828 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:02,828 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:05,330 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:07,833 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:07,833 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:10,335 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:12,837 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:12,837 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:15,340 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:17,842 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:17,843 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:20,345 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:22,847 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:22,847 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:25,350 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:27,852 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:27,852 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:30,355 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:32,858 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:32,858 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:32,859 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:37:35,361 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:37,863 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:37,863 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:40,365 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:42,867 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:42,868 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:45,370 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:47,873 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:47,873 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:50,375 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:52,877 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:52,877 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:55,379 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:57,881 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:37:57,882 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:37:57,882 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:38:00,384 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:02,886 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:02,886 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:05,389 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:07,891 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:07,891 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:10,394 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:12,896 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:12,897 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:15,399 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:17,901 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:17,902 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:20,404 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:22,907 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:22,907 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:25,409 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:27,911 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:27,911 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:30,414 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:32,917 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:32,917 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:32,917 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:38:35,419 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:37,921 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:37,921 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:40,423 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:42,925 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:42,926 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:45,428 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:47,931 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:47,931 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:50,434 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:52,936 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:52,940 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:55,443 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:57,945 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:38:57,946 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:38:57,946 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-16 22:39:00,448 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:02,951 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:02,951 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:39:05,453 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:07,955 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:07,955 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:39:10,457 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:12,959 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:12,959 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:39:15,461 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:17,964 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:17,964 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:39:20,466 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:22,969 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:22,969 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-16 22:39:25,472 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:27,974 [Listener](DEBUG): LCM listener timed out...
+2025-10-16 22:39:27,974 [Supervisor](DEBUG): Publishing heartbeat.

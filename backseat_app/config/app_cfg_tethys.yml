@@ -27,7 +27,8 @@ lrauv_data: #[]  # request data from:
         #- 'DeadReckonUsingMultipleVelocitySources.enableBroadcast'
       - 'latitude'
       - 'longitude'
-      - '_.observation_state'
+      - '_.others_observations'
+
 
 # * Supervisor configuration * #
 app_name: 'backseat_app'  # set to your app name
