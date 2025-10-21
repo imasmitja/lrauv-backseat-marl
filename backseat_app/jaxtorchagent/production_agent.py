@@ -1,5 +1,6 @@
 import numpy as np
-from .jax_agent import CentralizedActorRNN, load_params
+from jaxtorchagent.torch_agent import CentralizedActorRNN as TorchCentralizedActorRNN
+#from .torch_agent import TorchCentralizedActorRNN, load_params
 from .tracking import Tracker
 from typing import Optional, List, Tuple
 
@@ -86,25 +87,38 @@ def load(
     dt=30,
     **tracking_kwargs,
 ):
-    params = load_params(model_path)
 
-    agent = CentralizedActorRNN(
-        seed=0,
-        agent_params=params["actor"],
-        agent_list=[f"agent_{i}" for i in range(num_agents)],
-        landmark_list=[f"landmark_{i}" for i in range(num_landmarks)],
-        actors_list=["agent_0"],  # make the actor control only the first agent
-        action_dim=5,
-        hidden_dim=64,
-        pos_norm=1e-3,
-        agent_class="ppo_transformer",
-        mask_ranges=True,
-        matrix_obs=True,
-        add_agent_id=False,
-        num_layers=2,
-        num_heads=8,
-        ff_dim=128,
-    )
+    agent = TorchCentralizedActorRNN(
+            seed=0,
+            agent_params_path=model_path,
+            agent_list=[f"agent_{i}" for i in range(num_agents)],
+            landmark_list=[f"landmark_{i}" for i in range(num_landmarks)],
+            action_dim=5,
+            hidden_dim=64,
+            matrix_obs=True,
+            agent_class="ppo_transformer",
+            device="cpu",
+        )
+    
+    #old stuf for JAX
+    #params = load_params(model_path)
+    #agent = CentralizedActorRNN(
+    #    seed=0,
+    #    agent_params=params["actor"],
+    #    agent_list=[f"agent_{i}" for i in range(num_agents)],
+    #    landmark_list=[f"landmark_{i}" for i in range(num_landmarks)],
+    #    actors_list=["agent_0"],  # make the actor control only the first agent
+    #    action_dim=5,
+    #    hidden_dim=64,
+    #    pos_norm=1e-3,
+    #    agent_class="ppo_transformer",
+    #    mask_ranges=True,
+    #    matrix_obs=True,
+    #    add_agent_id=False,
+    #    num_layers=2,
+    #    num_heads=8,
+    #    ff_dim=128,
+    #)
 
     # make the actor decentralized
 

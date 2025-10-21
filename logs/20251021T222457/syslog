@@ -1,0 +1,12 @@
+2025-10-21 22:24:57,206 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 22, in <module>
+    from backseat_app.processing import MarlProcessor
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 7, in <module>
+    from backseat_app.utils import TargetTracking
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 21, in <module>
+    from backseat_app.jaxtorchagent.production_agent import load
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/production_agent.py", line 93
+    agent_list=[f"agent_{i}" for i in range(num_agents)],,
+                                                         ^
+SyntaxError: invalid syntax
