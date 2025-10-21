@@ -1,6 +1,0 @@
-# start backseat-marl application in a screen session on target
-
-cd /LRAUV/backseat-marl
-echo "Starting backseat-marl application in a screen session." | sudo tee /dev/kmsg
-echo "===============================================" >> /LRAUV/backseat-marl/bs.log 2>&1
-/usr/bin/screen -Dm -S backseat-marl bash -c "/home/maiv/.local/bin/main.py 2>&1 | tee -a /LRAUV/backseat-marl/bs.log"
