@@ -141,6 +141,19 @@ def load(
 ):
     params = load_params(model_path)
 
+    #This can be delated, only for debug purposes:
+    print("Available keys in parameter file:", params.keys())
+    
+    # If it's a nested structure, print all keys recursively
+    def print_nested_keys(d, prefix=""):
+        for k, v in d.items():
+            if isinstance(v, dict):
+                print_nested_keys(v, prefix + f"{k}.")
+            else:
+                print(f"{prefix}{k}: {type(v)} - {v.shape if hasattr(v, 'shape') else 'no shape'}")
+    
+    print_nested_keys(params)
+
     agent = CentralizedActorRNN(
         seed=0,
         agent_params=params["actor"],

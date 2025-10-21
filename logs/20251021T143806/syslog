@@ -1,0 +1,34 @@
+2025-10-21 14:38:06,641 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-21 14:38:10,372 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 200, in compute_new_heading
+    self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 992, in newAction
+    self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent_torch.py", line 124, in get_action_and_predictions
+    action = self.actor.step(obs_wrapped, done=False)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/torch_agent.py", line 593, in step
+    self.debug_model_outputs(obs_batched, avail_actions, dones)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/torch_agent.py", line 333, in debug_model_outputs
+    transformer_hidden, transformer_output = self.actor.transformer(self.hidden, (embeddings, None, dones))
+  File "/home/maiv/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/maiv/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/torch_modules.py", line 425, in forward
+    return self.transformer(x, mask=mask)
+  File "/home/maiv/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/maiv/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/maiv/.local/lib/python3.8/site-packages/torch/nn/modules/transformer.py", line 337, in forward
+    other_type=F._none_or_dtype(mask),
+  File "/home/maiv/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 5209, in _none_or_dtype
+    raise RuntimeError("input to _none_or_dtype() must be None or torch.Tensor")
+RuntimeError: input to _none_or_dtype() must be None or torch.Tensor

@@ -42,8 +42,8 @@ VEHICLE_agents=("tethys" "pontus")
 VEHICLE_targets=("daphne")
 
 # Mission used for each vehicle agent:
-#CMD_X_OPTION_agent="Engineering/marl.tl"
-CMD_X_OPTION_agent="Engineering/marl2.tl"
+CMD_X_OPTION_agent="Engineering/marl.tl"
+#CMD_X_OPTION_agent="Engineering/marl2.tl"
 #CMD_X_OPTION_agent=""
 
 # Mission used for each vehicle target:

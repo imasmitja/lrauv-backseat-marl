@@ -15,7 +15,14 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from jaxagent.jaxagent.production_agent import load
+
+
+JAX_MODULE = True
+
+if JAX_MODULE == True:
+    from jaxagent.jaxagent.production_agent import load
+else:
+    from jaxagent.jaxagent.production_agent_torch import load
 
 
 
@@ -803,8 +810,8 @@ class TargetTracking(object):
             self.locpfls = Target()
             self.trained_rl_agent = np_rnn_rl_agent() # A H-LSTM-SAC agent trained with configuration: MASACQMIX_lstm_emofish
         elif marl_method == 'Matteo2025':
-            import jax
-            jax.config.update('jax_platform_name', 'cpu')
+            #import jax
+            #jax.config.update('jax_platform_name', 'cpu')
             model_name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent
             #model_name = "mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents
             project_root = os.path.dirname(os.path.abspath(__file__))
@@ -889,10 +896,15 @@ class TargetTracking(object):
             except:
                 print('ERROR: Cannot convert LRAUV Lat/Lon to UTM. Check that the LRAUV Lat/Lon is correct')
                 return(-1)
-        
+
+
         #compute the position of the current LRAUV in UTM (using the format for Ivan)
         tuple = utm.from_latlon(lrauvLatLon[0], lrauvLatLon[1])
         lrauv_x, lrauv_y, zonenumber, zoneletter = tuple
+        # If the lrauv current possition is too far away from origin, we update origin with current values
+        aux_dist = np.sqrt([(lrauv_x-self.lrauv_position_origin[0])**2+(lrauv_y-self.lrauv_position_origin[2])**2])
+        if aux_dist > 900: # we set the threshold at 900 m
+            self.lrauv_position_origin = np.array([lrauv_x, 0, lrauv_y, 0])
         lrauv_x -= self.lrauv_position_origin.item(0)
         lrauv_y -= self.lrauv_position_origin.item(2)
         # save the current lrauv postion and velocity
