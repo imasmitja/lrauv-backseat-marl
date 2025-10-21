@@ -1,7 +1,0 @@
-pandas
-matplotlib
-jax
-jaxlib
-flax==0.7.2
-safetensors==0.4.2
-distrax==0.1.3
