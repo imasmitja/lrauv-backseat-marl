@@ -1,0 +1,13 @@
+2025-10-21 17:09:10,548 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-21 17:09:10,551 [Supervisor](INFO): Creating Supervisor.
+2025-10-21 17:09:10,551 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251021T170909.
+2025-10-21 17:09:10,551 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251021T170909/lcmlog
+2025-10-21 17:09:10,559 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-21 17:09:10,560 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-21 17:09:10,560 [Supervisor](INFO): Adding data request for: depth
+2025-10-21 17:09:10,560 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-21 17:09:10,560 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-21 17:09:10,560 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-21 17:09:10,560 [Supervisor](INFO): Adding data request for: latitude
+2025-10-21 17:09:10,561 [Supervisor](INFO): Adding data request for: longitude
+2025-10-21 17:09:10,561 [Supervisor](INFO): Adding data request for: _.others_observations

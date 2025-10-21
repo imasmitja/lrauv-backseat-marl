@@ -20,9 +20,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 JAX_MODULE = True
 
 if JAX_MODULE == True:
-    from jaxagent.jaxagent.production_agent import load
+    from backseat_app.jaxagent.production_agent import load
 else:
-    from jaxagent.jaxagent.production_agent_torch import load
+    from backseat_app.jaxagent.production_agent_torch import load
 
 
 
@@ -817,7 +817,7 @@ class TargetTracking(object):
             project_root = os.path.dirname(os.path.abspath(__file__))
             project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
             project_root = os.path.abspath(project_root) 
-            model_path = os.path.join(project_root, "jaxagent", "IROS_MODELS", model_name)
+            model_path = os.path.join(project_root, "backseat_app","jaxagent", "IROS_MODELS", model_name)
             self.agent_controller = load(
                     num_agents=self.num_agents,
                     num_landmarks=self.num_targets,

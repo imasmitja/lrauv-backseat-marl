@@ -1,0 +1,27 @@
+#############################################################################
+# Copyright (c) 2002-2024 MBARI
+# Monterey Bay Aquarium Research Institute, all rights reserved.
+#############################################################################
+[Unit]
+Description=LRAUV backseat backseat-marl application
+Wants=network-online.target
+After=network.target network-online.target
+After=multi-user.target
+
+[Service]
+WorkingDirectory=/LRAUV/backseat-marl
+
+Type=simple
+Restart=on-failure
+RestartSec=3
+
+User=maiv
+Group=maiv
+
+Environment="LCM_DEFAULT_URL=udpm://239.255.76.67:7667?ttl=1"
+
+ExecStartPre=/bin/sleep 60
+ExecStart=/LRAUV/backseat-marl/start_backseat-marl
+
+[Install]
+WantedBy=multi-user.target
