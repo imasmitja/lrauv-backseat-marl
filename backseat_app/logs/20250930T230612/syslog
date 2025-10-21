@@ -1,5 +1,0 @@
-2025-09-30 23:06:12,550 [Logger](CRITICAL): Uncaught exception
-Traceback (most recent call last):
-  File "main.py", line 22, in <module>
-    from backseat_app.processing import SensorProcessor
-ModuleNotFoundError: No module named 'backseat_app.processing'
