@@ -1,0 +1,13 @@
+2025-10-13 21:19:26,943 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "backseat_app/main.py", line 22, in <module>
+    from backseat_app.processing import MarlProcessor
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 6, in <module>
+    from backseat_app.utils import TargetTracking
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 18, in <module>
+    from jaxagent.jaxagent.production_agent import load
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 2, in <module>
+    from .jax_agent import CentralizedActorRNN, load_params
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/jax_agent.py", line 7, in <module>
+    from safetensors.flax import save_file, load_file
+ModuleNotFoundError: No module named 'safetensors'

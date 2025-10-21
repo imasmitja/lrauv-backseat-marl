@@ -1,0 +1,87 @@
+2025-10-15 22:28:06,851 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_pontus.yml
+2025-10-15 22:28:06,856 [Supervisor](INFO): Creating Supervisor.
+2025-10-15 22:28:06,856 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T222806.
+2025-10-15 22:28:06,856 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T222806/lcmlog
+2025-10-15 22:28:06,861 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: depth
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: latitude
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: longitude
+2025-10-15 22:28:06,862 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-15 22:28:06,862 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-15 22:28:07,095 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-15 22:28:07,095 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-15 22:28:07,096 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-15 22:28:07,096 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-15 22:28:07,096 [Listener](INFO): Listening on LCM channel: _
+2025-10-15 22:28:09,598 [Listener](DEBUG): LCM listener timed out...
+2025-10-15 22:28:09,598 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:09,598 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 22:28:14,606 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:19,644 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:24,720 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:29,722 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:34,730 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:39,747 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:44,750 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:49,770 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:54,801 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:28:59,816 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:04,822 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:09,600 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 22:29:09,849 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:14,850 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:19,864 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:24,884 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:29,889 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:34,910 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:39,929 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:44,929 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:49,956 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:54,969 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:29:59,987 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:05,002 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:09,613 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 22:30:10,010 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:15,016 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:20,040 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:25,058 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:30,070 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:35,085 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:40,087 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:45,088 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:50,120 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:30:55,145 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:00,148 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:05,150 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:09,616 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 22:31:10,161 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:15,532 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:20,551 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:25,563 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:30,897 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:35,897 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:40,913 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:45,917 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:50,928 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:31:55,931 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:00,939 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:05,961 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:09,617 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 22:32:10,961 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:15,963 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:20,965 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:25,983 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:31,011 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:36,017 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:41,032 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:46,046 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:51,057 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:32:56,062 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:33:01,068 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:33:06,077 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 22:33:09,623 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 22:33:11,085 [Supervisor](DEBUG): Publishing heartbeat.

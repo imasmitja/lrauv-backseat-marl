@@ -1,0 +1,52 @@
+2025-10-15 16:44:29,646 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-15 16:44:29,651 [Supervisor](INFO): Creating Supervisor.
+2025-10-15 16:44:29,651 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T164429.
+2025-10-15 16:44:29,651 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T164429/lcmlog
+2025-10-15 16:44:29,659 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-15 16:44:29,661 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-15 16:44:29,662 [Supervisor](INFO): Adding data request for: depth
+2025-10-15 16:44:29,662 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-15 16:44:29,662 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-15 16:44:29,662 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-15 16:44:29,662 [Supervisor](INFO): Adding data request for: latitude
+2025-10-15 16:44:29,662 [Supervisor](INFO): Adding data request for: longitude
+2025-10-15 16:44:29,662 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-15 16:44:29,662 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-15 16:44:29,841 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-15 16:44:29,841 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-15 16:44:29,841 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-15 16:44:29,841 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-15 16:44:29,841 [Listener](INFO): Listening on LCM channel: _
+2025-10-15 16:44:32,344 [Listener](DEBUG): LCM listener timed out...
+2025-10-15 16:44:32,344 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:44:32,346 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:44:37,353 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:44:42,353 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:44:47,371 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:44:52,395 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:44:57,430 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:02,431 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:07,445 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:12,449 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:17,482 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:22,499 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:27,523 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:32,346 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:45:32,527 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:37,529 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:38,301 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:45:42,540 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:47,553 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:52,568 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:45:57,617 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:02,632 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:07,637 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:12,639 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:17,658 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:22,659 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:27,682 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:32,353 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:46:32,703 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:37,713 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:42,764 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:46:47,783 [Supervisor](DEBUG): Publishing heartbeat.

@@ -1,0 +1,23 @@
+2025-10-14 21:49:12,482 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-14 21:49:12,485 [Supervisor](INFO): Creating Supervisor.
+2025-10-14 21:49:12,486 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251014T214911.
+2025-10-14 21:49:12,486 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251014T214911/lcmlog
+2025-10-14 21:49:12,491 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-14 21:49:12,492 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-14 21:49:12,492 [Supervisor](INFO): Adding data request for: depth
+2025-10-14 21:49:12,492 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-14 21:49:12,493 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-14 21:49:12,493 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-14 21:49:12,493 [Supervisor](INFO): Adding data request for: latitude
+2025-10-14 21:49:12,493 [Supervisor](INFO): Adding data request for: longitude
+2025-10-14 21:49:12,493 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-14 21:49:12,734 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-14 21:49:12,734 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-14 21:49:12,734 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-14 21:49:12,734 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-14 21:49:12,734 [Listener](INFO): Listening on LCM channel: _
+2025-10-14 21:49:15,237 [Listener](DEBUG): LCM listener timed out...
+2025-10-14 21:49:15,237 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-14 21:49:15,239 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-14 21:49:20,252 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-14 21:49:23,864 [Listener](INFO): Unsubscribing from LCM channels.

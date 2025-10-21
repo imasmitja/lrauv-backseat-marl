@@ -1,0 +1,13 @@
+2025-10-20 18:42:20,615 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 22, in <module>
+    from backseat_app.processing import MarlProcessor
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 7, in <module>
+    from backseat_app.utils import TargetTracking
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 18, in <module>
+    from jaxagent.jaxagent.production_agent import load
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 3, in <module>
+    from .torch_agent import CentralizedActorRNN, load_params
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/torch_agent.py", line 8, in <module>
+    from .torch_modules import PPOActorRNN, PPOActorTransformer, PQNRnn
+ModuleNotFoundError: No module named 'jaxagent.jaxagent.torch_modules'

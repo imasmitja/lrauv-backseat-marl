@@ -1,0 +1,28 @@
+2025-10-15 20:37:13,147 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-15 20:37:13,150 [Supervisor](INFO): Creating Supervisor.
+2025-10-15 20:37:13,150 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T203712.
+2025-10-15 20:37:13,150 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T203712/lcmlog
+2025-10-15 20:37:13,155 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-15 20:37:13,156 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-15 20:37:13,156 [Supervisor](INFO): Adding data request for: depth
+2025-10-15 20:37:13,156 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-15 20:37:13,156 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-15 20:37:13,156 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-15 20:37:13,157 [Supervisor](INFO): Adding data request for: latitude
+2025-10-15 20:37:13,157 [Supervisor](INFO): Adding data request for: longitude
+2025-10-15 20:37:13,157 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-15 20:37:13,738 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-15 20:37:13,738 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-15 20:37:13,738 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-15 20:37:13,739 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-15 20:37:13,739 [Listener](INFO): Listening on LCM channel: _
+2025-10-15 20:37:13,739 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:13,739 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 20:37:18,882 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:23,969 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:28,992 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:34,114 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:39,128 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:44,140 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:49,243 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 20:37:51,259 [Listener](INFO): Unsubscribing from LCM channels.

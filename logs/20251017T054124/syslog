@@ -1,0 +1,14 @@
+2025-10-17 05:41:24,451 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 05:41:25,714 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 150, in compute_new_heading
+    self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 892, in newAction
+    tuple = utm.from_latlon(lrauvLatLon[0], lrauvLatLon[1])
+IndexError: list index out of range

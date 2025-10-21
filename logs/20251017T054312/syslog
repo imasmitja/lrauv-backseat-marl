@@ -1,0 +1,48 @@
+2025-10-17 05:43:12,468 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-17 05:43:12,472 [Supervisor](INFO): Creating Supervisor.
+2025-10-17 05:43:12,472 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T054312.
+2025-10-17 05:43:12,472 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T054312/lcmlog
+2025-10-17 05:43:12,477 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: depth
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: latitude
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: longitude
+2025-10-17 05:43:12,479 [Supervisor](INFO): Adding data request for: _.others_observations
+2025-10-17 05:43:12,479 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 05:43:12,705 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-17 05:43:12,705 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-17 05:43:12,705 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-17 05:43:12,705 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-17 05:43:12,705 [Listener](INFO): Listening on LCM channel: _
+2025-10-17 05:43:15,208 [Listener](DEBUG): LCM listener timed out...
+2025-10-17 05:43:15,208 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:43:15,209 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 05:43:20,457 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 192, in compute_new_heading
+    self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=False)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 980, in newAction
+    self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 79, in get_action_and_predictions
+    pred = tracker.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/tracker.py", line 67, in update_and_predict
+    pred_xy = self.model.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/particle_filter.py", line 475, in update_and_predict
+    self.evaluation(observer=pos,z=z,max_error=self.max_error)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/particle_filter.py", line 419, in evaluation
+    vals, vecs = np.linalg.eig(cov)
+  File "<__array_function__ internals>", line 180, in eig
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/linalg/linalg.py", line 1305, in eig
+    _assert_finite(a)
+  File "/home/maiv/.local/lib/python3.8/site-packages/numpy/linalg/linalg.py", line 208, in _assert_finite
+    raise LinAlgError("Array must not contain infs or NaNs")
+numpy.linalg.LinAlgError: Array must not contain infs or NaNs

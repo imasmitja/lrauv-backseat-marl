@@ -1,0 +1,61 @@
+2025-10-17 07:36:53,749 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-17 07:36:53,753 [Supervisor](INFO): Creating Supervisor.
+2025-10-17 07:36:53,753 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T073653.
+2025-10-17 07:36:53,753 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T073653/lcmlog
+2025-10-17 07:36:53,760 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: depth
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: latitude
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: longitude
+2025-10-17 07:36:53,762 [Supervisor](INFO): Adding data request for: _.others_observations
+2025-10-17 07:36:53,762 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 07:36:54,006 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-17 07:36:54,007 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-17 07:36:54,007 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-17 07:36:54,007 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-17 07:36:54,007 [Listener](INFO): Listening on LCM channel: _
+2025-10-17 07:36:54,007 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:36:54,008 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 07:36:59,026 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:36:59,972 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760698880.0, 10.0, 36.69519964818512, -121.93312603219384, 19.75421142578125, 343.288330078125]
+2025-10-17 07:37:00,258 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699008.0, 10.0, 36.694427026485805, -121.93241799568169, 11.177671432495117, 380.2757263183594]
+2025-10-17 07:37:00,965 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699136.0, 10.0, 36.69506122223925, -121.93186441859282, 1.2816301584243774, 443.0812683105469]
+2025-10-17 07:37:04,048 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:08,859 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699264.0, 10.0, 36.69546485761346, -121.9329585518685, 13.368163108825684, 368.486083984375]
+2025-10-17 07:37:09,067 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:14,095 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:17,905 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699392.0, 10.0, 36.69467500828397, -121.9326388989375, 21.85383415222168, 365.62176513671875]
+2025-10-17 07:37:19,135 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:24,153 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:27,540 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699520.0, 10.0, 36.69560623620264, -121.93269295987336, 18.862274169921875, 395.8905944824219]
+2025-10-17 07:37:29,153 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:34,155 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:37,356 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699648.0, 10.0, 36.69591337213677, -121.9340994217112, 19.495285034179688, 312.6068420410156]
+2025-10-17 07:37:39,180 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:44,203 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:48,052 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699776.0, 10.0, 36.69502579343638, -121.93396192871076, 13.023954391479492, 264.86370849609375]
+2025-10-17 07:37:49,242 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:54,035 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 07:37:54,244 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:37:59,257 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:03,913 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760699904.0, 10.0, 36.69527699593578, -121.93293268874218, 1.8906164169311523, 359.291748046875]
+2025-10-17 07:38:04,257 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:09,259 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:14,042 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760700032.0, 10.0, 36.69603297850165, -121.93336413455938, 12.421688079833984, 369.9303283691406]
+2025-10-17 07:38:14,283 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:19,307 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:24,193 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760700160.0, 10.0, 36.69507705538827, -121.93360372271322, 21.436683654785156, 296.0130920410156]
+2025-10-17 07:38:24,315 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:29,328 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:34,334 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:34,663 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760700288.0, 10.0, 36.69551441364686, -121.93257810510163, 19.298751831054688, 398.7674255371094]
+2025-10-17 07:38:39,349 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:44,367 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:45,107 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760700416.0, 10.0, 36.696281662118714, -121.93340315405298, 18.867279052734375, 384.4309387207031]
+2025-10-17 07:38:49,368 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 07:38:53,593 [main](ERROR): KeyboardInterrupt: aborting.
+2025-10-17 07:38:53,593 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-17 07:38:53,593 [main](INFO): Terminating.

@@ -1,0 +1,14 @@
+2025-10-17 07:03:16,191 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 07:03:16,493 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 190, in compute_new_heading
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 190, in <listcomp>
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+IndexError: index 0 is out of bounds for axis 0 with size 0

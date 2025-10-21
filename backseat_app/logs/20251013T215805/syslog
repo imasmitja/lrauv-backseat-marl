@@ -1,0 +1,12 @@
+2025-10-13 21:58:05,049 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-13 21:58:07,659 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "main.py", line 111, in <module>
+    main()
+  File "main.py", line 107, in main
+    backseat_app.spin()
+  File "main.py", line 73, in spin
+    self.marl_processor.publish_observation_state_to_slate()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 199, in publish_observation_state_to_slate
+    if int(self.cfg['vehicle_id_log']) == 6:
+KeyError: 'vehicle_id_log'

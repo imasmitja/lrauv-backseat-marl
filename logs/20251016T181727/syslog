@@ -1,0 +1,15 @@
+2025-10-16 18:17:27,429 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-16 18:17:33,724 [processing](INFO): MARL: Received Other Vehicles Observation State: 610
+2025-10-16 18:17:33,724 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 67, in spin
+    self.listen()
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Listener.py", line 63, in listen
+    self.lc.handle()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 114, in handle_universal_msg
+    print("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY_ RECEIVED", +str(other_obs))
+TypeError: bad operand type for unary +: 'str'

@@ -1,0 +1,55 @@
+2025-10-13 19:54:23,483 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-13 19:54:23,486 [Supervisor](INFO): Creating Supervisor.
+2025-10-13 19:54:23,487 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T195423.
+2025-10-13 19:54:23,487 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T195423/lcmlog
+2025-10-13 19:54:23,490 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: depth
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: latitude
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: longitude
+2025-10-13 19:54:23,491 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-13 19:54:23,491 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-13 19:54:23,522 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-13 19:54:23,522 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-13 19:54:23,522 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-13 19:54:23,522 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-13 19:54:23,522 [Listener](INFO): Listening on LCM channel: _
+2025-10-13 19:54:26,024 [Listener](DEBUG): LCM listener timed out...
+2025-10-13 19:54:26,024 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:54:26,025 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-13 19:54:31,040 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:54:36,053 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:54:41,071 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:54:46,088 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:54:51,089 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:54:56,108 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:01,124 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:06,147 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:11,161 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:16,167 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:21,171 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:26,028 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-13 19:55:26,175 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:31,192 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:36,220 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:41,238 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:46,238 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:51,239 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:55:56,254 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:01,272 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:06,281 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:11,292 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:16,297 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:21,324 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:26,058 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-13 19:56:26,336 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:31,339 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:36,348 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:41,359 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 19:56:43,861 [Supervisor](DEBUG): Handling LCM msg on bsd_command.
+2025-10-13 19:56:43,862 [Supervisor](INFO): Got command: shutdown.
+2025-10-13 19:56:43,863 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-13 19:56:43,863 [main](INFO): Terminating.

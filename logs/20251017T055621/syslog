@@ -1,0 +1,49 @@
+2025-10-17 05:56:21,608 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-17 05:56:21,611 [Supervisor](INFO): Creating Supervisor.
+2025-10-17 05:56:21,612 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T055621.
+2025-10-17 05:56:21,612 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T055621/lcmlog
+2025-10-17 05:56:21,617 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: depth
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: latitude
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: longitude
+2025-10-17 05:56:21,618 [Supervisor](INFO): Adding data request for: _.others_observations
+2025-10-17 05:56:21,619 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 05:56:21,832 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-17 05:56:21,832 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-17 05:56:21,832 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-17 05:56:21,832 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-17 05:56:21,832 [Listener](INFO): Listening on LCM channel: _
+2025-10-17 05:56:24,334 [Listener](DEBUG): LCM listener timed out...
+2025-10-17 05:56:24,334 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:24,335 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 05:56:29,339 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:34,347 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:39,349 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:44,362 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:49,380 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:54,382 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:56:59,423 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:57:04,450 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:57:09,452 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:57:14,457 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:57:19,461 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:57:24,370 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 05:57:24,479 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 05:57:24,484 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760686848.0, 10.0, 36.692999965590516, -121.9369836683371, -0.4034161865711212, 111.08362579345703]
+2025-10-17 05:57:25,155 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 146, in compute_new_heading
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 146, in <listcomp>
+    agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
+TypeError: 'float' object is not subscriptable

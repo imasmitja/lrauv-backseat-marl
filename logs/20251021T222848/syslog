@@ -1,0 +1,106 @@
+2025-10-21 22:28:48,905 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-21 22:28:49,047 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 105, in main
+    backseat_app = BackseatApp(lc, cfg)
+  File "./backseat_app/main.py", line 36, in __init__
+    self.marl_processor = MarlProcessor(lcm_instance, self.cfg)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 55, in __init__
+    self.rl_tracking = TargetTracking(marl_method = self.marl_method)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 817, in __init__
+    self.agent_controller = load(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/production_agent.py", line 125, in load
+    trackers = [
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/production_agent.py", line 126, in <listcomp>
+    Tracker(method="pf", dt=dt, **tracking_kwargs) for _ in range(num_landmarks)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/tracking/tracker.py", line 26, in __init__
+    self.rng = jax.random.PRNGKey(pf_seed)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/random.py", line 160, in PRNGKey
+    key = prng.seed_with_impl(impl, seed)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 406, in seed_with_impl
+    return random_seed(seed, impl=impl)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 690, in random_seed
+    return random_seed_p.bind(seeds_arr, impl=impl)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 702, in random_seed_impl
+    base_arr = random_seed_impl_base(seeds, impl=impl)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 707, in random_seed_impl_base
+    return seed(seeds)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 936, in threefry_seed
+    return _threefry_seed(seed)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/traceback_util.py", line 166, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/pjit.py", line 250, in cache_miss
+    outs, out_flat, out_tree, args_flat, jaxpr = _python_pjit_helper(
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/pjit.py", line 163, in _python_pjit_helper
+    out_flat = pjit_p.bind(*args_flat, **params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/core.py", line 2677, in bind
+    return self.bind_with_trace(top_trace, args, params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/core.py", line 383, in bind_with_trace
+    out = trace.process_primitive(self, map(trace.full_raise, args), params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/core.py", line 815, in process_primitive
+    return primitive.impl(*tracers, **params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/pjit.py", line 1203, in _pjit_call_impl
+    return xc._xla.pjit(name, f, call_impl_cache_miss, [], [], donated_argnums,
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/pjit.py", line 1187, in call_impl_cache_miss
+    out_flat, compiled = _pjit_call_impl_python(
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/pjit.py", line 1120, in _pjit_call_impl_python
+    compiled = _pjit_lower(
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/interpreters/pxla.py", line 2323, in compile
+    executable = UnloadedMeshExecutable.from_hlo(
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/interpreters/pxla.py", line 2645, in from_hlo
+    xla_executable, compile_options = _cached_compilation(
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/interpreters/pxla.py", line 2555, in _cached_compilation
+    xla_executable = dispatch.compile_or_get_cached(
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/dispatch.py", line 497, in compile_or_get_cached
+    return backend_compile(backend, computation, compile_options,
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/dispatch.py", line 465, in backend_compile
+    return backend.compile(built_c, compile_options=options)
+jax._src.traceback_util.UnfilteredStackTrace: jaxlib.xla_extension.XlaRuntimeError: FAILED_PRECONDITION: DNN library initialization failed. Look at the errors above for more details.
+
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+
+--------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 105, in main
+    backseat_app = BackseatApp(lc, cfg)
+  File "./backseat_app/main.py", line 36, in __init__
+    self.marl_processor = MarlProcessor(lcm_instance, self.cfg)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 55, in __init__
+    self.rl_tracking = TargetTracking(marl_method = self.marl_method)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 817, in __init__
+    self.agent_controller = load(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/production_agent.py", line 125, in load
+    trackers = [
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/production_agent.py", line 126, in <listcomp>
+    Tracker(method="pf", dt=dt, **tracking_kwargs) for _ in range(num_landmarks)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/tracking/tracker.py", line 26, in __init__
+    self.rng = jax.random.PRNGKey(pf_seed)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/random.py", line 160, in PRNGKey
+    key = prng.seed_with_impl(impl, seed)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 406, in seed_with_impl
+    return random_seed(seed, impl=impl)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 690, in random_seed
+    return random_seed_p.bind(seeds_arr, impl=impl)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/core.py", line 380, in bind
+    return self.bind_with_trace(find_top_trace(args), args, params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/core.py", line 383, in bind_with_trace
+    out = trace.process_primitive(self, map(trace.full_raise, args), params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/core.py", line 815, in process_primitive
+    return primitive.impl(*tracers, **params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 702, in random_seed_impl
+    base_arr = random_seed_impl_base(seeds, impl=impl)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 707, in random_seed_impl_base
+    return seed(seeds)
+  File "/home/maiv/.local/lib/python3.8/site-packages/jax/_src/prng.py", line 936, in threefry_seed
+    return _threefry_seed(seed)
+jaxlib.xla_extension.XlaRuntimeError: FAILED_PRECONDITION: DNN library initialization failed. Look at the errors above for more details.

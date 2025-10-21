@@ -1,0 +1,1 @@
+# chan,time,lonWG,latWG,slantRange,lonTarg,latTarg,lrauvHeading,planarRange,lrauvDepth

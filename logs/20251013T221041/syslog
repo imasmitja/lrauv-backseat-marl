@@ -1,0 +1,18 @@
+2025-10-13 22:10:41,513 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-13 22:10:52,154 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 134, in compute_new_heading
+    new_heading = self.rl_tracking.newAction(self.target_address,self.target_range,self.lrauv_pose,self.lrauv_depth,self.target_timestamp)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 920, in newAction
+    action, target_predictions = self.agent_controller.get_action_and_predictions(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 80, in get_action_and_predictions
+    action = self.actor.step(obs, done=False)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/jax_agent.py", line 121, in step
+    self.hidden, logits = self.jitted_actor_apply(self.agent_params, self.hidden, ac_in)
+AttributeError: 'CentralizedActorRNN' object has no attribute 'hidden'

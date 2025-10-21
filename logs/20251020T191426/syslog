@@ -1,0 +1,22 @@
+2025-10-20 19:14:26,094 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-20 19:14:26,102 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 105, in main
+    backseat_app = BackseatApp(lc, cfg)
+  File "./backseat_app/main.py", line 36, in __init__
+    self.marl_processor = MarlProcessor(lcm_instance, self.cfg)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 55, in __init__
+    self.rl_tracking = TargetTracking(marl_method = self.marl_method)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 816, in __init__
+    self.agent_controller = load(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent_torch.py", line 146, in load
+    agent = CentralizedActorRNN(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/torch_agent.py", line 102, in __init__
+    self.actor.load_state_dict(agent_params)
+  File "/home/maiv/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 2215, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for PPOActorTransformer:
+	Missing key(s) in state_dict: "embedder.linear.weight", "embedder.linear.bias", "embedder.layer_norm.weight", "embedder.layer_norm.bias", "transformer.encoders.0.self_attn.q_linear.weight", "transformer.encoders.0.self_attn.k_linear.weight", "transformer.encoders.0.self_attn.v_linear.weight", "transformer.encoders.0.self_attn.out_linear.weight", "transformer.encoders.0.self_attn.out_linear.bias", "transformer.encoders.0.linear1.weight", "transformer.encoders.0.linear1.bias", "transformer.encoders.0.linear2.weight", "transformer.encoders.0.linear2.bias", "transformer.encoders.0.norm1.weight", "transformer.encoders.0.norm1.bias", "transformer.encoders.0.norm2.weight", "transformer.encoders.0.norm2.bias", "transformer.encoders.1.self_attn.q_linear.weight", "transformer.encoders.1.self_attn.k_linear.weight", "transformer.encoders.1.self_attn.v_linear.weight", "transformer.encoders.1.self_attn.out_linear.weight", "transformer.encoders.1.self_attn.out_linear.bias", "transformer.encoders.1.linear1.weight", "transformer.encoders.1.linear1.bias", "transformer.encoders.1.linear2.weight", "transformer.encoders.1.linear2.bias", "transformer.encoders.1.norm1.weight", "transformer.encoders.1.norm1.bias", "transformer.encoders.1.norm2.weight", "transformer.encoders.1.norm2.bias", "output_layer.weight", "output_layer.bias". 
+	Unexpected key(s) in state_dict: "params,Dense_0,bias", "params,Dense_0,kernel", "params,Embedder_0,Dense_0,bias", "params,Embedder_0,Dense_0,kernel", "params,Embedder_0,LayerNorm_0,bias", "params,Embedder_0,LayerNorm_0,scale", "params,ScannedTransformer_0,encoders_0,linear_0,bias", "params,ScannedTransformer_0,encoders_0,linear_0,kernel", "params,ScannedTransformer_0,encoders_0,linear_1,bias", "params,ScannedTransformer_0,encoders_0,linear_1,kernel", "params,ScannedTransformer_0,encoders_0,norm1,bias", "params,ScannedTransformer_0,encoders_0,norm1,scale", "params,ScannedTransformer_0,encoders_0,norm2,bias", "params,ScannedTransformer_0,encoders_0,norm2,scale", "params,ScannedTransformer_0,encoders_0,self_attn,key,kernel", "params,ScannedTransformer_0,encoders_0,self_attn,out,kernel", "params,ScannedTransformer_0,encoders_0,self_attn,query,kernel", "params,ScannedTransformer_0,encoders_0,self_attn,value,kernel", "params,ScannedTransformer_0,encoders_1,linear_0,bias", "params,ScannedTransformer_0,encoders_1,linear_0,kernel", "params,ScannedTransformer_0,encoders_1,linear_1,bias", "params,ScannedTransformer_0,encoders_1,linear_1,kernel", "params,ScannedTransformer_0,encoders_1,norm1,bias", "params,ScannedTransformer_0,encoders_1,norm1,scale", "params,ScannedTransformer_0,encoders_1,norm2,bias", "params,ScannedTransformer_0,encoders_1,norm2,scale", "params,ScannedTransformer_0,encoders_1,self_attn,key,kernel", "params,ScannedTransformer_0,encoders_1,self_attn,out,kernel", "params,ScannedTransformer_0,encoders_1,self_attn,query,kernel", "params,ScannedTransformer_0,encoders_1,self_attn,value,kernel". 

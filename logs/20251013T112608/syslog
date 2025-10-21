@@ -1,0 +1,161 @@
+2025-10-13 11:26:08,058 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_pontus.yml
+2025-10-13 11:26:08,061 [Supervisor](INFO): Creating Supervisor.
+2025-10-13 11:26:08,061 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T112608.
+2025-10-13 11:26:08,061 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T112608/lcmlog
+2025-10-13 11:26:08,064 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-13 11:26:08,064 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-13 11:26:08,064 [Supervisor](INFO): Adding data request for: depth
+2025-10-13 11:26:08,064 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-13 11:26:08,065 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-13 11:26:08,065 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-13 11:26:08,065 [Supervisor](INFO): Adding data request for: latitude
+2025-10-13 11:26:08,065 [Supervisor](INFO): Adding data request for: longitude
+2025-10-13 11:26:08,065 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-13 11:26:08,065 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-13 11:26:08,088 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-13 11:26:08,088 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-13 11:26:08,088 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-13 11:26:08,088 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-13 11:26:08,088 [Listener](INFO): Listening on LCM channel: _
+2025-10-13 11:26:10,590 [Listener](DEBUG): LCM listener timed out...
+2025-10-13 11:26:10,590 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:10,590 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-13 11:26:12,324 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:12,381 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:12,442 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:15,252 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:15,329 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:15,407 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:15,608 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:18,323 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:18,385 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:18,456 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:20,631 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:21,244 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:21,308 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:21,374 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:24,070 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:24,122 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:24,190 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:25,640 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:26,918 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:26,974 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:27,033 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:29,725 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:29,779 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:29,844 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:30,652 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:32,556 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:32,611 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:32,667 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:35,377 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:35,435 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:35,497 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:35,655 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:40,659 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:41,781 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:41,842 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:41,898 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:41,957 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:42,019 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:42,078 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:43,823 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:43,892 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:43,952 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:45,671 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:47,719 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:47,813 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:47,897 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:50,675 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:51,943 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:52,041 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:52,123 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:55,676 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:26:56,415 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:56,434 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:26:56,520 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:00,363 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:00,456 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:00,530 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:00,684 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:04,392 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:04,410 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:04,488 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:05,701 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:08,399 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:08,487 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:08,565 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:10,596 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-13 11:27:10,720 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:12,457 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:12,536 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:12,612 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:15,720 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:16,374 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:16,468 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:16,549 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:20,278 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:20,353 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:20,432 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:20,728 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:25,734 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:30,741 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:32,516 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:32,591 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:32,659 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:32,731 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:32,807 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:32,892 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:32,963 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:33,042 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:33,128 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:35,752 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:36,221 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:36,320 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:36,446 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:40,251 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:40,321 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:40,403 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:40,778 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:44,424 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:44,520 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:44,603 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:45,778 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:48,780 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:48,878 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:48,994 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:50,830 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:53,160 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:53,241 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:53,325 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:55,865 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:27:57,036 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:57,114 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:27:57,206 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:00,866 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:28:00,938 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:01,020 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:01,099 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:04,814 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:04,847 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:04,932 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:05,878 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:28:08,618 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:08,693 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:08,772 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:10,613 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-13 11:28:10,893 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:28:12,178 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:12,219 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:12,316 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:15,898 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:28:20,910 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 11:28:22,639 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:22,726 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:22,805 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:22,884 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:22,971 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:23,059 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:23,162 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:23,254 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0
+2025-10-13 11:28:23,341 [processing](INFO): MARL: Received Other Vehicles Observation State: 610.0

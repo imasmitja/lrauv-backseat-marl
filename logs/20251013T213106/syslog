@@ -1,0 +1,20 @@
+2025-10-13 21:31:06,099 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-13 21:31:06,099 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "backseat_app/main.py", line 111, in <module>
+    main()
+  File "backseat_app/main.py", line 105, in main
+    backseat_app = BackseatApp(lc, cfg)
+  File "backseat_app/main.py", line 36, in __init__
+    self.marl_processor = MarlProcessor(lcm_instance, self.cfg)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 53, in __init__
+    self.rl_tracking = TargetTracking(marl_method = 'Matteo2025')
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 818, in __init__
+    self.agent_controller = load(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 91, in load
+    params = load_params(model_path)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/jax_agent.py", line 19, in load_params
+    flattened_dict = load_file(filename)
+  File "/home/maiv/.local/lib/python3.8/site-packages/safetensors/flax.py", line 123, in load_file
+    with safe_open(filename, framework="flax") as f:
+FileNotFoundError: No such file or directory: "/home/maiv/lrauv_sim/lrauv-backseat-marl/jaxagent/jaxagent/IROS_MODELS/mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors"

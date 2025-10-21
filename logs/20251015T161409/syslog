@@ -1,0 +1,35 @@
+2025-10-15 16:14:09,971 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-15 16:14:09,975 [Supervisor](INFO): Creating Supervisor.
+2025-10-15 16:14:09,975 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T161409.
+2025-10-15 16:14:09,975 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T161409/lcmlog
+2025-10-15 16:14:09,982 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: depth
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: latitude
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: longitude
+2025-10-15 16:14:09,984 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-15 16:14:09,985 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-15 16:14:10,030 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-15 16:14:10,030 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-15 16:14:10,030 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-15 16:14:10,030 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-15 16:14:10,030 [Listener](INFO): Listening on LCM channel: _
+2025-10-15 16:14:12,532 [Listener](DEBUG): LCM listener timed out...
+2025-10-15 16:14:12,533 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:14:12,534 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:14:12,690 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 163, in compute_new_heading
+    self.new_action = self.rl_tracking.newAction(self.target_address,-1,self.lrauv_pose,self.lrauv_depth,self.target_timestamp,new_range=False)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 899, in newAction
+    print('INFO: LRAUV pos (x,y,depth,yaw)= %.2fm, %.2fm, %.2fm, %.2fdegrees'%(self.lrauv_position[0],self.lrauv_position[2],lrauvDepth,angle*180./np.pi))
+UnboundLocalError: local variable 'angle' referenced before assignment

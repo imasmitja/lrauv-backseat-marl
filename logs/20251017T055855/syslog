@@ -1,0 +1,26 @@
+2025-10-17 05:58:55,412 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-17 05:58:58,967 [Logger](CRITICAL): Uncaught exception
+TypeError: only size-1 arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 150, in compute_new_heading
+    self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/utils.py", line 980, in newAction
+    self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/production_agent.py", line 79, in get_action_and_predictions
+    pred = tracker.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/tracker.py", line 67, in update_and_predict
+    pred_xy = self.model.update_and_predict(
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/particle_filter.py", line 460, in update_and_predict
+    self.measurement_prob(measurement=z,observer=pos)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/../jaxagent/jaxagent/tracking/particle_filter.py", line 236, in measurement_prob
+    self.w[i] = self.gaussian(self,dist_old,dist, self.sense_noise*error_mult, self.measurement_old,measurement,inc_observer)
+ValueError: setting an array element with a sequence.

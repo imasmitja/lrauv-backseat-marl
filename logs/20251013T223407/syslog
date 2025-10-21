@@ -1,0 +1,21 @@
+2025-10-13 22:34:08,114 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_pontus.yml
+2025-10-13 22:34:08,118 [Supervisor](INFO): Creating Supervisor.
+2025-10-13 22:34:08,118 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T223407.
+2025-10-13 22:34:08,119 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251013T223407/lcmlog
+2025-10-13 22:34:08,124 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: depth
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: latitude
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: longitude
+2025-10-13 22:34:08,125 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-13 22:34:08,391 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-13 22:34:08,391 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-13 22:34:08,391 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-13 22:34:08,391 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-13 22:34:08,391 [Listener](INFO): Listening on LCM channel: _
+2025-10-13 22:34:10,893 [Listener](DEBUG): LCM listener timed out...
+2025-10-13 22:34:10,893 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-13 22:34:10,893 [DataRequester](INFO): Requesting data from LRAUV.

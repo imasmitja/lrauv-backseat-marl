@@ -1,0 +1,394 @@
+2025-10-18 05:35:23,908 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-18 05:35:23,912 [Supervisor](INFO): Creating Supervisor.
+2025-10-18 05:35:23,912 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251018T053523.
+2025-10-18 05:35:23,912 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251018T053523/lcmlog
+2025-10-18 05:35:23,917 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: depth
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: latitude
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: longitude
+2025-10-18 05:35:23,920 [Supervisor](INFO): Adding data request for: _.others_observations
+2025-10-18 05:35:23,920 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-18 05:35:24,157 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-18 05:35:24,157 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-18 05:35:24,157 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-18 05:35:24,157 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-18 05:35:24,157 [Listener](INFO): Listening on LCM channel: _
+2025-10-18 05:35:26,660 [Listener](DEBUG): LCM listener timed out...
+2025-10-18 05:35:26,660 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:35:26,661 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:35:31,661 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:35:36,670 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:35:41,705 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:35:46,725 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:35:51,750 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:35:56,761 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:01,774 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:06,784 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:11,796 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:16,799 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:21,817 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:26,665 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:36:26,831 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:27,747 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760772480.0, 10.0, 36.691608857904704, -121.93736076876583, 19.899690628051758, 271.8406066894531]
+2025-10-18 05:36:31,843 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:33,155 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760772608.0, 10.0, 36.6920272734112, -121.93629720656284, 18.71006965637207, 229.20599365234375]
+2025-10-18 05:36:36,847 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:41,848 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:43,605 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760772736.0, 10.0, 36.69281876181152, -121.93704938296749, 17.548921585083008, 135.9185333251953]
+2025-10-18 05:36:46,849 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:51,855 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:56,887 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:36:57,444 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760772864.0, 10.0, 36.693634379146296, -121.93725601719478, 0.5553318858146667, 52.928401947021484]
+2025-10-18 05:37:01,889 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:06,898 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:10,037 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760772992.0, 10.0, 36.69441656684729, -121.93780329858303, 10.742827415466309, 97.45347595214844]
+2025-10-18 05:37:11,906 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:16,919 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:20,653 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760773120.0, 10.0, 36.69456577320543, -121.93751945731945, 22.30579948425293, 89.93390655517578]
+2025-10-18 05:37:21,952 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:26,678 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:37:26,985 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:31,012 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760773248.0, 10.0, 36.69462087112631, -121.93681133828254, 17.563398361206055, 72.16413116455078]
+2025-10-18 05:37:31,990 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:37,003 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:41,562 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760773376.0, 10.0, 36.69380566346438, -121.93558543191291, 21.112760543823242, 114.62755584716797]
+2025-10-18 05:37:42,013 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:47,039 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:52,047 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:37:57,063 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:02,065 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:04,008 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760773504.0, 10.0, 36.6929770849563, -121.93473470351118, 14.37897777557373, 218.73565673828125]
+2025-10-18 05:38:04,933 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760773632.0, 10.0, 36.69315807384662, -121.93568505704496, 0.9131754040718079, 138.70745849609375]
+2025-10-18 05:38:07,083 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:12,093 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:13,849 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760773760.0, 10.0, 36.69242630243883, -121.93655857368161, 11.66819953918457, 176.16395568847656]
+2025-10-18 05:38:17,094 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:22,094 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:24,289 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760773888.0, 10.0, 36.69155171241841, -121.93772520533594, 21.87529182434082, 284.1251220703125]
+2025-10-18 05:38:26,697 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:38:27,114 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:32,113 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:35,030 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774016.0, 10.0, 36.69078142304934, -121.93827439938734, 18.361427307128906, 381.51422119140625]
+2025-10-18 05:38:37,122 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:42,124 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:45,392 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774144.0, 10.0, 36.691740845404276, -121.93781898970337, 21.18462562561035, 268.4757080078125]
+2025-10-18 05:38:47,124 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:52,157 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:38:57,160 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:02,190 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:07,216 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:09,303 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774272.0, 10.0, 36.69278813914007, -121.93798166297707, 14.877367973327637, 172.3886260986328]
+2025-10-18 05:39:10,762 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774400.0, 10.0, 36.69349212208814, -121.93766629751255, 0.28437185287475586, 96.52484893798828]
+2025-10-18 05:39:12,460 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:17,469 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:21,097 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774528.0, 10.0, 36.69329723909797, -121.93624480832045, 11.78618335723877, 90.58863067626953]
+2025-10-18 05:39:22,967 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:26,700 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:39:27,989 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:31,367 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774656.0, 10.0, 36.692548409096375, -121.9353354517905, 22.87160301208496, 197.5312042236328]
+2025-10-18 05:39:32,989 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:37,994 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:41,680 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774784.0, 10.0, 36.69128961301129, -121.93549333782487, 19.477359771728516, 310.73712158203125]
+2025-10-18 05:39:43,174 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:48,195 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:52,052 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760774912.0, 10.0, 36.69050752560132, -121.93636811309494, 19.960983276367188, 388.3207702636719]
+2025-10-18 05:39:53,530 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:39:58,550 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:02,402 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775040.0, 10.0, 36.690285141297935, -121.93640193510055, 13.756075859069824, 415.41558837890625]
+2025-10-18 05:40:03,782 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:08,788 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:13,811 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:15,005 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775168.0, 10.0, 36.69022270468914, -121.93740659265681, 0.30148255825042725, 448.51751708984375]
+2025-10-18 05:40:18,816 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:23,162 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775296.0, 10.0, 36.6912448581351, -121.93770660594527, 12.022034645080566, 371.5918273925781]
+2025-10-18 05:40:23,836 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:26,739 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:40:28,854 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:33,601 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775424.0, 10.0, 36.692247958807016, -121.93703820098109, 22.295562744140625, 260.7334289550781]
+2025-10-18 05:40:33,877 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:38,898 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:43,900 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:48,902 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:49,474 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775552.0, 10.0, 36.69303947002712, -121.93614544855036, 18.96474266052246, 158.7633819580078]
+2025-10-18 05:40:53,903 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:58,922 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:40:59,846 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775680.0, 10.0, 36.69392952324332, -121.93577564957573, 20.581098556518555, 106.76190185546875]
+2025-10-18 05:41:03,935 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:08,976 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:13,983 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:18,992 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:20,347 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775808.0, 10.0, 36.693539853997926, -121.93491887300313, 13.734076499938965, 72.66301727294922]
+2025-10-18 05:41:21,261 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760775936.0, 10.0, 36.69269818021076, -121.93497376062952, 0.45444998145103455, 163.160400390625]
+2025-10-18 05:41:24,016 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:26,768 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:41:29,044 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:30,992 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776064.0, 10.0, 36.69249020207243, -121.93414864744629, 10.878177642822266, 171.42318725585938]
+2025-10-18 05:41:34,045 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:39,082 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:41,337 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776192.0, 10.0, 36.69257404671249, -121.9352140267277, 22.431203842163086, 213.5191650390625]
+2025-10-18 05:41:44,103 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:49,109 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:51,652 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776320.0, 10.0, 36.69223882569494, -121.9362894966293, 18.09394645690918, 325.2730712890625]
+2025-10-18 05:41:54,117 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:41:59,139 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:02,054 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776448.0, 10.0, 36.693095447989634, -121.9363906875946, 20.059009552001953, 309.3687744140625]
+2025-10-18 05:42:04,148 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:09,152 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:12,293 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776576.0, 10.0, 36.693244396156594, -121.93539824985514, 16.035703659057617, 239.7672119140625]
+2025-10-18 05:42:14,161 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:19,164 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:24,166 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:26,783 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:42:28,114 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776704.0, 10.0, 36.69415137876749, -121.9353470119461, 0.8364408612251282, 243.16937255859375]
+2025-10-18 05:42:29,167 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:34,437 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:38,322 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776832.0, 10.0, 36.693452460867434, -121.93469706686325, 11.493680000305176, 214.32647705078125]
+2025-10-18 05:42:39,454 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:44,486 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:48,463 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760776960.0, 10.0, 36.69387010057418, -121.93392429299618, 22.1788272857666, 161.9988250732422]
+2025-10-18 05:42:49,496 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:54,533 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:42:58,766 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777088.0, 10.0, 36.69500830920058, -121.93407745583097, 18.571168899536133, 224.64369201660156]
+2025-10-18 05:42:59,554 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:04,554 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:08,980 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777216.0, 10.0, 36.695771523911866, -121.93370385724188, 20.036090850830078, 271.31671142578125]
+2025-10-18 05:43:09,556 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:14,594 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:19,625 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:24,625 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:26,784 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:43:29,652 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:29,931 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777344.0, 10.0, 36.694864445022574, -121.93301787384446, 13.804109573364258, 174.9221954345703]
+2025-10-18 05:43:30,758 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777472.0, 10.0, 36.69398123634206, -121.93284048244541, 1.3706928491592407, 152.3784637451172]
+2025-10-18 05:43:34,666 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:39,672 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:39,783 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777600.0, 10.0, 36.69392655700505, -121.93175467392166, 12.011151313781738, 78.12904357910156]
+2025-10-18 05:43:44,672 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:49,674 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:50,072 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777728.0, 10.0, 36.69357501446243, -121.93118448891892, 21.87504005432129, 71.91727447509766]
+2025-10-18 05:43:54,693 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:43:59,701 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:00,189 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777856.0, 10.0, 36.69252541163926, -121.93176785537322, 18.733963012695312, 205.5200653076172]
+2025-10-18 05:44:04,702 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:09,703 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:10,473 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760777984.0, 10.0, 36.69164441640955, -121.93190118543686, 20.966718673706055, 306.8491516113281]
+2025-10-18 05:44:14,704 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:19,743 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:24,751 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:26,806 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:44:29,761 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:34,278 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760778112.0, 10.0, 36.69272707164872, -121.93165803315445, 13.175952911376953, 213.3276824951172]
+2025-10-18 05:44:34,762 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:35,754 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760778240.0, 10.0, 36.693086160969884, -121.930883287965, 0.4123626947402954, 149.0428009033203]
+2025-10-18 05:44:39,770 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:44,778 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:46,038 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760778368.0, 10.0, 36.69364670845148, -121.93026455623779, 12.109391212463379, 85.15753173828125]
+2025-10-18 05:44:49,798 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:54,821 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:44:56,286 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760778496.0, 10.0, 36.69270809068212, -121.92959845915158, 22.42442512512207, 147.51918029785156]
+2025-10-18 05:44:59,845 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:04,859 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:06,275 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760778624.0, 10.0, 36.69165038014413, -121.92884458610122, 19.5847225189209, 266.7489013671875]
+2025-10-18 05:45:09,875 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:14,887 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:16,526 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760778752.0, 10.0, 36.69075077854456, -121.92874847394444, 20.08601951599121, 368.34759521484375]
+2025-10-18 05:45:19,896 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:25,089 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:26,317 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760778880.0, 10.0, 36.69058472470914, -121.92937697019485, 13.355945587158203, 399.6438903808594]
+2025-10-18 05:45:26,821 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:45:30,111 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:35,128 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:38,146 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779008.0, 10.0, 36.691238332975615, -121.92879309164469, 0.6113640069961548, 312.1609802246094]
+2025-10-18 05:45:40,471 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:45,501 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:50,518 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:51,069 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779136.0, 10.0, 36.69223792158016, -121.92832958726663, 12.38652515411377, 193.8738250732422]
+2025-10-18 05:45:55,543 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:45:56,043 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779264.0, 10.0, 36.69293391268534, -121.92781748733204, 22.484840393066406, 113.79037475585938]
+2025-10-18 05:46:00,575 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:05,590 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:10,614 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:11,066 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779392.0, 10.0, 36.694024883078406, -121.92727338078674, 19.343828201293945, 30.891324996948242]
+2025-10-18 05:46:15,619 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:20,626 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:21,365 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779520.0, 10.0, 36.69442055748527, -121.92644761083656, 19.78459358215332, 97.65798950195312]
+2025-10-18 05:46:25,645 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:26,831 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:46:30,650 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:35,652 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:40,668 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:40,837 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779648.0, 10.0, 36.694069560209016, -121.92517066178787, 15.514212608337402, 172.03518676757812]
+2025-10-18 05:46:41,663 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779776.0, 10.0, 36.6938062671192, -121.92399580592848, 0.8317984342575073, 240.66580200195312]
+2025-10-18 05:46:45,692 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:50,712 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:46:51,352 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760779904.0, 10.0, 36.69307542328611, -121.92472755071606, 11.562182426452637, 190.06492614746094]
+2025-10-18 05:46:55,739 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:00,766 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:01,271 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780032.0, 10.0, 36.69343698555486, -121.92556538098594, 22.285558700561523, 84.44144439697266]
+2025-10-18 05:47:05,766 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:10,772 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:11,442 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780160.0, 10.0, 36.6928225033068, -121.92445122926458, 18.806079864501953, 189.69223022460938]
+2025-10-18 05:47:15,788 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:20,788 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:21,519 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780288.0, 10.0, 36.692135943862716, -121.92319657365529, 18.71476173400879, 313.4460144042969]
+2025-10-18 05:47:25,789 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:26,860 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:47:30,793 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:31,563 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780416.0, 10.0, 36.69205288200933, -121.9233040609848, 15.858599662780762, 303.829833984375]
+2025-10-18 05:47:35,794 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:40,795 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:45,797 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:46,662 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780544.0, 10.0, 36.69273390258607, -121.92252167018317, 0.8210107684135437, 276.78594970703125]
+2025-10-18 05:47:50,798 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:55,800 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:47:56,728 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780672.0, 10.0, 36.69337239343309, -121.92318923613506, 11.372281074523926, 172.1182098388672]
+2025-10-18 05:48:00,813 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:05,821 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:06,815 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780800.0, 10.0, 36.69322199107579, -121.92410738495259, 22.182703018188477, 100.86671447753906]
+2025-10-18 05:48:10,853 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:15,876 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:16,851 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760780928.0, 10.0, 36.694141755595304, -121.92397291353149, 18.324735641479492, 50.63835144042969]
+2025-10-18 05:48:20,894 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:25,895 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:26,878 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:48:27,333 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781056.0, 10.0, 36.69322690353814, -121.92417792077629, 19.728530883789062, 83.15345001220703]
+2025-10-18 05:48:30,895 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:35,973 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:40,991 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:46,016 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:47,922 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781184.0, 10.0, 36.69214226452063, -121.92415528699202, 14.31094741821289, 209.39662170410156]
+2025-10-18 05:48:48,717 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781312.0, 10.0, 36.69114408874673, -121.92416419508879, 1.4861681461334229, 321.29376220703125]
+2025-10-18 05:48:51,080 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:56,083 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:48:57,311 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781440.0, 10.0, 36.6909465090697, -121.92521204191942, 12.076733589172363, 381.7480163574219]
+2025-10-18 05:49:01,095 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:06,103 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:07,323 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781568.0, 10.0, 36.69199036741759, -121.9253710179782, 22.33662986755371, 301.1306457519531]
+2025-10-18 05:49:11,124 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:16,133 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:17,407 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781696.0, 10.0, 36.69258145903671, -121.92414912977367, 19.244625091552734, 188.46560668945312]
+2025-10-18 05:49:21,152 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:26,175 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:26,896 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:49:27,582 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781824.0, 10.0, 36.69294792909885, -121.92314619490591, 20.286582946777344, 121.35208892822266]
+2025-10-18 05:49:31,195 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:36,199 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:41,201 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:46,229 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:51,234 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:49:51,381 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760781952.0, 10.0, 36.693296772331735, -121.92452945516762, 12.137240409851074, 197.6788787841797]
+2025-10-18 05:49:52,645 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782080.0, 10.0, 36.69378274526251, -121.92532755878315, 0.4992395043373108, 279.1252136230469]
+2025-10-18 05:49:56,264 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:01,264 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:02,614 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782208.0, 10.0, 36.693402931910065, -121.92438121266493, 12.732025146484375, 224.6114959716797]
+2025-10-18 05:50:06,268 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:11,281 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:12,627 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782336.0, 10.0, 36.69293175928106, -121.92350531495566, 22.085281372070312, 201.0792999267578]
+2025-10-18 05:50:16,282 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:21,303 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:22,737 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782464.0, 10.0, 36.69294431027874, -121.92220679816035, 19.075109481811523, 138.54164123535156]
+2025-10-18 05:50:26,324 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:26,898 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:50:31,332 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:32,826 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782592.0, 10.0, 36.69393938621724, -121.92231290573443, 20.47547149658203, 90.93449401855469]
+2025-10-18 05:50:36,333 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:41,334 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:42,819 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782720.0, 10.0, 36.69471439604168, -121.92136626600859, 11.652216911315918, 87.9862289428711]
+2025-10-18 05:50:46,338 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:51,343 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:50:55,185 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782848.0, 10.0, 36.69500762597929, -121.92024300754643, 0.8469432592391968, 118.2943344116211]
+2025-10-18 05:50:56,356 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:01,358 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:06,360 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:08,515 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760782976.0, 10.0, 36.69526095296626, -121.91879462678747, 12.858030319213867, 210.79971313476562]
+2025-10-18 05:51:11,393 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:16,428 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:18,710 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760783104.0, 10.0, 36.694526317928954, -121.91781441115344, 22.062362670898438, 234.7404022216797]
+2025-10-18 05:51:21,429 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:26,444 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:26,899 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:51:28,686 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760783232.0, 10.0, 36.69360279395879, -121.91746302665317, 19.942035675048828, 248.0153350830078]
+2025-10-18 05:51:31,463 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:36,477 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:38,478 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760783360.0, 10.0, 36.69276606457579, -121.91779295129456, 19.3179988861084, 237.6496124267578]
+2025-10-18 05:51:41,521 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:46,523 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:51,523 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:56,526 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:51:57,875 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760783488.0, 10.0, 36.69208564109384, -121.91720433273714, 15.085806846618652, 317.9863586425781]
+2025-10-18 05:51:58,916 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760783616.0, 10.0, 36.692098144970686, -121.9178166577604, 1.0033745765686035, 246.7493438720703]
+2025-10-18 05:52:01,537 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:06,547 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:07,920 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760783744.0, 10.0, 36.69111481352238, -121.91793298341146, 11.41736125946045, 341.166748046875]
+2025-10-18 05:52:11,573 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:16,595 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:18,008 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760783872.0, 10.0, 36.69140936253289, -121.91923530283407, 22.27659034729004, 299.9527282714844]
+2025-10-18 05:52:21,615 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:26,622 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:26,935 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:52:27,909 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784000.0, 10.0, 36.69214323455228, -121.91973880658863, 19.119277954101562, 244.75392150878906]
+2025-10-18 05:52:31,628 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:36,635 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:37,863 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784128.0, 10.0, 36.69314121767716, -121.91930888458354, 18.588191986083984, 144.01405334472656]
+2025-10-18 05:52:41,636 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:46,637 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:47,522 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784256.0, 10.0, 36.693921830181466, -121.91926573177913, 14.727190971374512, 117.64229583740234]
+2025-10-18 05:52:51,640 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:52:56,659 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:01,684 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:03,131 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784384.0, 10.0, 36.69469955409588, -121.92005925212987, 1.1896852254867554, 221.70278930664062]
+2025-10-18 05:53:06,706 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:11,714 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:14,489 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784512.0, 10.0, 36.69565657052541, -121.92036777902142, 11.633721351623535, 323.155517578125]
+2025-10-18 05:53:16,740 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:21,962 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:25,374 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784640.0, 10.0, 36.694734445402545, -121.91992912009411, 22.064085006713867, 261.1423645019531]
+2025-10-18 05:53:26,949 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:53:26,979 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:31,981 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:35,679 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784768.0, 10.0, 36.69437145437647, -121.9187402774003, 19.176925659179688, 164.1692352294922]
+2025-10-18 05:53:36,981 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:41,983 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:46,287 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760784896.0, 10.0, 36.69346252961106, -121.91804926652097, 18.86273956298828, 135.49122619628906]
+2025-10-18 05:53:46,991 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:51,992 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:53:57,023 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:02,036 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:07,052 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:07,887 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785024.0, 10.0, 36.69396617278545, -121.91708491629528, 13.831169128417969, 51.0971794128418]
+2025-10-18 05:54:08,886 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785152.0, 10.0, 36.6932085397702, -121.9168836430796, 0.31272241473197937, 105.1571044921875]
+2025-10-18 05:54:12,057 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:17,066 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:17,801 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785280.0, 10.0, 36.69295702486685, -121.9159022525587, 11.769235610961914, 126.4124526977539]
+2025-10-18 05:54:22,084 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:26,950 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:54:27,136 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:28,057 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785408.0, 10.0, 36.69308168194207, -121.91710804913824, 22.867422103881836, 162.58639526367188]
+2025-10-18 05:54:32,153 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:37,175 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:42,183 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:43,817 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785536.0, 10.0, 36.69331180867317, -121.91859824635969, 19.694486618041992, 294.36090087890625]
+2025-10-18 05:54:47,192 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:52,215 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:54:54,371 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785664.0, 10.0, 36.694013658549395, -121.91913359412413, 19.97783851623535, 359.1614990234375]
+2025-10-18 05:54:57,237 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:02,238 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:07,239 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:12,245 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:14,062 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785792.0, 10.0, 36.693866361219484, -121.91781520953553, 14.852119445800781, 258.1378173828125]
+2025-10-18 05:55:14,860 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760785920.0, 10.0, 36.69324215447533, -121.91735597770088, 0.25736138224601746, 246.90283203125]
+2025-10-18 05:55:17,593 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:22,601 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:24,676 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760786048.0, 10.0, 36.69274448054884, -121.91629268134521, 11.721426010131836, 215.69894409179688]
+2025-10-18 05:55:26,952 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-18 05:55:27,631 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:32,853 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-18 05:55:34,884 [processing](INFO): MARL: Received Other Vehicles Observation State: [1760786176.0, 10.0, 36.69362290904799, -121.91595403971587, 22.735334396362305, 155.98426818847656]
+2025-10-18 05:55:35,356 [Supervisor](DEBUG): Handling LCM msg on bsd_command.
+2025-10-18 05:55:35,356 [Supervisor](INFO): Got command: shutdown.
+2025-10-18 05:55:35,359 [Listener](INFO): Unsubscribing from LCM channels.
+2025-10-18 05:55:35,359 [main](INFO): Terminating.

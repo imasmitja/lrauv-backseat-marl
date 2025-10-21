@@ -1,0 +1,35 @@
+2025-10-17 02:39:04,001 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-17 02:39:04,004 [Supervisor](INFO): Creating Supervisor.
+2025-10-17 02:39:04,004 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T023903.
+2025-10-17 02:39:04,004 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251017T023903/lcmlog
+2025-10-17 02:39:04,009 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: depth
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: latitude
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: longitude
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: _.others_observations
+2025-10-17 02:39:04,010 [Supervisor](INFO): Adding data request for: _.ivan
+2025-10-17 02:39:04,315 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-17 02:39:04,315 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-17 02:39:04,315 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-17 02:39:04,315 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-17 02:39:04,315 [Listener](INFO): Listening on LCM channel: _
+2025-10-17 02:39:06,818 [Listener](DEBUG): LCM listener timed out...
+2025-10-17 02:39:06,818 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:06,819 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 02:39:11,916 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:16,921 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:21,927 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:27,078 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:32,121 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:37,122 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:42,150 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:47,156 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:52,170 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:39:57,192 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:40:02,210 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-17 02:40:07,129 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-17 02:40:07,257 [Supervisor](DEBUG): Publishing heartbeat.

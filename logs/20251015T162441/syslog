@@ -1,0 +1,12 @@
+2025-10-15 16:24:41,096 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-15 16:24:41,148 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 105, in main
+    backseat_app = BackseatApp(lc, cfg)
+  File "./backseat_app/main.py", line 36, in __init__
+    self.marl_processor = MarlProcessor(lcm_instance, self.cfg)
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 65, in __init__
+    if marl_method == 'Ivan2022':
+NameError: name 'marl_method' is not defined

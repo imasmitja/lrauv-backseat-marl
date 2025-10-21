@@ -1,0 +1,50 @@
+2025-10-15 16:16:52,015 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-10-15 16:16:52,019 [Supervisor](INFO): Creating Supervisor.
+2025-10-15 16:16:52,019 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T161651.
+2025-10-15 16:16:52,019 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251015T161651/lcmlog
+2025-10-15 16:16:52,026 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: depth
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: latitude
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: longitude
+2025-10-15 16:16:52,028 [Supervisor](INFO): Adding data request for: _.observation_state
+2025-10-15 16:16:52,082 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-15 16:16:52,082 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-15 16:16:52,082 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-15 16:16:52,083 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-15 16:16:52,083 [Listener](INFO): Listening on LCM channel: _
+2025-10-15 16:16:54,585 [Listener](DEBUG): LCM listener timed out...
+2025-10-15 16:16:54,585 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:16:54,589 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:16:59,610 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:04,646 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:09,649 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:14,817 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:19,829 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:24,851 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:29,862 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:34,883 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:39,896 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:44,920 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:49,951 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:54,589 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:17:54,965 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:17:58,708 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-15 16:17:59,991 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:05,003 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:10,013 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:15,016 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:20,076 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:25,100 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:30,104 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:35,115 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:39,060 [Publisher](ERROR): Failed to publish LCM msg 16842. 
+Traceback (most recent call last):
+  File "/home/maiv/.local/lib/python3.8/site-packages/lrauv/LCM/Publisher.py", line 139, in publish
+    self.lc.publish(channel_name, self.msg.encode())
+KeyboardInterrupt
+2025-10-15 16:18:40,144 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-15 16:18:40,734 [Listener](INFO): Unsubscribing from LCM channels.
