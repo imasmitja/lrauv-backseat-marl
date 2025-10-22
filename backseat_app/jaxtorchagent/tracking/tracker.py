@@ -1,12 +1,13 @@
 import math
 import numpy as np
-import jax
-from jax import numpy as jnp
 
 from .least_squares import LSTracker
-from .particle_filter_jax import ParticleFilter
+from .particle_filter import ParticleFilter
 
-class Tracker:
+
+
+
+class Tracker_ivan:
     """wrapper for choosing between particle filter and least_squares tracking"""
     
     def __init__(self, method='ls', dt=30, pf_seed=0, **kwargs):
@@ -23,7 +24,6 @@ class Tracker:
         else:
             self.model = ParticleFilter(**kwargs)
             self.pf_state = None
-            self.rng = jax.random.PRNGKey(pf_seed)
 
     def reset(self):
         if self.method == 'ls':
@@ -40,7 +40,7 @@ class Tracker:
         # bring the ranges to 2d if the landmarks depth is known
         if depth is not None:
             for i, (r, pos) in enumerate(zip(ranges, positions)):
-                if r != 0:
+                if r != 0 and ((pos[2] - depth)**2)<=r**2 :
                     ranges[i] = np.sqrt(r**2 - (pos[2] - depth)**2)
 
         # Least Squares method
@@ -51,16 +51,15 @@ class Tracker:
         
         # Particle Filter method
         else:
-            self.rng, _rng = jax.random.split(self.rng)
-            if self.pf_state is None:
-                # initialize the particle filter if it's the first time
-                self.pf_state = self.model.reset(_rng, position=positions[0], range_obs=ranges[0])
-            pos = jnp.array(positions)[:,:2] # only x, y
-            r = jnp.array(ranges)
-            mask = r != 0
-            self.pf_state, pred_xy = self.model.step_and_predict(
-                rng=_rng, state=self.pf_state, pos=pos, obs=r, mask=mask, dt=dt
-            )
+            for r, pos in zip(ranges,positions):
+                if self.pf_state is None:
+                    # initialize the particle filter if it's the first time
+                    self.model.init_particles(position=pos, slantrange=r)
+                    self.pf_state = True
+                pos = np.array(pos)[:2] # only x, y
+                r = np.array(r)
+                pred_xy = self.model.update_and_predict(
+                                            dt=dt, z=r, pos=pos)
 
         # if the prediction is not available, use the first position
         if np.isnan(pred_xy).any():

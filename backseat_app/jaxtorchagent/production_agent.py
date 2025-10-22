@@ -1,7 +1,7 @@
 import numpy as np
 from jaxtorchagent.torch_agent import CentralizedActorRNN as TorchCentralizedActorRNN
 #from .torch_agent import TorchCentralizedActorRNN, load_params
-from .tracking import Tracker
+from .tracking import Tracker_ivan
 from typing import Optional, List, Tuple
 
 
@@ -34,15 +34,38 @@ class AgentProductionController:
         For ranges and positions, it is assumed that the first agent is the one using the controller.
         """
 
+        #Create a mask to eliminate the ranges and associated position with 0s, as they don't need to be used for trget position estimation
+        mask = ranges[0] != 0
+        ranges_good = ranges[:,mask]
+        positions_good = positions[mask,:] 
+
         # update tracking for each target
         preds = {}
         for i, tracker in enumerate(self.trackers):
-            pred = tracker.update_and_predict(
-                ranges=ranges[i], positions=positions, depth=targets_depth[i], dt=dt
-            )
-            preds[f"landmark_{i}_tracking_x"] = pred[0]
-            preds[f"landmark_{i}_tracking_y"] = pred[1]
-            preds[f"landmark_{i}_tracking_z"] = pred[2]
+            if len(ranges_good[0]) != 0:
+                #print('INFO: Target prediction True')
+                pred = tracker.update_and_predict(
+                    ranges=ranges_good[i],
+                    positions=positions_good,
+                    depth=targets_depth[i],
+                    dt=dt
+                )
+                preds[f'landmark_{i}_tracking_x'] = pred[0]
+                preds[f'landmark_{i}_tracking_y'] = pred[1]
+                preds[f'landmark_{i}_tracking_z'] = pred[2]
+            else:
+                if tracker.pred[0] != 0 or tracker.pred[1] != 0:
+                    #if no new measurements, I use the old ones
+                    #print('INFO: Target prediction False: use old prediction')
+                    preds[f'landmark_{0}_tracking_x'] = tracker.pred[0]
+                    preds[f'landmark_{0}_tracking_y'] = tracker.pred[1]
+                    preds[f'landmark_{0}_tracking_z'] = tracker.pred[2]
+                else:
+                    #if the prediction is not available, use the first position
+                    #print('INFO: Target prediction False: use current position')
+                    preds[f'landmark_{0}_tracking_x'] = positions[0][0]
+                    preds[f'landmark_{0}_tracking_y'] = positions[0][1]
+                    preds[f'landmark_{0}_tracking_z'] = positions[0][2]
 
         # prepare the observation for the agent
         obs = {
@@ -54,15 +77,23 @@ class AgentProductionController:
 
         # logic is that the first agent is the one using the controller
         for j in range(1, len(positions)):
-            obs.update(
-                {
-                    f"agent_{j}_dx": positions[j][0] - positions[0][0],
-                    f"agent_{j}_dy": positions[j][1] - positions[0][1],
-                    f"agent_{j}_dz": positions[j][2] - positions[0][2],
-                }
-            )
+            if positions[j].sum()!=0:
+                obs.update(
+                    {
+                        f"agent_{j}_dx": positions[j][0] - positions[0][0],
+                        f"agent_{j}_dy": positions[j][1] - positions[0][1],
+                        f"agent_{j}_dz": positions[j][2] - positions[0][2],
+                    })
+            else: # if we don't have others agents, we put 0s
+                obs.update({
+                    f'agent_{j}_dx': 0.,
+                    f'agent_{j}_dy': 0.,
+                    f'agent_{j}_dz': 0.,
+                })
 
         for i in range(len(self.trackers)):
+            if ranges[i][0]==0:
+                ranges[i][0] = np.sqrt((positions[0][0]-preds[f'landmark_{i}_tracking_x'])**2+(positions[0][1]-preds[f'landmark_{i}_tracking_y'])**2)
             obs.update(
                 {
                     f"landmark_{i}_tracking_x": preds[f"landmark_{i}_tracking_x"],
@@ -123,7 +154,7 @@ def load(
     # make the actor decentralized
 
     trackers = [
-        Tracker(method="pf", dt=dt, **tracking_kwargs) for _ in range(num_landmarks)
+        Tracker_ivan(method="pf", dt=dt, **tracking_kwargs) for _ in range(num_landmarks)
     ]
 
     return AgentProductionController(agent, trackers)

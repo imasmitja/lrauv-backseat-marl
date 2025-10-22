@@ -815,7 +815,7 @@ class TargetTracking(object):
             project_root = os.path.abspath(project_root) 
             model_path = os.path.join(project_root, "backseat_app","jaxtorchagent", "IROS_MODELS", model_name)
             self.agent_controller = load(
-                    num_agents=self.num_agents,
+                    num_agents=self.num_agents-1,
                     num_landmarks=self.num_targets,
                     model_path=model_path,
                     dt=30 # seconds per step
@@ -897,10 +897,6 @@ class TargetTracking(object):
         #compute the position of the current LRAUV in UTM (using the format for Ivan)
         tuple = utm.from_latlon(lrauvLatLon[0], lrauvLatLon[1])
         lrauv_x, lrauv_y, zonenumber, zoneletter = tuple
-        # If the lrauv current possition is too far away from origin, we update origin with current values
-        aux_dist = np.sqrt([(lrauv_x-self.lrauv_position_origin[0])**2+(lrauv_y-self.lrauv_position_origin[2])**2])
-        if aux_dist > 900: # we set the threshold at 900 m
-            self.lrauv_position_origin = np.array([lrauv_x, 0, lrauv_y, 0])
         lrauv_x -= self.lrauv_position_origin.item(0)
         lrauv_y -= self.lrauv_position_origin.item(2)
         # save the current lrauv postion and velocity
@@ -1072,6 +1068,14 @@ class TargetTracking(object):
                         planarRange, lrauvDepth]])                
         with open(self.fileDirName,'a') as csvfile:
             np.savetxt(csvfile,aux_t,delimiter=',')
+
+        #TODO: If the lrauv current possition is too far away from origin, we update origin with current values
+        #aux_dist = np.sqrt([(lrauv_x-self.agents_pos[0][0])**2+(lrauv_y-self.agents_pos[0][2])**2])
+        #print("agents0pos",self.agents_pos[0])
+        #print("auxdist=",aux_dist)
+        #if aux_dist < 900 and agents_lrauvLatLon[0][0] != 0: # we set the threshold at 900 m
+        #    print("TRUEEEEE")
+        #    self.lrauv_position_origin = self.agents_pos[0].copy()
         
         if self.marl_method == 'Ivan2022':
             return((np.pi/2.-self.lrauvHeading)*180/np.pi) #we adjust as the Gazebo sim has the North as 0 degrees.

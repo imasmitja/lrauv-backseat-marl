@@ -8,6 +8,8 @@ import os
 from .torch_modules import PPOActorTransformer
 from .torch_utils import load_jax_params_to_torch
 
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 class CentralizedActorRNN:
     """PyTorch equivalent of the JAX CentralizedActorRNN"""

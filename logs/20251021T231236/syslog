@@ -1,0 +1,68 @@
+2025-10-21 23:12:38,188 [AppConfig](INFO): Reading configuration file: /home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/config/app_cfg.yml
+2025-10-21 23:12:38,191 [Supervisor](INFO): Creating Supervisor.
+2025-10-21 23:12:38,191 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251021T231236.
+2025-10-21 23:12:38,191 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251021T231236/lcmlog
+2025-10-21 23:12:38,200 [Supervisor](INFO): Adding data request for: WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water
+2025-10-21 23:12:38,201 [Supervisor](INFO): Adding data request for: NAL9602.latitude_fix
+2025-10-21 23:12:38,201 [Supervisor](INFO): Adding data request for: depth
+2025-10-21 23:12:38,201 [Supervisor](INFO): Adding data request for: NAL9602.longitude_fix
+2025-10-21 23:12:38,201 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-10-21 23:12:38,201 [Supervisor](INFO): Adding data request for: azimuth_vehicleFrame
+2025-10-21 23:12:38,201 [Supervisor](INFO): Adding data request for: latitude
+2025-10-21 23:12:38,201 [Supervisor](INFO): Adding data request for: longitude
+2025-10-21 23:12:38,279 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-10-21 23:12:38,279 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-10-21 23:12:38,279 [Listener](INFO): Listening on LCM channel: Universal
+2025-10-21 23:12:38,279 [Listener](INFO): Listening on LCM channel: DAT
+2025-10-21 23:12:38,279 [Listener](INFO): Listening on LCM channel: _
+2025-10-21 23:12:40,782 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,782 [Listener](DEBUG): LCM listener timed out...
+2025-10-21 23:12:40,782 [Supervisor](DEBUG): Publishing heartbeat.
+2025-10-21 23:12:40,783 [DataRequester](INFO): Requesting data from LRAUV.
+2025-10-21 23:12:40,802 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,803 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,804 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,805 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,805 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,819 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,820 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,820 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,951 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,952 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,953 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,953 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,968 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,969 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,970 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,970 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,996 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,997 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:40,998 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,014 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,015 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,016 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,017 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,043 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,044 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,045 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,064 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,065 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,066 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,067 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,086 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,087 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,087 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,111 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,112 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,113 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,114 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,132 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,133 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,133 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,134 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,134 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,163 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,164 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,165 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,166 [Listener](INFO): TEST IVAN LISTEN
+2025-10-21 23:12:41,172 [Listener](INFO): TEST IVAN LISTEN
