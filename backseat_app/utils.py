@@ -808,8 +808,14 @@ class TargetTracking(object):
         elif marl_method == 'Matteo2025':
             #import jax
             #jax.config.update('jax_platform_name', 'cpu')
-            model_name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent
-            #model_name = "mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents
+            #original name = "mappo_rnn_follow_1v1_10min_training_512steps_utracking_1_vs_1_seed0_vmap0_final.safetensors"
+            #model_name = "mappo_rnn_1v1.safetensors"
+            #original name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent
+            model_name = "mappo_transformer_1v1.safetensors" #Good for 1target and 1agent
+            #original name ="mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents
+            #model_name = "mappo_transformer_3v1.safetensors" #Good for 1target and multiple agents
+            #original name = "mappo_transformer_from_5v5follow_256steps_utracking_5_vs_5_step7320_rng202567368.safetensors"
+            #model_name = "mappo_transformer_5v5.safetensors"
             project_root = os.path.dirname(os.path.abspath(__file__))
             project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
             project_root = os.path.abspath(project_root) 
