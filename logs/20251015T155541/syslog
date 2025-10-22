@@ -1,8 +1,0 @@
-2025-10-15 15:55:41,319 [Logger](CRITICAL): Uncaught exception
-Traceback (most recent call last):
-  File "./backseat_app/main.py", line 22, in <module>
-    from backseat_app.processing import MarlProcessor
-  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 216
-    if self.command == "$SR":
-                            ^
-SyntaxError: invalid syntax

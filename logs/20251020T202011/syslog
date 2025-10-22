@@ -1,4 +1,0 @@
-2025-10-20 20:20:11,337 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
-2025-10-20 20:20:12,019 [processing](INFO): MARL: Received Other Vehicles Observation State: [1761001216.0, 10.0, 36.69310658454229, -121.90974827219604, 9.6238431930542, 2421.8056640625]
-2025-10-20 20:20:13,806 [main](ERROR): KeyboardInterrupt: aborting.
-2025-10-20 20:20:13,806 [main](INFO): Terminating.

@@ -1,7 +1,0 @@
-2025-10-03 17:52:47,877 [Logger](CRITICAL): Uncaught exception
-Traceback (most recent call last):
-  File "backseat_app/main.py", line 22, in <module>
-    from backseat_app.processing import MarlProcessor
-  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 5, in <module>
-    from app.utils import TargetTracking
-ModuleNotFoundError: No module named 'app'
