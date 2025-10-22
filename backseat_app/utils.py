@@ -922,7 +922,7 @@ class TargetTracking(object):
         #if this is the first iteration, we don't go further and it's used only to update the lrauv position
         if self.ping_count == 0:
             self.ping_count += 1
-            return(-1)
+            return(-1,0)
 
         if self.marl_method == 'Ivan2022':
 
@@ -1078,9 +1078,9 @@ class TargetTracking(object):
         #    self.lrauv_position_origin = self.agents_pos[0].copy()
         
         if self.marl_method == 'Ivan2022':
-            return((np.pi/2.-self.lrauvHeading)*180/np.pi) #we adjust as the Gazebo sim has the North as 0 degrees.
+            return((np.pi/2.-self.lrauvHeading)*180/np.pi, aux_t) #we adjust as the Gazebo sim has the North as 0 degrees.
         elif self.marl_method == 'Matteo2025':
-            return((self.lrauvHeading)*180/np.pi) #we dont need to adjust as in Matteo's method 0 degrees is North
+            return((self.lrauvHeading)*180/np.pi, aux_t) #we dont need to adjust as in Matteo's method 0 degrees is North
             
     
 ###########################################################################################################

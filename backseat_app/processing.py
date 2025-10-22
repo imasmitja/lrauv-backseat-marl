@@ -145,12 +145,13 @@ class MarlProcessor(LcmHandlerBase):
             print("Timestamp = ", self.sim_timestamp)
             print("LRAUV pose [%.6f,%.6f,%.2f]: "%(self.lrauv_pose[0], self.lrauv_pose[1],self.lrauv_depth))
             print("Target address %i at %.3f meters"%(self.target_address,self.target_range))
+            logger.debug("New range measured")
             self.target_timestamp_old = self.target_timestamp+0
             agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
             agents_pose = [self.lrauv_pose] + [obs[2:4] for obs in self.other_obs_history]
             agents_depth = [self.lrauv_depth] + [obs[4] for obs in self.other_obs_history]
             agents_range = [[self.target_range] + [obs[5] for obs in self.other_obs_history]]
-            self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp)
+            self.new_action, internal_state  = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp)
             #after we have used the nother observation history to update the PF and take a new acction, we reset it
             self.other_obs_history = np.array([[0,0,0,0,0,0]])
             #TODO: We need to find how to deal when there is more than one target! For now, it works only with one.
@@ -158,6 +159,9 @@ class MarlProcessor(LcmHandlerBase):
             self.obs_to_send = np.array([self.target_timestamp, int(self.cfg['vehicle_id_log']),self.lrauv_pose[0], self.lrauv_pose[1], self.lrauv_depth, self.target_range])
             #publish it to nearby vehicles
             self.publish_observation_state_to_slate()
+            #log internal states, actions, and observations
+            logger.debug('MARL INFO: internal_state, '+str(internal_state))
+            logger.debug('MARL INFO: new_action, '+str(self.new_action))
             #set internal values to control the vehicle
             if self.marl_method == 'Matteo2025':
                 print("NEW RUDDER POSITION=",self.new_action)
@@ -188,6 +192,7 @@ class MarlProcessor(LcmHandlerBase):
             #Compute elapsed time since last call
             print('INFO: Elapsed time = %.3f seconds'%(self.sim_timestamp-self.target_timestamp_bsc) )
             print('INFO: Sim timestamp ' + time.strftime('%Y-%m-%dT%H:%M:%S', time.gmtime(self.sim_timestamp)))
+            logger.debug("WARNING: No range measurement for a while, using last informaiton to compute new heading")
             self.target_timestamp_bsc = self.sim_timestamp+0.
             agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
             agents_pose = [self.lrauv_pose] + [obs[2:4] for obs in self.other_obs_history]
@@ -197,9 +202,12 @@ class MarlProcessor(LcmHandlerBase):
                 aux_range = True
             else:
                 aux_range = False
-            self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range)
+            self.new_action, internal_state = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range)
             #after we have used the nother observation history to update the PF and take a new acction, we reset it
             self.other_obs_history = np.array([[0,0,0,0,0,0]])
+            #log internal states, actions, and observations
+            logger.debug('MARL INFO: internal_state, '+str(internal_state))
+            logger.debug('MARL INFO: new_action, '+str(self.new_action))
             if self.marl_method == 'Matteo2025':
                 #print("NEW RUDDER POSITION=",self.new_action)
                 if self.new_action != -1:
@@ -220,7 +228,7 @@ class MarlProcessor(LcmHandlerBase):
                 else:
                     self.command = "$SH"
                     self.speed = 0.
-
+     
         return
         
 

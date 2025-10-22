@@ -1,0 +1,219 @@
+2025-10-22 14:38:09,061 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-22 14:38:09,122 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:09,123 [processing](DEBUG): MARL INFO: internal_state, 0
+2025-10-22 14:38:09,123 [processing](DEBUG): MARL INFO: new_action, -1
+2025-10-22 14:38:10,277 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:10,291 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114389e+09 -1.21937792e+02  3.66941983e+01
+  -1.00000000e+00 -1.21937792e+02  3.66941983e+01  0.00000000e+00
+  -1.00000000e+00  1.77893143e+01]]
+2025-10-22 14:38:10,291 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:11,375 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:11,425 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114389e+09 -1.21937898e+02  3.66940910e+01
+  -1.00000000e+00 -1.21937898e+02  3.66940910e+01  0.00000000e+00
+  -1.00000000e+00  1.85808086e+01]]
+2025-10-22 14:38:11,425 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:12,504 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:12,551 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114389e+09 -1.21938035e+02  3.66939523e+01
+  -1.00000000e+00 -1.21938035e+02  3.66939523e+01 -2.40000000e-01
+  -1.00000000e+00  2.10358791e+01]]
+2025-10-22 14:38:12,551 [processing](DEBUG): MARL INFO: new_action, -13.750987083139757
+2025-10-22 14:38:13,632 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:13,635 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114389e+09 -1.21938078e+02  3.66937875e+01
+  -1.00000000e+00 -1.21938078e+02  3.66937875e+01 -2.40000000e-01
+  -1.00000000e+00  2.29555931e+01]]
+2025-10-22 14:38:13,635 [processing](DEBUG): MARL INFO: new_action, -13.750987083139757
+2025-10-22 14:38:14,725 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:14,729 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114389e+09 -1.21937913e+02  3.66936943e+01
+  -1.00000000e+00 -1.21937913e+02  3.66936943e+01  0.00000000e+00
+  -1.00000000e+00  2.34841499e+01]]
+2025-10-22 14:38:14,729 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:15,862 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:15,865 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21937689e+02  3.66936981e+01
+  -1.00000000e+00 -1.21937689e+02  3.66936981e+01  0.00000000e+00
+  -1.00000000e+00  2.32398777e+01]]
+2025-10-22 14:38:15,865 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:17,000 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:17,003 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21937454e+02  3.66937018e+01
+  -1.00000000e+00 -1.21937454e+02  3.66937018e+01  0.00000000e+00
+  -1.00000000e+00  2.19332180e+01]]
+2025-10-22 14:38:17,003 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:18,123 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:18,126 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21937219e+02  3.66937057e+01
+  -1.00000000e+00 -1.21937219e+02  3.66937057e+01  0.00000000e+00
+  -1.00000000e+00  1.96644020e+01]]
+2025-10-22 14:38:18,126 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:19,213 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:19,218 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21936982e+02  3.66937095e+01
+  -1.00000000e+00 -1.21936982e+02  3.66937095e+01 -1.20000000e-01
+  -1.00000000e+00  1.77852669e+01]]
+2025-10-22 14:38:19,218 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:20,325 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:20,328 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21936758e+02  3.66937558e+01
+  -1.00000000e+00 -1.21936758e+02  3.66937558e+01  0.00000000e+00
+  -1.00000000e+00  1.71064167e+01]]
+2025-10-22 14:38:20,328 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:21,430 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:21,433 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21936554e+02  3.66938519e+01
+  -1.00000000e+00 -1.21936554e+02  3.66938519e+01  0.00000000e+00
+  -1.00000000e+00  1.72139606e+01]]
+2025-10-22 14:38:21,433 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:22,577 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:22,631 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21936349e+02  3.66939483e+01
+  -1.00000000e+00 -1.21936349e+02  3.66939483e+01 -1.20000000e-01
+  -1.00000000e+00  1.78935070e+01]]
+2025-10-22 14:38:22,631 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:23,708 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:23,711 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21936152e+02  3.66940514e+01
+  -1.00000000e+00 -1.21936152e+02  3.66940514e+01 -1.20000000e-01
+  -1.00000000e+00  1.56449490e+01]]
+2025-10-22 14:38:23,711 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:24,826 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:24,830 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114390e+09 -1.21936039e+02  3.66942064e+01
+  -1.00000000e+00 -1.21936039e+02  3.66942064e+01 -1.20000000e-01
+  -1.00000000e+00  1.11014786e+01]]
+2025-10-22 14:38:24,830 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:25,955 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:25,959 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936047e+02  3.66943828e+01
+  -1.00000000e+00 -1.21936047e+02  3.66943828e+01 -1.20000000e-01
+  -1.00000000e+00  5.71146584e+00]]
+2025-10-22 14:38:25,959 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:27,074 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:27,077 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936157e+02  3.66945268e+01
+  -1.00000000e+00 -1.21936157e+02  3.66945268e+01 -1.20000000e-01
+  -1.00000000e+00 -1.79799631e-01]]
+2025-10-22 14:38:27,077 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:28,182 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:28,186 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936276e+02  3.66945858e+01
+  -1.00000000e+00 -1.21936276e+02  3.66945858e+01 -1.20000000e-01
+  -1.00000000e+00  4.32791531e-01]]
+2025-10-22 14:38:28,186 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:29,276 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:29,280 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936362e+02  3.66946076e+01
+  -1.00000000e+00 -1.21936362e+02  3.66946076e+01 -1.20000000e-01
+  -1.00000000e+00 -5.67064211e-02]]
+2025-10-22 14:38:29,280 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:30,410 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:30,413 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936498e+02  3.66946127e+01
+  -1.00000000e+00 -1.21936498e+02  3.66946127e+01 -1.20000000e-01
+  -1.00000000e+00  5.56196868e-02]]
+2025-10-22 14:38:30,413 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:31,526 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:31,529 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936690e+02  3.66945476e+01
+  -1.00000000e+00 -1.21936690e+02  3.66945476e+01 -1.20000000e-01
+  -1.00000000e+00  7.95161843e-01]]
+2025-10-22 14:38:31,529 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:32,635 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:32,638 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936823e+02  3.66944047e+01
+  -1.00000000e+00 -1.21936823e+02  3.66944047e+01 -1.20000000e-01
+  -1.00000000e+00  2.96446180e+00]]
+2025-10-22 14:38:32,638 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:33,784 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:33,787 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936844e+02  3.66942258e+01
+  -1.00000000e+00 -1.21936844e+02  3.66942258e+01 -1.20000000e-01
+  -1.00000000e+00  5.66826725e+00]]
+2025-10-22 14:38:33,787 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:34,903 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:34,908 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114391e+09 -1.21936745e+02  3.66940632e+01
+  -1.00000000e+00 -1.21936745e+02  3.66940632e+01 -1.20000000e-01
+  -1.00000000e+00  8.34061432e+00]]
+2025-10-22 14:38:34,908 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:36,053 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:36,055 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21936553e+02  3.66939644e+01
+  -1.00000000e+00 -1.21936553e+02  3.66939644e+01 -1.20000000e-01
+  -1.00000000e+00  9.53447437e+00]]
+2025-10-22 14:38:36,055 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:37,184 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:37,187 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21936324e+02  3.66939600e+01
+  -1.00000000e+00 -1.21936324e+02  3.66939600e+01 -1.20000000e-01
+  -1.00000000e+00  1.03066740e+01]]
+2025-10-22 14:38:37,187 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:38,321 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:38,324 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21936126e+02  3.66940508e+01
+  -1.00000000e+00 -1.21936126e+02  3.66940508e+01  0.00000000e+00
+  -1.00000000e+00  1.16034641e+01]]
+2025-10-22 14:38:38,324 [processing](DEBUG): MARL INFO: new_action, 0.0
+2025-10-22 14:38:39,513 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:39,516 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21935965e+02  3.66941849e+01
+  -1.00000000e+00 -1.21935965e+02  3.66941849e+01 -1.20000000e-01
+  -1.00000000e+00  1.36277122e+01]]
+2025-10-22 14:38:39,516 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:40,736 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:40,739 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21935847e+02  3.66943413e+01
+  -1.00000000e+00 -1.21935847e+02  3.66943413e+01 -1.20000000e-01
+  -1.00000000e+00  1.64630928e+01]]
+2025-10-22 14:38:40,739 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:41,791 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:41,794 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21935848e+02  3.66945218e+01
+  -1.00000000e+00 -1.21935848e+02  3.66945218e+01 -1.20000000e-01
+  -1.00000000e+00  1.94084396e+01]]
+2025-10-22 14:38:41,794 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:42,874 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:42,877 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21935968e+02  3.66946763e+01
+  -1.00000000e+00 -1.21935968e+02  3.66946763e+01 -1.20000000e-01
+  -1.00000000e+00  2.16129932e+01]]
+2025-10-22 14:38:42,877 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:43,951 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:43,954 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114392e+09 -1.21936171e+02  3.66947595e+01
+  -1.00000000e+00 -1.21936171e+02  3.66947595e+01 -1.20000000e-01
+  -1.00000000e+00  2.25519581e+01]]
+2025-10-22 14:38:43,954 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:45,120 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:45,123 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21936400e+02  3.66947457e+01
+  -1.00000000e+00 -1.21936400e+02  3.66947457e+01 -1.20000000e-01
+  -1.00000000e+00  2.25611668e+01]]
+2025-10-22 14:38:45,123 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:46,191 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:46,194 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21936587e+02  3.66946388e+01
+  -1.00000000e+00 -1.21936587e+02  3.66946388e+01 -1.20000000e-01
+  -1.00000000e+00  2.19608154e+01]]
+2025-10-22 14:38:46,194 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:47,333 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:47,337 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21936677e+02  3.66944710e+01
+  -1.00000000e+00 -1.21936677e+02  3.66944710e+01 -1.20000000e-01
+  -1.00000000e+00  2.04616318e+01]]
+2025-10-22 14:38:47,338 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:48,404 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:48,407 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21936645e+02  3.66942906e+01
+  -1.00000000e+00 -1.21936645e+02  3.66942906e+01 -1.20000000e-01
+  -1.00000000e+00  1.87486362e+01]]
+2025-10-22 14:38:48,407 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:49,465 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:49,484 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21936500e+02  3.66941492e+01
+  -1.00000000e+00 -1.21936500e+02  3.66941492e+01 -1.20000000e-01
+  -1.00000000e+00  1.75688667e+01]]
+2025-10-22 14:38:49,484 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:50,639 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:50,645 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21936284e+02  3.66940883e+01
+  -1.00000000e+00 -1.21936284e+02  3.66940883e+01 -1.20000000e-01
+  -1.00000000e+00  1.73257866e+01]]
+2025-10-22 14:38:50,645 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:51,632 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:51,635 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21936059e+02  3.66941260e+01
+  -1.00000000e+00 -1.21936059e+02  3.66941260e+01 -1.20000000e-01
+  -1.00000000e+00  1.75947952e+01]]
+2025-10-22 14:38:51,635 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:52,737 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:52,741 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21935893e+02  3.66942514e+01
+  -1.00000000e+00 -1.21935893e+02  3.66942514e+01 -1.20000000e-01
+  -1.00000000e+00  1.85902958e+01]]
+2025-10-22 14:38:52,742 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:53,763 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:53,766 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21935831e+02  3.66944268e+01
+  -1.00000000e+00 -1.21935831e+02  3.66944268e+01 -1.20000000e-01
+  -1.00000000e+00  2.01638927e+01]]
+2025-10-22 14:38:53,766 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:54,890 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:54,893 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114393e+09 -1.21935893e+02  3.66946028e+01
+  -1.00000000e+00 -1.21935893e+02  3.66946028e+01 -1.20000000e-01
+  -1.00000000e+00  2.16722507e+01]]
+2025-10-22 14:38:54,893 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:56,038 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:56,040 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114394e+09 -1.21936060e+02  3.66947280e+01
+  -1.00000000e+00 -1.21936060e+02  3.66947280e+01 -1.20000000e-01
+  -1.00000000e+00  2.23673630e+01]]
+2025-10-22 14:38:56,041 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878
+2025-10-22 14:38:57,197 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:38:57,200 [processing](DEBUG): MARL INFO: internal_state, [[ 0.00000000e+00  1.76114394e+09 -1.21936285e+02  3.66947656e+01
+  -1.00000000e+00 -1.21936285e+02  3.66947656e+01 -1.20000000e-01
+  -1.00000000e+00  2.23551426e+01]]
+2025-10-22 14:38:57,200 [processing](DEBUG): MARL INFO: new_action, -6.875493541569878

@@ -1,0 +1,13 @@
+2025-10-22 14:27:30,019 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-10-22 14:27:32,567 [processing](DEBUG): WARNING: No range measurement for a while, using last informaiton to compute new heading
+2025-10-22 14:27:32,568 [Logger](CRITICAL): Uncaught exception
+Traceback (most recent call last):
+  File "./backseat_app/main.py", line 111, in <module>
+    main()
+  File "./backseat_app/main.py", line 107, in main
+    backseat_app.spin()
+  File "./backseat_app/main.py", line 75, in spin
+    self.marl_processor.compute_new_heading()
+  File "/home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/processing.py", line 205, in compute_new_heading
+    self.new_action, internal_state = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range)
+TypeError: cannot unpack non-iterable int object
