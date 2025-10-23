@@ -255,7 +255,7 @@ class TargetTracking(object):
         aux_lrauv_dist = np.sqrt([(self.lrauv_position[0])**2+(self.lrauv_position[2])**2])
         aux_target_dist = np.sqrt([(self.lrauv_position[0]-self.target_predictions['landmark_0_tracking_x'])**2+(self.lrauv_position[2]-self.target_predictions['landmark_0_tracking_y'])**2])
         ## we set the lrauv distance threshold at 900 m and the target distance to 400.
-        if aux_lrauv_dist > 500 and aux_target_dist < 200 and agents_lrauvLatLon[0][0] != 0:
+        if aux_lrauv_dist > 400 and aux_target_dist < 300 and agents_lrauvLatLon[0][0] != 0:
             print('')
             print("******************************************************************************") 
             print("WARNING: Updating ORIGIN POSSITION with current target position. LRAUV distance from origin is %.3f m, and LRAUV-TARGET distance is %.3f"%(aux_lrauv_dist, aux_target_dist))
@@ -272,7 +272,7 @@ class TargetTracking(object):
             print("******************************************************************************") 
             print('')
             for i, tracker in enumerate(self.agent_controller.trackers):
-                tracker.model.init_particles(position=np.array([0.,0.,0.,0.]), slantrange=100)
+                tracker.model.init_particles(position=np.array([0.,0.,0.,0.]), slantrange=100, method='area')
 
         
         return((self.lrauvAction)*180/np.pi, aux_t) #we dont need to adjust as in Matteo's method 0 degrees is North

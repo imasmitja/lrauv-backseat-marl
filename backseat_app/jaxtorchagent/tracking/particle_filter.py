@@ -7,7 +7,7 @@ import sys
 class ParticleFilter:
     """ Class for the Particle Filter """
     
-    def __init__(self,std_range=20.,init_velocity=4.,dimx=4,particle_number = 10000, method = 'range', max_pf_range = 250, max_error=200):
+    def __init__(self,std_range=20.,init_velocity=4.,dimx=4,particle_number = 10000, method = 'range', max_pf_range = 200, max_error=200):
  
         self.std_range = std_range
         self.init_velocity = init_velocity 
@@ -111,14 +111,20 @@ class ParticleFilter:
         self.cov_matrix = np.cov(xarray, yarray)
         return
 
-    def init_particles(self,position,slantrange):
+    def init_particles(self,position,slantrange,method='NaN'):
 
         print('WARNING: Initializing particles')
-    	
+
+        if method == 'NaN':
+            used_method = self.method
+        else:
+            used_method = method
+  
+
         for i in range(self.particle_number):
             #Random distribution with circle shape
             t = 2*np.pi*np.random.rand()
-            if self.method == 'area':
+            if used_method == 'area':
                 r = np.random.rand()*self.max_pf_range*2 - self.max_pf_range
             else:
                 r = np.random.rand()*self.std_range*2 - self.std_range + slantrange
