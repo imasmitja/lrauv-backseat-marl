@@ -244,6 +244,7 @@ def test_trajectory_recurrency(
         # Run through the entire sequence
         for step, (obs, done) in enumerate(obs_sequence):
             jax_actions = jax_agent.step(obs, done)
+            print('obs vector: ',obs)
             torch_actions = torch_agent.step(obs, done)
 
             jax_action_sequence.append(jax_actions)

@@ -137,7 +137,6 @@ class CentralizedActorRNN:
             for agent, o in obs.items():
                 if agent in self.actors_list:
                     processed_obs[agent] = self.preprocess_obs(agent, o)
-
             # Batchify observations
             if self.matrix_obs:
                 obs_tensor = self.batchify_transformer(

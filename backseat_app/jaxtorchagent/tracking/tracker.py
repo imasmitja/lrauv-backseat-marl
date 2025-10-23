@@ -29,7 +29,8 @@ class Tracker_ivan:
         if self.method == 'ls':
             self.model.reset()
         else:
-            self.pf_state = None
+            #self.pf_state = None
+            self.pf_state = True #we dont initialize here, we do it in another plce
             
     def update_and_predict(self, ranges, positions, depth=None, dt=None):
         

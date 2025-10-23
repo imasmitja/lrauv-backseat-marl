@@ -131,28 +131,6 @@ def load(
             device="cpu",
         )
     
-    #old stuf for JAX
-    #params = load_params(model_path)
-    #agent = CentralizedActorRNN(
-    #    seed=0,
-    #    agent_params=params["actor"],
-    #    agent_list=[f"agent_{i}" for i in range(num_agents)],
-    #    landmark_list=[f"landmark_{i}" for i in range(num_landmarks)],
-    #    actors_list=["agent_0"],  # make the actor control only the first agent
-    #    action_dim=5,
-    #    hidden_dim=64,
-    #    pos_norm=1e-3,
-    #    agent_class="ppo_transformer",
-    #    mask_ranges=True,
-    #    matrix_obs=True,
-    #    add_agent_id=False,
-    #    num_layers=2,
-    #    num_heads=8,
-    #    ff_dim=128,
-    #)
-
-    # make the actor decentralized
-
     trackers = [
         Tracker_ivan(method="pf", dt=dt, **tracking_kwargs) for _ in range(num_landmarks)
     ]
