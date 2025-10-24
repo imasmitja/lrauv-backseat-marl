@@ -1,7 +1,7 @@
 import numpy as np
-from jaxtorchagent.torch_agent import CentralizedActorRNN as TorchCentralizedActorRNN
+from backseat_app.jaxtorchagent.torch_agent import CentralizedActorRNN as TorchCentralizedActorRNN
 #from .torch_agent import TorchCentralizedActorRNN, load_params
-from .tracking import Tracker_ivan
+from backseat_app.jaxtorchagent.tracking.tracker import Tracker_ivan
 from typing import Optional, List, Tuple
 
 

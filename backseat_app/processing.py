@@ -71,6 +71,7 @@ class MarlProcessor(LcmHandlerBase):
         self.sim_timestamp = msg.epochMillisec/1000.
         #get variables names inside the channel msg
         variable_names = self.get_item_names(msg)
+        print("LCM variable names: ",variable_names)
         #work with the varaibles we want
         for name in variable_names:
             #Firts we use the Lat/Lon estimated using dead reckogning if it is available, if not
@@ -111,7 +112,7 @@ class MarlProcessor(LcmHandlerBase):
        
         if self.lrauv_pose[0] == 0:
             self.command = "$SR"
-            self.speed = 0.
+            self.speed = 0.1
             return
         #reset the other agents history if it is too old (10 minutes)
         if abs(float(self.other_obs_timestamp)-self.sim_timestamp) > 600:
@@ -152,7 +153,7 @@ class MarlProcessor(LcmHandlerBase):
                 self.speed = 1.
             else:
                 self.command = "$SR"
-                self.speed = 0.
+                self.speed = 0.1
 
         elif (self.sim_timestamp - self.target_timestamp_bsc) > self.target_timestamp_bsc_max and self.lrauv_pose[0] != 0 and self.lrauv_pose[1] != 0: #no range measurement for a while
             print("***************************************")
@@ -185,7 +186,7 @@ class MarlProcessor(LcmHandlerBase):
                 self.speed = 1.
             else:
                 self.command = "$SR"
-                self.speed = 0.
+                self.speed = 0.1
 
         return
         
