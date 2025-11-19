@@ -28,7 +28,7 @@ def load_jax_params_to_torch(
             if "actor" in key:
                 jax_params[key] = f.get_tensor(key)
 
-    print(jax_params)
+    #print(jax_params)
 
     # Convert JAX parameter structure to PyTorch
     torch_state_dict = convert_jax_to_torch_params(jax_params, model)
@@ -38,10 +38,10 @@ def load_jax_params_to_torch(
         torch_state_dict, strict=False
     )
 
-    if missing_keys:
-        print(f"Missing keys: {missing_keys}")
-    if unexpected_keys:
-        print(f"Unexpected keys: {unexpected_keys}")
+    #if missing_keys:
+    #    print(f"Missing keys: {missing_keys}")
+    #if unexpected_keys:
+    #    print(f"Unexpected keys: {unexpected_keys}")
 
     print(f"Successfully loaded {len(torch_state_dict)} parameters")
 
@@ -62,15 +62,15 @@ def convert_jax_to_torch_params(
     model_state_dict = model.state_dict()
 
     # Print available JAX parameters for debugging
-    print("Available JAX parameters:")
-    for key in sorted(jax_params.keys()):
-        print(f"  {key}: {jax_params[key].shape}")
+    #print("Available JAX parameters:")
+    #for key in sorted(jax_params.keys()):
+    #    print(f"  {key}: {jax_params[key].shape}")
 
-    print("\nExpected PyTorch parameters:")
-    for key in sorted(model_state_dict.keys()):
-        print(f"  {key}: {model_state_dict[key].shape}")
+    #print("\nExpected PyTorch parameters:")
+    #for key in sorted(model_state_dict.keys()):
+    #    print(f"  {key}: {model_state_dict[key].shape}")
 
-    print("\nParameter mapping:")
+    #print("\nParameter mapping:")
 
     # Track which PyTorch parameters we've successfully mapped
     mapped_params = set()

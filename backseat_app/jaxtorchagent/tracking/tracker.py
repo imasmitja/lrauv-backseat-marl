@@ -1,8 +1,26 @@
 import math
 import numpy as np
 
-from .least_squares import LSTracker
-from .particle_filter import ParticleFilter
+
+try:
+    from backseat_app.jaxtorchagent.tracking.least_squares import LSTracker
+except:
+    from jaxtorchagent.tracking.least_squares import LSTracker
+
+
+USE_MATTEO_PF = False
+
+
+if USE_MATTEO_PF == True:
+    try:
+        from backseat_app.jaxtorchagent.tracking.particle_filter_matteo import ParticleFilter
+    except:
+        from jaxtorchagent.tracking.particle_filter_matteo import ParticleFilter
+else:
+    try:
+        from backseat_app.jaxtorchagent.tracking.particle_filter import ParticleFilter
+    except:
+        from jaxtorchagent.tracking.particle_filter import ParticleFilter
 
 
 
@@ -32,7 +50,7 @@ class Tracker_ivan:
             #self.pf_state = None
             self.pf_state = True #we dont initialize here, we do it in another plce
             
-    def update_and_predict(self, ranges, positions, depth=None, dt=None):
+    def update_and_predict(self, agent_pos, ranges, positions, depth=None, dt=None, new_range=True):
         
         # default time difference
         if dt is None:
@@ -60,8 +78,12 @@ class Tracker_ivan:
                 pos = np.array(pos)[:2] # only x, y
                 r = np.array(r)
                 pred_xy = self.model.update_and_predict(
-                                            dt=dt, z=r, pos=pos)
-
+                                            dt=dt, z=r, pos=pos, new_range=new_range)
+        if new_range==False and self.pf_state == True:
+            pos = np.array(agent_pos)[:2] # only x, y
+            r = 0
+            pred_xy = self.model.update_and_predict(
+                                            dt=dt, z=r, pos=pos, new_range=new_range)
         # if the prediction is not available, use the first position
         if np.isnan(pred_xy).any():
             pred_xy = [positions[0][0], positions[0][1]]

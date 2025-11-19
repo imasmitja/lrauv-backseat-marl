@@ -83,7 +83,7 @@ tmux send-keys -t gazebo-sim.0 "gz sim -r ~/mbari_ws/Tools/gz/worlds/portuguese_
 
 # Wait for Gazebo to fully start
 echo "Waiting 15 seconds for Gazebo to initialize..."
-sleep 15
+sleep 20
 #read -p "Beforre continue, wait until the Gazebo sim has been launched. Then press enter."
 
 
@@ -145,7 +145,7 @@ for VEHICLE in ${VEHICLE_targets[@]}; do
                 #tmux send-keys -t target-$VEHICLE.0 "./run_lrauv $VEHICLE 'run $CMD_X_OPTION_target'" ENTER
                 tmux send-keys -t target-$VEHICLE.0 "$LCM_URL ./run_lrauv $VEHICLE" ENTER
                 echo "✅ Launched LRAUV application instance for $VEHICLE."
-                sleep 5 #Give it some time to start properly before sending the command
+                sleep 7 #Give it some time to start properly before sending the command
                 tmux send-keys -t target-$VEHICLE.0 "run $CMD_X_OPTION_target" ENTER
                 echo "✅ Launched LRAUV mission instance for $VEHICLE."
         else
@@ -156,7 +156,7 @@ for VEHICLE in ${VEHICLE_targets[@]}; do
 done
 
 #Launch all vehciles as agents:
-sleep 2 #Give it some time to start properly before starting agents
+sleep 4 #Give it some time to start properly before starting agents
 
 VEHICLE_TRUE=false
 for VEHICLE in ${VEHICLE_agents[@]}; do
@@ -213,11 +213,11 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                 #tmux send-keys -t agent-$VEHICLE.0 "./run_lrauv $VEHICLE 'run $CMD_X_OPTION_agent'" ENTER
                 tmux send-keys -t agent-$VEHICLE.0 "$LCM_URL ./run_lrauv $VEHICLE" ENTER
                 echo "✅ Launched LRAUV application instance for $VEHICLE."
-                sleep 5 #Give it some time to start properly before sending the command
+                sleep 7 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "load $CMD_X_OPTION_agent" ENTER
-                sleep 4 #Give it some time to start properly before sending the command. Tis step needs to be done to fix a bug in the simulation time.
+                sleep 6 #Give it some time to start properly before sending the command. Tis step needs to be done to fix a bug in the simulation time.
                 #tmux send-keys -t agent-$VEHICLE.0 "maintain sensor nal9602.latitude_fix 36.7 degree; maintain sensor nal9602.longitude_fix -121.8 degree; set nal9602.time_fix \$copy_seconds_timestamp_from_frontseat second" ENTER
-                sleep 3 #Give it some time to start properly before sending the command
+                sleep 5 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "set marl.ContactLabel $TARGET_ID count" ENTER
 
                 # Get all other vehicles
@@ -257,10 +257,10 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                         if [ $agents == 'tethys' ]; then
                                 OTHER_AGENT="6"
                         fi
-                        sleep 2 #Give it some time to start properly before sending the command
+                        sleep 4 #Give it some time to start properly before sending the command
                         tmux send-keys -t agent-$VEHICLE.0 "set marl.SendDataLabel $OTHER_AGENT count" ENTER
                 done
-                sleep 2 #Give it some time to start properly before sending the command
+                sleep 4 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "run" ENTER
                 echo "✅ Launched LRAUV mission instance for $VEHICLE."
 

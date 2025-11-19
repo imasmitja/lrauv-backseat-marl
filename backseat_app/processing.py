@@ -4,8 +4,12 @@ import struct
 import numpy as np
 from lrauv.LCM.HandlerBase import LcmHandlerBase
 from lrauv.LCM.Publisher import LcmPublisher
-from backseat_app.utils import TargetTracking
 import time
+
+try:
+    from backseat_app.utils import TargetTracking
+except:
+    from utils import TargetTracking
 
 logger = logging.getLogger('backseat_app')
 
@@ -60,7 +64,7 @@ class MarlProcessor(LcmHandlerBase):
         self.sim_timestamp = 0.
         self.lastcall = 0.
         self.other_obs_timestamp = 0.
-        self.target_timestamp_bsc_max = 20 #0.1 #seconds without range measurement before using last information to compute new action
+        self.target_timestamp_bsc_max = 30 #0.1 #seconds without range measurement before using last information to compute new action
 
     def handle_universal_msg(self, channel, data):
         """Process universal messages"""
@@ -71,7 +75,6 @@ class MarlProcessor(LcmHandlerBase):
         self.sim_timestamp = msg.epochMillisec/1000.
         #get variables names inside the channel msg
         variable_names = self.get_item_names(msg)
-        print("LCM variable names: ",variable_names)
         #work with the varaibles we want
         for name in variable_names:
             #Firts we use the Lat/Lon estimated using dead reckogning if it is available, if not
@@ -89,21 +92,27 @@ class MarlProcessor(LcmHandlerBase):
                 except:
                     other_obs_value = self.get_variable(name,msg).data[0]
                 other_obs= process_other_obs(other_obs_value)
+                #print('other observation is: ',other_obs)
                 if other_obs[0] != self.other_obs_timestamp:
                     self.other_obs_timestamp = other_obs[0]
                     self.other_obs_history = np.array([other_obs_value])
+                    #print('WE SET MANUALLY TO 0 TO SEE PF ON SINGLE VEHICLES')
+                    #self.other_obs_history = np.array([[0,0,0,0,0,0]])
                     logger.info("MARL: Received Other Vehicles Observation State: "+str(other_obs))
                     print("RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: " + str(other_obs))
                 
             #Get depth and acoustic contact information
             if name == 'depth':
                 self.lrauv_depth = self.get_variable(name,msg).data[0]
+                #print('WARNING, we set manually the depth')
+                self.lrauv_depth  = 0.
             elif name == 'acoustic_contact_range':
                 self.target_range = self.get_variable(name,msg).data[0]
             elif name == 'acoustic_contact_address':
                 self.target_address = self.get_variable(name,msg).data[0]
             elif name == 'acoustic_receive_time':
-                self.target_timestamp = self.get_variable(name,msg).data[0]
+                if self.target_address != 1: #TODO. This should be modified dinamically with the address of the target.
+                    self.target_timestamp = self.get_variable(name,msg).data[0]
 
         return
 
@@ -112,14 +121,15 @@ class MarlProcessor(LcmHandlerBase):
        
         if self.lrauv_pose[0] == 0:
             self.command = "$SR"
-            self.speed = 0.1
+            self.speed = 0.75
             return
         #reset the other agents history if it is too old (10 minutes)
         if abs(float(self.other_obs_timestamp)-self.sim_timestamp) > 600:
             self.other_obs_history = np.array([[0,0,0,0,0,0]])
         
         #print("LRAUV pose [%.6f,%.6f,%.2f]: "%(self.lrauv_pose[0], self.lrauv_pose[1],self.lrauv_depth))
-        if self.target_timestamp != self.target_timestamp_old: #new range measurement
+        #TODO we set the dat contact address manually to 20 but this shoudl be improve to be more dinamically set based on .cfg or lrauv-app
+        if self.target_timestamp != self.target_timestamp_old and self.target_address == 20 and self.target_range != 0 and self.lrauv_pose[0] != 0 and self.lrauv_pose[1] != 0: #new range measurement
             print("########################################")   
             print("New range measurement at ",self.target_timestamp)
             print('INFO: Elapsed time = %.3f seconds'%(self.target_timestamp-self.target_timestamp_old))
@@ -138,7 +148,7 @@ class MarlProcessor(LcmHandlerBase):
             self.other_obs_history = np.array([[0,0,0,0,0,0]])
             #TODO: We need to find how to deal when there is more than one target! For now, it works only with one.
             # [Timestamp, lrauv address, lrauv x, lrauv y, lrauv z, range]
-            self.obs_to_send = np.array([self.target_timestamp, int(self.cfg['vehicle_id_log']),self.lrauv_pose[0], self.lrauv_pose[1], self.lrauv_depth, self.target_range])
+            self.obs_to_send = np.array([self.target_timestamp, int(0),self.lrauv_pose[0], self.lrauv_pose[1], self.lrauv_depth, self.target_range])
             #publish it to nearby vehicles
             self.publish_observation_state_to_slate()
             #log internal states, actions, and observations
@@ -153,7 +163,7 @@ class MarlProcessor(LcmHandlerBase):
                 self.speed = 1.
             else:
                 self.command = "$SR"
-                self.speed = 0.1
+                self.speed = 0.75
 
         elif (self.sim_timestamp - self.target_timestamp_bsc) > self.target_timestamp_bsc_max and self.lrauv_pose[0] != 0 and self.lrauv_pose[1] != 0: #no range measurement for a while
             print("***************************************")
@@ -178,7 +188,7 @@ class MarlProcessor(LcmHandlerBase):
             #log internal states, actions, and observations
             logger.debug('MARL INFO: internal_state, '+str(internal_state))
             logger.debug('MARL INFO: new_action, '+str(self.new_action))
-            #print("NEW RUDDER POSITION=",self.new_action)
+            print("NEW RUDDER POSITION=",self.new_action)
             if self.new_action != -1:
                 self.new_action = self.new_action + 0.
                 #set command to rudder control and speed
@@ -186,7 +196,7 @@ class MarlProcessor(LcmHandlerBase):
                 self.speed = 1.
             else:
                 self.command = "$SR"
-                self.speed = 0.1
+                self.speed = 0.75
 
         return
         
@@ -199,22 +209,34 @@ class MarlProcessor(LcmHandlerBase):
         :return: publishes LCM message
         """
 
+        #we observed that the action computed need to be negated to make it work
+        aux_action = -self.new_action
+
+        #manula configuration for debug:
+        debug_mode = False
+        if debug_mode == True:
+            self.command = "$SH" #we control the heading
+            #self.command = "$SR" #we control the rudder
+            self.speed = 1.
+            aux_action = 90 #in degrees, from 0 to 360.
+            #aux_action = 6.8 #in degrees, [-13.7, -6.8, 0, 6.8, 13.7]
+
         if self.command == "$SR":
             self.speed = min(float(self.speed),self.speed_limit)
             #self.rudder = min(float(self.new_action),self.rudder_limit)
-            self.rudder = np.clip(self.new_action,-self.rudder_limit,self.rudder_limit)
+            self.rudder = np.clip(aux_action,-self.rudder_limit,self.rudder_limit)
                         
             msg = "$SR," + str(self.speed) + ',' + str(self.rudder) + ';'
 
             self.publisher.add_int("_.horizontalCmdMode", 1, "count")
             self.publisher.add_float("_.speedCmd", self.speed, "m/s")
-            self.publisher.add_float("_.rudderAngleCmd", -self.rudder, "degree")
+            self.publisher.add_float("_.rudderAngleCmd", self.rudder, "degree")
             self.publisher.publish(self.cfg["lcm_data_pub_channel"])
 
         elif self.command == "$SH":
             #self.speed = min(float(data[1]), self.speed_limit)
             #self.heading = (self.heading + float(data[2])) % 360
-            self.heading = self.new_action % 360
+            self.heading = aux_action % 360
             
             self.publisher.add_int("_.horizontalCmdMode", 0, "count")
             self.publisher.add_float("_.speedCmd", self.speed, "m/s")

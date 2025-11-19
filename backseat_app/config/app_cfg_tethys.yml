@@ -18,15 +18,18 @@ lcm_syslog_channel: 'tethys_syslog'
 # * LRAUV LCM data request configuration * #
 lrauv_data_timout: 60 #60.0  # seconds
 lrauv_data: #[]  # request data from:
-      - 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'
-      - 'NAL9602.latitude_fix'
+      #- 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'
+      #- 'NAL9602.latitude_fix'
       - 'depth'
-      - 'NAL9602.longitude_fix'
+      #- 'NAL9602.longitude_fix'
       - 'DAT.enableBroadcast'
-      - 'azimuth_vehicleFrame'
+      #- 'azimuth_vehicleFrame'
         #- 'DeadReckonUsingMultipleVelocitySources.enableBroadcast'
       - 'latitude'
       - 'longitude'
+      - 'acoustic_contact_range'
+      - 'acoustic_contact_address'
+      - 'acoustic_receive_time'
       - '_.others_observations'
 
 

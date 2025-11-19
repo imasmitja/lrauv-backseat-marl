@@ -1,0 +1,1193 @@
+[1mdiff --git a/backseat_app/config/app_cfg_daphne.yml b/backseat_app/config/app_cfg_daphne.yml[m
+[1mindex 557d421..ed239b9 100644[m
+[1m--- a/backseat_app/config/app_cfg_daphne.yml[m
+[1m+++ b/backseat_app/config/app_cfg_daphne.yml[m
+[36m@@ -18,15 +18,18 @@[m [mlcm_syslog_channel: 'tethys_syslog'[m
+ # * LRAUV LCM data request configuration * #[m
+ lrauv_data_timout: 60 #60.0  # seconds[m
+ lrauv_data: #[]  # request data from:[m
+[31m-      - 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'[m
+[31m-      - 'NAL9602.latitude_fix'[m
+[32m+[m[32m      #- 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'[m
+[32m+[m[32m      #- 'NAL9602.latitude_fix'[m
+       - 'depth'[m
+[31m-      - 'NAL9602.longitude_fix'[m
+[32m+[m[32m      #- 'NAL9602.longitude_fix'[m
+       - 'DAT.enableBroadcast'[m
+[31m-      - 'azimuth_vehicleFrame'[m
+[32m+[m[32m      #- 'azimuth_vehicleFrame'[m
+         #- 'DeadReckonUsingMultipleVelocitySources.enableBroadcast'[m
+       - 'latitude'[m
+       - 'longitude'[m
+[32m+[m[32m      - 'acoustic_contact_range'[m
+[32m+[m[32m      - 'acoustic_contact_address'[m
+[32m+[m[32m      - 'acoustic_receive_time'[m
+       - '_.others_observations'[m
+ [m
+ [m
+[1mdiff --git a/backseat_app/config/app_cfg_pontus.yml b/backseat_app/config/app_cfg_pontus.yml[m
+[1mindex c122ced..69fc148 100644[m
+[1m--- a/backseat_app/config/app_cfg_pontus.yml[m
+[1m+++ b/backseat_app/config/app_cfg_pontus.yml[m
+[36m@@ -18,15 +18,18 @@[m [mlcm_syslog_channel: 'tethys_syslog'[m
+ # * LRAUV LCM data request configuration * #[m
+ lrauv_data_timout: 60 #60.0  # seconds[m
+ lrauv_data: #[]  # request data from:[m
+[31m-      - 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'[m
+[31m-      - 'NAL9602.latitude_fix'[m
+[32m+[m[32m      #- 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'[m
+[32m+[m[32m      #- 'NAL9602.latitude_fix'[m
+       - 'depth'[m
+[31m-      - 'NAL9602.longitude_fix'[m
+[32m+[m[32m      #- 'NAL9602.longitude_fix'[m
+       - 'DAT.enableBroadcast'[m
+[31m-      - 'azimuth_vehicleFrame'[m
+[32m+[m[32m     # - 'azimuth_vehicleFrame'[m
+         #- 'DeadReckonUsingMultipleVelocitySources.enableBroadcast'[m
+       - 'latitude'[m
+       - 'longitude'[m
+[32m+[m[32m      - 'acoustic_contact_range'[m
+[32m+[m[32m      - 'acoustic_contact_address'[m
+[32m+[m[32m      - 'acoustic_receive_time'[m
+       - '_.others_observations'[m
+ [m
+ # * Supervisor configuration * #[m
+[1mdiff --git a/backseat_app/config/app_cfg_tethys.yml b/backseat_app/config/app_cfg_tethys.yml[m
+[1mindex b0a54f5..a266534 100644[m
+[1m--- a/backseat_app/config/app_cfg_tethys.yml[m
+[1m+++ b/backseat_app/config/app_cfg_tethys.yml[m
+[36m@@ -18,15 +18,18 @@[m [mlcm_syslog_channel: 'tethys_syslog'[m
+ # * LRAUV LCM data request configuration * #[m
+ lrauv_data_timout: 60 #60.0  # seconds[m
+ lrauv_data: #[]  # request data from:[m
+[31m-      - 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'[m
+[31m-      - 'NAL9602.latitude_fix'[m
+[32m+[m[32m      #- 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'[m
+[32m+[m[32m      #- 'NAL9602.latitude_fix'[m
+       - 'depth'[m
+[31m-      - 'NAL9602.longitude_fix'[m
+[32m+[m[32m      #- 'NAL9602.longitude_fix'[m
+       - 'DAT.enableBroadcast'[m
+[31m-      - 'azimuth_vehicleFrame'[m
+[32m+[m[32m      #- 'azimuth_vehicleFrame'[m
+         #- 'DeadReckonUsingMultipleVelocitySources.enableBroadcast'[m
+       - 'latitude'[m
+       - 'longitude'[m
+[32m+[m[32m      - 'acoustic_contact_range'[m
+[32m+[m[32m      - 'acoustic_contact_address'[m
+[32m+[m[32m      - 'acoustic_receive_time'[m
+       - '_.others_observations'[m
+ [m
+ [m
+[1mdiff --git a/backseat_app/jaxtorchagent/production_agent.py b/backseat_app/jaxtorchagent/production_agent.py[m
+[1mindex 19cfe5e..e047ee2 100644[m
+[1m--- a/backseat_app/jaxtorchagent/production_agent.py[m
+[1m+++ b/backseat_app/jaxtorchagent/production_agent.py[m
+[36m@@ -1,19 +1,140 @@[m
+ import numpy as np[m
+[31m-from backseat_app.jaxtorchagent.torch_agent import CentralizedActorRNN as TorchCentralizedActorRNN[m
+ #from .torch_agent import TorchCentralizedActorRNN, load_params[m
+[31m-from backseat_app.jaxtorchagent.tracking.tracker import Tracker_ivan[m
+ from typing import Optional, List, Tuple[m
+ [m
+[32m+[m[32mtry:[m
+[32m+[m[32m    from backseat_app.jaxtorchagent.tracking.tracker import Tracker_ivan[m
+[32m+[m[32mexcept:[m
+[32m+[m[32m    import sys[m
+[32m+[m[32m    import os[m
+[32m+[m[32m    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))[m
+[32m+[m[32m    sys.path.insert(0, project_root)[m
+[32m+[m[32m    sys.path.insert(0, os.path.join(project_root, "backseat_app"))[m
+[32m+[m[32m    from jaxtorchagent.tracking.tracker import Tracker_ivan[m
+[32m+[m
+[32m+[m[32mclass TrajectorySmoother:[m
+[32m+[m[32m    def __init__(self, max_speed=20, transition_time=2.0, initial_step_ratio=100, growth_rate=1.2):[m
+[32m+[m[32m        self.max_speed = max_speed[m
+[32m+[m[32m        self.transition_time = transition_time[m
+[32m+[m[32m        self.previous_position = None[m
+[32m+[m[32m        self.in_transition = False[m
+[32m+[m[32m        self.transition_points_x = [][m
+[32m+[m[32m        self.transition_points_y = [][m
+[32m+[m[32m        self.transition_index = 0[m
+[32m+[m[32m        self.smoothed_pos_x = 0[m
+[32m+[m[32m        self.smoothed_pos_y = 0[m
+[32m+[m[32m        self.initial_step_ratio = initial_step_ratio[m
+[32m+[m[32m        self.growth_rate = growth_rate[m
+[32m+[m
+[32m+[m[32m    def sigmoid_transition(self, start_point, end_point, num_points, steepness=6):[m
+[32m+[m[32m        """[m
+[32m+[m[32m        Sigmoid function for very smooth start and end[m
+[32m+[m[32m        steepness: higher = more abrupt transition in middle[m
+[32m+[m[32m        """[m
+[32m+[m[32m        t = np.linspace(-int(steepness/2), int(steepness/2), int(num_points))[m
+[32m+[m[32m        sigmoid = 1 / (1 + np.exp(-t))[m
+[32m+[m[41m        [m
+[32m+[m[32m        positions = start_point + sigmoid * (end_point - start_point)[m
+[32m+[m[32m        return positions[m
+[32m+[m[41m    [m
+[32m+[m[32m    def generate_progressive_steps(self, start, end, num_points):[m
+[32m+[m[32m        """Generate steps that start small and grow progressively"""[m
+[32m+[m[32m        total_distance = end - start[m
+[32m+[m[41m        [m
+[32m+[m[32m        # Generate geometrically increasing step sizes[m
+[32m+[m[32m        step_sizes = [][m
+[32m+[m[32m        current_step = total_distance * self.initial_step_ratio[m
+[32m+[m[41m        [m
+[32m+[m[32m        for i in range(num_points):[m
+[32m+[m[32m            step_sizes.append(current_step)[m
+[32m+[m[32m            current_step *= self.growth_rate[m
+[32m+[m[41m        [m
+[32m+[m[32m        # Normalize to cover exact distance[m
+[32m+[m[32m        total_steps = sum(step_sizes)[m
+[32m+[m[32m        scaling_factor = total_distance / total_steps[m
+[32m+[m[32m        step_sizes = [s * scaling_factor for s in step_sizes][m
+[32m+[m[41m        [m
+[32m+[m[32m        # Build positions[m
+[32m+[m[32m        positions = [start][m
+[32m+[m[32m        current_pos = start[m
+[32m+[m[32m        for step in step_sizes:[m
+[32m+[m[32m            current_pos += step[m
+[32m+[m[32m            positions.append(current_pos)[m
+[32m+[m[41m        [m
+[32m+[m[32m        return positions[m
+[32m+[m[41m    [m
+[32m+[m[32m    def update(self, current_position, new_range = False, dt=0.1):[m
+[32m+[m[32m        if self.previous_position is None:[m
+[32m+[m[32m            self.previous_position = current_position.copy()[m
+[32m+[m[32m            return current_position[0], current_position[1], False[m
+[32m+[m[41m        [m
+[32m+[m[32m        # Calculate instantaneous speed[m
+[32m+[m[32m        speed = abs(np.sqrt((current_position[0] - self.previous_position[0])**2+(current_position[1] - self.previous_position[1])**2)) / dt[m
+[32m+[m[32m        print('speed:',speed)[m
+[32m+[m[32m        if speed > self.max_speed and not self.in_transition:[m
+[32m+[m[32m            self.previous_position = current_position.copy()[m
+[32m+[m[32m            print('')[m
+[32m+[m[32m            print('--------------------------------------------------------------------')[m
+[32m+[m[32m            print('WARNING SMOOTHING IN ACACTION: prediciton speed = ', speed)[m
+[32m+[m[32m            print('--------------------------------------------------------------------')[m
+[32m+[m[32m            print('')[m
+[32m+[m[32m            return current_position[0], current_position[1], True[m
+[32m+[m[32m            # Start transition[m
+[32m+[m[32m            self.in_transition = True[m
+[32m+[m[32m            num_points = int(self.transition_time / dt)[m
+[32m+[m[32m            self.transition_points_x = np.linspace(self.previous_position[0],current_position[0], num_points)[m
+[32m+[m[32m            self.transition_points_y = np.linspace(self.previous_position[1],current_position[1], num_points)[m
+[32m+[m[32m            #Method 3: Sigmoid Transition (Smooth Acceleration)[m
+[32m+[m[32m            #self.transition_points_x = self.generate_progressive_steps(self.previous_position[0],current_position[0], num_points)[m
+[32m+[m[32m            #self.transition_points_y = self.generate_progressive_steps(self.previous_position[1],current_position[1], num_points)[m
+[32m+[m[41m            [m
+[32m+[m[32m            self.transition_index = 1[m
+[32m+[m[32m            print('WARNING: SMOOTHING THE PF TARGET ESTIMATION')[m
+[32m+[m[32m            print('transition_points_x:',self.transition_points_x)[m
+[32m+[m[32m            print('transition_points_y:',self.transition_points_y)[m
+[32m+[m[32m            return self.transition_points_x[0],self.transition_points_y[0], False[m
+[32m+[m[41m        [m
+[32m+[m[41m        [m
+[32m+[m[32m        elif self.in_transition:[m
+[32m+[m[32m            # Continue transition[m
+[32m+[m[32m            if self.transition_index < len(self.transition_points_x):[m
+[32m+[m[32m                self.smoothed_pos_x = self.transition_points_x[self.transition_index][m
+[32m+[m[32m                self.smoothed_pos_y = self.transition_points_y[self.transition_index][m
+[32m+[m[32m                self.transition_index += 1[m
+[32m+[m[32m                print('WARNING SMOOTHING IN TRANSITION')[m
+[32m+[m[32m                self.previous_position = np.array([self.smoothed_pos_x, self.smoothed_pos_y])[m
+[32m+[m[32m                return self.smoothed_pos_x, self.smoothed_pos_y, False[m
+[32m+[m[32m            else:[m
+[32m+[m[32m                # Transition complete[m
+[32m+[m[32m                self.in_transition = False[m
+[32m+[m[32m                self.transition_points_x = [][m
+[32m+[m[32m                self.transition_points_y = [][m
+[32m+[m[32m                #self.previous_position = np.array([self.smoothed_pos_x, self.smoothed_pos_y])[m
+[32m+[m[32m                #self.previous_position = current_position.copy()[m
+[32m+[m[32m                #return self.smoothed_pos_x, self.smoothed_pos_y, False[m
+[32m+[m[32m                return current_position[0], current_position[1], False[m
+[32m+[m[32m        else:[m
+[32m+[m[32m            # Normal tracking[m
+[32m+[m[32m            self.previous_position = current_position.copy()[m
+[32m+[m[32m            return current_position[0], current_position[1], False[m
+ [m
+ class AgentProductionController:[m
+ [m
+     def __init__(self, actor, trackers):[m
+         self.actor = actor[m
+         self.trackers = trackers[m
+[32m+[m[32m        self.smoothers = [][m
+[32m+[m[32m        self.smoother = False[m
+[32m+[m[32m        self.smoothers  = [[m
+[32m+[m[32m        TrajectorySmoother(max_speed=20, transition_time=800) for _ in range(len(self.trackers))[m
+[32m+[m[32m        ][m
+ [m
+     def reset(self, seed=None):[m
+         """Reset the agent and tracker states."""[m
+         self.actor.reset(seed)[m
+[32m+[m[32m        self.smoothers  = [[m
+[32m+[m[32m        TrajectorySmoother(max_speed=20, transition_time=800) for _ in range(len(self.trackers))[m
+[32m+[m[32m        ][m
+         for tracker in self.trackers:[m
+             tracker.reset()[m
+ [m
+[36m@@ -24,6 +145,9 @@[m [mclass AgentProductionController:[m
+         positions: List[Tuple[float, float, float]],[m
+         targets_depth: List[float],[m
+         dt: int = 30,[m
+[32m+[m[32m        new_range: bool = True,[m
+[32m+[m[32m        test_marl: bool = False,[m
+[32m+[m[32m        previous_target: List=[][m
+     ):[m
+         """[m
+         angle: yaw of the agent in radians[m
+[36m@@ -41,14 +165,23 @@[m [mclass AgentProductionController:[m
+ [m
+         # update tracking for each target[m
+         preds = {}[m
+[32m+[m[32m        testrange=False #to update the PF every time .jaxtorchagewith or without new range, if no range only update, if range update and resample.[m
+         for i, tracker in enumerate(self.trackers):[m
+[31m-            if len(ranges_good[0]) != 0:[m
+[32m+[m[32m            if test_marl == True:[m
+[32m+[m[32m                #I use the previouse loaded predictions[m
+[32m+[m[32m                preds[f'landmark_{0}_tracking_x'] = previous_target[0][m
+[32m+[m[32m                preds[f'landmark_{0}_tracking_y'] = previous_target[1][m
+[32m+[m[32m                preds[f'landmark_{0}_tracking_z'] = previous_target[2][m[41m [m
+[32m+[m[41m            [m
+[32m+[m[32m            elif len(ranges_good[0]) != 0 or testrange==True:[m
+                 #print('INFO: Target prediction True')[m
+                 pred = tracker.update_and_predict([m
+[32m+[m[32m                    agent_pos=positions[0],[m
+                     ranges=ranges_good[i],[m
+                     positions=positions_good,[m
+                     depth=targets_depth[i],[m
+[31m-                    dt=dt[m
+[32m+[m[32m                    dt=dt,[m
+[32m+[m[32m                    new_range=new_range[m
+                 )[m
+                 preds[f'landmark_{i}_tracking_x'] = pred[0][m
+                 preds[f'landmark_{i}_tracking_y'] = pred[1][m
+[36m@@ -66,13 +199,27 @@[m [mclass AgentProductionController:[m
+                     preds[f'landmark_{0}_tracking_x'] = positions[0][0][m
+                     preds[f'landmark_{0}_tracking_y'] = positions[0][1][m
+                     preds[f'landmark_{0}_tracking_z'] = positions[0][2][m
+[31m-[m
+[32m+[m[32m                    tracker.pred[0] = positions[0][0][m
+[32m+[m[32m                    tracker.pred[1] = positions[0][1][m
+[32m+[m[32m                    tracker.pred[2] = positions[0][2][m
+[32m+[m
+[32m+[m[32m            if self.smoother == True:[m
+[32m+[m[32m                #Smoth the predictions to help the MARL agent:[m
+[32m+[m[32m                aux_target = np.array([preds[f'landmark_{i}_tracking_x'] ,preds[f'landmark_{i}_tracking_y'] ])[m
+[32m+[m[32m                smoothed_pos_x, smoothed_pos_y, reset_marl = self.smoothers[i].update(aux_target,new_range=new_range,dt=dt)[m
+[32m+[m[32m                preds[f'landmark_{i}_tracking_x'] = smoothed_pos_x +0.[m
+[32m+[m[32m                preds[f'landmark_{i}_tracking_y'] = smoothed_pos_y +0.[m
+[32m+[m[32m                if reset_marl == True:[m
+[32m+[m[32m                    #self.actor.reset(seed=10, pos=[positions[0][0],positions[0][1],0.])[m
+[32m+[m[32m                    self.actor.reset(seed=10)[m
+[32m+[m[41m        [m
+[32m+[m[41m        [m
+         # prepare the observation for the agent[m
+         obs = {[m
+             "x": positions[0][0],[m
+             "y": positions[0][1],[m
+[31m-            "z": positions[0][2],[m
+[31m-            "rph_z": angle,[m
+[32m+[m[32m            "z": 0,  # this can always be 0 for now[m
+[32m+[m[32m            "rph_z": 0,  # this can always be 0[m
+         }[m
+ [m
+         # logic is that the first agent is the one using the controller[m
+[36m@@ -82,7 +229,7 @@[m [mclass AgentProductionController:[m
+                     {[m
+                         f"agent_{j}_dx": positions[j][0] - positions[0][0],[m
+                         f"agent_{j}_dy": positions[j][1] - positions[0][1],[m
+[31m-                        f"agent_{j}_dz": positions[j][2] - positions[0][2],[m
+[32m+[m[32m                        f"agent_{j}_dz": 0,  # this can always be 0 for now since agents are supposed at surface[m
+                     })[m
+             else: # if we don't have others agents, we put 0s[m
+                 obs.update({[m
+[36m@@ -92,20 +239,20 @@[m [mclass AgentProductionController:[m
+                 })[m
+ [m
+         for i in range(len(self.trackers)):[m
+[31m-            if ranges[i][0]==0:[m
+[31m-                ranges[i][0] = np.sqrt((positions[0][0]-preds[f'landmark_{i}_tracking_x'])**2+(positions[0][1]-preds[f'landmark_{i}_tracking_y'])**2)[m
+[32m+[m[32m            #if ranges[i][0]==0:[m
+[32m+[m[32m               # ranges[i][0] = np.sqrt((positions[0][0]-preds[f'landmark_{i}_tracking_x'])**2+(positions[0][1]-preds[f'landmark_{i}_tracking_y'])**2)[m
+             obs.update([m
+                 {[m
+                     f"landmark_{i}_tracking_x": preds[f"landmark_{i}_tracking_x"],[m
+                     f"landmark_{i}_tracking_y": preds[f"landmark_{i}_tracking_y"],[m
+                     f"landmark_{i}_tracking_z": preds[f"landmark_{i}_tracking_z"],[m
+[31m-                    f"landmark_{i}_range": ranges[i][0],  # range from the first agent[m
+[32m+[m[32m                    f"landmark_{i}_range": 0,  # this can always be 0 for now[m
+                 }[m
+             )[m
+ [m
+         obs = {"agent_0": obs}  # make the observation compatible with the actor[m
+ [m
+[31m-        print(obs)[m
+[32m+[m[32m        print('step:',obs)[m
+         action = self.actor.step(obs, done=False)[m
+ [m
+         return action["agent_0"], preds[m
+[36m@@ -116,20 +263,55 @@[m [mdef load([m
+     num_landmarks: int,[m
+     model_path=None,[m
+     dt=30,[m
+[32m+[m[32m    agent_version=4,[m
+     **tracking_kwargs,[m
+ ):[m
+[32m+[m[41m    [m
+[32m+[m[32m    if agent_version == 1: #First agent trained and tested during the first field tests[m
+[32m+[m[32m        try:[m
+[32m+[m[32m            from backseat_app.jaxtorchagent.torch_agent import CentralizedActorRNN as TorchCentralizedActorRNN[m
+[32m+[m[32m        except:[m
+[32m+[m[32m            from jaxtorchagent.torch_agent import CentralizedActorRNN as TorchCentralizedActorRNN[m
+[32m+[m[32m        print ('INFO: USING AGENT VERSION NUMBER 1')[m
+[32m+[m[32m    elif agent_version == 2 or agent_version == 3 : #Second agent trained and tested during the second field tests[m
+[32m+[m[32m        try:[m
+[32m+[m[32m            print('load try agent v2')[m
+[32m+[m[32m            from backseat_app.jaxtorchagent.torch_agent_v2 import CentralizedActorRNN as TorchCentralizedActorRNN[m
+[32m+[m[32m            print('loaded correctly')[m
+[32m+[m[32m        except:[m
+[32m+[m[32m            print('load except agent v2')[m
+[32m+[m[32m            from jaxtorchagent.torch_agent_v2 import CentralizedActorRNN as TorchCentralizedActorRNN[m
+[32m+[m[32m        print ('INFO: USING AGENT VERSION NUMBER 2. This agent we modified the observation vector, now the pos of the agent is always relative to its own previous state')[m
+[32m+[m[32m    else:[m
+[32m+[m[32m        try:[m
+[32m+[m[32m            print('load try agent v3')[m
+[32m+[m[32m            from backseat_app.jaxtorchagent.torch_agent_v3 import CentralizedActorRNN as TorchCentralizedActorRNN[m
+[32m+[m[32m            print('loaded correctly')[m
+[32m+[m[32m        except:[m
+[32m+[m[32m            print('load except agent v3')[m
+[32m+[m[32m            from .torch_agent_v3 import CentralizedActorRNN as TorchCentralizedActorRNN[m
+[32m+[m[32m        print ('INFO: USING AGENT VERSION NUMBER 23 This agent we modified the observation vector, now the pos of the agent is always relative to its own previous state')[m
+[32m+[m[41m    [m
+[32m+[m
+ [m
+     agent = TorchCentralizedActorRNN([m
+[31m-            seed=0,[m
+[31m-            agent_params_path=model_path,[m
+[31m-            agent_list=[f"agent_{i}" for i in range(num_agents)],[m
+[31m-            landmark_list=[f"landmark_{i}" for i in range(num_landmarks)],[m
+[31m-            action_dim=5,[m
+[31m-            hidden_dim=64,[m
+[31m-            matrix_obs=True,[m
+[31m-            agent_class="ppo_transformer",[m
+[31m-            device="cpu",[m
+[31m-        )[m
+[32m+[m[32m        seed=0,[m
+[32m+[m[32m        agent_params_path=model_path,[m
+[32m+[m[32m        agent_list=[f"agent_{i}" for i in range(num_agents)],[m
+[32m+[m[32m        landmark_list=[f"landmark_{i}" for i in range(num_landmarks)],[m
+[32m+[m[32m        action_dim=5,[m
+[32m+[m[32m        hidden_dim=64,[m
+[32m+[m[32m        pos_norm=1e-3,[m
+[32m+[m[32m        agent_class="ppo_transformer",[m
+[32m+[m[32m        mask_ranges=True,[m
+[32m+[m[32m        matrix_obs=True,[m
+[32m+[m[32m        add_agent_id=False,[m
+[32m+[m[32m        max_range_dist=1500.0,[m
+[32m+[m[32m        normalize_distances=True,[m
+[32m+[m[32m        num_layers=2,[m
+[32m+[m[32m        num_heads=8,[m
+[32m+[m[32m        ff_dim=128,[m
+[32m+[m[32m    )[m
+     [m
+     trackers = [[m
+         Tracker_ivan(method="pf", dt=dt, **tracking_kwargs) for _ in range(num_landmarks)[m
+[36m@@ -142,57 +324,518 @@[m [mdef test([m
+     model_path: str = "x",[m
+ ):[m
+ [m
+[31m-    episodes = 2[m
+[31m-    steps = 10[m
+[31m-[m
+[31m-    #original name = "mappo_rnn_follow_1v1_10min_training_512steps_utracking_1_vs_1_seed0_vmap0_final.safetensors"[m
+[31m-    #model_path = "mappo_rnn_1v1.safetensors"[m
+[31m-    #original name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent[m
+[31m-    model_path = "mappo_transformer_1v1.safetensors" #Good for 1target and 1agent[m
+[31m-    #original name ="mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents[m
+[31m-    #model_path = "mappo_transformer_3v1.safetensors" #Good for 1target and multiple agents[m
+[31m-    #original name = "mappo_transformer_from_5v5follow_256steps_utracking_5_vs_5_step7320_rng202567368.safetensors"[m
+[31m-    #model_path = "mappo_transformer_5v5.safetensors"[m
+[31m-[m
+[31m-    for n in range(1, 3):  # number of agents[m
+[31m-        for m in range(1, 3):  # number of landmarks[m
+[32m+[m[32m    import matplotlib.pyplot as plt[m
+[32m+[m[32m    import matplotlib.cm as cm[m
+[32m+[m[32m    import numpy as np[m
+[32m+[m[32m    import pandas as pd[m
+[32m+[m[32m    import utm[m
+[32m+[m[32m    import os[m
+[32m+[m
+[32m+[m[32m    episodes = 1[m
+[32m+[m[32m    num_agents = 1[m
+[32m+[m[32m    num_targets = 1[m
+[32m+[m[32m    use_values_pretested = False[m
+[32m+[m[32m    use_previouse_pf_estimations = True #if false, we will run again the PF to estiamte the positions.[m
+[32m+[m[32m    use_current_action = True #if true, we use the current actions to move the agent[m
+[32m+[m[32m    use_syntetic_data = True #if true, the target position will be generated syntetically[m
+[32m+[m[32m    add_noise = True[m
+[32m+[m[32m    plot_graphs = True[m
+[32m+[m[32m    agent_version = 4[m
+[32m+[m
+[32m+[m[32m    if agent_version == 1:[m[41m        [m
+[32m+[m[32m        #1- First we load the RL agent[m
+[32m+[m[32m        #original name = "mappo_rnn_follow_1v1_10min_training_512steps_utracking_1_vs_1_seed0_vmap0_final.safetensors"[m
+[32m+[m[32m        #model_name = "mappo_rnn_1v1.safetensors"[m
+[32m+[m[32m        #original name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent[m
+[32m+[m[32m        model_name = "mappo_transformer_1v1.safetensors" #Good for 1target and 1agent[m
+[32m+[m[32m        #original name ="mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents[m
+[32m+[m[32m        #model_name = "mappo_transformer_3v1.safetensors" #Good for 1target and multiple agents[m
+[32m+[m[32m        #original name = "mappo_transformer_from_5v5follow_256steps_utracking_5_vs_5_step7320_rng202567368.safetensors"[m
+[32m+[m[32m        #model_name = "mappo_transformer_5v5.safetensors"[m
+[32m+[m[32m    elif agent_version == 2:[m
+[32m+[m[32m        model_name = "mappo_transformer_1v1_v2.safetensors" #New agent trained with new observation vector state[m
+[32m+[m[32m    elif agent_version == 3:[m
+[32m+[m[32m        model_name = "mappo_transformer_1v1_v3.safetensors" #New agent trained with new observation vector state[m
+[32m+[m[32m    elif agent_version == 4:[m
+[32m+[m[32m        model_name = "mappo_transformer_1v1_v4.safetensors" # New agent with should work: mappo_transformer_noisy_more_linear_utracking_1_vs_1_step456_rng1948878966[m
+[32m+[m[32m    else:[m
+[32m+[m[32m        print ('ERROR. AGENT VERSION NEED TO BE SPECIFIED CORRECTLY')[m
+[32m+[m[32m        return None[m
+[32m+[m[32m    project_root = os.path.dirname(os.path.abspath(__file__))[m
+[32m+[m[32m    project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")[m
+[32m+[m[32m    project_root = os.path.abspath(project_root)[m[41m [m
+[32m+[m[32m    model_path = os.path.join(project_root,"jaxtorchagent", "IROS_MODELS", model_name)[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    for n in range(1, num_agents+1):  # number of agents[m
+[32m+[m[32m        for m in range(1, num_targets+1):  # number of landmarks[m
+ [m
+             print(f"\nTesting with {n} agents and {m} landmarks...")[m
+ [m
+             agent_controller = load([m
+[31m-                num_agents=n, num_landmarks=m, model_path=model_path, dt=30[m
+[32m+[m[32m                num_agents=n, num_landmarks=m, model_path=model_path, agent_version=agent_version, dt=30[m
+             )[m
+ [m
+[31m-            for episode in range(episodes):[m
+[31m-[m
+[31m-                agent_controller.reset(seed=episode)[m
+[31m-                print(f" Episode {episode}:")[m
+[31m-[m
+[31m-                for step in range(steps):[m
+[31m-                    angle = 0.1 * step  # radians[m
+[31m-                    ranges = np.array([m
+[31m-                        [[10.0 + i + step for i in range(n)] for j in range(m)][m
+[31m-                    )  # (m, n)[m
+[31m-                    positions = np.array([m
+[31m-                        [[5.0 * i + step, 5.0 * i + step, 0.0] for i in range(n)][m
+[31m-                    )  # (n, 3)[m
+[31m-                    targets_depth = [10] * m  # (m,)[m
+[31m-[m
+[31m-                    print([m
+[31m-                        f" Step {step}: Ranges: {ranges}, Positions: {positions}, Depths: {targets_depth}"[m
+[31m-                    )[m
+[31m-[m
+[31m-                    action, predictions = agent_controller.get_action_and_predictions([m
+[31m-                        angle=angle,[m
+[31m-                        ranges=ranges,[m
+[31m-                        positions=positions,[m
+[31m-                        targets_depth=targets_depth,[m
+[31m-                        dt=30,[m
+[31m-                    )[m
+[31m-[m
+[31m-                    print(f" Step {step}: Action: {action}")[m
+[31m-                    for key, value in predictions.items():[m
+[31m-                        print(f"{key}: {value}")[m
+[32m+[m
+[32m+[m[41m            [m
+[32m+[m[32m            first_ranges_mean_all=[][m
+[32m+[m[32m            first_ranges_std_all=[][m
+[32m+[m[32m            middle_ranges_mean_all=[][m
+[32m+[m[32m            middle_ranges_std_all=[][m
+[32m+[m[32m            last_ranges_mean_all=[][m
+[32m+[m[32m            last_ranges_std_all=[][m
+[32m+[m[32m            noise_values = [][m
+[32m+[m[32m            speed_values = [][m
+[32m+[m
+[32m+[m[32m            #noise value[m
+[32m+[m[32m            noise_value = 0.5 #0.5[m
+[32m+[m[32m            speed_value = 2000[m
+[32m+[m[32m            #for noise_value in np.linspace(0,2,2):[m
+[32m+[m[32m            #for speed_value in [100., 1000., 2000., 3000., 4000., 5000.]:[m
+[32m+[m[32m            for speed_value in [6000.]:[m
+[32m+[m
+[32m+[m[32m                first_ranges_mean=[][m
+[32m+[m[32m                first_ranges_std=[][m
+[32m+[m[32m                middle_ranges_mean=[][m
+[32m+[m[32m                middle_ranges_std=[][m
+[32m+[m[32m                last_ranges_mean=[][m
+[32m+[m[32m                last_ranges_std=[][m
+[32m+[m[32m                aux_speed = [][m
+[32m+[m
+[32m+[m[32m                for episode in range(episodes):[m
+[32m+[m
+[32m+[m[32m                    agent_controller.reset(seed=int(np.random.rand()*994))[m
+[32m+[m[32m                    print(f" Episode {episode}:")[m
+[32m+[m
+[32m+[m[32m                    if use_values_pretested == True:[m
+[32m+[m[32m                        file = "/home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251110T054802_log.txt" # a good example[m
+[32m+[m[32m                        file = "/home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251110T185757_log.txt" # a bad trajectory[m
+[32m+[m[32m                        file = "/home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251110T185813_log.txt" # a bad trajectory[m
+[32m+[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        data = np.loadtxt(file, delimiter=',')[m
+[32m+[m[32m                        # Extract columns (0-based indexing)[m
+[32m+[m[32m                        range_to_target = data[:, 4]   # Column 5[m
+[32m+[m[32m                        x_positions = data[:, 10]       # Column 10[m
+[32m+[m[32m                        y_positions = data[:, 11]      # Column 11[m
+[32m+[m[32m                        lon_target = data[:, 5]      # Column 11[m
+[32m+[m[32m                        lat_target = data[:, 6]      # Column 11[m
+[32m+[m[32m                        action_used = data[:, 7][m
+[32m+[m[32m                        x_origin = data[:, 18][0][m[41m [m
+[32m+[m[32m                        y_origin = data[:, 20][0][m[41m  [m
+[32m+[m
+[32m+[m[32m                        x_target = [][m
+[32m+[m[32m                        y_target = [][m
+[32m+[m[32m                        for n in range(len(lon_target)):[m
+[32m+[m[32m                            tuple = utm.from_latlon(lat_target[n], lon_target[n])[m
+[32m+[m[32m                            lrauv_x, lrauv_y, zonenumber, zoneletter = tuple[m
+[32m+[m[32m                            x_target.append(lrauv_x-x_origin)[m
+[32m+[m[32m                            y_target.append(lrauv_y-y_origin)[m
+[32m+[m[32m                        x_target = np.array(x_target)[m
+[32m+[m[32m                        y_target = np.array(y_target)[m
+[32m+[m
+[32m+[m[32m                    if use_syntetic_data == True:[m
+[32m+[m[32m                        #creat syntetic data[m
+[32m+[m[32m                        aux = 1000 #(np.random.rand()*2-1)*speed_value[m
+[32m+[m[32m                        x_target = np.linspace(0, aux, 800) #* 0 +1[m
+[32m+[m[32m                        aux = 10000 #(np.random.rand()*2-1)*speed_value[m
+[32m+[m[32m                        y_target = np.linspace(0, aux, 800) #* -0. +1.1  #with (*0+1) the policy is not quite good[m
+[32m+[m[32m                        x_target = x_target + 500 #(np.random.rand()*2-1)*500[m[41m [m
+[32m+[m[32m                        y_target = y_target + 500 #(np.random.rand()*2-1)*500[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        #add noise[m
+[32m+[m[32m                        y_target += np.random.rand(len(y_target))*5[m
+[32m+[m[32m                        x_target += np.random.rand(len(x_target))*5[m
+[32m+[m
+[32m+[m[32m                        #x_target[200:400] -= 2000.[m
+[32m+[m
+[32m+[m[32m                        #y_target[200:] += 2000.[m
+[32m+[m
+[32m+[m[32m                        aux = y_target[200:].copy()[m
+[32m+[m[32m                        x_target[200:] = aux-2000[m
+[32m+[m[32m                        y_target[200:] = y_target[200:] * 0 + y_target[200][m
+[32m+[m
+[32m+[m[32m                        y_target[250:] = aux[50:][m
+[32m+[m[32m                        x_target[250:] = x_target[250:]*0[m
+[32m+[m[41m                        [m
+[32m+[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        x_positions = np.zeros(len(x_target))[m
+[32m+[m[32m                        y_positions = np.zeros(len(x_target))[m
+[32m+[m[32m                        range_to_target = np.zeros(len(x_target))[m
+[32m+[m[32m                        action_used = np.zeros(len(x_target))[m
+[32m+[m
+[32m+[m
+[32m+[m[32m                    #In Matteo's method a 0 means no measurement.[m
+[32m+[m[32m                    range_to_target = np.where(range_to_target == -1, 0, range_to_target)[m
+[32m+[m
+[32m+[m[41m                    [m
+[32m+[m
+[32m+[m[32m                    print('ranges=',range_to_target[:10])[m
+[32m+[m[32m                    print('x_positions=',x_positions[:10])[m
+[32m+[m[32m                    print('y_positions=',y_positions[:10])[m
+[32m+[m[32m                    print('x_target=',x_target[:10])[m
+[32m+[m[32m                    print('y_target=',y_target[:10])[m
+[32m+[m[32m                    steps = len(x_positions)[m
+[32m+[m
+[32m+[m[32m                    discrete_action_mapping = np.array([-0.24, -0.12, 0, 0.12, 0.24])[m
+[32m+[m[32m                    discrete_action_mapping_heading = np.array([0.903, 0.452, 0.00, -0.452, -0.903])[m
+[32m+[m
+[32m+[m[32m                    x_pos = [][m
+[32m+[m[32m                    y_pos = [][m
+[32m+[m[32m                    x_pred = [][m
+[32m+[m[32m                    y_pred = [][m
+[32m+[m[32m                    actions = [][m
+[32m+[m[32m                    timestamp = [][m
+[32m+[m[32m                    computed_ranges =[][m
+[32m+[m[32m                    vehicle_vels = [][m
+[32m+[m[32m                    target_vels = [][m
+[32m+[m[32m                    vehicle_rel_vel = [][m
+[32m+[m[32m                    old_heading_inc = [][m
+[32m+[m[32m                    current_range_compute = [][m
+[32m+[m[32m                    smoothed_positions_x = [][m
+[32m+[m[32m                    smoothed_positions_y = [][m
+[32m+[m[32m                    smoothed_positions_step = [][m
+[32m+[m[32m                    smooth_target_vel = [][m
+[32m+[m[32m                    range_to_pred=[][m
+[32m+[m[41m                    [m
+[32m+[m[32m                    new_heading=0[m
+[32m+[m[32m                    aux_count = 0[m
+[32m+[m[32m                    for step in range(steps):[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        if use_current_action == True:[m
+[32m+[m[32m                            if len(y_pos)>=1:[m
+[32m+[m[32m                                try:[m
+[32m+[m[32m                                    angle = np.arctan2(y_pos[-1]-y_pos[-2],x_pos[-1]-x_pos[-2])[m
+[32m+[m[32m                                    print('inc_y:',y_pos[-1]-y_pos[-2])[m
+[32m+[m[32m                                    print('inc_x:',x_pos[-1]-x_pos[-2])[m
+[32m+[m[32m                                    #print('angle arctan=',angle*180./np.pi)[m
+[32m+[m[32m                                    #Convert yaw to 0-360 degrees, East reference[m
+[32m+[m[32m                                    if angle <= 0.:[m
+[32m+[m[32m                                        angle = np.pi+(np.pi+angle)[m
+[32m+[m[32m                                    #print('angle 360   =',angle*180./np.pi)[m
+[32m+[m[32m                                    #Add 90 degrees offset to rotate yaw to North reference[m
+[32m+[m[32m                                    angle = angle-(np.pi/2.)[m
+[32m+[m[32m                                    angle = angle% (2.*np.pi)[m
+[32m+[m[32m                                    #print('angle 360  N=',angle*180./np.pi)[m
+[32m+[m[32m                                    # Convert yaw back to +-180 degrees, with North reference[m
+[32m+[m[32m                                    if angle > np.pi:[m
+[32m+[m[32m                                        angle = angle - 2.*np.pi[m
+[32m+[m[32m                                    #we change the sign to make clockwise positive angles. In the first implementation, we saw that the first Gazebo implementation[m
+[32m+[m[32m                                    #uses a counterclockwise convention, so we don't need to negate it here.[m
+[32m+[m[32m                                    angle = -angle +0.[m
+[32m+[m[32m                                    #print('angle+-180 N=',angle*180./np.pi)[m
+[32m+[m[32m                                    #Now back to 360 N but with clockwise positive angles[m
+[32m+[m[32m                                    angle = angle%(2.*np.pi)[m
+[32m+[m[32m                                    #print('Agen yaw (360NorthClockwise)=',angle*180./np.pi)[m
+[32m+[m
+[32m+[m[32m                                    #compute velocity[m[41m [m
+[32m+[m[32m                                    deltatime = 30. #s[m
+[32m+[m[32m                                    vehicle_vel = np.sqrt((x_pos[-2]-x_pos[-1])**2+(y_pos[-2]-y_pos[-1])**2)/deltatime[m
+[32m+[m[32m                                    target_vel = np.sqrt((x_target[step-1]-x_target[step])**2+(y_target[step-1]-y_target[step])**2)/deltatime[m
+[32m+[m[32m                                    real_vel = np.sqrt((x_positions[step]-x_positions[step-1])**2+(y_positions[step]-y_positions[step-1])**2)/deltatime[m
+[32m+[m[32m                                except:[m
+[32m+[m[32m                                    deltatime = 30.[m
+[32m+[m[32m                                    angle = 0[m
+[32m+[m[32m                                    vehicle_vel = 0[m
+[32m+[m[32m                                    target_vel =0[m
+[32m+[m
+[32m+[m[32m                                #compute new position[m
+[32m+[m[32m                                using_old_actions = False[m
+[32m+[m[32m                                if using_old_actions == True:[m
+[32m+[m[32m                                    aux_action = int(np.where(discrete_action_mapping == np.round(action_used[step-1],2))[0]) #previouse actions used in Gazebo[m
+[32m+[m[32m                                    velocity = real_vel+0.[m
+[32m+[m[32m                                    heading_inc = discrete_action_mapping_heading[aux_action][m
+[32m+[m[32m                                    heading_inc = -heading_inc+0. #I have to reverse the rudder action, as during training the vehicle angles were counterclockwise.[m
+[32m+[m[32m                                    dynamic_factor = np.mean(old_heading_inc[-2:]) * 0.7[m
+[32m+[m[32m                                else:[m
+[32m+[m[32m                                    aux_action = int(np.where(discrete_action_mapping == np.round(actions[step-1],2))[0]) #current actions computed here[m
+[32m+[m[32m                                    velocity = 1. #m/s[m
+[32m+[m[32m                                    if add_noise == True:[m
+[32m+[m[32m                                        velocity += (np.random.rand()*2-1)*noise_value[m
+[32m+[m[32m                                        velocity = np.clip(velocity,0.2,1.2)[m
+[32m+[m[32m                                    heading_inc = discrete_action_mapping_heading[aux_action][m
+[32m+[m[32m                                    heading_inc = -heading_inc+0. #I have to reverse the rudder action, as during training the vehicle angles were counterclockwise.[m
+[32m+[m[32m                                    dynamic_factor = 0.[m
+[32m+[m[41m                                    [m
+[32m+[m[32m                                new_heading = (angle + heading_inc + dynamic_factor)%(2*np.pi)[m
+[32m+[m[32m                                print('action_used:',aux_action)[m
+[32m+[m[32m                                print('angle:',angle*180./np.pi)[m
+[32m+[m[32m                                print('heading_inc:',heading_inc*180./np.pi)[m
+[32m+[m[32m                                print('dynamic_factor:',dynamic_factor*180./np.pi)[m
+[32m+[m[32m                                print('new_heading:',new_heading*180./np.pi)[m
+[32m+[m[32m                                positions = np.array([[x_pos[-1]+np.sin(new_heading)*velocity*deltatime, y_pos[-1]+np.cos(new_heading)*velocity*deltatime, 0.0]])[m
+[32m+[m[32m                                #add noise to the position of the vehicle[m
+[32m+[m[32m                                if add_noise == True:[m
+[32m+[m[32m                                    positions[0][:2] += (np.random.rand(2)*2-1)*noise_value*2 #noise_value #1.01, 5.01 are great examples[m
+[32m+[m[41m                                [m
+[32m+[m[32m                            else:[m
+[32m+[m[32m                                angle = 0.1 * step  # radians[m
+[32m+[m[32m                                heading_inc = 0.[m
+[32m+[m[32m                                dynamic_factor = 0.[m
+[32m+[m[32m                                vehicle_vel = 0[m
+[32m+[m[32m                                target_vel = 0[m
+[32m+[m[32m                                positions = np.array([[x_positions[step], y_positions[step], 0.0]])[m
+[32m+[m[32m                                real_vel = 0.[m
+[32m+[m
+[32m+[m[32m                            current_range_compute.append(np.sqrt((positions[0][0]-x_target[step])**2+(positions[0][1]-y_target[step])**2))[m
+[32m+[m[41m                            [m
+[32m+[m[32m                            ranges = np.array([[current_range_compute[-1]]])[m
+[32m+[m[32m                            vehicle_vels.append(vehicle_vel)[m
+[32m+[m[32m                            target_vels.append(target_vel)[m
+[32m+[m[32m                            vehicle_rel_vel.append(real_vel)[m
+[32m+[m[32m                            old_heading_inc.append(heading_inc)[m
+[32m+[m[41m                            [m
+[32m+[m[41m                            [m
+[32m+[m
+[32m+[m[32m                        else:[m
+[32m+[m[32m                            angle = 0.1 * step  # radians[m
+[32m+[m[32m                            ranges = np.array([[range_to_target[step]]])[m
+[32m+[m[32m                            positions = np.array([[x_positions[step], y_positions[step], 0.0]])[m
+[32m+[m
+[32m+[m[32m                        targets_depth = [10] * m  # (m,)[m
+[32m+[m
+[32m+[m[32m                        #save for ploting[m
+[32m+[m[32m                        x_pos.append(positions[0][0])[m
+[32m+[m[32m                        y_pos.append(positions[0][1])[m
+[32m+[m
+[32m+[m[32m                        computed_ranges.append(np.sqrt((x_positions[step]-x_target[step])**2+(y_positions[step]-y_target[step])**2))[m
+[32m+[m[41m                        [m
+[32m+[m
+[32m+[m[32m                        #set if we have new_range, aka different to 0[m
+[32m+[m[32m                        if ranges == 0 or step%10 != 0:[m
+[32m+[m[32m                            new_range = False[m
+[32m+[m[32m                            aux_target = [x_target[aux_count],y_target[aux_count],targets_depth[0]][m
+[32m+[m[32m                        else:[m
+[32m+[m[32m                            new_range = True[m
+[32m+[m[32m                            aux_target = [x_target[step],y_target[step],targets_depth[0]][m
+[32m+[m[32m                            aux_count = step+0[m
+[32m+[m[41m                        [m
+[32m+[m
+[32m+[m[32m                        print([m
+[32m+[m[32m                            f" Step {step}: Ranges: {ranges}, Positions: {positions}, Depths: {targets_depth}, new_range: {new_range}, aux_target: {aux_target}"[m
+[32m+[m[32m                        )[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        action, predictions = agent_controller.get_action_and_predictions([m
+[32m+[m[32m                            angle=angle,[m
+[32m+[m[32m                            ranges=ranges,[m
+[32m+[m[32m                            positions=positions,[m
+[32m+[m[32m                            targets_depth=targets_depth,[m
+[32m+[m[32m                            dt=30,[m
+[32m+[m[32m                            new_range=new_range,[m
+[32m+[m[32m                            test_marl=use_previouse_pf_estimations,[m
+[32m+[m[32m                            previous_target=aux_target[m
+[32m+[m[32m                        )[m
+[32m+[m
+[32m+[m[32m                        actions.append(discrete_action_mapping[action])[m
+[32m+[m[32m                        timestamp.append(step)[m
+[32m+[m[32m                        x_pred.append(predictions["landmark_0_tracking_x"])[m
+[32m+[m[32m                        y_pred.append(predictions["landmark_0_tracking_y"])[m
+[32m+[m
+[32m+[m[32m                        print(f" Step {step}: Action: {action}")[m
+[32m+[m[32m                        print('')[m
+[32m+[m
+[32m+[m[32m                        range_to_pred.append(np.sqrt((positions[0][0]-x_pred[-1])**2+(positions[0][1]-y_pred[-1])**2))[m
+[32m+[m
+[32m+[m[32m                        try:[m
+[32m+[m[32m                            smooth_target_vel.append(float(np.sqrt((x_pred[-1]-x_pred[-2])**2+((y_pred[-1]-y_pred[-2])**2))/deltatime))[m
+[32m+[m[32m                        except:[m
+[32m+[m[32m                            smooth_target_vel.append(0)[m
+[32m+[m
+[32m+[m
+[32m+[m[32m                    #compute ranges[m
+[32m+[m[32m                    n = len(current_range_compute)[m
+[32m+[m[32m                    # Calculate split points[m
+[32m+[m[32m                    split1 = n // 3[m
+[32m+[m[32m                    split2 = 2 * n // 3[m
+[32m+[m[32m                    # Split the array[m
+[32m+[m[32m                    first = current_range_compute[:split1][m
+[32m+[m[32m                    middle = current_range_compute[split1:split2][m
+[32m+[m[32m                    last = current_range_compute[split2:][m
+[32m+[m[32m                    #save data for ploting afterwards[m
+[32m+[m[32m                    first_ranges_mean.append(np.mean(first))[m
+[32m+[m[32m                    first_ranges_std.append(np.std(first))[m
+[32m+[m[32m                    middle_ranges_mean.append(np.mean(middle))[m
+[32m+[m[32m                    middle_ranges_std.append(np.std(middle))[m
+[32m+[m[32m                    last_ranges_mean.append(np.mean(last))[m
+[32m+[m[32m                    last_ranges_std.append(np.std(last))[m
+[32m+[m[32m                    aux_speed.append(np.mean(target_vels))[m
+[32m+[m
+[32m+[m[32m                    if plot_graphs == True:[m
+[32m+[m[32m                        # Create a single figure with 4 subplots[m
+[32m+[m[32m                        fig, axes = plt.subplots(2, 2, figsize=(16, 12))[m
+[32m+[m
+[32m+[m[32m                        # Subplot 1: Vehicle Movement on X-Y Plane[m
+[32m+[m[32m                        ax1 = axes[0, 0][m
+[32m+[m[32m                        ax1.plot(x_target, y_target, 'r-', label='Past Target Prediction', linewidth=2)[m
+[32m+[m[32m                        ax1.plot(x_pred, y_pred, 'm^--', label='Current Target Prediction', linewidth=1.5, markersize=4)[m
+[32m+[m[32m                        ax1.plot(smoothed_positions_x, smoothed_positions_y, 'mo--', label='Smoothed Target Prediction', linewidth=1.5, markersize=4)[m
+[32m+[m[32m                        #ax1.plot(x_positions, y_positions, 'mo-', alpha=0.3, label='Past Vehicle Path', linewidth=1)[m
+[32m+[m[32m                        ax1.plot(x_pos, y_pos, 'bo--', label='Current Vehicle Path', linewidth=1.5, markersize=3)[m
+[32m+[m[32m                        ax1.plot(x_pos[-1], y_pos[-1], 'c^', markersize=10, label='Current Position')[m
+[32m+[m[32m                        ax1.set_xlabel('X Position')[m
+[32m+[m[32m                        ax1.set_ylabel('Y Position')[m
+[32m+[m[32m                        ax1.set_title('Vehicle Movement on X-Y Plane. Nose value:%.2f'%noise_value)[m
+[32m+[m[32m                        ax1.grid(True, alpha=0.3)[m
+[32m+[m[32m                        ax1.axis('equal')[m
+[32m+[m[32m                        ax1.legend()[m
+[32m+[m
+[32m+[m[32m                        # Subplot 2: MARL Actions[m
+[32m+[m[32m                        ax2 = axes[0, 1][m
+[32m+[m[32m                        # ax2.plot(timestamp, action_used, 'g-', label='Past actions')  # Uncomment if you have this data[m
+[32m+[m[32m                        ax2.plot(timestamp, actions, 'ro-', label='Current Actions', linewidth=2, markersize=4)[m
+[32m+[m[32m                        ax2.set_xlabel('Timestamp')[m
+[32m+[m[32m                        ax2.set_ylabel('Actions')[m
+[32m+[m[32m                        ax2.set_title('MARL Actions Over Time')[m
+[32m+[m[32m                        ax2.grid(True, alpha=0.3)[m
+[32m+[m[32m                        ax2.legend()[m
+[32m+[m
+[32m+[m[32m                        # Subplot 3: Ranges[m
+[32m+[m[32m                        ax3 = axes[1, 0][m
+[32m+[m[32m                        # ax3.plot(timestamp, computed_ranges, 'ro--', label='Past Ranges (lrauv-pf) pos')  # Uncomment if you have this data[m
+[32m+[m[32m                        ax3.plot(timestamp, current_range_compute, 'bo-', label='Ranges to Target', linewidth=2, markersize=4)[m
+[32m+[m[32m                        ax3.plot(timestamp, range_to_pred, 'm-', label='Ranges to Smoothed Target')  # Uncomment if you have this data[m
+[32m+[m[32m                        ax3.set_xlabel('Timestamp')[m
+[32m+[m[32m                        ax3.set_ylabel('Range (m)')[m
+[32m+[m[32m                        ax3.set_title('Computed Ranges Over Time')[m
+[32m+[m[32m                        ax3.grid(True, alpha=0.3)[m
+[32m+[m[32m                        ax3.legend()[m
+[32m+[m
+[32m+[m[32m                        # Subplot 4: Velocities[m
+[32m+[m[32m                        ax4 = axes[1, 1][m
+[32m+[m[32m                        ax4.plot(timestamp, vehicle_vels, 'g-', label='Current Vehicle Velocity', linewidth=2)[m
+[32m+[m[32m                        ax4.plot(timestamp, target_vels, 'b-', label='Current Target Velocity', linewidth=2)[m
+[32m+[m[32m                        ax4.plot(timestamp, smooth_target_vel, 'm^-', label='Smoothed Target Velocity', linewidth=2)[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        ax4.set_xlabel('Timestamp')[m
+[32m+[m[32m                        ax4.set_ylabel('Velocity (m/s)')[m
+[32m+[m[32m                        ax4.set_title('Vehicle and Target Velocities')[m
+[32m+[m[32m                        ax4.grid(True, alpha=0.3)[m
+[32m+[m[32m                        ax4.legend()[m
+[32m+[m
+[32m+[m[32m                        # Adjust layout and display[m
+[32m+[m[32m                        plt.tight_layout(pad=4.0)[m
+[32m+[m[32m                        plt.show(block=False)[m
+[32m+[m
+[32m+[m[32m                #save data for ploting afterwards[m
+[32m+[m[32m                first_ranges_mean_all.append(np.mean(first_ranges_mean))[m
+[32m+[m[32m                first_ranges_std_all.append(np.mean(first_ranges_std))[m
+[32m+[m[32m                middle_ranges_mean_all.append(np.mean(middle_ranges_mean))[m
+[32m+[m[32m                middle_ranges_std_all.append(np.mean(middle_ranges_std))[m
+[32m+[m[32m                last_ranges_mean_all.append(np.mean(last_ranges_mean))[m
+[32m+[m[32m                last_ranges_std_all.append(np.mean(last_ranges_std))[m
+[32m+[m[32m                noise_values.append(noise_value)[m
+[32m+[m[32m                speed_values.append(np.mean(aux_speed))[m
+[32m+[m[41m            [m
+[32m+[m[32m            plot2_graphs = True[m
+[32m+[m[32m            if plot2_graphs == True:[m
+[32m+[m[32m                # Create 4 subplots[m
+[32m+[m[32m                fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(18, 12))[m
+[32m+[m[32m                fig.suptitle('Range Performance Analysis vs Noise Level', fontsize=16, fontweight='bold')[m
+[32m+[m
+[32m+[m[32m                # Subplot 1: First Third with shaded area[m
+[32m+[m[32m                ax1.plot(noise_values, first_ranges_mean_all, 'ro-', linewidth=3, markersize=8, label='First Third Mean')[m
+[32m+[m[32m                ax1.fill_between(noise_values,[m[41m [m
+[32m+[m[32m                                np.array(first_ranges_mean_all) - np.array(first_ranges_std_all),[m[41m [m
+[32m+[m[32m                                np.array(first_ranges_mean_all) + np.array(first_ranges_std_all),[m[41m [m
+[32m+[m[32m                                alpha=0.3, color='red', label='First Third ±1 STD')[m
+[32m+[m[32m                ax1.set_xlabel('Noise Level')[m
+[32m+[m[32m                ax1.set_ylabel('Mean Range (m)')[m
+[32m+[m[32m                ax1.set_title('First Third - Shaded STD')[m
+[32m+[m[32m                ax1.legend()[m
+[32m+[m[32m                ax1.grid(True, alpha=0.3)[m
+[32m+[m
+[32m+[m[32m                # Subplot 2: Middle Third with shaded area[m
+[32m+[m[32m                ax2.plot(noise_values, middle_ranges_mean_all, 'go-', linewidth=3, markersize=8, label='Middle Third Mean')[m
+[32m+[m[32m                ax2.fill_between(noise_values,[m[41m [m
+[32m+[m[32m                                np.array(middle_ranges_mean_all) - np.array(middle_ranges_std_all),[m[41m [m
+[32m+[m[32m                                np.array(middle_ranges_mean_all) + np.array(middle_ranges_std_all),[m[41m [m
+[32m+[m[32m                                alpha=0.3, color='green', label='Middle Third ±1 STD')[m
+[32m+[m[32m                ax2.set_xlabel('Noise Level')[m
+[32m+[m[32m                ax2.set_ylabel('Mean Range (m)')[m
+[32m+[m[32m                ax2.set_title('Middle Third - Shaded STD')[m
+[32m+[m[32m                ax2.legend()[m
+[32m+[m[32m                ax2.grid(True, alpha=0.3)[m
+[32m+[m
+[32m+[m[32m                # Subplot 3: Last Third with shaded area[m
+[32m+[m[32m                ax3.plot(noise_values, last_ranges_mean_all, 'bo-', linewidth=3, markersize=8, label='Last Third Mean')[m
+[32m+[m[32m                ax3.fill_between(noise_values,[m[41m [m
+[32m+[m[32m                                np.array(last_ranges_mean_all) - np.array(last_ranges_std_all),[m[41m [m
+[32m+[m[32m                                np.array(last_ranges_mean_all) + np.array(last_ranges_std_all),[m[41m [m
+[32m+[m[32m                                alpha=0.3, color='blue', label='Last Third ±1 STD')[m
+[32m+[m[32m                ax3.set_xlabel('Noise Level')[m
+[32m+[m[32m                ax3.set_ylabel('Mean Range (m)')[m
+[32m+[m[32m                ax3.set_title('Last Third - Shaded STD')[m
+[32m+[m[32m                ax3.legend()[m
+[32m+[m[32m                ax3.grid(True, alpha=0.3)[m
+[32m+[m
+[32m+[m[32m                # Subplot 4: All thirds with error bars[m
+[32m+[m[32m                # Subplot 4: With shaded areas and colorbar (alternative styling)[m
+[32m+[m[32m                x_positions = [1, 2, 3][m
+[32m+[m[32m                third_labels = ['First', 'Middle', 'Last'][m
+[32m+[m
+[32m+[m[32m                # Use plasma colormap for better visual distinction[m
+[32m+[m[32m                colors = cm.plasma(np.linspace(0, 1, len(noise_values)))[m
+[32m+[m
+[32m+[m[32m                # Plot each noise level[m
+[32m+[m[32m                #for i, noise in enumerate(noise_values):[m
+[32m+[m[32m                for i, noise in enumerate(speed_values):[m
+[32m+[m[32m                    means_for_this_noise = [[m
+[32m+[m[32m                        first_ranges_mean_all[i],[m
+[32m+[m[32m                        middle_ranges_mean_all[i],[m[41m [m
+[32m+[m[32m                        last_ranges_mean_all[i][m
+[32m+[m[32m                    ][m
+[32m+[m[41m                    [m
+[32m+[m[32m                    stds_for_this_noise = [[m
+[32m+[m[32m                        first_ranges_std_all[i],[m
+[32m+[m[32m                        middle_ranges_std_all[i],[m
+[32m+[m[32m                        last_ranges_std_all[i][m
+[32m+[m[32m                    ][m
+[32m+[m[41m                    [m
+[32m+[m[32m                    # Plot mean line with thicker line for better visibility[m
+[32m+[m[32m                    ax4.plot(x_positions, means_for_this_noise, 's-',[m[41m [m
+[32m+[m[32m                            linewidth=3, markersize=8, color=colors[i],[m[41m [m
+[32m+[m[32m                            markerfacecolor=colors[i], markeredgecolor='white', markeredgewidth=1.5,[m
+[32m+[m[32m                            alpha=0.9)[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    # Add shaded area for ±1 STD with slightly higher alpha[m
+[32m+[m[32m                    ax4.fill_between(x_positions,[m[41m [m
+[32m+[m[32m                                    np.array(means_for_this_noise) - np.array(stds_for_this_noise),[m
+[32m+[m[32m                                    np.array(means_for_this_noise) + np.array(stds_for_this_noise),[m
+[32m+[m[32m                                    alpha=0.3, color=colors[i], linewidth=0)[m
+[32m+[m
+[32m+[m[32m                ax4.set_xlabel('Trajectory Third', fontsize=12, labelpad=10)[m
+[32m+[m[32m                ax4.set_ylabel('Mean Range (m)', fontsize=12, labelpad=10)[m
+[32m+[m[32m                ax4.set_title('Range Performance Across Trajectory Thirds\nby Target Speed Level',[m[41m [m
+[32m+[m[32m                            fontsize=13, fontweight='bold', pad=15)[m
+[32m+[m[32m                ax4.set_xticks(x_positions)[m
+[32m+[m[32m                ax4.set_xticklabels(third_labels, fontsize=11)[m
+[32m+[m[32m                ax4.grid(True, alpha=0.3)[m
+[32m+[m
+[32m+[m[32m                # Add colorbar with better styling[m
+[32m+[m[32m                sm = plt.cm.ScalarMappable(cmap=cm.plasma,[m[41m [m
+[32m+[m[32m                                        norm=plt.Normalize(min(speed_values), max(speed_values)))[m
+[32m+[m[32m                sm.set_array([])[m
+[32m+[m[32m                cbar = plt.colorbar(sm, ax=ax4, shrink=0.8, pad=0.02)[m
+[32m+[m[32m                cbar.set_label('Speed Level', fontsize=12, labelpad=10)[m
+[32m+[m[32m                cbar.ax.tick_params(labelsize=10)[m
+[32m+[m
+[32m+[m[32m                # Add a note about the shading[m
+[32m+[m[32m                ax4.text(0.02, 0.98, 'Shaded: ±1 STD', transform=ax4.transAxes,[m[41m [m
+[32m+[m[32m                        fontsize=10, verticalalignment='top',[m
+[32m+[m[32m                        bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))[m
+[32m+[m[41m                [m
+[32m+[m
+[32m+[m[32m                plt.tight_layout(pad=4.0)[m
+[32m+[m[32m                plt.subplots_adjust(top=0.93)[m
+[32m+[m[32m                plt.show(block=False)[m
+[32m+[m[32m            #print('ranges=',range_to_target[:10])[m
+[32m+[m[32m            #print('x_positions=',x_positions[:10])[m
+[32m+[m[32m            #print('y_positions=',y_positions[:10])[m
+[32m+[m[32m            #print('x_target=',x_target[:10])[m
+[32m+[m[32m            #print('y_target=',y_target[:10])[m
+[32m+[m[32m            print('speed_values:',speed_values)[m
+[32m+[m[32m            plt.show(block=True)[m
+ [m
+ [m
+ if __name__ == "__main__":[m
+[1mdiff --git a/backseat_app/jaxtorchagent/test_equivalence.py b/backseat_app/jaxtorchagent/test_equivalence.py[m
+[1mindex 9c69af4..3337ba9 100644[m
+[1m--- a/backseat_app/jaxtorchagent/test_equivalence.py[m
+[1m+++ b/backseat_app/jaxtorchagent/test_equivalence.py[m
+[36m@@ -244,7 +244,6 @@[m [mdef test_trajectory_recurrency([m
+         # Run through the entire sequence[m
+         for step, (obs, done) in enumerate(obs_sequence):[m
+             jax_actions = jax_agent.step(obs, done)[m
+[31m-            print('obs vector: ',obs)[m
+             torch_actions = torch_agent.step(obs, done)[m
+ [m
+             jax_action_sequence.append(jax_actions)[m
+[1mdiff --git a/backseat_app/jaxtorchagent/torch_agent.py b/backseat_app/jaxtorchagent/torch_agent.py[m
+[1mindex 56a5931..2cf3139 100644[m
+[1m--- a/backseat_app/jaxtorchagent/torch_agent.py[m
+[1m+++ b/backseat_app/jaxtorchagent/torch_agent.py[m
+[36m@@ -5,8 +5,8 @@[m [mfrom typing import Union, Dict, List, Optional[m
+ import math[m
+ import os[m
+ [m
+[31m-from .torch_modules import PPOActorTransformer[m
+[31m-from .torch_utils import load_jax_params_to_torch[m
+[32m+[m[32mfrom backseat_app.jaxtorchagent.torch_modules import PPOActorTransformer[m
+[32m+[m[32mfrom backseat_app.jaxtorchagent.torch_utils import load_jax_params_to_torch[m
+ [m
+ import os[m
+ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"[m
+[36m@@ -48,6 +48,8 @@[m [mclass CentralizedActorRNN:[m
+         torch.manual_seed(seed)[m
+         np.random.seed(seed)[m
+ [m
+[32m+[m[32m        print('TEST TEST TEST INIT v1')[m
+[32m+[m
+         # Calculate input dimension based on observation structure[m
+         self.obs_size = 6  # [x, y, z, range/rph_z, is_agent, is_self][m
+         self.total_obs_size = ([m
+[1mdiff --git a/backseat_app/jaxtorchagent/torch_utils.py b/backseat_app/jaxtorchagent/torch_utils.py[m
+[1mindex c9c65cf..a2beb98 100644[m
+[1m--- a/backseat_app/jaxtorchagent/torch_utils.py[m
+[1m+++ b/backseat_app/jaxtorchagent/torch_utils.py[m
+[36m@@ -28,7 +28,7 @@[m [mdef load_jax_params_to_torch([m
+             if "actor" in key:[m
+                 jax_params[key] = f.get_tensor(key)[m
+ [m
+[31m-    print(jax_params)[m
+[32m+[m[32m    #print(jax_params)[m
+ [m
+     # Convert JAX parameter structure to PyTorch[m
+     torch_state_dict = convert_jax_to_torch_params(jax_params, model)[m
+[36m@@ -38,10 +38,10 @@[m [mdef load_jax_params_to_torch([m
+         torch_state_dict, strict=False[m
+     )[m
+ [m
+[31m-    if missing_keys:[m
+[31m-        print(f"Missing keys: {missing_keys}")[m
+[31m-    if unexpected_keys:[m
+[31m-        print(f"Unexpected keys: {unexpected_keys}")[m
+[32m+[m[32m    #if missing_keys:[m
+[32m+[m[32m    #    print(f"Missing keys: {missing_keys}")[m
+[32m+[m[32m    #if unexpected_keys:[m
+[32m+[m[32m    #    print(f"Unexpected keys: {unexpected_keys}")[m
+ [m
+     print(f"Successfully loaded {len(torch_state_dict)} parameters")[m
+ [m
+[36m@@ -62,15 +62,15 @@[m [mdef convert_jax_to_torch_params([m
+     model_state_dict = model.state_dict()[m
+ [m
+     # Print available JAX parameters for debugging[m
+[31m-    print("Available JAX parameters:")[m
+[31m-    for key in sorted(jax_params.keys()):[m
+[31m-        print(f"  {key}: {jax_params[key].shape}")[m
+[32m+[m[32m    #print("Available JAX parameters:")[m
+[32m+[m[32m    #for key in sorted(jax_params.keys()):[m
+[32m+[m[32m    #    print(f"  {key}: {jax_params[key].shape}")[m
+ [m
+[31m-    print("\nExpected PyTorch parameters:")[m
+[31m-    for key in sorted(model_state_dict.keys()):[m
+[31m-        print(f"  {key}: {model_state_dict[key].shape}")[m
+[32m+[m[32m    #print("\nExpected PyTorch parameters:")[m
+[32m+[m[32m    #for key in sorted(model_state_dict.keys()):[m
+[32m+[m[32m    #    print(f"  {key}: {model_state_dict[key].shape}")[m
+ [m
+[31m-    print("\nParameter mapping:")[m
+[32m+[m[32m    #print("\nParameter mapping:")[m
+ [m
+     # Track which PyTorch parameters we've successfully mapped[m
+     mapped_params = set()[m
+[1mdiff --git a/backseat_app/jaxtorchagent/tracking/particle_filter.py b/backseat_app/jaxtorchagent/tracking/particle_filter.py[m
+[1mindex e8cbe28..4c204dc 100644[m
+[1m--- a/backseat_app/jaxtorchagent/tracking/particle_filter.py[m
+[1m+++ b/backseat_app/jaxtorchagent/tracking/particle_filter.py[m
+[36m@@ -7,7 +7,7 @@[m [mimport sys[m
+ class ParticleFilter:[m
+     """ Class for the Particle Filter """[m
+     [m
+[31m-    def __init__(self,std_range=20.,init_velocity=4.,dimx=4,particle_number = 10000, method = 'range', max_pf_range = 200, max_error=200):[m
+[32m+[m[32m    def __init__(self,std_range=20.,init_velocity=4.,dimx=4,particle_number = 10000, method = 'range', max_pf_range = 200, max_error=30):[m
+  [m
+         self.std_range = std_range[m
+         self.init_velocity = init_velocity [m
+[36m@@ -54,6 +54,7 @@[m [mclass ParticleFilter:[m
+ [m
+         # default max error[m
+         self.max_error = max_error[m
+[32m+[m[32m        self.max_error_reset = False[m
+ [m
+         self.previous_observer = [][m
+         self.previous_z = 0[m
+[36m@@ -438,10 +439,13 @@[m [mclass ParticleFilter:[m
+             print('Evaluation -> covariance (CI of 98): %.2f '%(np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2)))[m
+             print('ErrorPF=',abs(sum2/self.particle_number - z))[m
+             print('Evaluaiton -> max(self.w)=%.4f sum(self.w)=%.4f'%(np.max(self.w),np.sum(self.w)))[m
+[31m-            if abs(sum2/self.particle_number - z) > max_error:[m
+[32m+[m[32m            if abs(sum2/self.particle_number - z) > max_error and self.max_error_reset == False:[m
+                 self.initialized = False[m
+[32m+[m[32m                self.max_error_reset = True #this flag is used to not reinitialize the PF continously.[m
+                 print('WARNING 2: initializing particles')[m
+                 self.init_particles(position=observer, slantrange=z)[m
+[32m+[m[32m            if abs(sum2/self.particle_number - z) < max_error:[m
+[32m+[m[32m                self.max_error_reset = False[m
+         else:[m
+             if np.max(self.w) < 0.1:[m
+                 self.initialized = False[m
+[36m@@ -449,7 +453,7 @@[m [mclass ParticleFilter:[m
+             max_dispersion = np.sqrt((np.max(self.x.T[0])-np.min(self.x.T[0]))**2+(np.max(self.x.T[2])-np.min(self.x.T[2]))**2)     [m
+         return[m
+     [m
+[31m-    def update_and_predict(self, dt, z, pos):[m
+[32m+[m[32m    def update_and_predict(self, dt, z, pos, new_range):[m
+ [m
+         # add dummy vel in 2nd and 3rd position[m
+         pos = np.array([pos[0], 0, pos[1], 0])[m
+[36m@@ -464,24 +468,26 @@[m [mclass ParticleFilter:[m
+ [m
+         # Predict step (move all particles)[m
+         self.predict(dt)[m
+[31m-   [m
+[31m-        # Update the weights according its probability[m
+[31m-        self.measurement_prob(measurement=z,observer=pos)   [m
+[31m-        # if weights are equal to 0 means that the estimation is not going well and we reset the values using the previous measurement[m
+[31m-        if max(self.w) < 0.00099 or np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2) < 50.:[m
+[31m-            print('WARNIN, particle w too low, initializing again')[m
+[31m-            if self.previous_observer == []: #initialize with the first measurement[m
+[31m-                self.previous_observer = pos.copy()[m
+[31m-                self.previous_z = z +0.[m
+[31m-            print('WARNING 3: initializing particles')[m
+[31m-            self.init_particles(position=self.previous_observer, slantrange=self.previous_z)[m
+[31m-            self.measurement_prob(measurement=z,observer=pos,error_mult=50.) [m
+[31m-        self.previous_observer = pos.copy()[m
+[31m-        self.previous_z = z +0.   [m
+[31m-        #Resampling        [m
+[31m-        self.resampling(z)[m
+[31m-        # Calculate the average error. If it's too big the particle filter is initialized                    [m
+[31m-        self.evaluation(observer=pos,z=z,max_error=self.max_error)    [m
+[32m+[m
+[32m+[m[32m        if new_range == True:[m
+[32m+[m[32m            # Update the weights according its probability[m
+[32m+[m[32m            self.measurement_prob(measurement=z,observer=pos)[m[41m   [m
+[32m+[m[32m            # if weights are equal to 0 means that the estimation is not going well and we reset the values using the previous measurement[m
+[32m+[m[32m            if max(self.w) < 0.00099 or np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2) < 50.:[m
+[32m+[m[32m                print('WARNIN, particle w too low, initializing again')[m
+[32m+[m[32m                if self.previous_observer == []: #initialize with the first measurement[m
+[32m+[m[32m                    self.previous_observer = pos.copy()[m
+[32m+[m[32m                    self.previous_z = z +0.[m
+[32m+[m[32m                print('WARNING 3: initializing particles')[m
+[32m+[m[32m                self.init_particles(position=self.previous_observer, slantrange=self.previous_z)[m
+[32m+[m[32m                self.measurement_prob(measurement=z,observer=pos,error_mult=50.)[m[41m [m
+[32m+[m[32m            self.previous_observer = pos.copy()[m
+[32m+[m[32m            self.previous_z = z +0.[m[41m   [m
+[32m+[m[32m            #Resampling[m[41m        [m
+[32m+[m[32m            self.resampling(z)[m
+[32m+[m[32m            # Calculate the average error. If it's too big the particle filter is initialized[m[41m                    [m
+[32m+[m[32m            self.evaluation(observer=pos,z=z,max_error=self.max_error)[m[41m  [m
+[32m+[m
+         # We compute the average of all particles to find the target[m
+         self.target_estimation()[m
+         # Return position[m
+[1mdiff --git a/backseat_app/jaxtorchagent/tracking/particle_filter_jax.py b/backseat_app/jaxtorchagent/tracking/particle_filter_jax.py[m
+[1mdeleted file mode 100644[m
+[1mindex 5d41f8e..0000000[m
+[1m--- a/backseat_app/jaxtorchagent/tracking/particle_filter_jax.py[m
+[1m+++ /dev/null[m
+[36m@@ -1 +0,0 @@[m
+[31m-#here we don't do anything as is only Torch not JAX[m
+\ No newline at end of file[m
+[1mdiff --git a/backseat_app/jaxtorchagent/tracking/tracker.py b/backseat_app/jaxtorchagent/tracking/tracker.py[m
+[1mindex beb7c2e..59a9e6e 100644[m
+[1m--- a/backseat_app/jaxtorchagent/tracking/tracker.py[m
+[1m+++ b/backseat_app/jaxtorchagent/tracking/tracker.py[m
+[36m@@ -1,8 +1,26 @@[m
+ import math[m
+ import numpy as np[m
+ [m
+[31m-from .least_squares import LSTracker[m
+[31m-from .particle_filter import ParticleFilter[m
+[32m+[m
+[32m+[m[32mtry:[m
+[32m+[m[32m    from backseat_app.jaxtorchagent.tracking.least_squares import LSTracker[m
+[32m+[m[32mexcept:[m
+[32m+[m[32m    from jaxtorchagent.tracking.least_squares import LSTracker[m
+[32m+[m
+[32m+[m
+[32m+[m[32mUSE_MATTEO_PF = False[m
+[32m+[m
+[32m+[m
+[32m+[m[32mif USE_MATTEO_PF == True:[m
+[32m+[m[32m    try:[m
+[32m+[m[32m        from backseat_app.jaxtorchagent.tracking.particle_filter_matteo import ParticleFilter[m
+[32m+[m[32m    except:[m
+[32m+[m[32m        from jaxtorchagent.tracking.particle_filter_matteo import ParticleFilter[m
+[32m+[m[32melse:[m
+[32m+[m[32m    try:[m
+[32m+[m[32m        from backseat_app.jaxtorchagent.tracking.particle_filter import ParticleFilter[m
+[32m+[m[32m    except:[m
+[32m+[m[32m        from jaxtorchagent.tracking.particle_filter import ParticleFilter[m
+ [m
+ [m
+ [m
+[36m@@ -32,7 +50,7 @@[m [mclass Tracker_ivan:[m
+             #self.pf_state = None[m
+             self.pf_state = True #we dont initialize here, we do it in another plce[m
+             [m
+[31m-    def update_and_predict(self, ranges, positions, depth=None, dt=None):[m
+[32m+[m[32m    def update_and_predict(self, agent_pos, ranges, positions, depth=None, dt=None, new_range=True):[m
+         [m
+         # default time difference[m
+         if dt is None:[m
+[36m@@ -60,8 +78,12 @@[m [mclass Tracker_ivan:[m
+                 pos = np.array(pos)[:2] # only x, y[m
+                 r = np.array(r)[m
+                 pred_xy = self.model.update_and_predict([m
+[31m-                                            dt=dt, z=r, pos=pos)[m
+[31m-[m
+[32m+[m[32m               

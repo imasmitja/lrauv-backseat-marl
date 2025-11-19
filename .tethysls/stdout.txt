@@ -1,0 +1,2 @@
+*** WARNING: No option given to obtain LRAUV definitions.
+***          Will use packaged definitions (which might be out-of-date).

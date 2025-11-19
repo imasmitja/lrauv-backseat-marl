@@ -5,8 +5,8 @@ from typing import Union, Dict, List, Optional
 import math
 import os
 
-from .torch_modules import PPOActorTransformer
-from .torch_utils import load_jax_params_to_torch
+from backseat_app.jaxtorchagent.torch_modules import PPOActorTransformer
+from backseat_app.jaxtorchagent.torch_utils import load_jax_params_to_torch
 
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -47,6 +47,8 @@ class CentralizedActorRNN:
         # Set random seed
         torch.manual_seed(seed)
         np.random.seed(seed)
+
+        print('TEST TEST TEST INIT v1')
 
         # Calculate input dimension based on observation structure
         self.obs_size = 6  # [x, y, z, range/rph_z, is_agent, is_self]

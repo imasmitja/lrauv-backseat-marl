@@ -7,7 +7,7 @@ import sys
 class ParticleFilter:
     """ Class for the Particle Filter """
     
-    def __init__(self,std_range=20.,init_velocity=4.,dimx=4,particle_number = 10000, method = 'range', max_pf_range = 200, max_error=30):
+    def __init__(self,std_range=0.2,init_velocity=.2,dimx=4,particle_number = 1000, method = 'range', max_pf_range = 250, max_error=0.1):
  
         self.std_range = std_range
         self.init_velocity = init_velocity 
@@ -30,7 +30,7 @@ class ParticleFilter:
         self._orientation = 0
         
         #Weights
-        self.w = np.ones(particle_number)/self.particle_number
+        self.w = np.ones(particle_number)
         
         #Covariance of the result
         self.covariance_vals = [0.02,0.02]
@@ -54,13 +54,9 @@ class ParticleFilter:
 
         # default max error
         self.max_error = max_error
-        self.max_error_reset = False
-
-        self.previous_observer = []
-        self.previous_z = 0
         
         # default noise
-        self.set_noise(forward_noise = 0.1, turn_noise = 0.9, sense_noise=5., velocity_noise = 0.1)
+        self.set_noise(forward_noise = 0.01, turn_noise = 0.1, sense_noise=.005, velocity_noise = 0.01)
         
     def target_estimation(self):
         """ Calculate the mean error of the system
@@ -90,10 +86,7 @@ class ParticleFilter:
                 sumy += self.x[i][2]*self.w[i]
                 sumvx += self.x[i][1]*self.w[i]
                 sumvy += self.x[i][3]*self.w[i]
-            if np.sum(self.w) == 0.:
-                self._x = np.array([sumx, sumvx, sumy, sumvy])/1e10
-            else:
-                self._x = np.array([sumx, sumvx, sumy, sumvy])/np.sum(self.w)
+            self._x = np.array([sumx, sumvx, sumy, sumvy])/np.sum(self.w)
             
             # #new approach to find the colosest particle to the mean
             # x_pos = np.where(abs(self.x.T[0]-self._x[0]) == np.amin(abs(self.x.T[0]-self._x[0])))[0][0]
@@ -112,20 +105,12 @@ class ParticleFilter:
         self.cov_matrix = np.cov(xarray, yarray)
         return
 
-    def init_particles(self,position,slantrange,method='NaN'):
-
-        print('WARNING: Initializing particles')
-
-        if method == 'NaN':
-            used_method = self.method
-        else:
-            used_method = method
-  
-
+    def init_particles(self,position,slantrange):
+    	
         for i in range(self.particle_number):
             #Random distribution with circle shape
             t = 2*np.pi*np.random.rand()
-            if used_method == 'area':
+            if self.method == 'area':
                 r = np.random.rand()*self.max_pf_range*2 - self.max_pf_range
             else:
                 r = np.random.rand()*self.std_range*2 - self.std_range + slantrange
@@ -135,14 +120,9 @@ class ParticleFilter:
             #target's orientation
             orientation = np.random.rand() * 2.0 * np.pi   # target's orientation
             # target's velocity 
-            gaussvel=False
-            if gaussvel == True:
-                v = random.gauss(self.init_velocity, self.init_velocity/2)  
-            else:
-                v = np.random.rand()*self.init_velocity*2 - self.init_velocity
+            v = random.gauss(self.init_velocity, self.init_velocity/2)  
             self.x[i][1] = np.cos(orientation)*v
             self.x[i][3] = np.sin(orientation)*v
-        self.w = np.ones(self.particle_number)/self.particle_number
         self.target_estimation()
         self.initialized = True
         # print('WARNING: Particles initialized')
@@ -226,7 +206,7 @@ class ParticleFilter:
     #actual measurements. Note that for this function you should take care of measurement 
     #noise to prevent division by zero. Such checks are skipped here to keep the code 
     #as short and compact as possible.
-    def measurement_prob(self, measurement,observer,error_mult = 1):
+    def measurement_prob(self, measurement,observer):
         """ Calculate the measurement probability: how likely a measurement should be
         :param measurement: current measurement
         :return probability
@@ -244,7 +224,7 @@ class ParticleFilter:
             dist = np.sqrt((self.x[i][0] - observer[0])**2 + (self.x[i][2] - observer[2])**2)
             dist_old = np.sqrt((self.x[i][0] - self.observer_old[0])**2 + (self.x[i][2] - self.observer_old[2])**2)
             inc_observer = np.sqrt((observer[0] - self.observer_old[0])**2 + (observer[2] - self.observer_old[2])**2)
-            self.w[i] = self.gaussian(self,dist_old,dist, self.sense_noise*error_mult, self.measurement_old,measurement,inc_observer)
+            self.w[i] = self.gaussian(self,dist_old,dist, self.sense_noise, self.measurement_old,measurement,inc_observer)
             inc_mu = (self.dist_all_old[i]-dist)
             inc_z = (self.measurement_old-measurement)
             if (inc_mu >= 0 and inc_z >= 0) or (inc_mu < 0 and inc_z < 0):
@@ -429,23 +409,15 @@ class ParticleFilter:
             # Compute eigenvalues and associated eigenvectors
             vals, vecs = np.linalg.eig(cov)
             confidence_int = 2.326**2
-            if vals[0]<0 or vals[1]<0 or np.isnan(vals[0]) == True or np.isnan(vals[1]) == True:
-                vals = [0.,0.]
             self.covariance_vals = np.sqrt(vals) * confidence_int
             # Compute tilt of ellipse using first eigenvector
             vec_x, vec_y = vecs[:,0]
             self.covariance_theta = np.arctan2(vec_y,vec_x)
             # print('Evaluation -> covariance (CI of 98): %.2f m(x) %.2f m(y) %.2f deg'%(self.covariance_vals[0],self.covariance_vals[1],np.degrees(self.covariance_theta)))
-            print('Evaluation -> covariance (CI of 98): %.2f '%(np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2)))
-            print('ErrorPF=',abs(sum2/self.particle_number - z))
-            print('Evaluaiton -> max(self.w)=%.4f sum(self.w)=%.4f'%(np.max(self.w),np.sum(self.w)))
-            if abs(sum2/self.particle_number - z) > max_error and self.max_error_reset == False:
+            # print('Evaluation -> covariance (CI of 98): %.2f '%(np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2)))
+            # print('errorPF=',abs(sum2/self.particle_number - z))
+            if abs(sum2/self.particle_number - z) > max_error and np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2) < 5.:
                 self.initialized = False
-                self.max_error_reset = True #this flag is used to not reinitialize the PF continously.
-                print('WARNING 2: initializing particles')
-                self.init_particles(position=observer, slantrange=z)
-            if abs(sum2/self.particle_number - z) < max_error:
-                self.max_error_reset = False
         else:
             if np.max(self.w) < 0.1:
                 self.initialized = False
@@ -454,13 +426,12 @@ class ParticleFilter:
         return
     
     def update_and_predict(self, dt, z, pos, new_range):
-
+        
         # add dummy vel in 2nd and 3rd position
         pos = np.array([pos[0], 0, pos[1], 0])
         
         # Initialize the particles if needed
         if self.initialized == False:
-            print('WARNING 1: initializing particles')
             self.init_particles(position=pos, slantrange=z)
 
         #we save the current particle positions to plot as the old ones
@@ -468,33 +439,15 @@ class ParticleFilter:
 
         # Predict step (move all particles)
         self.predict(dt)
-
-        if new_range == True:
-            # Update the weights according its probability
-            self.measurement_prob(measurement=z,observer=pos)   
-            # if weights are equal to 0 means that the estimation is not going well and we reset the values using the previous measurement
-            if max(self.w) < 0.00099 or np.sqrt(self.covariance_vals[0]**2+self.covariance_vals[1]**2) < 50.:
-                print('WARNIN, particle w too low, initializing again')
-                if self.previous_observer == []: #initialize with the first measurement
-                    self.previous_observer = pos.copy()
-                    self.previous_z = z +0.
-                print('WARNING 3: initializing particles')
-                self.init_particles(position=self.previous_observer, slantrange=self.previous_z)
-                self.measurement_prob(measurement=z,observer=pos,error_mult=50.) 
-            self.previous_observer = pos.copy()
-            self.previous_z = z +0.   
-            #Resampling        
-            self.resampling(z)
-            # Calculate the average error. If it's too big the particle filter is initialized                    
-            self.evaluation(observer=pos,z=z,max_error=self.max_error)  
-
+   
+        # Update the weights according its probability
+        self.measurement_prob(measurement=z,observer=pos)      
+        #Resampling        
+        self.resampling(z)
+        # Calculate the average error. If it's too big the particle filter is initialized                    
+        self.evaluation(observer=pos,z=z,max_error=self.max_error)    
         # We compute the average of all particles to find the target
         self.target_estimation()
         # Return position
-        if self.initialized == False:
-            self.position = np.array([pos.item(0),0.,pos.item(2),0.])
-        else:
-            #Save position
-            self.position = self._x.copy()
-        pred = self.position[[0, 2]]
+        pred = self._x[[0, 2]]
         return pred

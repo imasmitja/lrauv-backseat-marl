@@ -19,7 +19,10 @@ logger = None
 # To add custom data processing:
 # 1. Create a processing module (e.g., backseat_app/processing.py)
 # 2. Import your processing class at the top of this file, e.g.
-from backseat_app.processing import MarlProcessor
+try:
+    from backseat_app.processing import MarlProcessor
+except:
+    from processing import MarlProcessor
 # 3. Instantiate it and add handlers to the subscribe dict below
 
 

@@ -17,8 +17,13 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 
-from backseat_app.jaxtorchagent.production_agent import load
 
+try:
+    from backseat_app.jaxtorchagent.production_agent import load
+except:
+    from jaxtorchagent.production_agent import load
+
+AGENT_VERSION = 4 
 
 ###########################################################################################################
 ##############################      Main Tracking Class                          ##########################
@@ -28,16 +33,25 @@ class TargetTracking(object):
 
         self.num_agents = 2
         self.num_targets = 1
-        
-        #1- First we load the RL agent
-        #original name = "mappo_rnn_follow_1v1_10min_training_512steps_utracking_1_vs_1_seed0_vmap0_final.safetensors"
-        #model_name = "mappo_rnn_1v1.safetensors"
-        #original name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent
-        model_name = "mappo_transformer_1v1.safetensors" #Good for 1target and 1agent
-        #original name ="mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents
-        #model_name = "mappo_transformer_3v1.safetensors" #Good for 1target and multiple agents
-        #original name = "mappo_transformer_from_5v5follow_256steps_utracking_5_vs_5_step7320_rng202567368.safetensors"
-        #model_name = "mappo_transformer_5v5.safetensors"
+
+
+        if AGENT_VERSION == 1:        
+            #1- First we load the RL agent
+            #original name = "mappo_rnn_follow_1v1_10min_training_512steps_utracking_1_vs_1_seed0_vmap0_final.safetensors"
+            #model_name = "mappo_rnn_1v1.safetensors"
+            #original name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent
+            model_name = "mappo_transformer_1v1.safetensors" #Good for 1target and 1agent
+            #original name ="mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents
+            #model_name = "mappo_transformer_3v1.safetensors" #Good for 1target and multiple agents
+            #original name = "mappo_transformer_from_5v5follow_256steps_utracking_5_vs_5_step7320_rng202567368.safetensors"
+            #model_name = "mappo_transformer_5v5.safetensors"
+        elif AGENT_VERSION == 2:
+            model_name = "mappo_transformer_1v1_v2.safetensors" #New agent trained with new observation vector state
+        elif AGENT_VERSION == 4:
+            model_name = "mappo_transformer_1v1_v4.safetensors" #New agent trained with new observation vector state
+        else:
+            print ('ERROR. AGENT VERSION NEED TO BE SPECIFIED CORRECTLY')
+
         project_root = os.path.dirname(os.path.abspath(__file__))
         project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
         project_root = os.path.abspath(project_root) 
@@ -46,7 +60,8 @@ class TargetTracking(object):
                 num_agents=self.num_agents-1,
                 num_landmarks=self.num_targets,
                 model_path=model_path,
-                dt=30 # seconds per step
+                dt=30, # seconds per step
+                agent_version = AGENT_VERSION
             )
         self.agent_controller.reset(seed=1)
         self.discrete_action_mapping = np.array([-0.24, -0.12, 0, 0.12, 0.24])
@@ -54,6 +69,7 @@ class TargetTracking(object):
 
         #2- set parameters
         self.last_measureTimestamp = 0 #we need to initialize this variable
+        self.last_measureTimestamp_reset = 0 #we need to initialize this variable
         self.lrauv_position = np.array([0.,0.,0.,0.])
         self.agents_pos = np.zeros([self.num_agents,3])
         self.agents_range = np.zeros([self.num_targets,self.num_agents])
@@ -63,6 +79,7 @@ class TargetTracking(object):
         self.zoneletter = 0
         self.lrauvAction  = 0
         self.ping_count = 0
+        self.agent_range_reset = True
 
         #3 for saving .txt purposes
         folder_name = './logs/'
@@ -126,6 +143,9 @@ class TargetTracking(object):
         lrauv_x, lrauv_y, zonenumber, zoneletter = tuple
         lrauv_x -= self.lrauv_position_origin.item(0)
         lrauv_y -= self.lrauv_position_origin.item(2)
+        
+        #Testing to invert y position
+        #lrauv_y = -lrauv_y
 
         # save the current lrauv postion and velocity
         elapsed_time = measureTimestamp-self.last_measureTimestamp
@@ -144,6 +164,10 @@ class TargetTracking(object):
             lrauv_x, lrauv_y, zonenumber, zoneletter = tuple
             lrauv_x -= self.lrauv_position_origin.item(0)
             lrauv_y -= self.lrauv_position_origin.item(2)
+
+            #Testing to invert y position
+            #lrauv_y = -lrauv_y
+
             self.agents_pos[i] = np.array([lrauv_x, lrauv_y, agents_lrauvDepth[i]]) 
         
         #if this is the first iteration, we don't go further and it's used only to update the lrauv position
@@ -173,12 +197,13 @@ class TargetTracking(object):
         # Convert yaw back to +-180 degrees, with North reference
         if angle > np.pi:
             angle = angle - 2.*np.pi
-        #we change the sign to make clockwise positive angles
+        #we change the sign to make clockwise positive angles. In the first implementation, we saw that the first Gazebo implementation
+        #uses a counterclockwise convention, so we don't need to negate it here.
         angle = -angle +0.
         #print('angle+-180 N=',angle*180./np.pi)
         #Now back to 360 N but with clockwise positive angles
         angle = angle%(2.*np.pi)
-        #print('angle 360Ncl=',angle*180./np.pi)
+        print('Agen yaw (360NorthClockwise)=',angle*180./np.pi)
         #ranges = np.array([[planarRange]]) # (targets, agents), first is always the current agent
         #positions = np.array([[self.lrauv_position [0], self.lrauv_position [2], 0.]]) # (agents, 3), first is always the current agent
         targets_depth = np.array([10.]) # (targets,), a constant, not used
@@ -186,15 +211,16 @@ class TargetTracking(object):
         #print('INFO: LRAUV pos (x,y,depth,yaw)= %.2fm, %.2fm, %.2fm, %.2fdegrees'%(self.lrauv_position[0],self.lrauv_position[2],lrauvDepth,angle*180./np.pi))
         #print('INFO: Target range= %.2fm'%planarRange)
         #print('INFO: MYOBSERVER (x,vx,y,vy) ', self.lrauv_position)
-        print('INFO: AGENTS_POS (x,y,z) ', self.agents_pos)
-        print('INFO: AGENTS_RANGE', self.agents_range)
+        print('INFO: agents pos: ', self.agents_pos)
+        print('INFO: agents range: ',self.agents_range)
         #update target prediciton and obtain new action at once
         self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
                     angle=angle,
                     ranges=self.agents_range, # (targets, agents), first is always the current agent
                     positions=self.agents_pos,
                     targets_depth=targets_depth,
-                    dt=30 # seconds per step
+                    dt=30, # seconds per step
+                    new_range=new_range
                 )
         print('INFO: Action=',self.action,' target_predictions(x,y)=%.2fm,%.2fm'%(self.target_predictions['landmark_0_tracking_x'],self.target_predictions['landmark_0_tracking_y']))
 
@@ -251,28 +277,63 @@ class TargetTracking(object):
         with open(self.fileDirName,'a') as csvfile:
             np.savetxt(csvfile,aux_t,delimiter=',')
 
+        #####################################################################################
+        #########   RESET STATE
+        #####################################################################################        
         #If the lrauv current possition is too far away from origin, and we are close to the target, we update origin with current target position
         aux_lrauv_dist = np.sqrt([(self.lrauv_position[0])**2+(self.lrauv_position[2])**2])
         aux_target_dist = np.sqrt([(self.lrauv_position[0]-self.target_predictions['landmark_0_tracking_x'])**2+(self.lrauv_position[2]-self.target_predictions['landmark_0_tracking_y'])**2])
         ## we set the lrauv distance threshold at 900 m and the target distance to 400.
-        if aux_lrauv_dist > 400 and aux_target_dist < 300 and agents_lrauvLatLon[0][0] != 0:
+        #if ((aux_lrauv_dist > 80000 and aux_target_dist < 400) or aux_lrauv_dist > 150000) and agents_lrauvLatLon[0][0] != 0:
+        if self.agents_range[0][0] > 600 and self.agent_range_reset == True and agents_lrauvLatLon[0][0] != 0:
             print('')
             print("******************************************************************************") 
-            print("WARNING: Updating ORIGIN POSSITION with current target position. LRAUV distance from origin is %.3f m, and LRAUV-TARGET distance is %.3f"%(aux_lrauv_dist, aux_target_dist))
+            print("WARNING: Updating ORIGIN POSSITION with current target position. LRAUV distance from origin is %.3f m. LRAUV distance from Target is %.3f m"%(aux_lrauv_dist,self.agents_range[0][0]))
             #Set the new lrauv_position_origin variable
-            aux_x = self.target_predictions['landmark_0_tracking_x']+self.lrauv_position_origin[0]
-            aux_y = self.target_predictions['landmark_0_tracking_y']+self.lrauv_position_origin[2]
+            #centered over the target
+            #aux_x = self.target_predictions['landmark_0_tracking_x']+self.lrauv_position_origin[0]
+            #aux_y = self.target_predictions['landmark_0_tracking_y']+self.lrauv_position_origin[2]
+            #centered over the agent
+            aux_x = self.lrauv_position[0]+self.lrauv_position_origin[0]
+            aux_y = self.lrauv_position[2]+self.lrauv_position_origin[2]
             self.lrauv_position_origin = np.array([aux_x,0.,aux_y,0.])
             print("WARNING: New origin possition set to "+str(self.lrauv_position_origin))
             #Reset MARL networks
             print("WARNING: reseting internal MARL values")
-            self.agent_controller.reset(seed=1)
+            self.agent_controller.reset(seed=10)
             #Reset the PF using new origin as initial point
             print('WARNING: reseting PF trakcing')
             print("******************************************************************************") 
             print('')
+            self.agent_range_reset = False
             for i, tracker in enumerate(self.agent_controller.trackers):
-                tracker.model.init_particles(position=np.array([0.,0.,0.,0.]), slantrange=100, method='area')
+                #centered over the target
+                #aux_x = 0.
+                #aux_y = 0.
+                #centered over the agent
+                aux_x = self.target_predictions['landmark_0_tracking_x']-self.lrauv_position[0]
+                aux_y = self.target_predictions['landmark_0_tracking_y']-self.lrauv_position[2]
+                tracker.model.init_particles(position=np.array([aux_x,0.,aux_y,0.]), slantrange=100, method='area')
+                tracker.pred[0] = aux_x +0.
+                tracker.pred[1] = aux_y +0.
+
+        if self.agents_range[0][0] < 300 and self.agents_range[0][0] != 0:
+            self.agent_range_reset = True
+
+        reset_time = measureTimestamp-self.last_measureTimestamp_reset 
+        reset_time_treshold = 300
+        reset_time_flag = False
+        print('reset time=',reset_time)
+        if reset_time> reset_time_treshold and reset_time_flag == True:
+            self.last_measureTimestamp_reset = measureTimestamp
+            print('')
+            print("******************************************************************************") 
+            print("WARNING: LRAUV distance from origin is %.3f m. LRAUV traveled time %.3f min"%(aux_lrauv_dist,reset_time/60.))
+            #Reset MARL networks
+            print("WARNING: reseting internal MARL values")
+            self.agent_controller.actor.reset(seed=10)
+            print("******************************************************************************") 
+            print('')
 
         
         return((self.lrauvAction)*180/np.pi, aux_t) #we dont need to adjust as in Matteo's method 0 degrees is North
