@@ -16,3 +16,5 @@ dist
 *.save
 *.swp
 logs/
+outputs/
+backseat_app/logs/
