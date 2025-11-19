@@ -9,7 +9,6 @@ import time
 
 logger = logging.getLogger('backseat_app')
 
-
 def array_to_hex(arr):
     """Serialize list of floats to an ASCII hex string."""
     # Pack as double precision floats (8 bytes each)
@@ -50,9 +49,7 @@ class MarlProcessor(LcmHandlerBase):
         self.target_address = 0
         self.target_timestamp = 0
         self.target_timestamp_bsc = time.time()
-        self.marl_method = 'Matteo2025'
-        #self.marl_method = 'Ivan2022'
-        self.rl_tracking = TargetTracking(marl_method = self.marl_method)
+        self.rl_tracking = TargetTracking()
         self.new_action = 0
         self.command = "$SR"
         self.speed = 0
@@ -63,12 +60,8 @@ class MarlProcessor(LcmHandlerBase):
         self.sim_timestamp = 0.
         self.lastcall = 0.
         self.other_obs_timestamp = 0.
-        if self.marl_method == 'Ivan2022':
-            self.target_timestamp_bsc_max = 60 #seconds without range measurement before using last information to compute new action
-        elif self.marl_method == 'Matteo2025':
-            self.target_timestamp_bsc_max = 20 #0.1 #seconds without range measurement before using last information to compute new action
+        self.target_timestamp_bsc_max = 20 #0.1 #seconds without range measurement before using last information to compute new action
 
-    
     def handle_universal_msg(self, channel, data):
         """Process universal messages"""
         #logger.debug(f"Handling LCM msg on channel {channel}")
@@ -78,22 +71,12 @@ class MarlProcessor(LcmHandlerBase):
         self.sim_timestamp = msg.epochMillisec/1000.
         #get variables names inside the channel msg
         variable_names = self.get_item_names(msg)
+        print("LCM variable names: ",variable_names)
         #work with the varaibles we want
         for name in variable_names:
             #Firts we use the Lat/Lon estimated using dead reckogning if it is available, if not
             #we use the regular Lat/Lon from the GPS. This is not necessary, but there is something
-            #with the lat/lon that it is not published after a wile...
-            #try:
-            #    #aux = variable_names.index('horizontal_path_length_since_last_six')
-            #    if self.get_variable('latitude',msg).data[0] != 0:
-            #        self.latlon_estimation = True
-            #        if name == 'latitude':
-            #            self.lrauv_pose[0] = self.get_variable(name,msg).data[0]
-            #        elif name == 'longitude':
-            #            self.lrauv_pose[1] = self.get_variable(name,msg).data[0]
-            #except:
-            #    if self.latlon_estimation == False:
-
+            #with the lat/lon that it is not published after a while..
             if name == 'latitude':
                 self.lrauv_pose[0] = self.get_variable(name,msg).data[0]
             elif name == 'longitude':
@@ -124,13 +107,12 @@ class MarlProcessor(LcmHandlerBase):
 
         return
 
-
     def compute_new_heading(self):
         """Compute new heading based on agent position, target position, and other agents observation states"""
        
         if self.lrauv_pose[0] == 0:
             self.command = "$SR"
-            self.speed = 0.
+            self.speed = 0.1
             return
         #reset the other agents history if it is too old (10 minutes)
         if abs(float(self.other_obs_timestamp)-self.sim_timestamp) > 600:
@@ -145,12 +127,13 @@ class MarlProcessor(LcmHandlerBase):
             print("Timestamp = ", self.sim_timestamp)
             print("LRAUV pose [%.6f,%.6f,%.2f]: "%(self.lrauv_pose[0], self.lrauv_pose[1],self.lrauv_depth))
             print("Target address %i at %.3f meters"%(self.target_address,self.target_range))
+            logger.debug("New range measured")
             self.target_timestamp_old = self.target_timestamp+0
             agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
             agents_pose = [self.lrauv_pose] + [obs[2:4] for obs in self.other_obs_history]
             agents_depth = [self.lrauv_depth] + [obs[4] for obs in self.other_obs_history]
             agents_range = [[self.target_range] + [obs[5] for obs in self.other_obs_history]]
-            self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp)
+            self.new_action, internal_state  = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp)
             #after we have used the nother observation history to update the PF and take a new acction, we reset it
             self.other_obs_history = np.array([[0,0,0,0,0,0]])
             #TODO: We need to find how to deal when there is more than one target! For now, it works only with one.
@@ -158,28 +141,19 @@ class MarlProcessor(LcmHandlerBase):
             self.obs_to_send = np.array([self.target_timestamp, int(self.cfg['vehicle_id_log']),self.lrauv_pose[0], self.lrauv_pose[1], self.lrauv_depth, self.target_range])
             #publish it to nearby vehicles
             self.publish_observation_state_to_slate()
+            #log internal states, actions, and observations
+            logger.debug('MARL INFO: internal_state, '+str(internal_state))
+            logger.debug('MARL INFO: new_action, '+str(self.new_action))
             #set internal values to control the vehicle
-            if self.marl_method == 'Matteo2025':
-                print("NEW RUDDER POSITION=",self.new_action)
-                if self.new_action != -1:
-                    self.new_action = self.new_action + 0.
-                    #set command to rudder control and speed
-                    self.command = "$SR"
-                    self.speed = 1.
-                else:
-                    self.command = "$SR"
-                    self.speed = 0.
-            elif self.marl_method == 'Ivan2022':
-                print("NEW HEADING=",self.new_action)
-                if self.new_action != -1:
-                    self.new_action = self.new_action + 0.
-                    #set command to heading control and speed
-                    self.command = "$SH"
-                    self.speed = 1.
-                else:
-                    self.command = "$SH"
-                    self.speed = 0.
-            
+            print("NEW RUDDER POSITION=",self.new_action)
+            if self.new_action != -1:
+                self.new_action = self.new_action + 0.
+                #set command to rudder control and speed
+                self.command = "$SR"
+                self.speed = 1.
+            else:
+                self.command = "$SR"
+                self.speed = 0.1
 
         elif (self.sim_timestamp - self.target_timestamp_bsc) > self.target_timestamp_bsc_max and self.lrauv_pose[0] != 0 and self.lrauv_pose[1] != 0: #no range measurement for a while
             print("***************************************")
@@ -188,6 +162,7 @@ class MarlProcessor(LcmHandlerBase):
             #Compute elapsed time since last call
             print('INFO: Elapsed time = %.3f seconds'%(self.sim_timestamp-self.target_timestamp_bsc) )
             print('INFO: Sim timestamp ' + time.strftime('%Y-%m-%dT%H:%M:%S', time.gmtime(self.sim_timestamp)))
+            logger.debug("WARNING: No range measurement for a while, using last informaiton to compute new heading")
             self.target_timestamp_bsc = self.sim_timestamp+0.
             agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
             agents_pose = [self.lrauv_pose] + [obs[2:4] for obs in self.other_obs_history]
@@ -197,29 +172,21 @@ class MarlProcessor(LcmHandlerBase):
                 aux_range = True
             else:
                 aux_range = False
-            self.new_action = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range)
+            self.new_action, internal_state = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range)
             #after we have used the nother observation history to update the PF and take a new acction, we reset it
             self.other_obs_history = np.array([[0,0,0,0,0,0]])
-            if self.marl_method == 'Matteo2025':
-                #print("NEW RUDDER POSITION=",self.new_action)
-                if self.new_action != -1:
-                    self.new_action = self.new_action + 0.
-                    #set command to rudder control and speed
-                    self.command = "$SR"
-                    self.speed = 1.
-                else:
-                    self.command = "$SR"
-                    self.speed = 0.
-            elif self.marl_method == 'Ivan2022':
-                #print("NEW HEADING=",self.new_action)
-                if self.new_action != -1:
-                    self.new_action = self.new_action + 0.
-                    #set command to heading control and speed
-                    self.command = "$SH"
-                    self.speed = 1.
-                else:
-                    self.command = "$SH"
-                    self.speed = 0.
+            #log internal states, actions, and observations
+            logger.debug('MARL INFO: internal_state, '+str(internal_state))
+            logger.debug('MARL INFO: new_action, '+str(self.new_action))
+            #print("NEW RUDDER POSITION=",self.new_action)
+            if self.new_action != -1:
+                self.new_action = self.new_action + 0.
+                #set command to rudder control and speed
+                self.command = "$SR"
+                self.speed = 1.
+            else:
+                self.command = "$SR"
+                self.speed = 0.1
 
         return
         
@@ -262,17 +229,10 @@ class MarlProcessor(LcmHandlerBase):
         #Compressing observation state to be send
         aux = array_to_hex(self.obs_to_send)
         #this is only for testing purposes
-        if int(self.cfg['vehicle_id_log']) == 6:
-                self.var_to_send = 610
-                print('INFO: Sending current observation of vehicle address 6 to addres 10 (x,y,z,range)',self.obs_to_send)
-                #print('In HEX: ',aux)
-        elif int(self.cfg['vehicle_id_log']) == 10:
-                self.var_to_send = 106
-                print('INFO: Sending current observation of vehicle address 10 to addres 6 (x,y,z,range)',self.obs_to_send)
-                #print('In HEX: ',aux)
-        
-        self.publisher.clear_msg()
+        print('INFO: Sending current observation to other vehicles (x,y,z,range)',self.obs_to_send)
+
         # publish LCM message
+        self.publisher.clear_msg()
         self.publisher.add_variable(
             name='_.send_observations',
             val=aux,

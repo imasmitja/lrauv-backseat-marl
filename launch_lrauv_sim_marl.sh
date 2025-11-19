@@ -43,7 +43,7 @@ VEHICLE_targets=("daphne")
 
 # Mission used for each vehicle agent:
 #CMD_X_OPTION_agent="Engineering/marl.tl"
-CMD_X_OPTION_agent="Engineering/marl2.tl"
+CMD_X_OPTION_agent="Engineering/marl3.tl"
 #CMD_X_OPTION_agent=""
 
 # Mission used for each vehicle target:
@@ -215,7 +215,9 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                 echo "✅ Launched LRAUV application instance for $VEHICLE."
                 sleep 5 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "load $CMD_X_OPTION_agent" ENTER
-                sleep 4 #Give it some time to start properly before sending the command
+                sleep 4 #Give it some time to start properly before sending the command. Tis step needs to be done to fix a bug in the simulation time.
+                #tmux send-keys -t agent-$VEHICLE.0 "maintain sensor nal9602.latitude_fix 36.7 degree; maintain sensor nal9602.longitude_fix -121.8 degree; set nal9602.time_fix \$copy_seconds_timestamp_from_frontseat second" ENTER
+                sleep 3 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "set marl.ContactLabel $TARGET_ID count" ENTER
 
                 # Get all other vehicles
