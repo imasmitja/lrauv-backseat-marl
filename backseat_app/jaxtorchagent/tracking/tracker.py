@@ -77,6 +77,7 @@ class Tracker_ivan:
                     self.pf_state = True
                 pos = np.array(pos)[:2] # only x, y
                 r = np.array(r)
+                #print("NEW PF PREDICTION USING: agent pos:", pos, ". And range:", r)
                 pred_xy = self.model.update_and_predict(
                                             dt=dt, z=r, pos=pos, new_range=new_range)
         if new_range==False and self.pf_state == True:

@@ -65,6 +65,7 @@ class TargetTracking(object):
             )
         self.agent_controller.reset(seed=1)
         self.discrete_action_mapping = np.array([-0.24, -0.12, 0, 0.12, 0.24])
+        self.discrete_action_mapping_heading = np.array([0.903, 0.452, 0.00, -0.452, -0.903])
 
 
         #2- set parameters
@@ -79,7 +80,7 @@ class TargetTracking(object):
         self.zoneletter = 0
         self.lrauvAction  = 0
         self.ping_count = 0
-        self.agent_range_reset = True
+        self.agent_range_reset = False
 
         #3 for saving .txt purposes
         folder_name = './logs/'
@@ -99,7 +100,7 @@ class TargetTracking(object):
         print('Log file name: ',self.fileDirName)
         
     
-    def newAction(self,targetAddr,agents_slantRange,agents_lrauvLatLon,agents_lrauvDepth,agents_measureTimestamp,new_range=True):
+    def newAction(self,targetAddr,agents_slantRange,agents_lrauvLatLon,agents_lrauvDepth,agents_measureTimestamp,new_range=True, action_control = '$SH'):
         ''' Track specified targets
         TODO
         ''' 
@@ -224,9 +225,15 @@ class TargetTracking(object):
                 )
         print('INFO: Action=',self.action,' target_predictions(x,y)=%.2fm,%.2fm'%(self.target_predictions['landmark_0_tracking_x'],self.target_predictions['landmark_0_tracking_y']))
 
-        #convert the action from MARL agent into rudder action:
-        inc_angle = self.discrete_action_mapping[self.action] #radians
-        self.lrauvAction  = inc_angle+0.
+        if action_control == '$SR':
+            #convert the action from MARL agent into rudder action:
+            inc_angle = self.discrete_action_mapping[self.action] #radians
+            self.lrauvAction  = inc_angle+0.
+        else:
+            #convert the action from MARL agent into heading action:
+            inc_heading = -self.discrete_action_mapping_heading[self.action] #we need to negate the action to make it work as in ruder action
+            new_heading = (angle + inc_heading)%(2*np.pi)
+            self.lrauvAction = new_heading+0.
         
         #convert back to lat/lon
         self.targetLat, self.targetLon = utm.to_latlon(self.target_predictions['landmark_0_tracking_x']+self.lrauv_position_origin[0], \
@@ -285,7 +292,7 @@ class TargetTracking(object):
         aux_target_dist = np.sqrt([(self.lrauv_position[0]-self.target_predictions['landmark_0_tracking_x'])**2+(self.lrauv_position[2]-self.target_predictions['landmark_0_tracking_y'])**2])
         ## we set the lrauv distance threshold at 900 m and the target distance to 400.
         #if ((aux_lrauv_dist > 80000 and aux_target_dist < 400) or aux_lrauv_dist > 150000) and agents_lrauvLatLon[0][0] != 0:
-        if self.agents_range[0][0] > 600 and self.agent_range_reset == True and agents_lrauvLatLon[0][0] != 0:
+        if self.agents_range[0][0] > 1000 and self.agent_range_reset == True and agents_lrauvLatLon[0][0] != 0:
             print('')
             print("******************************************************************************") 
             print("WARNING: Updating ORIGIN POSSITION with current target position. LRAUV distance from origin is %.3f m. LRAUV distance from Target is %.3f m"%(aux_lrauv_dist,self.agents_range[0][0]))
@@ -294,30 +301,31 @@ class TargetTracking(object):
             #aux_x = self.target_predictions['landmark_0_tracking_x']+self.lrauv_position_origin[0]
             #aux_y = self.target_predictions['landmark_0_tracking_y']+self.lrauv_position_origin[2]
             #centered over the agent
-            aux_x = self.lrauv_position[0]+self.lrauv_position_origin[0]
-            aux_y = self.lrauv_position[2]+self.lrauv_position_origin[2]
-            self.lrauv_position_origin = np.array([aux_x,0.,aux_y,0.])
-            print("WARNING: New origin possition set to "+str(self.lrauv_position_origin))
+            #aux_x = self.lrauv_position[0]+self.lrauv_position_origin[0]
+            #aux_y = self.lrauv_position[2]+self.lrauv_position_origin[2]
+            #self.lrauv_position_origin = np.array([aux_x,0.,aux_y,0.])
+            #print("WARNING: New origin possition set to "+str(self.lrauv_position_origin))
             #Reset MARL networks
             print("WARNING: reseting internal MARL values")
-            self.agent_controller.reset(seed=10)
+            self.agent_controller.reset(seed=11)
             #Reset the PF using new origin as initial point
             print('WARNING: reseting PF trakcing')
             print("******************************************************************************") 
             print('')
             self.agent_range_reset = False
-            for i, tracker in enumerate(self.agent_controller.trackers):
+            #Enable this if we want to preserve the PF target position that was estimated before the reset
+            #for i, tracker in enumerate(self.agent_controller.trackers):
                 #centered over the target
                 #aux_x = 0.
                 #aux_y = 0.
                 #centered over the agent
-                aux_x = self.target_predictions['landmark_0_tracking_x']-self.lrauv_position[0]
-                aux_y = self.target_predictions['landmark_0_tracking_y']-self.lrauv_position[2]
-                tracker.model.init_particles(position=np.array([aux_x,0.,aux_y,0.]), slantrange=100, method='area')
-                tracker.pred[0] = aux_x +0.
-                tracker.pred[1] = aux_y +0.
+            #    aux_x = self.target_predictions['landmark_0_tracking_x']-self.lrauv_position[0]
+            #    aux_y = self.target_predictions['landmark_0_tracking_y']-self.lrauv_position[2]
+            #    tracker.model.init_particles(position=np.array([aux_x,0.,aux_y,0.]), slantrange=100, method='area')
+            #    tracker.pred[0] = aux_x +0.
+            #    tracker.pred[1] = aux_y +0.
 
-        if self.agents_range[0][0] < 300 and self.agents_range[0][0] != 0:
+        if self.agents_range[0][0] < 500 and self.agents_range[0][0] != 0:
             self.agent_range_reset = True
 
         reset_time = measureTimestamp-self.last_measureTimestamp_reset 

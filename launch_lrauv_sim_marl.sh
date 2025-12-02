@@ -38,11 +38,13 @@ CMD_X_OPTION=""
 
 # Vehicles used during the simulation:
 #VEHICLE=("brizo" "daphne" "galene" "makai" "pontus" "tethys" "triton")
-VEHICLE_agents=("tethys" "pontus")
-VEHICLE_targets=("daphne")
+#VEHICLE_agents=("tethys" "pontus")
+VEHICLE_agents=("tethys")
+#VEHICLE_targets=("daphne")
 
 # Mission used for each vehicle agent:
 #CMD_X_OPTION_agent="Engineering/marl.tl"
+#CMD_X_OPTION_agent="Engineering/marl3.tl"
 CMD_X_OPTION_agent="Engineering/marl3.tl"
 #CMD_X_OPTION_agent=""
 

@@ -72,13 +72,13 @@ class TrajectorySmoother:
         speed = abs(np.sqrt((current_position[0] - self.previous_position[0])**2+(current_position[1] - self.previous_position[1])**2)) / dt
         print('speed:',speed)
         if speed > self.max_speed and not self.in_transition:
-            self.previous_position = current_position.copy()
+            #self.previous_position = current_position.copy()
             print('')
             print('--------------------------------------------------------------------')
             print('WARNING SMOOTHING IN ACACTION: prediciton speed = ', speed)
             print('--------------------------------------------------------------------')
             print('')
-            return current_position[0], current_position[1], True
+            #return current_position[0], current_position[1], True
             # Start transition
             self.in_transition = True
             num_points = int(self.transition_time / dt)
@@ -126,14 +126,14 @@ class AgentProductionController:
         self.smoothers = []
         self.smoother = False
         self.smoothers  = [
-        TrajectorySmoother(max_speed=20, transition_time=800) for _ in range(len(self.trackers))
+        TrajectorySmoother(max_speed=10, transition_time=800) for _ in range(len(self.trackers))
         ]
 
     def reset(self, seed=None):
         """Reset the agent and tracker states."""
         self.actor.reset(seed)
         self.smoothers  = [
-        TrajectorySmoother(max_speed=20, transition_time=800) for _ in range(len(self.trackers))
+        TrajectorySmoother(max_speed=10, transition_time=800) for _ in range(len(self.trackers))
         ]
         for tracker in self.trackers:
             tracker.reset()

@@ -50,7 +50,7 @@ class BackseatApp(Supervisor, LcmListener):
                 'Universal': self.marl_processor.handle_universal_msg,
                 'DAT': self.marl_processor.handle_universal_msg,
                 '_': self.marl_processor.handle_universal_msg,
-                #'_.': self.marl_processor.handle_universal_msg,
+                #'contactLabelToLcm': self.marl_processor.handle_universal_msg,
                 #'_.observation_state': self.marl_processor.handle_universal_msg,
                 #'DeadReckonUsingMultipleVelocitySources': self.marl_processor.handle_universal_msg,
             }

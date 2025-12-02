@@ -30,7 +30,9 @@ lrauv_data: #[]  # request data from:
       - 'acoustic_contact_range'
       - 'acoustic_contact_address'
       - 'acoustic_receive_time'
-      - '_.others_observations'
+      - '_.othersObservations'
+      #- '_.contactLabelToLcm'
+      #- '_.othersObservationsToLcm'
 
 
 # * Supervisor configuration * #

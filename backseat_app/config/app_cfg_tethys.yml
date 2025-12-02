@@ -20,6 +20,7 @@ lrauv_data_timout: 60 #60.0  # seconds
 lrauv_data: #[]  # request data from:
       #- 'WetLabsBB2FL.mass_concentration_of_chlorophyll_in_sea_water'
       #- 'NAL9602.latitude_fix'
+      #- 'Depth_Keller.depth'
       - 'depth'
       #- 'NAL9602.longitude_fix'
       - 'DAT.enableBroadcast'
@@ -30,8 +31,10 @@ lrauv_data: #[]  # request data from:
       - 'acoustic_contact_range'
       - 'acoustic_contact_address'
       - 'acoustic_receive_time'
-      - '_.others_observations'
-
+      - '_.othersObservations'
+      - '_.contactLabelToLcm'
+      #- '_.othersObservationsToLcm'
+  
 
 # * Supervisor configuration * #
 app_name: 'backseat_app'  # set to your app name

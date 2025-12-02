@@ -31,25 +31,25 @@ mission marl {
       triton = 12
       """
 
-    SendDataLabel = 10 count
+    SendDataLabel = 6 count
       """
-      The acoustic address of the asset to send observation data 255 broadcast (it doesn't work,says it is not mapped), 10 is pontus
+      The acoustic address of the asset to send observation data 255 broadcast (it doesn't work,says it is not mapped), 10 is pontus 
       This is the default value, but it will be overwritten by bash file duirng simulation launch.
       """
-
+    
     ContactDepth = NaN meter
       """
       The asset's depth to be tracked
       """
 
-    CenterLatitude = 36.81544 degree
+    LatHeading = 36.775 degree
       """
       The latitude of the center of the circle. Fill this in to specify a
       start position, it will be overwritten once the vehicle receives an
       acoustic signal from the contact.
       """
 
-    CenterLongitude = -121.82506 degree
+    LonHeading = -121.865 degree
       """
       The longitude of the center of the circle. Fill this in to specify a
       start position, it will be overwritten once the vehicle receives an
@@ -75,7 +75,6 @@ mission marl {
       """
       Max time allowed between speed command updates.
       """
-
     StateUpdateDelay = 10 second
       """
       Minimum time delay between state updates to avoid rapid changes.
@@ -83,17 +82,16 @@ mission marl {
 
     HorizontalCommandMode = 0 count
       """
-      Mission horizontal command mode. 0 = Heading command (default). 1 = Rudder angle command.
+      Mission horizontal command mode. 0 = Heading command (default). 1 = Rudder angle command. 2 = Waypoint command
       """
 
     AcousticContactTimeout = 4 hour
-      """
-      "
-              If the vehicle does not receive an acoustic signal for more than this
-              length of time, it will surface for communications with shore.
+      """"
+        If the vehicle does not receive an acoustic signal for more than this
+        length of time, it will surface for communications with shore.
       """
 
-    SendObservationDataInterval = 180 second
+    SendObservationDataInterval = 220 second
       """
       How often to send back some a-comms data
       """
@@ -103,7 +101,7 @@ mission marl {
       How long to wait between acoustic queries
       """
 
-    # parameters for constant depth trajectory
+        # parameters for constant depth trajectory
     Depth = 20 meter
       """
       Depth of flat and level flight during the mission.
@@ -113,12 +111,10 @@ mission marl {
       """
       Maximum depth for the entire mission.
       """
-
     MinAltitude = 5 meter
       """
       Minimum height above the sea floor for the entire mission.
       """
-
     MassHold = true
       """
       Set to True in order to hold mass at default position, False to allow
@@ -131,7 +127,8 @@ mission marl {
       allow buoyancy to run on its own.
       """
 
-    #  You probably do not need to change these.
+
+      #  You probably do not need to change these.
 
 
     NumberOfPings = 1 count
@@ -158,11 +155,12 @@ mission marl {
       Vehicle speed.
       """
 
-    MyTempVar = NaN none_str
-      """
-      A custom variable  from the backseat driver interface.
-      """
+    MyTempVar = "init" #only for old lrauv-sim applications
+    #MyTempVar = NaN none_str
 
+     """
+      A custom variable  from the backseat driver interface.
+     """
     # You are even less likely to need to change these.
 
     KwpHeading = 0.010 radian_per_meter
@@ -175,6 +173,8 @@ mission marl {
       """
       Minimum offshore distance for the entire mission.
       """
+
+
   }
 
   output {
@@ -186,6 +186,10 @@ mission marl {
     RudderMode = 1 count
       """
       Rudder angle command mode enumaration.
+      """
+    WpMode = 2 count
+      """
+      Waypoint command mode enumaration.
       """
 
     Heading = 0 degree
@@ -199,11 +203,11 @@ mission marl {
       """
 
     TimeLastSendData = 0 second
-
     ElapsedSinceLastSendData = 0 second
       """
       Time elapsed since last Send Data fix.
-      """
+      """ 
+    
   }
 
   # Missions should always start with a timeout.
@@ -233,29 +237,41 @@ mission marl {
   }
 
   aggregate SendObservationData {
-    run when (
-      elapsed ( MyTempVar ) >= SendObservationDataInterval
-    )
 
-    syslog info "Got test_good : " + customUri "_.send_observations"~none_str + " and temp var is "
-         + MyTempVar~none_str
-    assign in sequence ElapsedSinceLastSendData = elapsed ( MyTempVar )
+     run when ( elapsed (MyTempVar) >= SendObservationDataInterval )
 
-    assign in sequence MyTempVar = customUri "_.send_observations"
+     syslog info "Got test_good : " + customUri "_.send_observations"~none_str + " and temp var is " + MyTempVar~none_str
+     assign in sequence ElapsedSinceLastSendData = elapsed (MyTempVar) 
 
-    behavior Sensor:SendDirect {
-      run in sequence
+     assign in sequence MyTempVar = customUri "_.send_observations"
 
-      set destType = "modem"
-      set destId = SendDataLabel
-      set destName = "_.others_observations"
-      set value = MyTempVar
-      set unit = "none_str"
-    }
+     behavior Sensor:SendDirect {
+        run in parallel
 
-    syslog info "SendData: sent send_observations : " + MyTempVar~none_str
-         + " to nearby vehicles. Elapsed time " + ElapsedSinceLastSendData~minute
+        set destType = "modem"
+        set destId = SendDataLabel
+        set destName = "_.others_observations"
+        set value = MyTempVar
+        set unit = "none_str"
+
+     }
+
+     syslog info "SendData: sent send_observations : " + MyTempVar~none_str 
+          + " to nearby vehicles. Elapsed time " + ElapsedSinceLastSendData~minute
+
   }
+
+
+    #new from December 2025
+  #aggregate UpdateInternalVarialbe {
+  #  run when (
+  #    elapsed ( customUri "_.contactLabelToLcm" ) > TrackingUpdatePeriod )
+
+  #  assign in sequence customUri "_.contactLabelToLcm" = ContactLabel
+  #  syslog info "Upadating contactLabelToLcm " + customUri "_.contactLabelToLcm"~count
+  #}
+
+  #continuing with old stuff
 
   aggregate UpdateContactLabel {
     run when (
@@ -272,6 +288,7 @@ mission marl {
   insert id="NeedComms" Insert/NeedComms.tl
 
   assign in sequence NeedComms:DiveInterval = NeedCommsTime
+
 
   # Missions should almost always start with standard safety envelopes; most missions should not expose the parameters of these envelopes.
 
@@ -296,7 +313,7 @@ mission marl {
   aggregate UpdateSpeed {
     run when (
       elapsed ( customUri "_.speedCmd" ) < ( elapsed ( Speed ) )
-      and ( elapsed ( Speed ) > StateUpdateDelay )
+      and (elapsed ( Speed) > StateUpdateDelay)
     )
 
     assign in sequence Speed = customUri "_.speedCmd"
@@ -310,8 +327,9 @@ mission marl {
       and (
         customUri "_.horizontalCmdMode" == HeadingMode
         or ( customUri "_.horizontalCmdMode" == RudderMode )
+         or ( customUri "_.horizontalCmdMode" == WpMode )
       )
-      and ( elapsed ( HorizontalCommandMode ) > StateUpdateDelay )
+      and (elapsed ( HorizontalCommandMode) > StateUpdateDelay)
     )
 
     assign in sequence HorizontalCommandMode = customUri "_.horizontalCmdMode"
@@ -322,7 +340,7 @@ mission marl {
   aggregate UpdateHeading {
     run when (
       elapsed ( customUri "_.headingCmd" ) < ( elapsed ( Heading ) )
-      and ( elapsed ( Heading ) > StateUpdateDelay )
+      and (elapsed ( Heading) > StateUpdateDelay)
     )
 
     assign in sequence Heading = customUri "_.headingCmd"
@@ -333,7 +351,7 @@ mission marl {
   aggregate UpdateRudder {
     run when (
       elapsed ( customUri "_.rudderAngleCmd" ) < ( elapsed ( RudderAngle ) )
-      and ( elapsed ( RudderAngle ) > StateUpdateDelay )
+      and (elapsed ( RudderAngle) > StateUpdateDelay)
     )
 
     assign in sequence RudderAngle = customUri "_.rudderAngleCmd"
@@ -341,7 +359,39 @@ mission marl {
     syslog info "Updating rudder angle " + RudderAngle~degree
   }
 
+  aggregate UpdateLat {
+    run when (
+      elapsed ( customUri "_.wpLatCmd" ) < ( elapsed ( LatHeading ) )
+      and (elapsed ( LatHeading ) > StateUpdateDelay)
+    )
+
+    break if (
+      isNaN ( customUri "_.wpLatCmd" )
+    )
+
+    assign in sequence LatHeading = customUri "_.wpLatCmd"
+
+    syslog info "Updated lrauv heading lat location to " + LatHeading~degree 
+  }
+
+  aggregate UpdateLon {
+    run when (
+      elapsed ( customUri "_.wpLonCmd" ) < ( elapsed ( LonHeading ) )
+      and (elapsed ( LonHeading ) > StateUpdateDelay)
+    )
+
+    break if (
+      isNaN ( customUri "_.wpLonCmd" )
+    )
+
+    assign in sequence LonHeading = customUri "_.wpLonCmd"
+
+    syslog info "Updated lrauv heading lon location to " + LonHeading~degree
+  }
+
+
   insert id="Science" Insert/Science.tl
+ 
 
   # Power the Backseat payload.
 
@@ -358,27 +408,27 @@ mission marl {
     run in sequence
 
     behavior Guidance:Buoyancy {
-      run in parallel
+    run in parallel
 
-      set position = Control:VerticalControl.buoyancyNeutral
+    set position = Control:VerticalControl.buoyancyNeutral
     }
 
     behavior Guidance:Pitch {
-      run while ( MassHold )
+    run while ( MassHold )
 
-      set massPosition = Control:VerticalControl.massDefault
+    set massPosition = Control:VerticalControl.massDefault
     }
 
     behavior Guidance:Pitch {
-      run in parallel
+    run in parallel
 
-      set depth = Depth
+    set depth = Depth
     }
 
     behavior Guidance:SetSpeed {
-      run in parallel
+    run in parallel
 
-      set speed = Speed
+    set speed = Speed
     }
 
     aggregate CmdHeading {
@@ -402,5 +452,23 @@ mission marl {
         set rudderAngle = RudderAngle
       }
     }
+
+
+    aggregate CmdWp {
+      run while (( HorizontalCommandMode == WpMode )
+                 and (not isNaN(LatHeading))
+                  and (not isNaN(LonHeading))
+                )
+
+      behavior Guidance:Waypoint {
+        #This needs to be run in sequence, in parallel is not working!
+        run in sequence
+
+        set latitude = LatHeading
+        set longitude = LonHeading
+      }
+    }
+
+
   }
 }
