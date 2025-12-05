@@ -130,6 +130,18 @@ class MarlProcessor(LcmHandlerBase):
         self.publisher = LcmPublisher(lcm_instance)
         self.cfg = cfg
         logger.info('Initializing backseat process (pilot lrauv based on marl)')
+        #read the cfg file and set parameters
+        self.agent_version = cfg.get("agent_version", "1v1")  # default to '1v1' if not specified
+        if self.agent_version == "1v1":
+            print("INFO: Loading 1v1 agent version")
+            self.num_agents = 1
+            self.num_targets = 1
+        elif self.agent_version == "2v1":
+            print("INFO: Loading 2v1 agent version")
+            self.num_agents = 2
+            self.num_targets = 1
+        else:
+            raise ValueError(f"Invalid agent_version: {self.agent_version}. Must be '1v1' or '2v1'.")
         
         #Define and initialate local variables
         self.counter = 0 #used to increment the speed and angle in Joystick mission test
@@ -145,13 +157,16 @@ class MarlProcessor(LcmHandlerBase):
         self.target_address = 0
         self.target_timestamp = 0
         self.target_timestamp_bsc = time.time()
-        self.rl_tracking = TargetTracking()
+        self.rl_tracking = TargetTracking(self.agent_version)
         self.new_action = 0
         self.command = "$SW"  #set it to: $SH for heading control; $SR for rudder control
         self.speed = 0
         self.latlon_estimation = False
         self.obs_to_send  = []
-        self.other_obs_history = np.array([[0,0,0,0,0,0]])
+        if self.num_agents == 1:
+            self.other_obs_history = []
+        else:
+            self.other_obs_history = np.array([[0,0,0,0,0,0]])
         self.var_to_send = 0.0 #for testing purposes
         self.sim_timestamp = 0.
         self.lastcall = 0.
@@ -191,9 +206,6 @@ class MarlProcessor(LcmHandlerBase):
                 except:
                     other_obs_value = self.get_variable(name,msg).data[0]
                 other_obs= process_other_obs(other_obs_value)
-                print('other observation is: ',other_obs)
-                print('***************************************************************************************************')
-                print('***************************************************************************************************')
                 try:
                     if other_obs[0] != self.other_obs_timestamp:
                         self.other_obs_timestamp = other_obs[0]
@@ -234,9 +246,12 @@ class MarlProcessor(LcmHandlerBase):
         if self.lrauv_pose[0] == 0:
             self.speed = 0.75
             return
-        #reset the other agents history if it is too old (10 minutes)
-        if abs(float(self.other_obs_timestamp)-self.sim_timestamp) > 600:
-            self.other_obs_history = np.array([[0,0,0,0,0,0]])
+        #reset the other agents history if it is too old (20 minutes)
+        if abs(float(self.other_obs_timestamp)-self.sim_timestamp) > 1200:
+            if self.num_agents == 1:
+                self.other_obs_history = []
+            else:
+                self.other_obs_history = np.array([[0,0,0,0,0,0]])
         
         #print("LRAUV pose [%.6f,%.6f,%.2f]: "%(self.lrauv_pose[0], self.lrauv_pose[1],self.lrauv_depth))
         #TODO we set the dat contact address manually to 20 but this shoudl be improve to be more dinamically set based on .cfg or lrauv-app
@@ -256,13 +271,14 @@ class MarlProcessor(LcmHandlerBase):
             agents_depth = [self.lrauv_depth] + [obs[4] for obs in self.other_obs_history]
             agents_range = [[self.target_range] + [obs[5] for obs in self.other_obs_history]]
             self.new_action, internal_state  = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp, new_range=True, action_control=self.command)
-            #after we have used the nother observation history to update the PF and take a new acction, we reset it
-            self.other_obs_history = np.array([[0,0,0,0,0,0]])
             #TODO: We need to find how to deal when there is more than one target! For now, it works only with one.
             # [Timestamp, lrauv address, lrauv x, lrauv y, lrauv z, range]
             self.obs_to_send = np.array([self.target_timestamp, int(self.target_address_from_mission),self.lrauv_pose[0], self.lrauv_pose[1], self.lrauv_depth, self.target_range])
-            #publish it to nearby vehicles
-            self.publish_observation_state_to_slate()
+            if self.num_agents > 1:
+                #publish it to nearby vehicles
+                self.publish_observation_state_to_slate()
+                #after we have used the nother observation history to update the PF and take a new acction, we reset it
+                self.other_obs_history = np.array([[0,0,0,0,0,0]])
             #log internal states, actions, and observations
             logger.debug('MARL INFO: internal_state, '+str(internal_state))
             logger.debug('MARL INFO: new_action, '+str(self.new_action))
@@ -295,8 +311,9 @@ class MarlProcessor(LcmHandlerBase):
             else:
                 aux_range = False
             self.new_action, internal_state = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp,new_range=aux_range,action_control=self.command)
-            #after we have used the nother observation history to update the PF and take a new acction, we reset it
-            self.other_obs_history = np.array([[0,0,0,0,0,0]])
+            #after we have used the other observation history to update the PF and take a new acction, we reset it
+            if self.num_agents > 1:
+                self.other_obs_history = np.array([[0,0,0,0,0,0]])
             #log internal states, actions, and observations
             logger.debug('MARL INFO: internal_state, '+str(internal_state))
             logger.debug('MARL INFO: new_action, '+str(self.new_action))

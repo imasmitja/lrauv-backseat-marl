@@ -42,14 +42,14 @@ mission marl {
       The asset's depth to be tracked
       """
 
-    CenterLatitude = 36.81544 degree
+    LatHeading = 36.775 degree
       """
       The latitude of the center of the circle. Fill this in to specify a
       start position, it will be overwritten once the vehicle receives an
       acoustic signal from the contact.
       """
 
-    CenterLongitude = -121.82506 degree
+    LonHeading = -121.865 degree
       """
       The longitude of the center of the circle. Fill this in to specify a
       start position, it will be overwritten once the vehicle receives an
@@ -83,7 +83,7 @@ mission marl {
 
     HorizontalCommandMode = 0 count
       """
-      Mission horizontal command mode. 0 = Heading command (default). 1 = Rudder angle command.
+      Mission horizontal command mode. 0 = Heading command (default). 1 = Rudder angle command. 2 = Waypoint command
       """
 
     AcousticContactTimeout = 4 hour
@@ -158,10 +158,16 @@ mission marl {
       Vehicle speed.
       """
 
+    #MyTempVar = "init" #only for old lrauv-sim applications
     MyTempVar = NaN none_str
-      """
+       """
       A custom variable  from the backseat driver interface.
       """
+
+              #MyTempVarTwo = NaN none_str
+              #"""
+              #A custom variable  from the backseat driver interface.
+              #"""
 
     # You are even less likely to need to change these.
 
@@ -186,6 +192,11 @@ mission marl {
     RudderMode = 1 count
       """
       Rudder angle command mode enumaration.
+      """
+
+    WpMode = 2 count
+      """
+      Waypoint command mode enumaration.
       """
 
     Heading = 0 degree
@@ -225,11 +236,11 @@ mission marl {
     set updatePeriodSetting = TrackingUpdatePeriod
   }
 
-  # This is a hack to make sure the scratchpad var is created with the correct underlying DataType
+  ##This is a hack to make sure the scratchpad var is created with the correct underlying DataType
   behavior Guidance:Execute {
     run in sequence
 
-    set command = "get _.others_observations none_str"
+    set command = "get _.othersObservations none_str"
   }
 
   aggregate SendObservationData {
@@ -248,7 +259,7 @@ mission marl {
 
       set destType = "modem"
       set destId = SendDataLabel
-      set destName = "_.others_observations"
+      set destName = "_.othersObservations"
       set value = MyTempVar
       set unit = "none_str"
     }
@@ -256,6 +267,18 @@ mission marl {
     syslog info "SendData: sent send_observations : " + MyTempVar~none_str
          + " to nearby vehicles. Elapsed time " + ElapsedSinceLastSendData~minute
   }
+
+  ##new from December 2025
+  aggregate UpdateInternalVarialbe {
+    run when (
+      elapsed ( customUri "_.contactLabelToLcm" ) > TrackingUpdatePeriod )
+
+    assign in sequence customUri "_.contactLabelToLcm" = ContactLabel
+    
+    syslog info "Upadating contactLabelToLcm " + customUri "_.contactLabelToLcm"~count
+  }
+
+  ##continuing with old stuff
 
   aggregate UpdateContactLabel {
     run when (
@@ -310,6 +333,7 @@ mission marl {
       and (
         customUri "_.horizontalCmdMode" == HeadingMode
         or ( customUri "_.horizontalCmdMode" == RudderMode )
+        or ( customUri "_.horizontalCmdMode" == WpMode )
       )
       and ( elapsed ( HorizontalCommandMode ) > StateUpdateDelay )
     )
@@ -339,6 +363,32 @@ mission marl {
     assign in sequence RudderAngle = customUri "_.rudderAngleCmd"
 
     syslog info "Updating rudder angle " + RudderAngle~degree
+  }
+
+  aggregate UpdateLat {
+    run when (
+      elapsed ( customUri "_.wpLatCmd" ) < ( elapsed ( LatHeading ) )
+      and ( elapsed ( LatHeading ) > StateUpdateDelay )
+    )
+
+    break if ( isNaN ( customUri "_.wpLatCmd" ) )
+
+    assign in sequence LatHeading = customUri "_.wpLatCmd"
+
+    syslog info "Updated lrauv heading lat location to " + LatHeading~degree
+  }
+
+  aggregate UpdateLon {
+    run when (
+      elapsed ( customUri "_.wpLonCmd" ) < ( elapsed ( LonHeading ) )
+      and ( elapsed ( LonHeading ) > StateUpdateDelay )
+    )
+
+    break if ( isNaN ( customUri "_.wpLonCmd" ) )
+
+    assign in sequence LonHeading = customUri "_.wpLonCmd"
+
+    syslog info "Updated lrauv heading lon location to " + LonHeading~degree
   }
 
   insert id="Science" Insert/Science.tl
@@ -400,6 +450,22 @@ mission marl {
 
         set forceUpdate = true
         set rudderAngle = RudderAngle
+      }
+    }
+
+    aggregate CmdWp {
+      run while (
+        ( HorizontalCommandMode == WpMode )
+        and ( not isNaN ( LatHeading ) )
+        and ( not isNaN ( LonHeading ) )
+      )
+
+      behavior Guidance:Waypoint {
+        #This needs to be run in sequence, in parallel is not working!
+        run in sequence
+
+        set latitude = LatHeading
+        set longitude = LonHeading
       }
     }
   }

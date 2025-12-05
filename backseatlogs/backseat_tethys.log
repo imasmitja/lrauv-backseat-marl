@@ -1,0 +1,2433 @@
+2025-12-05 19:12:59,137 [AppConfig](INFO): Reading configuration file: ./backseat_app/config/app_cfg_tethys.yml
+2025-12-05 19:12:59,141 [Supervisor](INFO): Creating Supervisor.
+2025-12-05 19:12:59,141 [Supervisor](INFO): Log folder created at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251205T191257.
+2025-12-05 19:12:59,141 [Supervisor](INFO): Starting lcm-log with cmd: lcm-logger -c '.*' --increment --split-mb=25 --quiet /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251205T191257/lcmlog
+2025-12-05 19:12:59,150 [Supervisor](INFO): Adding data request for: depth
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: DAT.enableBroadcast
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: latitude
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: longitude
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: acoustic_contact_range
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: acoustic_contact_address
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: acoustic_receive_time
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: _.othersObservations
+2025-12-05 19:12:59,152 [Supervisor](INFO): Adding data request for: _.contactLabelToLcm
+2025-12-05 19:12:59,152 [processing](INFO): Initializing backseat process (pilot lrauv based on marl)
+2025-12-05 19:12:59,161 [Listener](INFO): Listening on LCM channel: bsd_command
+2025-12-05 19:12:59,161 [Listener](INFO): Listening on LCM channel: NAL9602
+2025-12-05 19:12:59,161 [Listener](INFO): Listening on LCM channel: Universal
+2025-12-05 19:12:59,161 [Listener](INFO): Listening on LCM channel: DAT
+2025-12-05 19:12:59,161 [Listener](INFO): Listening on LCM channel: _
+2025-12-05 19:12:59,170 [DataRequester](INFO): Requesting data from LRAUV.
+Initializing logger with name: 'lrauv'.
+Creating log folder at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251205T191257.
+Initializing logger with name: 'backseat_app'.
+Creating log folder at: /home/maiv/lrauv_sim/lrauv-backseat-marl/logs/20251205T191259.
+INFO: Loading 2v1 agent version
+INFO: Using AGENT VERSION 2 agent vs 1 target (aka 2v1)
+✓ Mapped: actor,params,Dense_0,bias -> action_head.bias (shape: torch.Size([5]))
+  Transposed 2D weight torch.Size([64, 5]) -> torch.Size([5, 64])
+✓ Mapped: actor,params,Dense_0,kernel -> action_head.weight (shape: torch.Size([5, 64]))
+✓ Mapped: actor,params,Embedder_0,Dense_0,bias -> embedder.bias (shape: torch.Size([64]))
+  Transposed 2D weight torch.Size([6, 64]) -> torch.Size([64, 6])
+✓ Mapped: actor,params,Embedder_0,Dense_0,kernel -> embedder.weight (shape: torch.Size([64, 6]))
+✓ Mapped: actor,params,Embedder_0,LayerNorm_0,bias -> embedder_norm.bias (shape: torch.Size([64]))
+✓ Mapped: actor,params,Embedder_0,LayerNorm_0,scale -> embedder_norm.weight (shape: torch.Size([64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,linear_0,bias -> transformer.encoders.0.linear1.bias (shape: torch.Size([128]))
+  Transposed 2D weight torch.Size([64, 128]) -> torch.Size([128, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,linear_0,kernel -> transformer.encoders.0.linear1.weight (shape: torch.Size([128, 64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,linear_1,bias -> transformer.encoders.0.linear2.bias (shape: torch.Size([64]))
+  Transposed 2D weight torch.Size([128, 64]) -> torch.Size([64, 128])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,linear_1,kernel -> transformer.encoders.0.linear2.weight (shape: torch.Size([64, 128]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,norm1,bias -> transformer.encoders.0.norm1.bias (shape: torch.Size([64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,norm1,scale -> transformer.encoders.0.norm1.weight (shape: torch.Size([64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,norm2,bias -> transformer.encoders.0.norm2.bias (shape: torch.Size([64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,norm2,scale -> transformer.encoders.0.norm2.weight (shape: torch.Size([64]))
+  Reshaped 3D attention weight torch.Size([64, 8, 8]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,self_attn,key,kernel -> transformer.encoders.0.self_attn.k_proj.weight (shape: torch.Size([64, 64]))
+  Reshaped 3D out projection torch.Size([8, 8, 64]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,self_attn,out,kernel -> transformer.encoders.0.self_attn.out_proj.weight (shape: torch.Size([64, 64]))
+  Reshaped 3D attention weight torch.Size([64, 8, 8]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,self_attn,query,kernel -> transformer.encoders.0.self_attn.q_proj.weight (shape: torch.Size([64, 64]))
+  Reshaped 3D attention weight torch.Size([64, 8, 8]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_0,self_attn,value,kernel -> transformer.encoders.0.self_attn.v_proj.weight (shape: torch.Size([64, 64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,linear_0,bias -> transformer.encoders.1.linear1.bias (shape: torch.Size([128]))
+  Transposed 2D weight torch.Size([64, 128]) -> torch.Size([128, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,linear_0,kernel -> transformer.encoders.1.linear1.weight (shape: torch.Size([128, 64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,linear_1,bias -> transformer.encoders.1.linear2.bias (shape: torch.Size([64]))
+  Transposed 2D weight torch.Size([128, 64]) -> torch.Size([64, 128])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,linear_1,kernel -> transformer.encoders.1.linear2.weight (shape: torch.Size([64, 128]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,norm1,bias -> transformer.encoders.1.norm1.bias (shape: torch.Size([64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,norm1,scale -> transformer.encoders.1.norm1.weight (shape: torch.Size([64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,norm2,bias -> transformer.encoders.1.norm2.bias (shape: torch.Size([64]))
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,norm2,scale -> transformer.encoders.1.norm2.weight (shape: torch.Size([64]))
+  Reshaped 3D attention weight torch.Size([64, 8, 8]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,self_attn,key,kernel -> transformer.encoders.1.self_attn.k_proj.weight (shape: torch.Size([64, 64]))
+  Reshaped 3D out projection torch.Size([8, 8, 64]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,self_attn,out,kernel -> transformer.encoders.1.self_attn.out_proj.weight (shape: torch.Size([64, 64]))
+  Reshaped 3D attention weight torch.Size([64, 8, 8]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,self_attn,query,kernel -> transformer.encoders.1.self_attn.q_proj.weight (shape: torch.Size([64, 64]))
+  Reshaped 3D attention weight torch.Size([64, 8, 8]) -> torch.Size([64, 64])
+✓ Mapped: actor,params,ScannedTransformer_0,encoders_1,self_attn,value,kernel -> transformer.encoders.1.self_attn.v_proj.weight (shape: torch.Size([64, 64]))
+
+Mapped 30/30 PyTorch parameters
+Successfully loaded 30 parameters
+Loaded parameters from /home/maiv/lrauv_sim/lrauv-backseat-marl/backseat_app/jaxtorchagent/IROS_MODELS/mappo_2v1_2december.safetensors
+Log file name:  ./logs/20251205T191259_log.txt
+Ivan.Initialization done
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691871,-121.937284,20.89]: 
+INFO: Elapsed time = 8744.575 seconds
+INFO: Sim timestamp 2025-12-05T21:38:43
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+NEW RUDDER POSITION= -1
+INFO: other_comms_count=0
+$SW,0.75,36.69818037528102,-121.93733418716495;
+lrauv lat 36.69187077877043  lrauv lon -121.93728428233229
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691786,-121.937048,21.32]: 
+INFO: Elapsed time = 30.230 seconds
+INFO: Sim timestamp 2025-12-05T21:39:13
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 113.2732628981896
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[21.23028621 -9.13146346 21.31702423]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[21.23028621 -9.13146346 21.31702423]
+ [ 0.          0.          0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 21.23028621112462, 'y': -9.131463456433266, 'z': 0, 'rph_z': 0, 'agent_1_dx': -21.23028621112462, 'agent_1_dy': 9.131463456433266, 'agent_1_dz': 0, 'landmark_0_tracking_x': 21.23028621112462, 'landmark_0_tracking_y': -9.131463456433266, 'landmark_0_tracking_z': 21.31702423095703, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5000, 0.5000, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4929, 0.5030, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5000, 0.5000, 0.4929, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=21.23m,-9.13m
+Stalk target on addr 0
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 0,1764961980,-121.93705,36.69179,-1,-121.93705,36.69179,2025-12-05T19:13:00
+INFO: Ping_count=1
+
+reset time= 0
+NEW RUDDER POSITION= 139.1709552381028
+INFO: other_comms_count=0
+$SW,1.0,36.686967566752664,-121.93199166327018;
+lrauv lat 36.69178745129745  lrauv lon -121.93704780516025
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691876,-121.936796,21.11]: 
+INFO: Elapsed time = 30.239 seconds
+INFO: Sim timestamp 2025-12-05T21:39:44
+2025-12-05 19:13:07,433 [processing](INFO): MARL: Received Other Vehicles Observation State: [1764970880.0, 8.0, 36.694702, -121.938477, 21.5, 162.0]
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 65.55541603103136
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[43.61955598  1.04577401 21.11405563]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[43.61955598  1.04577401 21.11405563]
+ [ 0.          0.          0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 43.61955597519409, 'y': 1.0457740114070475, 'z': 0, 'rph_z': 0, 'agent_1_dx': -43.61955597519409, 'agent_1_dy': -1.0457740114070475, 'agent_1_dz': 0, 'landmark_0_tracking_x': 21.23028621112462, 'landmark_0_tracking_y': -9.131463456433266, 'landmark_0_tracking_z': 21.31702423095703, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5075, 0.5034, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4855, 0.4997, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5075, 0.5034, 0.4929, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=21.23m,-9.13m
+Stalk target on addr 0
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 0,1764961982,-121.9368,36.69188,-1,-121.93705,36.69179,2025-12-05T19:13:02
+INFO: Ping_count=1
+
+reset time= 0
+NEW RUDDER POSITION= 91.45310837094458
+INFO: other_comms_count=0
+$SW,1.0,36.6916447861008,-121.92896628621611;
+lrauv lat 36.69187498198189  lrauv lon -121.93679596080197
+########################################
+New range measurement at  1764970752.0
+INFO: Elapsed time = 1764970752.000 seconds
+INFO: Sim timestamp 2025-12-05T21:39:58
+Timestamp =  1764970798.474
+LRAUV pose [36.691822,-121.936658,20.99]: 
+Target address 8 at 208.594 meters
+DEBUG: agents_slantRange= [[208.593505859375, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 115.3983116245548
+INFO: agents range:  [[208.59350586   0.        ]]
+INFO: agents pos:  [[55.97426944 -4.82022911 20.98986816]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[208.59350586   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [208.59350586   0.        ]
+positions:  [[55.97426944 -4.82022911 20.98986816]
+ [ 0.          0.          0.        ]]
+ranges_good:  [208.59350586]
+positions_good:  [[55.97426944 -4.82022911 20.98986816]]
+targets_depth:  [10.]
+pos: [55.97426944 -4.82022911 20.98986816]  depth: 10.0  r: 208.593505859375
+WARNING 1: initializing particles
+WARNING: Initializing particles
+WARNIN, particle w too low, initializing again
+WARNING 3: initializing particles
+WARNING: Initializing particles
+Evaluation -> covariance (CI of 98): 1092.24 
+ErrorPF= 13.182404805667574
+Evaluaiton -> max(self.w)=0.0016 sum(self.w)=15.1122
+step: {'agent_0': {'x': 55.974269443540834, 'y': -4.820229114964604, 'z': 0, 'rph_z': 0, 'agent_1_dx': -55.974269443540834, 'agent_1_dy': 4.820229114964604, 'agent_1_dz': 0, 'landmark_0_tracking_x': 56.42129786546618, 'landmark_0_tracking_y': -3.1821187057859466, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5041, 0.4980, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4813, 0.5016, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4999, 0.4995, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=56.42m,-3.18m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961984,-121.93666,36.69182,208.59,-121.93665,36.69184,2025-12-05T19:13:04
+INFO: Ping_count=2
+
+reset time= 1764970752.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497075e+09  8.00000000e+00  3.66918217e+01 -1.21936658e+02
+  2.09898682e+01  2.08593506e+02]
+INFO: in exa is:  69335100084212c46dc2f3df9200d20826
+NEW RUDDER POSITION= 141.296003964468
+INFO: other_comms_count=0
+$SW,1.0,36.68685416504017,-121.93182768826755;
+lrauv lat 36.69182173877732  lrauv lon -121.93665841448922
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691810,-121.936488,20.82]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:40:14
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 94.18764129250253
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[71.17857781 -5.93346652 20.81978226]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[71.17857781 -5.93346652 20.81978226]
+ [ 0.          0.          0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 71.17857780668419, 'y': -5.933466522023082, 'z': 0, 'rph_z': 0, 'agent_1_dx': -71.17857780668419, 'agent_1_dy': 5.933466522023082, 'agent_1_dz': 0, 'landmark_0_tracking_x': 56.42129786546618, 'landmark_0_tracking_y': -3.1821187057859466, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5051, 0.4996, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4763, 0.5020, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5049, 0.4991, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=56.42m,-3.18m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961984,-121.93649,36.69181,-1,-121.93665,36.69184,2025-12-05T19:13:04
+INFO: Ping_count=2
+
+reset time= 1764970752.0
+NEW RUDDER POSITION= 120.08533363241575
+INFO: other_comms_count=0
+$SW,1.0,36.688586150891524,-121.92975326754858;
+lrauv lat 36.69180969725635  lrauv lon -121.93648838561961
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691690,-121.936183,20.00]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:40:44
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 115.3877636498706
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 98.5672094  -18.93137763  19.99953461]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 98.5672094  -18.93137763  19.99953461]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 98.56720940081868, 'y': -18.93137763440609, 'z': 0, 'rph_z': 0, 'agent_1_dx': -98.56720940081868, 'agent_1_dy': 18.93137763440609, 'agent_1_dz': 0, 'landmark_0_tracking_x': 56.42129786546618, 'landmark_0_tracking_y': -3.1821187057859466, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5091, 0.4957, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4671, 0.5063, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5140, 0.4948, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=56.42m,-3.18m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961986,-121.93618,36.69169,-1,-121.93665,36.69184,2025-12-05T19:13:06
+INFO: Ping_count=2
+
+reset time= 1764970752.0
+NEW RUDDER POSITION= 141.28545598978383
+INFO: other_comms_count=0
+$SW,1.0,36.68672146875743,-121.93135164288849;
+lrauv lat 36.691688344963396  lrauv lon -121.93618346538051
+***************************************************************************************************
+RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: [1764970880.0, 8.0, 36.694702, -121.938477, 21.5, 162.0]
+***************************************************************************************************
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691492,-121.935938,18.92]: 
+INFO: Elapsed time = 30.250 seconds
+INFO: Sim timestamp 2025-12-05T21:41:14
+DEBUG: agents_slantRange= [[-1, 162.0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 134.3450931465945
+INFO: agents range:  [[  0. 162.]]
+INFO: agents pos:  [[ 120.77516418  -40.6373619    18.92107201]
+ [-110.03267614  312.89551092   21.5       ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[  0. 162.]]
+mask before:  [False  True]
+mask:  [False  True]
+ranges[i]:  [  0. 162.]
+positions:  [[ 120.77516418  -40.6373619    18.92107201]
+ [-110.03267614  312.89551092   21.5       ]]
+ranges_good:  [162.]
+positions_good:  [[-110.03267614  312.89551092   21.5       ]]
+targets_depth:  [10.]
+pos: [-110.03267614  312.89551092   21.5       ]  depth: 10.0  r: 162.0
+Evaluation -> covariance (CI of 98): 470.72 
+ErrorPF= 12.422454740832308
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=16.1341
+step: {'agent_0': {'x': 120.77516418287996, 'y': -40.63736189715564, 'z': 0, 'rph_z': 0, 'agent_1_dx': -230.80784032738302, 'agent_1_dy': 353.5328728170134, 'agent_1_dz': 0, 'landmark_0_tracking_x': -44.46810081254557, 'landmark_0_tracking_y': 186.159464527344, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5074, 0.4928, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4231, 0.6178, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5551, 0.4244, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 0  target_predictions(x,y)=-44.47m,186.16m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961988,-121.93594,36.69149,-1.0,-121.93776,36.69355,2025-12-05T19:13:08
+INFO: Ping_count=3
+
+reset time= 1764970752.0
+NEW RUDDER POSITION= 82.60700424628118
+INFO: other_comms_count=1
+$SW,1.0,36.69223122245025,-121.92815709625116;
+lrauv lat 36.69148906563717  lrauv lon -121.93593760979226
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691366,-121.935674,18.72]: 
+INFO: Elapsed time = 30.230 seconds
+INFO: Sim timestamp 2025-12-05T21:41:45
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 120.1129629293531
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[144.51896499 -54.40833981  18.71656418]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[144.51896499 -54.40833981  18.71656418]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 144.51896498876158, 'y': -54.40833980822936, 'z': 0, 'rph_z': 0, 'agent_1_dx': -144.51896498876158, 'agent_1_dy': 54.40833980822936, 'agent_1_dz': 0, 'landmark_0_tracking_x': -44.46810081254557, 'landmark_0_tracking_y': 186.159464527344, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5079, 0.4954, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4518, 0.5181, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5630, 0.4198, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 0  target_predictions(x,y)=-44.47m,186.16m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961990,-121.93567,36.69137,-1,-121.93776,36.69355,2025-12-05T19:13:10
+INFO: Ping_count=3
+
+reset time= 1764970752.0
+NEW RUDDER POSITION= 68.37487402903977
+INFO: other_comms_count=1
+$SW,1.0,36.69362684918762,-121.9283583716901;
+lrauv lat 36.69136699091362  lrauv lon -121.93567358053498
+########################################
+New range measurement at  1764970880.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:41:58
+Timestamp =  1764970918.6
+LRAUV pose [36.691409,-121.935529,18.82]: 
+Target address 8 at 291.774 meters
+DEBUG: agents_slantRange= [[291.7735290527344, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 69.02035279280557
+INFO: agents range:  [[291.77352905   0.        ]]
+INFO: agents pos:  [[157.35159316 -49.48758481  18.81581688]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[291.77352905   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [291.77352905   0.        ]
+positions:  [[157.35159316 -49.48758481  18.81581688]
+ [  0.           0.           0.        ]]
+ranges_good:  [291.77352905]
+positions_good:  [[157.35159316 -49.48758481  18.81581688]]
+targets_depth:  [10.]
+pos: [157.35159316 -49.48758481  18.81581688]  depth: 10.0  r: 291.7735290527344
+Evaluation -> covariance (CI of 98): 274.41 
+ErrorPF= 1.6599888141920474
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=99.9982
+step: {'agent_0': {'x': 157.3515931586735, 'y': -49.487584808375686, 'z': 0, 'rph_z': 0, 'agent_1_dx': -157.3515931586735, 'agent_1_dy': 49.487584808375686, 'agent_1_dz': 0, 'landmark_0_tracking_x': -15.70672876149631, 'landmark_0_tracking_y': 180.98027669314652, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5043, 0.5016, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4475, 0.5165, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5577, 0.4232, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-15.71m,180.98m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961991,-121.93553,36.69141,291.77,-121.93744,36.6935,2025-12-05T19:13:11
+INFO: Ping_count=4
+
+reset time= 1764970880.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497088e+09  8.00000000e+00  3.66914090e+01 -1.21935529e+02
+  1.88158169e+01  2.91773529e+02]
+INFO: in exa is:  69335180084212c401c2f3defe00bc0b66
+NEW RUDDER POSITION= 43.122660452892354
+INFO: other_comms_count=1
+$SW,1.0,36.69596612073066,-121.93011025658191;
+lrauv lat 36.691408997569695  lrauv lon -121.93552934685076
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691478,-121.935363,18.95]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:42:15
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 62.019956755231654
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[172.15081824 -41.62530808  18.95234489]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[172.15081824 -41.62530808  18.95234489]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 172.15081824478693, 'y': -41.625308079179376, 'z': 0, 'rph_z': 0, 'agent_1_dx': -172.15081824478693, 'agent_1_dy': 41.625308079179376, 'agent_1_dz': 0, 'landmark_0_tracking_x': -15.70672876149631, 'landmark_0_tracking_y': 180.98027669314652, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5049, 0.5026, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4426, 0.5139, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5626, 0.4258, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-15.71m,180.98m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961992,-121.93536,36.69148,-1,-121.93744,36.6935,2025-12-05T19:13:12
+INFO: Ping_count=4
+
+reset time= 1764970880.0
+NEW RUDDER POSITION= 62.019956755231654
+INFO: other_comms_count=1
+$SW,1.0,36.6943789518195,-121.92840303610949;
+lrauv lat 36.691480915244895  lrauv lon -121.93536273735918
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691639,-121.935075,19.60]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:42:45
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 54.563085496588734
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[197.6575514  -23.47387194  19.59888458]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[197.6575514  -23.47387194  19.59888458]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 197.65755140350666, 'y': -23.473871941212565, 'z': 0, 'rph_z': 0, 'agent_1_dx': -197.65755140350666, 'agent_1_dy': 23.473871941212565, 'agent_1_dz': 0, 'landmark_0_tracking_x': -15.70672876149631, 'landmark_0_tracking_y': 180.98027669314652, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5085, 0.5061, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4341, 0.5078, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5711, 0.4318, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-15.71m,180.98m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961994,-121.93508,36.69164,-1,-121.93744,36.6935,2025-12-05T19:13:14
+INFO: Ping_count=4
+
+reset time= 1764970880.0
+NEW RUDDER POSITION= 28.665393156675524
+INFO: other_comms_count=1
+$SW,1.0,36.697143604972865,-121.93124027211464;
+lrauv lat 36.69164125020354  lrauv lon -121.93507501028525
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.691849,-121.934866,20.70]: 
+INFO: Elapsed time = 30.265 seconds
+INFO: Sim timestamp 2025-12-05T21:43:15
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 38.17576916587998
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 2.16070612e+02 -5.46732116e-02  2.07024994e+01]
+ [ 0.00000000e+00  0.00000000e+00  0.00000000e+00]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 2.16070612e+02 -5.46732116e-02  2.07024994e+01]
+ [ 0.00000000e+00  0.00000000e+00  0.00000000e+00]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 216.07061161100864, 'y': -0.05467321164906025, 'z': 0, 'rph_z': 0, 'agent_1_dx': -216.07061161100864, 'agent_1_dy': 0.05467321164906025, 'agent_1_dz': 0, 'landmark_0_tracking_x': -15.70672876149631, 'landmark_0_tracking_y': 180.98027669314652, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5061, 0.5078, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4280, 0.5000, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5773, 0.4397, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 0  target_predictions(x,y)=-15.71m,180.98m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961996,-121.93487,36.69185,-1,-121.93744,36.6935,2025-12-05T19:13:16
+INFO: Ping_count=4
+
+reset time= 1764970880.0
+NEW RUDDER POSITION= 346.43768026556666
+INFO: other_comms_count=1
+$SW,1.0,36.698002388751995,-121.93661874091623;
+lrauv lat 36.69185256383431  lrauv lon -121.93486601959599
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692115,-121.934903,21.23]: 
+INFO: Elapsed time = 30.215 seconds
+INFO: Sim timestamp 2025-12-05T21:43:46
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 353.06259605226313
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[212.48233914  29.43578009  21.23298073]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[212.48233914  29.43578009  21.23298073]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 212.48233913898002, 'y': 29.4357800912112, 'z': 0, 'rph_z': 0, 'agent_1_dx': -212.48233913898002, 'agent_1_dy': -29.4357800912112, 'agent_1_dz': 0, 'landmark_0_tracking_x': -15.70672876149631, 'landmark_0_tracking_y': 180.98027669314652, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4988, 0.5098, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4292, 0.4902, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5761, 0.4495, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-15.71m,180.98m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961998,-121.9349,36.69211,-1,-121.93744,36.6935,2025-12-05T19:13:18
+INFO: Ping_count=4
+
+reset time= 1764970880.0
+NEW RUDDER POSITION= 327.16490371234994
+INFO: other_comms_count=1
+$SW,1.0,36.697457706410624,-121.93907768974653;
+lrauv lat 36.69211845170565  lrauv lon -121.934902513115
+########################################
+New range measurement at  1764971008.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:43:58
+Timestamp =  1764971038.742
+LRAUV pose [36.692222,-121.934974,21.23]: 
+Target address 8 at 258.930 meters
+DEBUG: agents_slantRange= [[258.93023681640625, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 331.22823326583256
+INFO: agents range:  [[258.93023682   0.        ]]
+INFO: agents pos:  [[205.99445172  41.25099087  21.229599  ]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[258.93023682   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [258.93023682   0.        ]
+positions:  [[205.99445172  41.25099087  21.229599  ]
+ [  0.           0.           0.        ]]
+ranges_good:  [258.93023682]
+positions_good:  [[205.99445172  41.25099087  21.229599  ]]
+targets_depth:  [10.]
+pos: [205.99445172  41.25099087  21.229599  ]  depth: 10.0  r: 258.93023681640625
+Evaluation -> covariance (CI of 98): 215.35 
+ErrorPF= 0.8115373022183121
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=167.2106
+step: {'agent_0': {'x': 205.99445171584375, 'y': 41.2509908657521, 'z': 0, 'rph_z': 0, 'agent_1_dx': -205.99445171584375, 'agent_1_dy': -41.2509908657521, 'agent_1_dz': 0, 'landmark_0_tracking_x': 0.964475632618899, 'landmark_0_tracking_y': 195.68543372116721, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4978, 0.5039, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4313, 0.4862, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5683, 0.4485, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=0.96m,195.69m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764961999,-121.93497,36.69222,258.93,-121.93725,36.69363,2025-12-05T19:13:19
+INFO: Ping_count=5
+
+reset time= 1764971008.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497101e+09  8.00000000e+00  3.66922220e+01 -1.21934974e+02
+  2.12295990e+01  2.58930237e+02]
+INFO: in exa is:  69335200084212c4d6c2f3deb500d40a1d
+NEW RUDDER POSITION= 331.22823326583256
+INFO: other_comms_count=1
+$SW,1.0,36.6977860732858,-121.93866853325657;
+lrauv lat 36.692221986120934  lrauv lon -121.93497365709231
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692357,-121.935088,21.10]: 
+INFO: Elapsed time = 30.242 seconds
+INFO: Sim timestamp 2025-12-05T21:44:16
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 325.0307607019025
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[195.63175076  56.06738535  21.09789276]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[195.63175076  56.06738535  21.09789276]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 195.63175076106563, 'y': 56.06738534942269, 'z': 0, 'rph_z': 0, 'agent_1_dx': -195.63175076106563, 'agent_1_dy': -56.06738534942269, 'agent_1_dz': 0, 'landmark_0_tracking_x': 0.964475632618899, 'landmark_0_tracking_y': 195.68543372116721, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4965, 0.5049, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4348, 0.4813, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5649, 0.4535, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=0.96m,195.69m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962000,-121.93509,36.69236,-1,-121.93725,36.69363,2025-12-05T19:13:20
+INFO: Ping_count=5
+
+reset time= 1764971008.0
+NEW RUDDER POSITION= 325.0307607019025
+INFO: other_comms_count=1
+$SW,1.0,36.697570191103836,-121.93950700695873;
+lrauv lat 36.69235985982148  lrauv lon -121.93508779548137
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692586,-121.935303,20.73]: 
+INFO: Elapsed time = 30.238 seconds
+INFO: Sim timestamp 2025-12-05T21:44:46
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 322.2390994504569
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[176.102191    81.28025068  20.73312378]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[176.102191    81.28025068  20.73312378]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 176.10219100140966, 'y': 81.28025068156421, 'z': 0, 'rph_z': 0, 'agent_1_dx': -176.10219100140966, 'agent_1_dy': -81.28025068156421, 'agent_1_dz': 0, 'landmark_0_tracking_x': 0.964475632618899, 'landmark_0_tracking_y': 195.68543372116721, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4935, 0.5084, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4413, 0.4729, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5584, 0.4619, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=0.96m,195.69m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962002,-121.9353,36.69259,-1,-121.93725,36.69363,2025-12-05T19:13:22
+INFO: Ping_count=5
+
+reset time= 1764971008.0
+NEW RUDDER POSITION= 322.2390994504569
+INFO: other_comms_count=1
+$SW,1.0,36.697619735261696,-121.94003235742905;
+lrauv lat 36.69258893104759  lrauv lon -121.93530323874162
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692805,-121.935533,19.78]: 
+INFO: Elapsed time = 30.256 seconds
+INFO: Sim timestamp 2025-12-05T21:45:16
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 319.187489478045
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[155.27520705 105.39789544  19.78254128]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[155.27520705 105.39789544  19.78254128]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 155.27520704909693, 'y': 105.39789543673396, 'z': 0, 'rph_z': 0, 'agent_1_dx': -155.27520704909693, 'agent_1_dy': -105.39789543673396, 'agent_1_dz': 0, 'landmark_0_tracking_x': 0.964475632618899, 'landmark_0_tracking_y': 195.68543372116721, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4931, 0.5080, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4482, 0.4649, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5514, 0.4699, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=0.96m,195.69m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962004,-121.93553,36.69281,-1,-121.93725,36.69363,2025-12-05T19:13:24
+INFO: Ping_count=5
+
+reset time= 1764971008.0
+NEW RUDDER POSITION= 319.187489478045
+INFO: other_comms_count=1
+$SW,1.0,36.69762929743933,-121.94058835318778;
+lrauv lat 36.69280838326632  lrauv lon -121.9355333403576
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693016,-121.935775,18.89]: 
+INFO: Elapsed time = 30.224 seconds
+INFO: Sim timestamp 2025-12-05T21:45:47
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 316.6349749614425
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[133.42059749 128.53677411  18.89439583]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[133.42059749 128.53677411  18.89439583]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 133.42059749166947, 'y': 128.53677411470562, 'z': 0, 'rph_z': 0, 'agent_1_dx': -133.42059749166947, 'agent_1_dy': -128.53677411470562, 'agent_1_dz': 0, 'landmark_0_tracking_x': 0.964475632618899, 'landmark_0_tracking_y': 195.68543372116721, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4927, 0.5077, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4555, 0.4572, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5442, 0.4776, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=0.96m,195.69m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962006,-121.93578,36.69302,-1,-121.93725,36.69363,2025-12-05T19:13:26
+INFO: Ping_count=5
+
+reset time= 1764971008.0
+NEW RUDDER POSITION= 316.6349749614425
+INFO: other_comms_count=1
+$SW,1.0,36.697653713588856,-121.94109170265617;
+lrauv lat 36.693018892167146  lrauv lon -121.93577506626424
+########################################
+New range measurement at  1764971136.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:45:58
+Timestamp =  1764971158.831
+LRAUV pose [36.693099,-121.935876,18.78]: 
+Target address 8 at 139.179 meters
+DEBUG: agents_slantRange= [[139.1785125732422, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 315.0874485603899
+INFO: agents range:  [[139.17851257   0.        ]]
+INFO: agents pos:  [[124.34111862 137.64401076  18.78477859]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[139.17851257   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [139.17851257   0.        ]
+positions:  [[124.34111862 137.64401076  18.78477859]
+ [  0.           0.           0.        ]]
+ranges_good:  [139.17851257]
+positions_good:  [[124.34111862 137.64401076  18.78477859]]
+targets_depth:  [10.]
+pos: [124.34111862 137.64401076  18.78477859]  depth: 10.0  r: 139.1785125732422
+Evaluation -> covariance (CI of 98): 184.75 
+ErrorPF= 0.5272628684269876
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=225.0910
+step: {'agent_0': {'x': 124.34111862094142, 'y': 137.64401075989008, 'z': 0, 'rph_z': 0, 'agent_1_dx': -124.34111862094142, 'agent_1_dy': -137.64401075989008, 'agent_1_dz': 0, 'landmark_0_tracking_x': 5.186130180430349, 'landmark_0_tracking_y': 199.5269579982379, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4970, 0.5030, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4586, 0.4541, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5397, 0.4794, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=5.19m,199.53m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962007,-121.93588,36.6931,139.18,-121.9372,36.69367,2025-12-05T19:13:27
+2025-12-05 19:13:31,669 [processing](INFO): MARL: Received Other Vehicles Observation State: [1764971136.0, 8.0, 36.692291, -121.937164, 18.5, 148.5]
+INFO: Ping_count=6
+
+reset time= 1764971136.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497114e+09  8.00000000e+00  3.66930990e+01 -1.21935876e+02
+  1.87847786e+01  1.39178513e+02]
+INFO: in exa is:  69335280084212c5bcc2f3df2b00bc0570
+NEW RUDDER POSITION= 315.0874485603899
+INFO: other_comms_count=1
+$SW,1.0,36.69761647736246,-121.94134569498769;
+lrauv lat 36.69309898064995  lrauv lon -121.93587555430287
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693218,-121.936029,18.84]: 
+INFO: Elapsed time = 30.242 seconds
+INFO: Sim timestamp 2025-12-05T21:46:17
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 313.1983665639252
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[110.44416093 150.69337713  18.8395462 ]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[110.44416093 150.69337713  18.8395462 ]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 110.44416093069594, 'y': 150.69337713345885, 'z': 0, 'rph_z': 0, 'agent_1_dx': -110.44416093069594, 'agent_1_dy': -150.69337713345885, 'agent_1_dz': 0, 'landmark_0_tracking_x': 5.186130180430349, 'landmark_0_tracking_y': 199.5269579982379, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4954, 0.5043, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4632, 0.4498, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5351, 0.4837, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=5.19m,199.53m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962008,-121.93603,36.69322,-1,-121.9372,36.69367,2025-12-05T19:13:28
+INFO: Ping_count=6
+
+reset time= 1764971136.0
+NEW RUDDER POSITION= 313.1983665639252
+INFO: other_comms_count=1
+$SW,1.0,36.697590450825594,-121.9416815794015;
+lrauv lat 36.69322063344812  lrauv lon -121.93602947123807
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693409,-121.936297,19.09]: 
+INFO: Elapsed time = 30.241 seconds
+INFO: Sim timestamp 2025-12-05T21:46:47
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 310.9006191540482
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 86.295844   171.6117622   19.09499741]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 86.295844   171.6117622   19.09499741]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 86.29584399785381, 'y': 171.61176220420748, 'z': 0, 'rph_z': 0, 'agent_1_dx': -86.29584399785381, 'agent_1_dy': -171.61176220420748, 'agent_1_dz': 0, 'landmark_0_tracking_x': 5.186130180430349, 'landmark_0_tracking_y': 199.5269579982379, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4920, 0.5070, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4712, 0.4428, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5270, 0.4907, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=5.19m,199.53m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962011,-121.9363,36.69341,-1,-121.9372,36.69367,2025-12-05T19:13:31
+INFO: Ping_count=6
+
+reset time= 1764971136.0
+NEW RUDDER POSITION= 310.9006191540482
+INFO: other_comms_count=1
+$SW,1.0,36.69759537923644,-121.94216229450687;
+lrauv lat 36.69341157965832  lrauv lon -121.93629714728735
+***************************************************************************************************
+RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: [1764971136.0, 8.0, 36.692291, -121.937164, 18.5, 148.5]
+***************************************************************************************************
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693592,-121.936572,19.76]: 
+INFO: Elapsed time = 30.253 seconds
+INFO: Sim timestamp 2025-12-05T21:47:17
+DEBUG: agents_slantRange= [[-1, 148.5]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 308.96741504588294
+INFO: agents range:  [[  0.  148.5]]
+INFO: agents pos:  [[ 61.48303861 191.68142161  19.76031113]
+ [ 10.22906195  46.73551402  18.5       ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[  0.  148.5]]
+mask before:  [False  True]
+mask:  [False  True]
+ranges[i]:  [  0.  148.5]
+positions:  [[ 61.48303861 191.68142161  19.76031113]
+ [ 10.22906195  46.73551402  18.5       ]]
+ranges_good:  [148.5]
+positions_good:  [[10.22906195 46.73551402 18.5       ]]
+targets_depth:  [10.]
+pos: [10.22906195 46.73551402 18.5       ]  depth: 10.0  r: 148.5
+Evaluation -> covariance (CI of 98): 113.92 
+ErrorPF= 0.3076295222912506
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=94.5506
+step: {'agent_0': {'x': 61.483038611360826, 'y': 191.68142161145806, 'z': 0, 'rph_z': 0, 'agent_1_dx': -51.253976662643254, 'agent_1_dy': -144.9459075955674, 'agent_1_dz': 0, 'landmark_0_tracking_x': -5.31551832083048, 'landmark_0_tracking_y': 194.05274286439123, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4917, 0.5067, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4829, 0.4517, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5223, 0.4992, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=-5.32m,194.05m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962013,-121.93657,36.69359,-1.0,-121.93732,36.69362,2025-12-05T19:13:33
+INFO: Ping_count=7
+
+reset time= 1764971136.0
+NEW RUDDER POSITION= 334.8651073857962
+INFO: other_comms_count=2
+$SW,1.0,36.699336530573426,-121.93982168697173;
+lrauv lat 36.69359494137434  lrauv lon -121.93657236717225
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693812,-121.936790,20.81]: 
+INFO: Elapsed time = 30.227 seconds
+INFO: Sim timestamp 2025-12-05T21:47:48
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 320.82600174120057
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 41.789657   215.85027864  20.81216049]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 41.789657   215.85027864  20.81216049]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 41.78965700196568, 'y': 215.8502786406316, 'z': 0, 'rph_z': 0, 'agent_1_dx': -41.78965700196568, 'agent_1_dy': -215.8502786406316, 'agent_1_dz': 0, 'landmark_0_tracking_x': -5.31551832083048, 'landmark_0_tracking_y': 194.05274286439123, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4934, 0.5081, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4861, 0.4280, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5157, 0.5073, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=-5.32m,194.05m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962015,-121.93679,36.69381,-1,-121.93732,36.69362,2025-12-05T19:13:35
+INFO: Ping_count=7
+
+reset time= 1764971136.0
+NEW RUDDER POSITION= 346.72369408111376
+INFO: other_comms_count=2
+$SW,1.0,36.69997252196141,-121.9385045520955;
+lrauv lat 36.69381575407832  lrauv lon -121.93678978139037
+########################################
+New range measurement at  1764971264.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:47:58
+Timestamp =  1764971278.552
+LRAUV pose [36.693908,-121.936837,21.03]: 
+Target address 8 at 53.576 meters
+DEBUG: agents_slantRange= [[53.57583236694336, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 337.5276655605102
+INFO: agents range:  [[53.57583237  0.        ]]
+INFO: agents pos:  [[ 37.42427428 226.4036549   21.03236008]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[53.57583237  0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [53.57583237  0.        ]
+positions:  [[ 37.42427428 226.4036549   21.03236008]
+ [  0.           0.           0.        ]]
+ranges_good:  [53.57583237]
+positions_good:  [[ 37.42427428 226.4036549   21.03236008]]
+targets_depth:  [10.]
+pos: [ 37.42427428 226.4036549   21.03236008]  depth: 10.0  r: 53.57583236694336
+Evaluation -> covariance (CI of 98): 57.98 
+ErrorPF= 0.17030736492315413
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=288.6705
+step: {'agent_0': {'x': 37.424274277174845, 'y': 226.4036549013108, 'z': 0, 'rph_z': 0, 'agent_1_dx': -37.424274277174845, 'agent_1_dy': -226.4036549013108, 'agent_1_dz': 0, 'landmark_0_tracking_x': -2.842357159464928, 'landmark_0_tracking_y': 193.88243365741297, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4985, 0.5035, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4875, 0.4245, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5134, 0.5108, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=-2.84m,193.88m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962016,-121.93684,36.69391,53.58,-121.93729,36.69362,2025-12-05T19:13:36
+INFO: Ping_count=8
+
+reset time= 1764971264.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497126e+09  8.00000000e+00  3.66939077e+01 -1.21936837e+02
+  2.10323601e+01  5.35758324e+01]
+INFO: in exa is:  69335300084212c690c2f3dfa900d20218
+NEW RUDDER POSITION= 3.4253579004234043
+INFO: other_comms_count=2
+$SW,1.0,36.70020157228788,-121.93628245036108;
+lrauv lat 36.69390769244886  lrauv lon -121.93683733034639
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694085,-121.936884,21.18]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:48:18
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 347.41822066026486
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 33.04065804 246.04416316  21.1801281 ]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 33.04065804 246.04416316  21.1801281 ]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 33.04065803589765, 'y': 246.0441631609574, 'z': 0, 'rph_z': 0, 'agent_1_dx': -33.04065803589765, 'agent_1_dy': -246.0441631609574, 'agent_1_dz': 0, 'landmark_0_tracking_x': -2.842357159464928, 'landmark_0_tracking_y': 193.88243365741297, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4985, 0.5065, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4890, 0.4180, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5120, 0.5174, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=-2.84m,193.88m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962017,-121.93688,36.69409,-1,-121.93729,36.69362,2025-12-05T19:13:37
+INFO: Ping_count=8
+
+reset time= 1764971264.0
+NEW RUDDER POSITION= 13.315913000178094
+INFO: other_comms_count=2
+$SW,1.0,36.70021252018981,-121.93499478336072;
+lrauv lat 36.69408894414875  lrauv lon -121.93688395571293
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694366,-121.936829,20.99]: 
+INFO: Elapsed time = 30.239 seconds
+INFO: Sim timestamp 2025-12-05T21:48:48
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 8.255767665554501
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 37.56692373 277.23916078  20.99170494]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 37.56692373 277.23916078  20.99170494]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 37.56692372972611, 'y': 277.2391607775353, 'z': 0, 'rph_z': 0, 'agent_1_dx': -37.56692372972611, 'agent_1_dy': -277.2391607775353, 'agent_1_dz': 0, 'landmark_0_tracking_x': -2.842357159464928, 'landmark_0_tracking_y': 193.88243365741297, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5015, 0.5104, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4875, 0.4076, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5135, 0.5278, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-2.84m,193.88m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962019,-121.93683,36.69437,-1,-121.93729,36.69362,2025-12-05T19:13:39
+INFO: Ping_count=8
+
+reset time= 1764971264.0
+NEW RUDDER POSITION= 8.255767665554501
+INFO: other_comms_count=2
+$SW,1.0,36.70060360158291,-121.93561834078913;
+lrauv lat 36.69436970650987  lrauv lon -121.93682942437302
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694645,-121.936751,20.59]: 
+INFO: Elapsed time = 30.256 seconds
+INFO: Sim timestamp 2025-12-05T21:49:18
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 12.08818142362802
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 44.2230767  308.31861736  20.58539581]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 44.2230767  308.31861736  20.58539581]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 44.22307669988368, 'y': 308.3186173629947, 'z': 0, 'rph_z': 0, 'agent_1_dx': -44.22307669988368, 'agent_1_dy': -308.3186173629947, 'agent_1_dz': 0, 'landmark_0_tracking_x': -2.842357159464928, 'landmark_0_tracking_y': 193.88243365741297, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5022, 0.5104, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4853, 0.3972, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5157, 0.5381, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-2.84m,193.88m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962021,-121.93675,36.69465,-1,-121.93729,36.69362,2025-12-05T19:13:41
+INFO: Ping_count=8
+
+reset time= 1764971264.0
+NEW RUDDER POSITION= 346.19048908371485
+INFO: other_comms_count=2
+$SW,1.0,36.70079307837635,-121.93853693121785;
+lrauv lat 36.69464942806545  lrauv lon -121.93675106831796
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694924,-121.936789,19.66]: 
+INFO: Elapsed time = 30.225 seconds
+INFO: Sim timestamp 2025-12-05T21:49:48
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 353.1920051274012
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 40.53055758 339.24830406  19.66111183]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+2025-12-05 19:13:44,485 [processing](INFO): MARL: Received Other Vehicles Observation State: [1764971392.0, 8.0, 36.693642, -121.935455, 18.4, 162.1]
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 40.53055758 339.24830406  19.66111183]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 40.5305575823877, 'y': 339.24830406112596, 'z': 0, 'rph_z': 0, 'agent_1_dx': -40.5305575823877, 'agent_1_dy': -339.24830406112596, 'agent_1_dz': 0, 'landmark_0_tracking_x': -2.842357159464928, 'landmark_0_tracking_y': 193.88243365741297, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4988, 0.5103, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4865, 0.3869, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5145, 0.5485, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 0  target_predictions(x,y)=-2.84m,193.88m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962023,-121.93679,36.69492,-1,-121.93729,36.69362,2025-12-05T19:13:43
+INFO: Ping_count=8
+
+reset time= 1764971264.0
+NEW RUDDER POSITION= 301.4539162270879
+INFO: other_comms_count=2
+$SW,1.0,36.69828007823935,-121.94342701199088;
+lrauv lat 36.694928280475615  lrauv lon -121.93678855756922
+***************************************************************************************************
+RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: [1764971392.0, 8.0, 36.693642, -121.935455, 18.4, 162.1]
+***************************************************************************************************
+########################################
+New range measurement at  1764971392.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:49:59
+Timestamp =  1764971399.072
+LRAUV pose [36.695012,-121.936839,19.34]: 
+Target address 8 at 159.679 meters
+DEBUG: agents_slantRange= [[159.678955078125, 162.1]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 334.63595636370474
+INFO: agents range:  [[159.67895508 162.1       ]]
+INFO: agents pos:  [[ 35.93133556 348.94995143  19.34497261]
+ [161.24325853 198.29987734  18.4       ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[159.67895508 162.1       ]]
+mask before:  [ True  True]
+mask:  [ True  True]
+ranges[i]:  [159.67895508 162.1       ]
+positions:  [[ 35.93133556 348.94995143  19.34497261]
+ [161.24325853 198.29987734  18.4       ]]
+ranges_good:  [159.67895508 162.1       ]
+positions_good:  [[ 35.93133556 348.94995143  19.34497261]
+ [161.24325853 198.29987734  18.4       ]]
+targets_depth:  [10.]
+pos: [ 35.93133556 348.94995143  19.34497261]  depth: 10.0  r: 159.678955078125
+pos: [161.24325853 198.29987734  18.4       ]  depth: 10.0  r: 162.1
+Evaluation -> covariance (CI of 98): 75.46 
+ErrorPF= 0.6843215091465709
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=385.2646
+Evaluation -> covariance (CI of 98): 64.51 
+ErrorPF= 1.406003088704864
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=297.4334
+step: {'agent_0': {'x': 35.93133555946406, 'y': 348.9499514265917, 'z': 0, 'rph_z': 0, 'agent_1_dx': 125.31192297232337, 'agent_1_dy': -150.65007408848032, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.428827527154466, 'landmark_0_tracking_y': 192.95187596834387, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4985, 0.5032, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5418, 0.4498, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5125, 0.5520, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-1.43m,192.95m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962025,-121.93684,36.69501,159.68,-121.93728,36.69361,2025-12-05T19:13:45
+INFO: Ping_count=9
+
+reset time= 1764971392.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497139e+09  8.00000000e+00  3.66950124e+01 -1.21936839e+02
+  1.93449726e+01  1.59678955e+02]
+INFO: in exa is:  69335380084212c7b1c2f3dfa900c1063d
+NEW RUDDER POSITION= 308.7382640237915
+INFO: other_comms_count=3
+$SW,1.0,36.69901497054537,-121.94289597846917;
+lrauv lat 36.695012392850494  lrauv lon -121.93683883013374
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.695116,-121.937020,18.95]: 
+INFO: Elapsed time = 30.239 seconds
+INFO: Sim timestamp 2025-12-05T21:50:19
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 304.8142824715032
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 19.63769818 360.28034903  18.95158386]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 19.63769818 360.28034903  18.95158386]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 19.637698183069006, 'y': 360.28034903109074, 'z': 0, 'rph_z': 0, 'agent_1_dx': -19.637698183069006, 'agent_1_dy': -360.28034903109074, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.428827527154466, 'landmark_0_tracking_y': 192.95187596834387, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4946, 0.5038, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4935, 0.3799, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5070, 0.5558, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-1.43m,192.95m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962026,-121.93702,36.69512,-1,-121.93728,36.69361,2025-12-05T19:13:46
+INFO: Ping_count=9
+
+reset time= 1764971392.0
+NEW RUDDER POSITION= 278.91659013159
+INFO: other_comms_count=3
+$SW,1.0,36.69616500550989,-121.94474651082837;
+lrauv lat 36.695118220879756  lrauv lon -121.93701979050842
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.695188,-121.937352,18.94]: 
+INFO: Elapsed time = 30.241 seconds
+INFO: Sim timestamp 2025-12-05T21:50:49
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 284.4227882190283
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-10.08475787 367.92438077  18.93857765]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-10.08475787 367.92438077  18.93857765]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -10.08475786598865, 'y': 367.92438076948747, 'z': 0, 'rph_z': 0, 'agent_1_dx': 10.08475786598865, 'agent_1_dy': -367.92438076948747, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.428827527154466, 'landmark_0_tracking_y': 192.95187596834387, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4901, 0.5025, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5034, 0.3774, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4971, 0.5583, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-1.43m,192.95m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962028,-121.93735,36.69519,-1,-121.93728,36.69361,2025-12-05T19:13:48
+INFO: Ping_count=9
+
+reset time= 1764971392.0
+NEW RUDDER POSITION= 284.4227882190283
+INFO: other_comms_count=3
+$SW,1.0,36.69682717034238,-121.94491789275844;
+lrauv lat 36.695188180930955  lrauv lon -121.93735151108548
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.695225,-121.937705,19.17]: 
+INFO: Elapsed time = 30.238 seconds
+INFO: Sim timestamp 2025-12-05T21:51:19
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 276.7016988127504
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-41.69224764 371.63835755  19.17428207]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-41.69224764 371.63835755  19.17428207]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -41.69224764104001, 'y': 371.63835755409673, 'z': 0, 'rph_z': 0, 'agent_1_dx': 41.69224764104001, 'agent_1_dy': -371.63835755409673, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.428827527154466, 'landmark_0_tracking_y': 192.95187596834387, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4895, 0.5012, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5139, 0.3761, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4866, 0.5596, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-1.43m,192.95m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962030,-121.9377,36.69522,-1,-121.93728,36.69361,2025-12-05T19:13:50
+INFO: Ping_count=9
+
+reset time= 1764971392.0
+NEW RUDDER POSITION= 250.80400647283724
+INFO: other_comms_count=3
+$SW,1.0,36.69321680098737,-121.94513232459865;
+lrauv lat 36.69522552758548  lrauv lon -121.9377048179963
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.695173,-121.938035,19.71]: 
+INFO: Elapsed time = 30.242 seconds
+INFO: Sim timestamp 2025-12-05T21:51:49
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 258.4488832900348
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-71.14352521 365.61905973  19.70591736]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-71.14352521 365.61905973  19.70591736]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -71.1435252125375, 'y': 365.61905973404646, 'z': 0, 'rph_z': 0, 'agent_1_dx': 71.1435252125375, 'agent_1_dy': -365.61905973404646, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.428827527154466, 'landmark_0_tracking_y': 192.95187596834387, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4902, 0.4980, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5237, 0.3781, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4768, 0.5576, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-1.43m,192.95m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962032,-121.93804,36.69517,-1,-121.93728,36.69361,2025-12-05T19:13:52
+INFO: Ping_count=9
+
+reset time= 1764971392.0
+NEW RUDDER POSITION= 232.55119095012162
+INFO: other_comms_count=3
+$SW,1.0,36.69139035088403,-121.9443076581432;
+lrauv lat 36.695171446611404  lrauv lon -121.93803519850685
+########################################
+New range measurement at  1764971520.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:51:59
+Timestamp =  1764971519.195
+LRAUV pose [36.695126,-121.938131,19.94]: 
+Target address 8 at 185.924 meters
+DEBUG: agents_slantRange= [[185.9237518310547, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 237.9888074937768
+INFO: agents range:  [[185.92375183   0.        ]]
+INFO: agents pos:  [[-79.65110967 360.30061983  19.93730736]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[185.92375183   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [185.92375183   0.        ]
+positions:  [[-79.65110967 360.30061983  19.93730736]
+ [  0.           0.           0.        ]]
+ranges_good:  [185.92375183]
+positions_good:  [[-79.65110967 360.30061983  19.93730736]]
+targets_depth:  [10.]
+pos: [-79.65110967 360.30061983  19.93730736]  depth: 10.0  r: 185.9237518310547
+Evaluation -> covariance (CI of 98): 49.31 
+ErrorPF= 0.7118699741363912
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=426.6620
+step: {'agent_0': {'x': -79.65110966947395, 'y': 360.3006198252551, 'z': 0, 'rph_z': 0, 'agent_1_dx': 79.65110966947395, 'agent_1_dy': -360.3006198252551, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.8874013371565925, 'landmark_0_tracking_y': 192.636709538583, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4972, 0.4982, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5266, 0.3799, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4741, 0.5559, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-1.89m,192.64m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962033,-121.93813,36.69513,185.92,-121.93728,36.69361,2025-12-05T19:13:53
+INFO: Ping_count=10
+
+reset time= 1764971520.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497152e+09  8.00000000e+00  3.66951262e+01 -1.21938131e+02
+  1.99373074e+01  1.85923752e+02]
+INFO: in exa is:  69335400084212c7cfc2f3e05300c70743
+NEW RUDDER POSITION= 212.0911151538636
+INFO: other_comms_count=3
+$SW,1.0,36.689817990464626,-121.94236665402903;
+lrauv lat 36.69512624593655  lrauv lon -121.93813107913657
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694988,-121.938294,20.48]: 
+INFO: Elapsed time = 30.239 seconds
+INFO: Sim timestamp 2025-12-05T21:52:20
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 222.89271540269263
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-94.03593064 344.81676147  20.48289299]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-94.03593064 344.81676147  20.48289299]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -94.03593063808512, 'y': 344.8167614717968, 'z': 0, 'rph_z': 0, 'agent_1_dx': 94.03593063808512, 'agent_1_dy': -344.8167614717968, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.8874013371565925, 'landmark_0_tracking_y': 192.636709538583, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4952, 0.4948, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5313, 0.3851, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4693, 0.5507, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-1.89m,192.64m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962034,-121.93829,36.69499,-1,-121.93728,36.69361,2025-12-05T19:13:54
+INFO: Ping_count=10
+
+reset time= 1764971520.0
+NEW RUDDER POSITION= 222.89271540269263
+INFO: other_comms_count=3
+$SW,1.0,36.69040979993058,-121.94368979116729;
+lrauv lat 36.6949847808134  lrauv lon -121.93829400064547
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694754,-121.938494,21.14]: 
+INFO: Elapsed time = 30.238 seconds
+INFO: Sim timestamp 2025-12-05T21:52:50
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 213.80857712688677
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-111.5861705   318.60901394   21.14100075]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-111.5861705   318.60901394   21.14100075]
+ [   0.            0.            0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: 2025-12-05 19:13:56,787 [processing](INFO): MARL: Received Other Vehicles Observation State: [1764971520.0, 8.0, 36.694733, -121.935852, 21.6, 177.2]
+{'agent_0': {'x': -111.5861704996787, 'y': 318.6090139388107, 'z': 0, 'rph_z': 0, 'agent_1_dx': 111.5861704996787, 'agent_1_dy': -318.6090139388107, 'agent_1_dz': 0, 'landmark_0_tracking_x': -1.8874013371565925, 'landmark_0_tracking_y': 192.636709538583, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4941, 0.4913, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5372, 0.3938, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4634, 0.5420, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-1.89m,192.64m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962036,-121.93849,36.69475,-1,-121.93728,36.69361,2025-12-05T19:13:56
+INFO: Ping_count=10
+
+reset time= 1764971520.0
+NEW RUDDER POSITION= 213.80857712688677
+INFO: other_comms_count=3
+$SW,1.0,36.68954695148306,-121.9429248522859;
+lrauv lat 36.69475060897486  lrauv lon -121.93849367938215
+***************************************************************************************************
+RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: [1764971520.0, 8.0, 36.694733, -121.935852, 21.6, 177.2]
+***************************************************************************************************
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694517,-121.938695,21.10]: 
+INFO: Elapsed time = 30.244 seconds
+INFO: Sim timestamp 2025-12-05T21:53:20
+DEBUG: agents_slantRange= [[-1, 177.2]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 213.76922581513514
+INFO: agents range:  [[  0.  177.2]]
+INFO: agents pos:  [[-129.25458373  292.18556323   21.09571648]
+ [ 124.43344612  318.93411311   21.6       ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[  0.  177.2]]
+mask before:  [False  True]
+mask:  [False  True]
+ranges[i]:  [  0.  177.2]
+positions:  [[-129.25458373  292.18556323   21.09571648]
+ [ 124.43344612  318.93411311   21.6       ]]
+ranges_good:  [177.2]
+positions_good:  [[124.43344612 318.93411311  21.6       ]]
+targets_depth:  [10.]
+pos: [124.43344612 318.93411311  21.6       ]  depth: 10.0  r: 177.2
+WARNIN, particle w too low, initializing again
+WARNING 3: initializing particles
+WARNING: Initializing particles
+Evaluation -> covariance (CI of 98): 970.33 
+ErrorPF= 64.1121683195048
+Evaluaiton -> max(self.w)=0.0016 sum(self.w)=13.0366
+WARNING 2: initializing particles
+WARNING: Initializing particles
+step: {'agent_0': {'x': -129.25458372791763, 'y': 292.1855632257648, 'z': 0, 'rph_z': 0, 'agent_1_dx': 253.68802984664217, 'agent_1_dy': 26.748549885116518, 'agent_1_dz': 0, 'landmark_0_tracking_x': 125.3280616057204, 'landmark_0_tracking_y': 318.40854693378895, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4941, 0.4912, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5846, 0.5089, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4151, 0.4913, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 0  target_predictions(x,y)=125.33m,318.41m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962038,-121.93869,36.69452,-1.0,-121.93584,36.69473,2025-12-05T19:13:58
+INFO: Ping_count=11
+
+reset time= 1764971520.0
+NEW RUDDER POSITION= 162.03113691482181
+INFO: other_comms_count=4
+$SW,1.0,36.68849062697044,-121.93636037603879;
+lrauv lat 36.694513794441505  lrauv lon -121.93869470626873
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694264,-121.938766,20.84]: 
+INFO: Elapsed time = 30.251 seconds
+INFO: Sim timestamp 2025-12-05T21:53:50
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 192.22216791355535
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-135.35283659  264.03276544   20.84278488]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-135.35283659  264.03276544   20.84278488]
+ [   0.            0.            0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -135.35283659386914, 'y': 264.03276543691754, 'z': 0, 'rph_z': 0, 'agent_1_dx': 135.35283659386914, 'agent_1_dy': -264.03276543691754, 'agent_1_dz': 0, 'landmark_0_tracking_x': 125.3280616057204, 'landmark_0_tracking_y': 318.40854693378895, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4980, 0.4906, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5451, 0.4120, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4131, 0.4819, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=125.33m,318.41m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962040,-121.93877,36.69426,-1,-121.93584,36.69473,2025-12-05T19:14:00
+INFO: Ping_count=11
+
+reset time= 1764971520.0
+NEW RUDDER POSITION= 166.32447557364213
+INFO: other_comms_count=4
+$SW,1.0,36.688113726356136,-121.93699854903919;
+lrauv lat 36.69426072387633  lrauv lon -121.9387664483638
+########################################
+New range measurement at  1764971648.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:53:59
+Timestamp =  1764971639.312
+LRAUV pose [36.694195,-121.938720,20.70]: 
+Target address 8 at 148.152 meters
+DEBUG: agents_slantRange= [[148.15196228027344, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 150.86995298685684
+INFO: agents range:  [[148.15196228   0.        ]]
+INFO: agents pos:  [[-131.07725367  256.36052999   20.70324516]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[148.15196228   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [148.15196228   0.        ]
+positions:  [[-131.07725367  256.36052999   20.70324516]
+ [   0.            0.            0.        ]]
+ranges_good:  [148.15196228]
+positions_good:  [[-131.07725367  256.36052999   20.70324516]]
+targets_depth:  [10.]
+pos: [-131.07725367  256.36052999   20.70324516]  depth: 10.0  r: 148.15196228027344
+Evaluation -> covariance (CI of 98): 548.63 
+ErrorPF= 7.557231292160537
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=20.0833
+step: {'agent_0': {'x': -131.07725366554223, 'y': 256.3605299908668, 'z': 0, 'rph_z': 0, 'agent_1_dx': 131.07725366554223, 'agent_1_dy': -256.3605299908668, 'agent_1_dz': 0, 'landmark_0_tracking_x': -23.38062460861174, 'landmark_0_tracking_y': 275.8071448763248, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5014, 0.4974, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5437, 0.4145, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4641, 0.4935, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=-23.38m,275.81m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962041,-121.93872,36.69419,148.15,-121.93751,36.69436,2025-12-05T19:14:01
+INFO: Ping_count=12
+
+reset time= 1764971648.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497165e+09  8.00000000e+00  3.66941945e+01 -1.21938720e+02
+  2.07032452e+01  1.48151962e+02]
+INFO: in exa is:  69335480084212c6dbc2f3e0a000cf05ca
+NEW RUDDER POSITION= 176.76764532677004
+INFO: other_comms_count=4
+$SW,1.0,36.68789128635316,-121.93836439514203;
+lrauv lat 36.69419453075504  lrauv lon -121.93871954490993
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.694009,-121.938635,20.04]: 
+INFO: Elapsed time = 30.226 seconds
+INFO: Sim timestamp 2025-12-05T21:54:21
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 159.21378075356532
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  2025-12-05 19:14:09,330 [processing](INFO): MARL: Received Other Vehicles Observation State: [1764971776.0, 8.0, 36.694229, -121.938263, 21.5, 116.4]
+[[-123.27739283  235.81236488   20.03671455]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-123.27739283  235.81236488   20.03671455]
+ [   0.            0.            0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -123.27739283209667, 'y': 235.81236488185823, 'z': 0, 'rph_z': 0, 'agent_1_dx': 123.27739283209667, 'agent_1_dy': -235.81236488185823, 'agent_1_dz': 0, 'landmark_0_tracking_x': -23.38062460861174, 'landmark_0_tracking_y': 275.8071448763248, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5026, 0.4932, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5411, 0.4214, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4667, 0.4867, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=-23.38m,275.81m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962042,-121.93863,36.69401,-1,-121.93751,36.69436,2025-12-05T19:14:02
+INFO: Ping_count=12
+
+reset time= 1764971648.0
+NEW RUDDER POSITION= 185.11147309347854
+INFO: other_comms_count=4
+$SW,1.0,36.687726654966966,-121.93941912707089;
+lrauv lat 36.694004688961336  lrauv lon -121.93863479188347
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693726,-121.938612,18.97]: 
+INFO: Elapsed time = 30.241 seconds
+INFO: Sim timestamp 2025-12-05T21:54:51
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 175.6985999831235
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-120.91876452  204.45386122   18.96993828]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-120.91876452  204.45386122   18.96993828]
+ [   0.            0.            0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -120.91876452218276, 'y': 204.45386121980846, 'z': 0, 'rph_z': 0, 'agent_1_dx': 120.91876452218276, 'agent_1_dy': -204.45386121980846, 'agent_1_dz': 0, 'landmark_0_tracking_x': -23.38062460861174, 'landmark_0_tracking_y': 275.8071448763248, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5008, 0.4895, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5403, 0.4318, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4675, 0.4762, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 3  target_predictions(x,y)=-23.38m,275.81m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962044,-121.93861,36.69373,-1,-121.93751,36.69436,2025-12-05T19:14:04
+INFO: Ping_count=12
+
+reset time= 1764971648.0
+NEW RUDDER POSITION= 201.59629232303672
+INFO: other_comms_count=4
+$SW,1.0,36.6878809627093,-121.94157633848651;
+lrauv lat 36.693721724840245  lrauv lon -121.93861227876101
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693450,-121.938701,18.72]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:55:21
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 193.90330748518556
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-128.50108809  173.82269603   18.72111702]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-128.50108809  173.82269603   18.72111702]
+ [   0.            0.            0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -128.50108808570076, 'y': 173.82269602501765, 'z': 0, 'rph_z': 0, 'agent_1_dx': 128.50108808570076, 'agent_1_dy': -173.82269602501765, 'agent_1_dz': 0, 'landmark_0_tracking_x': -23.38062460861174, 'landmark_0_tracking_y': 275.8071448763248, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.4975, 0.4898, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5428, 0.4421, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4650, 0.4660, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-23.38m,275.81m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962046,-121.9387,36.69345,-1,-121.93751,36.69436,2025-12-05T19:14:06
+INFO: Ping_count=12
+
+reset time= 1764971648.0
+NEW RUDDER POSITION= 168.00561514527234
+INFO: other_comms_count=4
+$SW,1.0,36.687260558571,-121.93715773470508;
+lrauv lat 36.693446679558406  lrauv lon -121.93870093750688
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.693182,-121.938690,18.95]: 
+INFO: Elapsed time = 30.253 seconds
+INFO: Sim timestamp 2025-12-05T21:55:51
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 177.49928829358768
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-127.19979068  144.02657846   18.95125008]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-127.19979068  144.02657846   18.95125008]
+ [   0.            0.            0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -127.19979067589156, 'y': 144.0265784575604, 'z': 0, 'rph_z': 0, 'agent_1_dx': 127.19979067589156, 'agent_1_dy': -144.0265784575604, 'agent_1_dz': 0, 'landmark_0_tracking_x': -23.38062460861174, 'landmark_0_tracking_y': 275.8071448763248, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5004, 0.4901, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5424, 0.4520, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4654, 0.4561, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-23.38m,275.81m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962048,-121.93869,36.69318,-1,-121.93751,36.69436,2025-12-05T19:14:08
+INFO: Ping_count=12
+
+reset time= 1764971648.0
+NEW RUDDER POSITION= 151.60159595367446
+INFO: other_comms_count=4
+$SW,1.0,36.68759448918689,-121.93504049722331;
+lrauv lat 36.69317784702696  lrauv lon -121.93869006457871
+***************************************************************************************************
+RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: [1764971776.0, 8.0, 36.694229, -121.938263, 21.5, 116.4]
+***************************************************************************************************
+########################################
+New range measurement at  1764971776.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:55:59
+Timestamp =  1764971759.433
+LRAUV pose [36.693113,-121.938654,19.05]: 
+Target address 8 at 139.579 meters
+DEBUG: agents_slantRange= [[139.5792694091797, 116.4]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 156.65289977147185
+INFO: agents range:  [[139.57926941 116.4       ]]
+INFO: agents pos:  [[-123.91737511  136.42210844   19.04662895]
+ [ -90.33391082  260.63588145   21.5       ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[139.57926941 116.4       ]]
+mask before:  [ True  True]
+mask:  [ True  True]
+ranges[i]:  [139.57926941 116.4       ]
+positions:  [[-123.91737511  136.42210844   19.04662895]
+ [ -90.33391082  260.63588145   21.5       ]]
+ranges_good:  [139.57926941 116.4       ]
+positions_good:  [[-123.91737511  136.42210844   19.04662895]
+ [ -90.33391082  260.63588145   21.5       ]]
+targets_depth:  [10.]
+pos: [-123.91737511  136.42210844   19.04662895]  depth: 10.0  r: 139.5792694091797
+pos: [-90.33391082 260.63588145  21.5       ]  depth: 10.0  r: 116.4
+Evaluation -> covariance (CI of 98): 412.70 
+ErrorPF= 2.5497077895492737
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=41.6191
+Evaluation -> covariance (CI of 98): 392.96 
+ErrorPF= 2.6778402852122696
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=96.9855
+step: {'agent_0': {'x': -123.91737511358224, 'y': 136.42210844298825, 'z': 0, 'rph_z': 0, 'agent_1_dx': 33.58346429653466, 'agent_1_dy': 124.21377300238237, 'agent_1_dz': 0, 'landmark_0_tracking_x': -28.47748145338343, 'landmark_0_tracking_y': 214.88802838374832, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5011, 0.4975, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5112, 0.5414, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4682, 0.4738, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-28.48m,214.89m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962049,-121.93865,36.69311,139.58,-121.93758,36.69381,2025-12-05T19:14:09
+INFO: Ping_count=13
+
+reset time= 1764971776.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497178e+09  8.00000000e+00  3.66931128e+01 -1.21938654e+02
+  1.90466290e+01  1.39579269e+02]
+INFO: in exa is:  69335500084212c5bfc2f3e09700be0574
+NEW RUDDER POSITION= 156.65289977147185
+INFO: other_comms_count=5
+$SW,1.0,36.68729231487651,-121.93562928121598;
+lrauv lat 36.69311277006044  lrauv lon -121.93865426918393
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692927,-121.938534,19.59]: 
+INFO: Elapsed time = 30.225 seconds
+INFO: Sim timestamp 2025-12-05T21:56:22
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 151.83849128195345
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-112.93428763  115.90565332   19.58592033]
+ [   0.            0.            0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-112.93428763  115.90565332   19.58592033]
+ [   0.            0.            0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -112.93428762711119, 'y': 115.90565331885591, 'z': 0, 'rph_z': 0, 'agent_1_dx': 112.93428762711119, 'agent_1_dy': -115.90565331885591, 'agent_1_dz': 0, 'landmark_0_tracking_x': -28.47748145338343, 'landmark_0_tracking_y': 214.88802838374832, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5037, 0.4932, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5376, 0.4614, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4718, 0.4670, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-28.48m,214.89m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962050,-121.93853,36.69293,-1,-121.93758,36.69381,2025-12-05T19:14:10
+INFO: Ping_count=13
+
+reset time= 1764971776.0
+NEW RUDDER POSITION= 151.83849128195345
+INFO: other_comms_count=5
+$SW,1.0,36.68732778542453,-121.93491303659329;
+lrauv lat 36.692923252050946  lrauv lon -121.93853388620924
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692677,-121.938360,20.75]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:56:52
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 150.0790843881374
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-97.07598371  88.35049955  20.75102615]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-97.07598371  88.35049955  20.75102615]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -97.07598371407948, 'y': 88.35049955407158, 'z': 0, 'rph_z': 0, 'agent_1_dx': 97.07598371407948, 'agent_1_dy': -88.35049955407158, 'agent_1_dz': 0, 'landmark_0_tracking_x': -28.47748145338343, 'landmark_0_tracking_y': 214.88802838374832, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5053, 0.4908, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5324, 0.4705, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4771, 0.4578, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=-28.48m,214.89m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962052,-121.93836,36.69268,-1,-121.93758,36.69381,2025-12-05T19:14:12
+INFO: Ping_count=13
+
+reset time= 1764971776.0
+NEW RUDDER POSITION= 150.0790843881374
+INFO: other_comms_count=5
+$SW,1.0,36.687170032502145,-121.93452738235126;
+lrauv lat 36.692673339123395  lrauv lon -121.9383598118583
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692430,-121.938177,21.28]: 
+INFO: Elapsed time = 30.240 seconds
+INFO: Sim timestamp 2025-12-05T21:57:22
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 148.46675852574788
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-80.4012549   61.17521781  21.27569962]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-80.4012549   61.17521781  21.27569962]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -80.40125489642378, 'y': 61.17521781148389, 'z': 0, 'rph_z': 0, 'agent_1_dx': 80.40125489642378, 'agent_1_dy': -61.17521781148389, 'agent_1_dz': 0, 'landmark_0_tracking_x': -28.47748145338343, 'landmark_0_tracking_y': 214.88802838374832, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5056, 0.4909, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5268, 0.4796, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4827, 0.4488, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-28.48m,214.89m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962054,-121.93818,36.69243,-1,-121.93758,36.69381,2025-12-05T19:14:14
+INFO: Ping_count=13
+
+reset time= 1764971776.0
+NEW RUDDER POSITION= 122.56906618583466
+INFO: other_comms_count=5
+$SW,1.0,36.68897128637913,-121.93162109695683;
+lrauv lat 36.69242676759495  lrauv lon -121.93817655400757
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692257,-121.937907,21.11]: 
+INFO: Elapsed time = 30.253 seconds
+INFO: Sim timestamp 2025-12-05T21:57:52
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 127.93457732925151
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-56.1386826   42.26379379  21.10884476]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-56.1386826   42.26379379  21.10884476]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -56.138682604418136, 'y': 42.26379379350692, 'z': 0, 'rph_z': 0, 'agent_1_dx': 56.138682604418136, 'agent_1_dy': -42.26379379350692, 'agent_1_dz': 0, 'landmark_0_tracking_x': -28.47748145338343, 'landmark_0_tracking_y': 214.88802838374832, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: 2025-12-05 19:14:21,331 [processing](INFO): MARL: Received Other Vehicles Observation State: [1764971904.0, 8.0, 36.693146, -121.938316, 18.6, 111.2]
+{'agent_0': tensor([[0.5081, 0.4937, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5187, 0.4859, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4908, 0.4425, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=-28.48m,214.89m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962056,-121.93791,36.69226,-1,-121.93758,36.69381,2025-12-05T19:14:16
+INFO: Ping_count=13
+
+reset time= 1764971776.0
+NEW RUDDER POSITION= 102.03688498933832
+INFO: other_comms_count=5
+$SW,1.0,36.69087121197846,-121.93026337413241;
+lrauv lat 36.69225556859222  lrauv lon -121.93790734895803
+########################################
+New range measurement at  1764971904.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:57:59
+Timestamp =  1764971879.552
+LRAUV pose [36.692231,-121.937830,21.05]: 
+Target address 8 at 164.978 meters
+DEBUG: agents_slantRange= [[164.97840881347656, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 112.06167014570562
+INFO: agents range:  [[164.97840881   0.        ]]
+INFO: agents pos:  [[-49.23091643  39.46422248  21.04641151]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[164.97840881   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [164.97840881   0.        ]
+positions:  [[-49.23091643  39.46422248  21.04641151]
+ [  0.           0.           0.        ]]
+ranges_good:  [164.97840881]
+positions_good:  [[-49.23091643  39.46422248  21.04641151]]
+targets_depth:  [10.]
+pos: [-49.23091643  39.46422248  21.04641151]  depth: 10.0  r: 164.97840881347656
+Evaluation -> covariance (CI of 98): 185.84 
+ErrorPF= 1.2505641797794738
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=148.0247
+step: {'agent_0': {'x': -49.2309164312901, 'y': 39.46422248380259, 'z': 0, 'rph_z': 0, 'agent_1_dx': 49.2309164312901, 'agent_1_dy': -39.46422248380259, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.467096256039986, 'landmark_0_tracking_y': 190.49203545519472, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5023, 0.4991, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5164, 0.4868, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4811, 0.4497, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=7.47m,190.49m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962057,-121.93783,36.69223,164.98,-121.93718,36.69359,2025-12-05T19:14:17
+INFO: Ping_count=14
+
+reset time= 1764971904.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497190e+09  8.00000000e+00  3.66922314e+01 -1.21937830e+02
+  2.10464115e+01  1.64978409e+02]
+INFO: in exa is:  69335580084212c4d8c2f3e02b00d20672
+NEW RUDDER POSITION= 112.06167014570562
+INFO: other_comms_count=5
+$SW,1.0,36.689796589633225,-121.93060238872397;
+lrauv lat 36.69223140042432  lrauv lon -121.9378303836806
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692176,-121.937569,20.02]: 
+INFO: Elapsed time = 30.230 seconds
+INFO: Sim timestamp 2025-12-05T21:58:23
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 104.12465199574744
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[-25.83145753  33.57598048  20.02078247]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[-25.83145753  33.57598048  20.02078247]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': -25.831457534455694, 'y': 33.57598047982901, 'z': 0, 'rph_z': 0, 'agent_1_dx': 25.831457534455694, 'agent_1_dy': -33.57598047982901, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.467096256039986, 'landmark_0_tracking_y': 190.49203545519472, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5078, 0.4980, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.5086, 0.4888, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4889, 0.4477, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=7.47m,190.49m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962058,-121.93757,36.69218,-1,-121.93718,36.69359,2025-12-05T19:14:18
+INFO: Ping_count=14
+
+reset time= 1764971904.0
+NEW RUDDER POSITION= 104.12465199574744
+INFO: other_comms_count=5
+$SW,1.0,36.69056718917914,-121.92999297274419;
+lrauv lat 36.6921749105762  lrauv lon -121.93756922501308
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692113,-121.937231,13.81]: 
+INFO: Elapsed time = 30.238 seconds
+INFO: Sim timestamp 2025-12-05T21:58:53
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 102.31120552086021
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[ 4.50107624 26.95620407 13.80959606]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[ 4.50107624 26.95620407 13.80959606]
+ [ 0.          0.          0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 4.501076235552318, 'y': 26.95620406838134, 'z': 0, 'rph_z': 0, 'agent_1_dx': -4.501076235552318, 'agent_1_dy': -26.95620406838134, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.467096256039986, 'landmark_0_tracking_y': 190.49203545519472, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5101, 0.4978, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4985, 0.4910, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.4990, 0.4455, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=7.47m,190.49m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962060,-121.93723,36.69211,-1,-121.93718,36.69359,2025-12-05T19:14:20
+INFO: Ping_count=14
+
+reset time= 1764971904.0
+NEW RUDDER POSITION= 102.31120552086021
+INFO: other_comms_count=5
+$SW,1.0,36.690698639175274,-121.9295949337752;
+lrauv lat 36.69211249614838  lrauv lon -121.93723056198843
+***************************************************************************************************
+RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: [1764971904.0, 8.0, 36.693146, -121.938316, 18.6, 111.2]
+***************************************************************************************************
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692062,-121.936895,5.19]: 
+INFO: Elapsed time = 30.241 seconds
+INFO: Sim timestamp 2025-12-05T21:59:23
+DEBUG: agents_slantRange= [[-1, 111.2]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 100.07041707473206
+INFO: agents range:  [[  0.  111.2]]
+INFO: agents pos:  [[ 34.56893274  21.61631881   5.19225216]
+ [-93.73830958 140.44298962  18.6       ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[  0.  111.2]]
+mask before:  [False  True]
+mask:  [False  True]
+ranges[i]:  [  0.  111.2]
+positions:  [[ 34.56893274  21.61631881   5.19225216]
+ [-93.73830958 140.44298962  18.6       ]]
+ranges_good:  [111.2]
+positions_good:  [[-93.73830958 140.44298962  18.6       ]]
+targets_depth:  [10.]
+pos: [-93.73830958 140.44298962  18.6       ]  depth: 10.0  r: 111.2
+Evaluation -> covariance (CI of 98): 77.11 
+ErrorPF= 1.7976182205432565
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=373.6416
+step: {'agent_0': {'x': 34.56893273803871, 'y': 21.616318811662495, 'z': 0, 'rph_z': 0, 'agent_1_dx': -128.30724232259672, 'agent_1_dy': 118.82667080918327, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.090813280192853, 'landmark_0_tracking_y': 189.60917415534618, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5100, 0.4982, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4572, 0.5396, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5092, 0.4440, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=7.09m,189.61m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962063,-121.93689,36.69206,-1.0,-121.93718,36.69358,2025-12-05T19:14:23
+INFO: Ping_count=15
+
+reset time= 1764971904.0
+NEW RUDDER POSITION= 100.07041707473206
+INFO: other_comms_count=6
+$SW,1.0,36.69088908790195,-121.92919627012908;
+lrauv lat 36.69206145587653  lrauv lon -121.9368947029905
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692021,-121.936607,0.28]: 
+INFO: Elapsed time = 30.254 seconds
+INFO: Sim timestamp 2025-12-05T21:59:53
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 99.3115270110251
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[60.35047562 17.38910315  0.27674142]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[60.35047562 17.38910315  0.27674142]
+ [ 0.          0.          0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 60.35047561745159, 'y': 17.38910314673558, 'z': 0, 'rph_z': 0, 'agent_1_dx': -60.35047561745159, 'agent_1_dy': -17.38910314673558, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.090813280192853, 'landmark_0_tracking_y': 189.60917415534618, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5086, 0.4986, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4799, 0.4942, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5178, 0.4426, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=7.09m,189.61m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962064,-121.93661,36.69202,-1,-121.93718,36.69358,2025-12-05T19:14:24
+INFO: Ping_count=15
+
+reset time= 1764971904.0
+NEW RUDDER POSITION= 73.4138346711119
+INFO: other_comms_count=6
+$SW,1.0,36.693754875691006,-121.92907324943826;
+lrauv lat 36.69202113742469  lrauv lon -121.93660667901152
+########################################
+New range measurement at  1764972032.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T21:59:59
+Timestamp =  1764971999.676
+LRAUV pose [36.692017,-121.936568,0.45]: 
+Target address 8 at 187.613 meters
+DEBUG: agents_slantRange= [[187.61277770996094, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 97.3251382131589
+INFO: agents range:  [[187.61277771   0.        ]]
+INFO: agents pos:  [[63.83251226 16.94149108  0.44886795]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[187.61277771   0.        ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [187.61277771   0.        ]
+positions:  [[63.83251226 16.94149108  0.44886795]
+ [ 0.          0.          0.        ]]
+ranges_good:  [187.61277771]
+positions_good:  [[63.83251226 16.94149108  0.44886795]]
+targets_depth:  [10.]
+pos: [63.83251226 16.94149108  0.44886795]  depth: 10.0  r: 187.61277770996094
+Evaluation -> covariance (CI of 98): 73.16 
+ErrorPF= 2.749545670958298
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=328.9956
+step: {'agent_0': {'x': 63.83251226285938, 'y': 16.941491082310677, 'z': 0, 'rph_z': 0, 'agent_1_dx': -63.83251226285938, 'agent_1_dy': -16.941491082310677, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.7012841395631755, 'landmark_0_tracking_y': 193.11419021327245, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5012, 0.4999, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4787, 0.4944, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5187, 0.4413, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=7.70m,193.11m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962065,-121.93657,36.69202,187.61,-121.93717,36.69361,2025-12-05T19:14:25
+INFO: Ping_count=16
+
+reset time= 1764972032.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497203e+09  8.00000000e+00  3.66920171e+01 -1.21936568e+02
+  4.48867947e-01  1.87612778e+02]
+INFO: in exa is:  69335600084212c4a0c2f3df8600040754
+NEW RUDDER POSITION= 71.4274458732457
+INFO: other_comms_count=6
+$SW,1.0,36.69396008513643,-121.92911347306836;
+lrauv lat 36.692017099029194  lrauv lon -121.9365677634171
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692018,-121.936448,0.00]: 
+INFO: Elapsed time = 30.223 seconds
+INFO: Sim timestamp 2025-12-05T22:00:24
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 88.81003026090949
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[74.55554987 17.1642287   0.        ]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[74.55554987 17.1642287   0.        ]
+ [ 0.          0.          0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 74.55554986710194, 'y': 17.164228696841747, 'z': 0, 'rph_z': 0, 'agent_1_dx': -74.55554986710194, 'agent_1_dy': -17.164228696841747, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.7012841395631755, 'landmark_0_tracking_y': 193.11419021327245, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5036, 0.5001, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4751, 0.4943, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5223, 0.4414, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=7.70m,193.11m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962066,-121.93645,36.69202,-1,-121.93717,36.69361,2025-12-05T19:14:26
+INFO: Ping_count=16
+
+reset time= 1764972032.0
+NEW RUDDER POSITION= 88.81003026090949
+INFO: other_comms_count=6
+$SW,1.0,36.69207913351813,-121.92861316750334;
+lrauv lat 36.692018334899096  lrauv lon -121.93644772290756
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692049,-121.936186,0.50]: 
+INFO: Elapsed time = 30.242 seconds
+INFO: Sim timestamp 2025-12-05T22:00:54
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 81.04571126462129
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[97.86008375 20.83624761  0.50394678]
+ [ 0.          0.          0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[97.86008375 20.83624761  0.50394678]
+ [ 0.          0.          0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 97.8600837533595, 'y': 20.836247610859573, 'z': 0, 'rph_z': 0, 'agent_1_dx': -97.8600837533595, 'agent_1_dy': -20.836247610859573, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.7012841395631755, 'landmark_0_tracking_y': 193.11419021327245, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5078, 0.5012, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4674, 0.4931, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5301, 0.4426, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=7.70m,193.11m
+2025-12-05 19:14:33,072 [processing](INFO): MARL: Received Other Vehicles Observation State: [1764972160.0, 8.0, 36.692787, -121.935905, 18.9, 150.5]
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962068,-121.93619,36.69205,-1,-121.93717,36.69361,2025-12-05T19:14:28
+INFO: Ping_count=16
+
+reset time= 1764972032.0
+NEW RUDDER POSITION= 81.04571126462129
+INFO: other_comms_count=6
+$SW,1.0,36.692961739680925,-121.92843386276803;
+lrauv lat 36.692049118988805  lrauv lon -121.93618644124146
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692089,-121.935847,3.79]: 
+INFO: Elapsed time = 30.239 seconds
+INFO: Sim timestamp 2025-12-05T22:01:24
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 81.06856337335833
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[128.17112133  25.59986955   3.7923944 ]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[128.17112133  25.59986955   3.7923944 ]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 128.17112132627517, 'y': 25.599869553465396, 'z': 0, 'rph_z': 0, 'agent_1_dx': -128.17112132627517, 'agent_1_dy': -25.599869553465396, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.7012841395631755, 'landmark_0_tracking_y': 193.11419021327245, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5101, 0.5016, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4573, 0.4915, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5402, 0.4442, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 2  target_predictions(x,y)=7.70m,193.11m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962070,-121.93585,36.69209,-1,-121.93717,36.69361,2025-12-05T19:14:30
+INFO: Ping_count=16
+
+reset time= 1764972032.0
+NEW RUDDER POSITION= 81.06856337335833
+INFO: other_comms_count=6
+$SW,1.0,36.69299950830062,-121.92809356931637;
+lrauv lat 36.692089400098325  lrauv lon -121.93584660654037
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692140,-121.935500,7.70]: 
+INFO: Elapsed time = 30.253 seconds
+INFO: Sim timestamp 2025-12-05T22:01:54
+DEBUG: agents_slantRange= [[-1, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 79.01000832087762
+INFO: agents range:  [[0. 0.]]
+INFO: agents pos:  [[159.03716092  31.59402472   7.69725561]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  False
+ranges:  [[0. 0.]]
+mask before:  [False False]
+mask:  [False False]
+ranges[i]:  [0. 0.]
+positions:  [[159.03716092  31.59402472   7.69725561]
+ [  0.           0.           0.        ]]
+ranges_good:  []
+positions_good:  []
+targets_depth:  [10.]
+step: {'agent_0': {'x': 159.0371609160211, 'y': 31.594024722464383, 'z': 0, 'rph_z': 0, 'agent_1_dx': -159.0371609160211, 'agent_1_dy': -31.594024722464383, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.7012841395631755, 'landmark_0_tracking_y': 193.11419021327245, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5103, 0.5020, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4470, 0.4895, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5504, 0.4462, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=7.70m,193.11m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962072,-121.9355,36.69214,-1,-121.93717,36.69361,2025-12-05T19:14:32
+INFO: Ping_count=16
+
+reset time= 1764972032.0
+NEW RUDDER POSITION= 53.11231598096441
+INFO: other_comms_count=6
+$SW,1.0,36.69587134185392,-121.92918179175831;
+lrauv lat 36.692140373825914  lrauv lon -121.93550040698351
+########################################
+New range measurement at  1764972160.0
+INFO: Elapsed time = 128.000 seconds
+INFO: Sim timestamp 2025-12-05T22:01:59
+Timestamp =  1764972119.807
+LRAUV pose [36.692150,-121.935438,8.21]: 
+Target address 8 at 227.703 meters
+DEBUG: agents_slantRange= [[227.70338439941406, 0]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 77.94714484411371
+INFO: agents range:  [[227.7033844   0.       ]]
+INFO: agents pos:  [[164.6148085   32.7849692    8.21077442]
+ [  0.           0.           0.        ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[227.7033844   0.       ]]
+mask before:  [ True False]
+mask:  [ True False]
+ranges[i]:  [227.7033844   0.       ]
+positions:  [[164.6148085   32.7849692    8.21077442]
+ [  0.           0.           0.        ]]
+ranges_good:  [227.7033844]
+positions_good:  [[164.6148085   32.7849692    8.21077442]]
+targets_depth:  [10.]
+pos: [164.6148085   32.7849692    8.21077442]  depth: 10.0  r: 227.70338439941406
+Evaluation -> covariance (CI of 98): 67.27 
+ErrorPF= 1.9641625422451625
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=438.6902
+step: {'agent_0': {'x': 164.61480849899817, 'y': 32.78496920038015, 'z': 0, 'rph_z': 0, 'agent_1_dx': -164.61480849899817, 'agent_1_dy': -32.78496920038015, 'agent_1_dz': 0, 'landmark_0_tracking_x': 7.260817062362354, 'landmark_0_tracking_y': 194.61766234761313, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: {'agent_0': tensor([[0.5019, 0.5004, 0.0000, 0.0000, 1.0000, 1.0000],
+        [0.4451, 0.4891, 0.5000, 0.0000, 1.0000, 0.0000],
+        [0.5525, 0.4461, 0.4967, 0.0000, 0.0000, 0.0000]])}
+INFO: Action= 1  target_predictions(x,y)=7.26m,194.62m
+Stalk target on addr 8
+ODSS format: targAddr,time,lon0,lat0,range,lonTarg,latTarg,timestring
+RESULT: 8,1764962073,-121.93544,36.69215,227.7,-121.93718,36.69362,2025-12-05T19:14:33
+INFO: Ping_count=17
+
+reset time= 1764972160.0
+INFO: Sending current observation to other vehicles (Timestamp, address, lat, lon, depth, range) [ 1.76497216e+09  8.00000000e+00  3.66921498e+01 -1.21935438e+02
+  8.21077442e+00  2.27703384e+02]
+INFO: in exa is:  69335680084212c4c3c2f3def2005208e5
+NEW RUDDER POSITION= 52.049452504200495
+INFO: other_comms_count=6
+$SW,1.0,36.69597453394837,-121.9292062382841;
+lrauv lat 36.692149821066856  lrauv lon -121.93543783355516
+***************************************************************************************************
+RECEIVED: New data from nearby agents [timestamp, agent address, agent x, agent y, agent z, range]: [1764972160.0, 8.0, 36.692787, -121.935905, 18.9, 150.5]
+***************************************************************************************************
+***************************************
+WARNING: No range measurement for a while, using last informaiton to compute new heading
+LRAUV pose [36.692270,-121.935195,9.45]: 
+INFO: Elapsed time = 30.227 seconds
+INFO: Sim timestamp 2025-12-05T22:02:24
+DEBUG: agents_slantRange= [[-1, 150.5]]
+DEBUG: self.agents_range= [[0. 0.]]
+Agen yaw (360NorthClockwise)= 57.894519744420265
+INFO: agents range:  [[  0.  150.5]]
+INFO: agents pos:  [[186.17117195  46.31012385   9.44820118]
+ [122.09464159 103.00585584  18.9       ]]
+INFO: targets_depth:  [10.]
+INFO: new_range:  True
+ranges:  [[  0.  150.5]]
+mask before:  [False  True]
+mask:  [False  True]
+ranges[i]:  [  0.  150.5]
+positions:  [[186.17117195  46.31012385   9.44820118]
+ [122.09464159 103.00585584  18.9       ]]
+ranges_good:  [150.5]
+positions_good:  [[122.09464159 103.00585584  18.9       ]]
+targets_depth:  [10.]
+pos: [122.09464159 103.00585584  18.9       ]  depth: 10.0  r: 150.5
+Evaluation -> covariance (CI of 98): 69.69 
+ErrorPF= 1.7081645708140911
+Evaluaiton -> max(self.w)=0.0798 sum(self.w)=469.3512
+step: {'agent_0': {'x': 186.171171953436, 'y': 46.31012384966016, 'z': 0, 'rph_z': 0, 'agent_1_dx': -64.07653036061674, 'agent_1_dy': 56.69573199469596, 'agent_1_dz': 0, 'landmark_0_tracking_x': 6.584627531614375, 'landmark_0_tracking_y': 196.26319568369402, 'landmark_0_tracking_z': 10.0, 'landmark_0_range': 0}}
+Processed Obs: 

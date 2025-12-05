@@ -23,46 +23,41 @@ try:
 except:
     from jaxtorchagent.production_agent import load
 
-AGENT_VERSION = 4 
+
 
 ###########################################################################################################
 ##############################      Main Tracking Class                          ##########################
 ########################################################################################################### 
 class TargetTracking(object):
-    def __init__(self):
+    def __init__(self, agent_version='1v1'):
 
-        self.num_agents = 2
-        self.num_targets = 1
-
-
-        if AGENT_VERSION == 1:        
+        if agent_version == "1v1":        
             #1- First we load the RL agent
-            #original name = "mappo_rnn_follow_1v1_10min_training_512steps_utracking_1_vs_1_seed0_vmap0_final.safetensors"
-            #model_name = "mappo_rnn_1v1.safetensors"
-            #original name = "mappo_transformer_follow_from_1v1_landmarkprop25_1024steps_60ksteps_utracking_1_vs_1_seed0_vmap0.safetensors" #Good for 1target and 1agent
-            model_name = "mappo_transformer_1v1.safetensors" #Good for 1target and 1agent
-            #original name ="mappo_transformer_tracking_from_1024steps_to_larger_team_utracking_3_vs_1_step24412_rng928981903.safetensors" #Good for 1target and multiple agents
-            #model_name = "mappo_transformer_3v1.safetensors" #Good for 1target and multiple agents
-            #original name = "mappo_transformer_from_5v5follow_256steps_utracking_5_vs_5_step7320_rng202567368.safetensors"
-            #model_name = "mappo_transformer_5v5.safetensors"
-        elif AGENT_VERSION == 2:
-            model_name = "mappo_transformer_1v1_v2.safetensors" #New agent trained with new observation vector state
-        elif AGENT_VERSION == 4:
-            model_name = "mappo_transformer_1v1_v4.safetensors" #New agent trained with new observation vector state
+            #This is the agent we tested on Octover 2025 and worked great 1v1
+            model_name = "mappo_transformer_1v1_v4.safetensors" # New agent with should work: mappo_transformer_noisy_more_linear_utracking_1_vs_1_step456_rng1948878966
+            self.num_agents = 1
+            self.num_targets = 1
+            print('INFO: Using AGENT VERSION 1 agent vs 1 target (aka 1v1)')
+        elif agent_version == "2v1":
+            model_name = "mappo_2v1_2december.safetensors" #Same agent as previouse but trained for 2v1
+            self.num_agents = 2
+            self.num_targets = 1
+            print('INFO: Using AGENT VERSION 2 agent vs 1 target (aka 2v1)')
         else:
             print ('ERROR. AGENT VERSION NEED TO BE SPECIFIED CORRECTLY')
+
 
         project_root = os.path.dirname(os.path.abspath(__file__))
         project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
         project_root = os.path.abspath(project_root) 
         model_path = os.path.join(project_root, "backseat_app","jaxtorchagent", "IROS_MODELS", model_name)
         self.agent_controller = load(
-                num_agents=self.num_agents-1,
+                num_agents=self.num_agents,
                 num_landmarks=self.num_targets,
                 model_path=model_path,
                 dt=30, # seconds per step
-                agent_version = AGENT_VERSION
             )
+
         self.agent_controller.reset(seed=1)
         self.discrete_action_mapping = np.array([-0.24, -0.12, 0, 0.12, 0.24])
         self.discrete_action_mapping_heading = np.array([0.903, 0.452, 0.00, -0.452, -0.903])
@@ -113,6 +108,8 @@ class TargetTracking(object):
         lrauvLatLon = agents_lrauvLatLon[0]
         lrauvDepth = agents_lrauvDepth[0]
         measureTimestamp = np.array(agents_measureTimestamp).item(0)
+        print('DEBUG: agents_slantRange=',agents_slantRange)
+        print('DEBUG: self.agents_range=',self.agents_range)
         for i in range(len(agents_slantRange[0])): #TODO: we assume that we have only one target, if more, we need to change the script
             self.agents_range[0][i] = agents_slantRange[0][i] 
 
@@ -157,7 +154,7 @@ class TargetTracking(object):
         self.lrauv_position = np.array([lrauv_x, lrauv_vx, lrauv_y, lrauv_vy]) 
         self.last_measureTimestamp = measureTimestamp + 0.
 
-        #compute the position of the others LRAUVs in UTM (using the format for Matteo)
+        #compute the position of the Current and Others LRAUVs in UTM (using the format for Matteo)
         for i in range(len(agents_lrauvLatLon)):
             if agents_lrauvLatLon[i][0] == 0:
                   continue
@@ -212,11 +209,12 @@ class TargetTracking(object):
         #print('INFO: LRAUV pos (x,y,depth,yaw)= %.2fm, %.2fm, %.2fm, %.2fdegrees'%(self.lrauv_position[0],self.lrauv_position[2],lrauvDepth,angle*180./np.pi))
         #print('INFO: Target range= %.2fm'%planarRange)
         #print('INFO: MYOBSERVER (x,vx,y,vy) ', self.lrauv_position)
-        print('INFO: agents pos: ', self.agents_pos)
         print('INFO: agents range: ',self.agents_range)
+        print('INFO: agents pos: ', self.agents_pos)
+        print('INFO: targets_depth: ', targets_depth)
+        print('INFO: new_range: ', new_range)
         #update target prediciton and obtain new action at once
         self.action, self.target_predictions = self.agent_controller.get_action_and_predictions(
-                    angle=angle,
                     ranges=self.agents_range, # (targets, agents), first is always the current agent
                     positions=self.agents_pos,
                     targets_depth=targets_depth,

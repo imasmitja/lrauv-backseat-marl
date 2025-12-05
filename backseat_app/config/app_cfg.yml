@@ -31,7 +31,7 @@ lrauv_data: #[]  # request data from:
       - 'acoustic_contact_address'
       - 'acoustic_receive_time'
       - '_.othersObservations'
-      #- '_.contactLabelToLcm'
+      - '_.contactLabelToLcm'
       #- '_.othersObservationsToLcm'
 
 
@@ -50,3 +50,5 @@ rate_check_mins: 10
 # * User-defined configuration * #
 # add more configs
 vehicle_id_log: 6
+agent_version: '1v1'  # options are '1v1' or '2v1' 
+

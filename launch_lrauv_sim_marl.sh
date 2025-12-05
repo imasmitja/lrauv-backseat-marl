@@ -38,9 +38,9 @@ CMD_X_OPTION=""
 
 # Vehicles used during the simulation:
 #VEHICLE=("brizo" "daphne" "galene" "makai" "pontus" "tethys" "triton")
-#VEHICLE_agents=("tethys" "pontus")
-VEHICLE_agents=("tethys")
-#VEHICLE_targets=("daphne")
+VEHICLE_agents=("tethys" "pontus")
+#VEHICLE_agents=("tethys")
+VEHICLE_targets=("daphne")
 
 # Mission used for each vehicle agent:
 #CMD_X_OPTION_agent="Engineering/marl.tl"
@@ -205,6 +205,8 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                 
         fi
 
+        # Create the log directory first
+        mkdir -p ./backseatlogs
 
 	if VEHICLE_TRUE=true; then
                 tmux new -d -s agent-$VEHICLE
@@ -263,12 +265,19 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                         tmux send-keys -t agent-$VEHICLE.0 "set marl.SendDataLabel $OTHER_AGENT count" ENTER
                 done
                 sleep 4 #Give it some time to start properly before sending the command
+                # This is a trick I had to use to initialize the othersObservations variable as a non NaN or empty string.
+                # if I don't do this, the backseat app does not get the right LCM subscription for the othersObservations variable.
+                #tmux send-keys -t agent-$VEHICLE.0 'set _.othersObservations string "hello"' ENTER
+                sleep 4 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "run" ENTER
                 echo "✅ Launched LRAUV mission instance for $VEHICLE."
 
                 #launch different tmux windows for each lrauv-backseat-marl related to an agent
                 tmux new -d -s backseat-$VEHICLE
-                tmux send-keys -t agent-$VEHICLE.0 "export $LCM_URL" ENTER
+                tmux send-keys -t backseat-$VEHICLE.0 "export $LCM_URL" ENTER
+                # if we want to save the .logs, but this makes the hole process slower
+                #tmux send-keys -t backseat-$VEHICLE.0 "python3.8 ./backseat_app/main.py -c ./backseat_app/config/app_cfg_$VEHICLE.yml 2>&1 | tee ./backseatlogs/backseat_${VEHICLE}.log" ENTER
+                # if we don't want to save the .logs
                 tmux send-keys -t backseat-$VEHICLE.0 "python3.8 ./backseat_app/main.py -c ./backseat_app/config/app_cfg_$VEHICLE.yml" ENTER
                 echo "✅ Launched LRAUV backseat instance for $VEHICLE."
 

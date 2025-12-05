@@ -59,6 +59,7 @@ class Tracker_ivan:
         # bring the ranges to 2d if the landmarks depth is known
         if depth is not None:
             for i, (r, pos) in enumerate(zip(ranges, positions)):
+                print('pos:', pos, ' depth:', depth, ' r:', r )
                 if r != 0 and ((pos[2] - depth)**2)<=r**2 :
                     ranges[i] = np.sqrt(r**2 - (pos[2] - depth)**2)
 
