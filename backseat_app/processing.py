@@ -344,7 +344,7 @@ class MarlProcessor(LcmHandlerBase):
         if debug_mode == True:
             self.command = "$SW" #we control the heading
             #self.command = "$SR" #we control the rudder
-            self.speed = 1.
+            self.speed = 0.
             aux_action = 90 #in degrees, from 0 to 360.
             self.new_action = 180
             #aux_action = 6.8 #in degrees, [-13.7, -6.8, 0, 6.8, 13.7]
@@ -414,6 +414,11 @@ class MarlProcessor(LcmHandlerBase):
             val=aux,
             unit='none_str'
         )
+        self.publisher.publish(channel_name)
+
+        # publish LCM message
+        self.publisher.clear_msg()
+        self.publisher.add_int('_.new_send_observations', 1, 'count')
         self.publisher.publish(channel_name)
 
         return

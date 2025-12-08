@@ -40,6 +40,7 @@ CMD_X_OPTION=""
 #VEHICLE=("brizo" "daphne" "galene" "makai" "pontus" "tethys" "triton")
 VEHICLE_agents=("tethys" "pontus")
 #VEHICLE_agents=("tethys")
+#VEHICLE_targets=("galene" "daphne")
 VEHICLE_targets=("daphne")
 
 # Mission used for each vehicle agent:
@@ -183,6 +184,7 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
 
         if [ $VEHICLE == 'makai' ]; then
                 LCM_URL="LCM_DEFAULT_URL='udpm://239.255.76.64:7667?ttl=1'"
+# Wait for Gazebo to fully start
                 VEHICLE_TRUE=true
                 
         fi
@@ -267,8 +269,10 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                 sleep 4 #Give it some time to start properly before sending the command
                 # This is a trick I had to use to initialize the othersObservations variable as a non NaN or empty string.
                 # if I don't do this, the backseat app does not get the right LCM subscription for the othersObservations variable.
-                #tmux send-keys -t agent-$VEHICLE.0 'set _.othersObservations string "hello"' ENTER
-                sleep 4 #Give it some time to start properly before sending the command
+                #tmux send-keys -t agent-$VEHICLE.0 'set _.othersObservations string "init"' ENTER
+                #sleep 4 #Give it some time to start properly before sending the command
+                #tmux send-keys -t agent-$VEHICLE.0 'set _.send_observations string "init"' ENTER
+                #sleep 4 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "run" ENTER
                 echo "✅ Launched LRAUV mission instance for $VEHICLE."
 
