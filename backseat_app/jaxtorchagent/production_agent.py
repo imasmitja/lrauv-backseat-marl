@@ -251,7 +251,7 @@ class AgentProductionController:
         # logic is that the first agent is the one using the controller
         # Use fresh data if communication is available, otherwise use cached observations
         for j in range(1, self.num_agents):
-            if len(positions) > j:
+            if np.array(positions[j]).sum() != 0.0:
                 # Fresh data from communication
                 dx = positions[j][0] - positions[0][0]
                 dy = positions[j][1] - positions[0][1]

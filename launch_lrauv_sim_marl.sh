@@ -41,12 +41,12 @@ CMD_X_OPTION=""
 VEHICLE_agents=("tethys" "pontus")
 #VEHICLE_agents=("tethys")
 #VEHICLE_targets=("galene" "daphne")
-VEHICLE_targets=("daphne")
+VEHICLE_targets=("galene" "daphne")
 
 # Mission used for each vehicle agent:
 #CMD_X_OPTION_agent="Engineering/marl.tl"
 #CMD_X_OPTION_agent="Engineering/marl3.tl"
-CMD_X_OPTION_agent="Engineering/marl3.tl"
+CMD_X_OPTION_agent="Engineering/marl4.tl"
 #CMD_X_OPTION_agent=""
 
 # Mission used for each vehicle target:
@@ -267,12 +267,6 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                         tmux send-keys -t agent-$VEHICLE.0 "set marl.SendDataLabel $OTHER_AGENT count" ENTER
                 done
                 sleep 4 #Give it some time to start properly before sending the command
-                # This is a trick I had to use to initialize the othersObservations variable as a non NaN or empty string.
-                # if I don't do this, the backseat app does not get the right LCM subscription for the othersObservations variable.
-                #tmux send-keys -t agent-$VEHICLE.0 'set _.othersObservations string "init"' ENTER
-                #sleep 4 #Give it some time to start properly before sending the command
-                #tmux send-keys -t agent-$VEHICLE.0 'set _.send_observations string "init"' ENTER
-                #sleep 4 #Give it some time to start properly before sending the command
                 tmux send-keys -t agent-$VEHICLE.0 "run" ENTER
                 echo "✅ Launched LRAUV mission instance for $VEHICLE."
 
