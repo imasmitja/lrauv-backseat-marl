@@ -90,7 +90,7 @@ mission marl {
       """
       "
               If the vehicle does not receive an acoustic signal for more than this
-              length of time, it will surface for communicatioSendDataLabelns with shore.
+              length of time, it will surface for communications with shore.
       """
 
     SendObservationDataInterval = 180 second
@@ -240,8 +240,7 @@ mission marl {
   behavior Guidance:Execute {
     run in sequence
 
-    #set command = "get _.othersObservations none_str"
-    set command = "set _.othersObservations string \"initialvalue\""
+    set command = "get _.others_observations none_str"
   }
 
   aggregate SendObservationData {
@@ -268,18 +267,6 @@ mission marl {
     syslog info "SendData: sent send_observations : " + MyTempVar~none_str
          + " to nearby vehicles. Elapsed time " + ElapsedSinceLastSendData~minute
   }
-
-  ##new from December 2025
-  aggregate UpdateInternalVarialbe {
-    run when (
-      elapsed ( customUri "_.contactLabelToLcm" ) > TrackingUpdatePeriod )
-
-    assign in sequence customUri "_.contactLabelToLcm" = ContactLabel
-    
-    syslog info "Upadating contactLabelToLcm " + customUri "_.contactLabelToLcm"~count
-  }
-
-  ##continuing with old stuff
 
   aggregate UpdateContactLabel {
     run when (

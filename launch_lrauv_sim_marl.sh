@@ -41,7 +41,7 @@ CMD_X_OPTION=""
 VEHICLE_agents=("tethys" "pontus")
 #VEHICLE_agents=("tethys")
 #VEHICLE_targets=("galene" "daphne")
-VEHICLE_targets=("galene" "daphne")
+VEHICLE_targets=("daphne")
 
 # Mission used for each vehicle agent:
 #CMD_X_OPTION_agent="Engineering/marl.tl"
@@ -224,7 +224,7 @@ for VEHICLE in ${VEHICLE_agents[@]}; do
                 sleep 6 #Give it some time to start properly before sending the command. Tis step needs to be done to fix a bug in the simulation time.
                 #tmux send-keys -t agent-$VEHICLE.0 "maintain sensor nal9602.latitude_fix 36.7 degree; maintain sensor nal9602.longitude_fix -121.8 degree; set nal9602.time_fix \$copy_seconds_timestamp_from_frontseat second" ENTER
                 sleep 5 #Give it some time to start properly before sending the command
-                tmux send-keys -t agent-$VEHICLE.0 "set marl.ContactLabel $TARGET_ID count" ENTER
+                tmux send-keys -t agent-$VEHICLE.0 "set marl.ContactLabelOne $TARGET_ID count" ENTER
 
                 # Get all other vehicles
                 OTHER_VEHICLES=()

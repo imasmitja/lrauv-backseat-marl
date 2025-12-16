@@ -31,14 +31,22 @@ mission marl {
       triton = 12
       tiny = 20
       """
-    ContactLabelTwo = 9 count
+    ContactLabelTwo = 0 count
       """
       The acoustic address of the second asset to be pinged
+      set to 0 if only one target is to be pinged
       """
     SendDataLabel = 10 count
       """
       The acoustic address of the asset to send observation data 255 broadcast (it doesn't work,says it is not mapped), 10 is pontus
       This is the default value, but it will be overwritten by bash file duirng simulation launch.
+      set to 0 if no data sending is desired
+      """
+
+    SendDataStrPing = 1 count
+      """
+      If 0 = we will use the new string funciton to send data over DAT modem (slower but we can receive more data such as range to target from other vehicle)
+      If 1 = we will use the old pinging method to send data (faster but we can only receive the position of the other vehicle)
       """
 
     ContactDepth = NaN meter
@@ -96,7 +104,7 @@ mission marl {
       length of time, it will surface for communications with shore.
       """
 
-    SendObsUpdatePeriod = 480 second
+    SendObsUpdatePeriod = 120 second
       """
       Time to wait after an a-comms data has been sent before sending new data.
       """
@@ -181,15 +189,7 @@ mission marl {
 
     ContactLabel = 8 count
     """
-    The acoustic address of the asset to be tracked. This is the default value, but it will be overwritten by bash file duirng simulation launch, and by ContactLabelOne duirng mission.
-    tethys = 6
-    brizo = 11
-    daphne = 8
-    galene = 9
-    makai = 5
-    pontus = 10
-    triton = 12
-    tiny = 20
+    This is the default value, but it will be overwritten by bash file duirng simulation launch, and by ContactLabelOne duirng mission.
     """
 
     # You are even less likely to need to change these.
@@ -204,6 +204,12 @@ mission marl {
       """
       Minimum offshore distance for the entire mission.
       """
+
+    auxNewSendObservations = 0 count
+      """
+      Auxiliary variable to help with new send observations flag elapsed time
+      """
+
   }
 
   output {
@@ -214,6 +220,10 @@ mission marl {
     PingEndTwo = false
       """
       Mission variable (don't change). Flag to count elapsed time after pinging target two.
+      """
+    PingEndThree = false
+      """
+      Mission variable (don't change). Flag to count elapsed time after pinging target three.
       """
     HeadingMode = 0 count
       """
@@ -259,6 +269,18 @@ mission marl {
     ElapsedSincePingEndOne = 0 second
       """
       Time elapsed since pinging target one ended.
+      """
+    ElapsedSincePingEndThree = 0 second
+      """
+      Time elapsed since pinging target three ended.
+      """
+    ContactLatitude = 0 degree
+      """
+      The latitude of the contact being tracked.
+      """ 
+    ContactLongitude = 0 degree
+      """ 
+      The longitude of the contact being tracked.
       """
   }
 
@@ -336,16 +358,23 @@ mission marl {
 
     #Variable used to send contactLabel to backseat app (using LCM)
     assign in sequence customUri "_.contactLabelToLcm" = ContactLabel
+    assign in sequence customUri "_.ContactLabelOneToLcm" = ContactLabelOne
+    assign in sequence customUri "_.ContactLabelTwoToLcm" = ContactLabelTwo
+    assign in sequence customUri "_.SendDataLabelToLcm" = SendDataLabel
+    assign in sequence customUri "_.SendDataStrPingToLcm" = SendDataStrPing 
     
-    syslog info "Updating contactLabelToLcm " + customUri "_.contactLabelToLcm"~count
+    
+    syslog info "Updating contactLabelToLcm " + customUri "_.contactLabelToLcm"~count + ", ContactLabelOneToLcm " + customUri "_.ContactLabelOneToLcm"~count
+      + ", ContactLabelTwoToLcm " + customUri "_.ContactLabelTwoToLcm"~count  
   }
 
   aggregate UpdateNewSendObservations {
     run when (
-      elapsed ( NewSendObservations) >= TrackingUpdatePeriod )
+      elapsed ( auxNewSendObservations ) >= TrackingUpdatePeriod )
 
     #Variable used to notify the mission handler that new data is available to send
     assign in sequence NewSendObservations = customUri "_.new_send_observations"
+    assign in sequence auxNewSendObservations = 1 count
     
     syslog info "Updating new_send_observation flag " + NewSendObservations~count
   }
@@ -515,6 +544,25 @@ mission marl {
     syslog info "SYNC STUF: Setting completed TargetTwo " +  ContactLabelTwo~count
   }
 
+  aggregate PingAgentOne{
+    """
+    Start pinging the second target
+    """
+    run when ( called )
+
+    syslog info "SYNC STUF: 2.c Starting PingAgentOne mission."
+
+    aggregate SetTargetLabel {
+      run in sequence
+
+      syslog info "SYNC STUF: Setting ping range to AgentOne: " + SendDataLabel ~count 
+      
+      assign in sequence ContactLabel = SendDataLabel
+
+    }
+    syslog info "SYNC STUF: Setting completed AgentOne " +  SendDataLabel~count
+  }
+
   aggregate InsertWait {
   run when ( called )
 
@@ -522,7 +570,7 @@ mission marl {
         + ". CurrentContactRange is " + CurrentContactRange~m
 
     aggregate CheckRange {
-      run in sequence repeat=10
+      run in sequence repeat=5
 
       break if (  
           Estimation:TrackAcousticContact.range_to_contact != CurrentContactRange
@@ -609,13 +657,13 @@ mission marl {
     aggregate SyncAcousticsLoop {
       run in parallel
 
+      #1- ranging target 1
       aggregate PingLoop1 {
         run in sequence
 
         syslog info "SYNC STUF: A. Starting PingLoop1 aggregate."
         assign in sequence TrackingUpdatePeriod = PingRangeUpdatePeriod
 
-        #1- ranging target 1
         call id="StartPingOnTargetOne" priorityHere=false refId="PingTargetOne"
         assign in sequence CurrentContactRange = Estimation:TrackAcousticContact.range_to_contact
         call id="WaitForRangeOnTargetOne" priorityHere=false refId="InsertWait"
@@ -627,20 +675,22 @@ mission marl {
         assign in sequence PingEndOne = true
       }
 
+      #2- ranging target 2
       aggregate PingLoop2 {
         run in sequence 
+
+        break if ( ContactLabelTwo == 0 count )
 
         syslog info "SYNC STUF: B. Starting PingLoop2 aggregate."
         assign in sequence TrackingUpdatePeriod = PingRangeUpdatePeriod
 
-        #2- insert a wait before pinging the second target
+        #insert a wait before pinging the second target
         syslog important "SYNC STUF: Wait before firing sample"
         behavior Guidance:Wait {
           run in sequence
-          set duration = 30 second
+          set duration = 15 second
         }
 
-        #3- ranging target 2
         call id="StartPingOnTargetTwo" priorityHere=false refId="PingTargetTwo"
         assign in sequence CurrentContactRange = Estimation:TrackAcousticContact.range_to_contact
         call id="WaitForRangeOnTargetTwo" priorityHere=false refId="InsertWait"
@@ -652,23 +702,61 @@ mission marl {
         assign in sequence PingEndTwo = true
       }
 
+      #3- sending observation data using string function
       aggregate SendDataLoop {
         run in sequence
+
+        break if ( SendDataLabel == 0 count or SendDataStrPing == 1 count )  
         
         syslog info "SYNC STUF: C. Starting SendDataLoop, sending string to other LRAUVs."  
         #increase the ping period to allow for data sending    
         assign in sequence TrackingUpdatePeriod = SendObsUpdatePeriod + PingRangeUpdatePeriod
 
-        #4- insert a wait before starting over
+        #insert a wait before starting over
         syslog important "SYNC STUF: Wait before starting over"
         behavior Guidance:Wait {
           run in sequence
-          set duration = 30 second
+          set duration = 15 second
         }
 
-        #5- sending observation data
+        #sending observation data
         call id="SendObservationDataCmd" priorityHere=false refId="SendObservationData"
       }
+
+      #4- measuring other vehicle position using pinging, insead of the string funciton
+      aggregate PingLoop3 {
+        run in sequence 
+
+        break if ( SendDataLabel == 0 count or SendDataStrPing == 0 count  )
+
+        syslog info "SYNC STUF: D. Starting PingLoop3 to know the position of other agents aggregate."
+        assign in sequence TrackingUpdatePeriod = PingRangeUpdatePeriod
+
+        #2- insert a wait before pinging the second target
+        syslog important "SYNC STUF: Wait before firing sample"
+        behavior Guidance:Wait {
+          run in sequence
+          set duration = 15 second
+        }
+
+        #3- ranging agent 1
+        call id="StartPingOnAgentOne" priorityHere=false refId="PingAgentOne"
+        assign in sequence CurrentContactRange = Estimation:TrackAcousticContact.range_to_contact
+        call id="WaitForRangeOnTargetTwo" priorityHere=false refId="InsertWait"
+        assign in sequence CurrentContactRange = Estimation:TrackAcousticContact.range_to_contact
+        assign in sequence ElapsedSincePingEndThree = elapsed ( PingEndThree )
+        assign in sequence ContactLatitude = Estimation:TrackAcousticContact.contact_latitude
+        assign in sequence ContactLongitude = Estimation:TrackAcousticContact.contact_longitude
+        assign in sequence customUri "_.AgentContactLatitude" = ContactLatitude
+        assign in sequence customUri "_.AgentContactLongitude" = ContactLongitude
+        syslog info "SYNC STUF: Finished pinging Agent at address " +  SendDataLabel~count
+              + ". Target distance " + CurrentContactRange~m
+              + ". Agent latitude " + ContactLatitude~degree
+              + ". Agent longitude " + ContactLongitude~degree
+              + ". Elapsed time " + ElapsedSincePingEndThree~minute
+        assign in sequence PingEndThree = true
+      }
+
     }
   }
 }

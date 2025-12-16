@@ -140,8 +140,12 @@ class MarlProcessor(LcmHandlerBase):
             print("INFO: Loading 2v1 agent version")
             self.num_agents = 2
             self.num_targets = 1
+        elif self.agent_version == "2v2":
+            print("INFO: Loading 2v2 agent version")
+            self.num_agents = 2
+            self.num_targets = 2
         else:
-            raise ValueError(f"Invalid agent_version: {self.agent_version}. Must be '1v1' or '2v1'.")
+            raise ValueError(f"Invalid agent_version: {self.agent_version}. Must be '1v1' or '2v1' or '2v2.")
         
         #Define and initialate local variables
         self.counter = 0 #used to increment the speed and angle in Joystick mission test
@@ -167,6 +171,9 @@ class MarlProcessor(LcmHandlerBase):
             self.other_obs_history = []
         else:
             self.other_obs_history = np.array([[0,0,0,0,0,0]])
+        
+        self.target_range_list = [[0 for _ in range(self.num_agents)] for _ in range(self.num_targets)]
+
         self.var_to_send = 0.0 #for testing purposes
         self.sim_timestamp = 0.
         self.lastcall = 0.
@@ -178,6 +185,13 @@ class MarlProcessor(LcmHandlerBase):
         self.auxlon = 0
         self.target_address_from_mission = 0
         self.other_comms_count = 0
+        self.target_address_one_from_mission = 0
+        self.target_address_two_from_mission = 0
+        self.send_data_address_from_mission = 0 
+        self.send_data_str_ping = 0 # using strings, 1 using DAT lat/lon
+        self.agent_contact_latitude = 0.0
+        self.agent_contact_longitude = 0.0
+        
 
     def handle_universal_msg(self, channel, data):
         """Process universal messages"""
@@ -237,6 +251,21 @@ class MarlProcessor(LcmHandlerBase):
             
             if name=='contactLabelToLcm':
                 self.target_address_from_mission = self.get_variable(name,msg).data[0]
+            elif name=='ContactLabelOneToLcm':
+                self.target_address_one_from_mission = self.get_variable(name,msg).data[0]
+            elif name=='ContactLabelTwoToLcm':
+                self.target_address_two_from_mission = self.get_variable(name,msg).data[0]
+            elif name=='SendDataLabelToLcm':
+                self.send_data_address_from_mission = self.get_variable(name,msg).data[0]
+            elif name=='SendDataStrPingToLcm':
+                self.send_data_str_ping = self.get_variable(name,msg).data[0]
+            elif name=='AgentContactLatitude':
+                self.agent_contact_latitude = self.get_variable(name,msg).data[0]    
+            elif name=='AgentContactLongitude':
+                self.agent_contact_longitude = self.get_variable(name,msg).data[0]
+                
+                
+
                 
         return
 
@@ -246,16 +275,23 @@ class MarlProcessor(LcmHandlerBase):
         if self.lrauv_pose[0] == 0:
             self.speed = 0.75
             return
+        
         #reset the other agents history if it is too old (20 minutes)
         if abs(float(self.other_obs_timestamp)-self.sim_timestamp) > 1200:
             if self.num_agents == 1:
                 self.other_obs_history = []
             else:
                 self.other_obs_history = np.array([[0,0,0,0,0,0]])
-        
+
+            
         #print("LRAUV pose [%.6f,%.6f,%.2f]: "%(self.lrauv_pose[0], self.lrauv_pose[1],self.lrauv_depth))
         #TODO we set the dat contact address manually to 20 but this shoudl be improve to be more dinamically set based on .cfg or lrauv-app
         if self.target_timestamp != self.target_timestamp_old and self.target_range != self.target_range_old and self.target_address == self.target_address_from_mission and self.target_range != 0 and self.lrauv_pose[0] != 0 and self.lrauv_pose[1] != 0: #new range measurement
+            #if we use DAT to get lat/lon of the other agent, we update the other_obs_history
+            if self.agent_contact_latitude != 0.0 and self.agent_contact_longitude != 0.0 and np.isnan(self.agent_contact_latitude) == False and np.isnan(self.agent_contact_longitude) == False:
+                self.other_obs_history = np.array([[self.target_timestamp, self.send_data_address_from_mission, self.agent_contact_latitude, self.agent_contact_longitude, 0.0, 0.0]])
+                print("Updated other_obs_history using DAT lat/lon: ", self.other_obs_history)
+                self.other_comms_count +=1
             print("########################################")   
             print("New range measurement at ",self.target_timestamp)
             print('INFO: Elapsed time = %.3f seconds'%(self.target_timestamp-self.target_timestamp_old))
@@ -264,14 +300,28 @@ class MarlProcessor(LcmHandlerBase):
             print("LRAUV pose [%.6f,%.6f,%.2f]: "%(self.lrauv_pose[0], self.lrauv_pose[1],self.lrauv_depth))
             print("Target address %i at %.3f meters"%(self.target_address,self.target_range))
             logger.debug("New range measured")
+            print("Target address one from mission: ", self.target_address_one_from_mission)
+            print("Target address two from mission: ", self.target_address_two_from_mission)
+            if self.target_address == self.target_address_one_from_mission:
+                self.target_range_list[0][0] = self.target_range + 0.
+            elif self.target_address == self.target_address_two_from_mission:
+                self.target_range_list[1][0] = self.target_range + 0.
+            print("Target range list: ", self.target_range_list)
+           
             self.target_timestamp_old = self.target_timestamp+0
             self.target_range_old = self.target_range+0 
             agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
             agents_pose = [self.lrauv_pose] + [obs[2:4] for obs in self.other_obs_history]
-            agents_depth = [self.lrauv_depth] + [obs[4] for obs in self.other_obs_history]
-            agents_range = [[self.target_range] + [obs[5] for obs in self.other_obs_history]]
+            #agents_depth = [self.lrauv_depth] + [obs[4] for obs in self.other_obs_history]
+            agents_depth = [self.lrauv_depth for _ in range(self.num_agents)]
+            #agents_range = [[self.target_range_list] + [[obs[5], 0] for obs in self.other_obs_history]][0]
+            if self.other_obs_history != []:
+                if self.other_obs_history[0][1] == self.target_address_one_from_mission and self.target_address_one_from_mission != 0:
+                    self.target_range_list[0][1] = self.other_obs_history[0][5] + 0.
+                elif self.other_obs_history[0][1] == self.target_address_two_from_mission and self.target_address_two_from_mission != 0:
+                    self.target_range_list[1][1] = self.other_obs_history[0][5] + 0.
+            agents_range = self.target_range_list.copy()
             self.new_action, internal_state  = self.rl_tracking.newAction(self.target_address,agents_range,agents_pose,agents_depth,agents_timestamp, new_range=True, action_control=self.command)
-            #TODO: We need to find how to deal when there is more than one target! For now, it works only with one.
             # [Timestamp, lrauv address, lrauv x, lrauv y, lrauv z, range]
             self.obs_to_send = np.array([self.target_timestamp, int(self.target_address_from_mission),self.lrauv_pose[0], self.lrauv_pose[1], self.lrauv_depth, self.target_range])
             if self.num_agents > 1:
@@ -279,6 +329,10 @@ class MarlProcessor(LcmHandlerBase):
                 self.publish_observation_state_to_slate()
                 #after we have used the nother observation history to update the PF and take a new acction, we reset it
                 self.other_obs_history = np.array([[0,0,0,0,0,0]])
+            # initialize ranges_list after using it
+            self.target_range_list = [[0 for _ in range(self.num_agents)] for _ in range(self.num_targets)]
+            self.agent_contact_latitude = 0.0
+            self.agent_contact_longitude = 0.0
             #log internal states, actions, and observations
             logger.debug('MARL INFO: internal_state, '+str(internal_state))
             logger.debug('MARL INFO: new_action, '+str(self.new_action))
@@ -294,6 +348,11 @@ class MarlProcessor(LcmHandlerBase):
             self.new_action_flag = True
 
         elif (self.sim_timestamp - self.target_timestamp_bsc) > self.target_timestamp_bsc_max and self.lrauv_pose[0] != 0 and self.lrauv_pose[1] != 0: #no range measurement for a while
+            #if we use DAT to get lat/lon of the other agent, we update the other_obs_history
+            if self.agent_contact_latitude != 0.0 and self.agent_contact_longitude != 0.0 and np.isnan(self.agent_contact_latitude) == False and np.isnan(self.agent_contact_longitude) == False:
+                self.other_obs_history = np.array([[self.target_timestamp, self.send_data_address_from_mission, self.agent_contact_latitude, self.agent_contact_longitude, 0.0, 0.0]])
+                print("Updated other_obs_history using DAT lat/lon: ", self.other_obs_history)
+                self.other_comms_count +=1
             print("***************************************")
             print("WARNING: No range measurement for a while, using last informaiton to compute new heading")
             print("LRAUV pose [%.6f,%.6f,%.2f]: "%(self.lrauv_pose[0], self.lrauv_pose[1],self.lrauv_depth))
@@ -304,9 +363,16 @@ class MarlProcessor(LcmHandlerBase):
             self.target_timestamp_bsc = self.sim_timestamp+0.
             agents_timestamp = [self.target_timestamp] + [obs[0] for obs in self.other_obs_history]
             agents_pose = [self.lrauv_pose] + [obs[2:4] for obs in self.other_obs_history]
-            agents_depth = [self.lrauv_depth] + [obs[4] for obs in self.other_obs_history]
-            agents_range = [[-1] + [obs[5] for obs in self.other_obs_history]]
-            if np.array(agents_range).sum() != -1:
+            #agents_depth = [self.lrauv_depth] + [obs[4] for obs in self.other_obs_history]
+            agents_depth = [self.lrauv_depth for _ in range(self.num_agents)]
+            #agents_range = [[0] + [obs[5] for obs in self.other_obs_history]]
+            if self.other_obs_history != []:
+                if self.other_obs_history[0][1] == self.target_address_one_from_mission and self.target_address_one_from_mission != 0:
+                    self.target_range_list[0][1] = self.other_obs_history[0][5] + 0.
+                elif self.other_obs_history[0][1] == self.target_address_two_from_mission and self.target_address_two_from_mission != 0:
+                    self.target_range_list[1][1] = self.other_obs_history[0][5] + 0.
+            agents_range = self.target_range_list.copy()
+            if np.array(agents_range).sum() > 0:
                 aux_range = True
             else:
                 aux_range = False
@@ -314,6 +380,10 @@ class MarlProcessor(LcmHandlerBase):
             #after we have used the other observation history to update the PF and take a new acction, we reset it
             if self.num_agents > 1:
                 self.other_obs_history = np.array([[0,0,0,0,0,0]])
+            # initialize ranges_list after using it
+            self.target_range_list = [[0 for _ in range(self.num_agents)] for _ in range(self.num_targets)]
+            self.agent_contact_latitude = 0.0
+            self.agent_contact_longitude = 0.0
             #log internal states, actions, and observations
             logger.debug('MARL INFO: internal_state, '+str(internal_state))
             logger.debug('MARL INFO: new_action, '+str(self.new_action))

@@ -32,7 +32,12 @@ lrauv_data: #[]  # request data from:
       - 'acoustic_receive_time'
       - '_.othersObservations'
       - '_.contactLabelToLcm'
-      #- '_.othersObservationsToLcm'
+      - '_.ContactLabelOneToLcm'
+      - '_.ContactLabelTwoToLcm'
+      - '_.SendDataLabelToLcm'
+      - '_.SendDataStrPingToLcm'
+      - '_.AgentContactLatitude'
+      - '_.AgentContactLongitude'
 
 
 # * Supervisor configuration * #
@@ -50,5 +55,5 @@ rate_check_mins: 10
 # * User-defined configuration * #
 # add more configs
 vehicle_id_log: 6
-agent_version: '1v1'  # options are '1v1' or '2v1' 
+agent_version: '2v1'  # options are '1v1' or '2v1' or '2v2' (num_agents v num_targets)
 

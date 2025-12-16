@@ -253,8 +253,8 @@ class AgentProductionController:
         for j in range(1, self.num_agents):
             if np.array(positions[j]).sum() != 0.0:
                 # Fresh data from communication
-                dx = positions[j][0] - positions[0][0]
-                dy = positions[j][1] - positions[0][1]
+                dx = positions[0][0] - positions[j][0]
+                dy = positions[0][1] - positions[j][1]
                 dz = 0  # this can always be 0 for now since agents are supposed at surface
                 # Cache this observation for future use
                 self.last_other_agent_obs[f"agent_{j}_dx"] = dx
@@ -364,6 +364,7 @@ def test(
     num_targets = 1
     steps = 200
     #agent_version = "1v1"
+    # agent_version = "2v1"
     agent_version = "2v1"
 
 
@@ -372,10 +373,10 @@ def test(
     step_time = 30  # seconds
     velocity_noise_std = 0.1 * agent_velocity  # m/s
     target_max_depth = 20.0  # meters
-    max_initial_distance = 300.0  # meters
+    max_initial_distance = 100.0  # meters
     range_error_std = 10.0  # errors in the meters
-    new_range_interval = 4  # update the PF only every n steps (my pf doesn't work well with large intervals)
-    new_communication_interval = 6  # agents exchange information every n steps
+    new_range_interval = 8  # update the PF only every n steps (my pf doesn't work well with large intervals)
+    new_communication_interval = 10  # agents exchange information every n steps
     output_dir = f"outputs/plots_multiagent_agents_test2v2"
     os.makedirs(output_dir, exist_ok=True)
 
@@ -385,6 +386,9 @@ def test(
         model_name = "mappo_transformer_1v1_v4.safetensors" # New agent with should work: mappo_transformer_noisy_more_linear_utracking_1_vs_1_step456_rng1948878966
     elif agent_version == "2v1":
         model_name = "mappo_2v1_2december.safetensors" #Same agent as previouse but trained for 2v1
+    elif agent_version == "2v2":
+        model_name = "mappo_2v2_11december.safetensors" #Same agent as previouse but trained for 2v1
+        
     else:
         print ('ERROR. AGENT VERSION NEED TO BE SPECIFIED CORRECTLY')
         return None
@@ -467,9 +471,9 @@ def test(
                 distance_xy = np.random.uniform(100.0, max_initial_distance)
                 target_x = distance_xy * np.cos(angle_xy)
                 target_y = distance_xy * np.sin(angle_xy)
-                if i==1:
-                    target_x += 300.
-                    target_y += 300.
+                if i==0:
+                    target_x += 1000.
+                    target_y += 1000.
                 #target_pos = np.array([target_x, target_y, target_depth])
                 heading = np.random.uniform(0, 2 * np.pi)
                 target_positions_init.append(np.array([target_x, target_y, target_depth]))

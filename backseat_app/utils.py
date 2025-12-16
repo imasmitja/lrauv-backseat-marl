@@ -43,6 +43,11 @@ class TargetTracking(object):
             self.num_agents = 2
             self.num_targets = 1
             print('INFO: Using AGENT VERSION 2 agent vs 1 target (aka 2v1)')
+        elif agent_version == "2v2":
+            model_name = "mappo_2v2_11december.safetensors" #Same agent as previouse but trained for 2v1
+            self.num_agents = 2
+            self.num_targets = 2
+            print('INFO: Using AGENT VERSION 2 agent vs 1 target (aka 2v1)')
         else:
             print ('ERROR. AGENT VERSION NEED TO BE SPECIFIED CORRECTLY')
 
@@ -108,10 +113,9 @@ class TargetTracking(object):
         lrauvLatLon = agents_lrauvLatLon[0]
         lrauvDepth = agents_lrauvDepth[0]
         measureTimestamp = np.array(agents_measureTimestamp).item(0)
-        print('DEBUG: agents_slantRange=',agents_slantRange)
-        print('DEBUG: self.agents_range=',self.agents_range)
         for i in range(len(agents_slantRange[0])): #TODO: we assume that we have only one target, if more, we need to change the script
-            self.agents_range[0][i] = agents_slantRange[0][i] 
+            self.agents_range = agents_slantRange.copy() 
+        print('DEBUG: self.agents_range=',self.agents_range)
 
         #Compute the planar range based on LRAUV depth and target depth
         #TODO
@@ -204,7 +208,7 @@ class TargetTracking(object):
         print('Agen yaw (360NorthClockwise)=',angle*180./np.pi)
         #ranges = np.array([[planarRange]]) # (targets, agents), first is always the current agent
         #positions = np.array([[self.lrauv_position [0], self.lrauv_position [2], 0.]]) # (agents, 3), first is always the current agent
-        targets_depth = np.array([10.]) # (targets,), a constant, not used
+        targets_depth = np.ones(self.num_targets) * 10. # (targets,), a constant, not used
         #print('INFO: Running Matteo2025 MARL method')
         #print('INFO: LRAUV pos (x,y,depth,yaw)= %.2fm, %.2fm, %.2fm, %.2fdegrees'%(self.lrauv_position[0],self.lrauv_position[2],lrauvDepth,angle*180./np.pi))
         #print('INFO: Target range= %.2fm'%planarRange)
